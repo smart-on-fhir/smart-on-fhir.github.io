@@ -13,4 +13,4 @@ redcarpet:
     - strikethrough
     - fenced_code
 
-baseurl: /smart_docs_2/
+baseurl: /

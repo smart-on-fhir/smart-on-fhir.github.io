@@ -1,0 +1,16 @@
+exclude: [
+    "README.md",
+    "utils",
+    "smart_common",
+    "smart_docs_2"
+]
+markdown: redcarpet
+redcarpet:
+  extensions:
+    - tables
+    - no_intra_emphasis
+    - autolink
+    - strikethrough
+    - fenced_code
+
+baseurl: /smart_docs_2/

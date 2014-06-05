@@ -1,0 +1,112 @@
+body {
+background-image:url('smart-logo.svg');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+}
+.page-navbar li.active {
+  border-left: 1px solid black;
+}
+
+.bs-docs-nav .navbar-toggle .icon-bar {
+  background-color: #563d7c;
+}
+.bs-docs-nav .navbar-header .navbar-toggle {
+  border-color: #fff;
+}
+
+.bs-docs-container {
+}
+
+header .container {
+background: #6bb1d3;
+}
+
+header a {
+  color: rgba(240,240,240,1);
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background: rgba(240,240,240,1);
+  color: #563d7c;
+}
+
+
+html,body,.container
+{
+}
+.container
+{
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+header
+{
+  height: 50px;
+}
+
+.row
+{
+}
+  .site-navbar.affix {
+    position: relative;
+  }
+ 
+@media (min-width: 992px) {
+  .site-navbar {
+  }
+  .col-md-3 {height: 100%;}
+  .site-navbar.affix {
+    overflow-y: auto;
+    position: fixed;
+    top: 5px;
+    bottom: 5px;
+    height: auto;
+  }
+  .site-navbar h2 {
+    display: inline-block;
+  }
+}
+
+pre {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+table.list {
+  margin-bottom:1em;
+  border: 1px solid grey;
+}
+
+table td, table th {
+}
+img.sequence-diagram-raw {
+  width: 100%;
+}
+
+.dropdown:hover .dropdown-menu {
+   display: block;
+}
+
+footer {
+    color: #fff;
+}
+
+footer h3 {
+    margin-bottom: 30px;
+}
+
+footer .footer-above {
+    padding-top: 50px;
+  background-color: #563d7c;
+}
+
+footer .footer-col {
+    margin-bottom: 50px;
+}
+
+footer .footer-below {
+    padding: 25px 0;
+    background-color: #230a39;
+}
+footer a {
+  color: white;
+}

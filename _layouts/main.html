@@ -98,5 +98,8 @@
       </div>
     </div>
     </footer>
+    {% if site.env == "dev" %}
+    <script src="//localhost:35729/livereload.js"></script>
+    {% endif %}
   </body>
 </html>

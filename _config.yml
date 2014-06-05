@@ -1,8 +1,8 @@
 exclude: [
     "README.md",
-    "utils",
-    "smart_common",
-    "smart_docs_2"
+    "node_modules",
+    "Gruntfile.js",
+    "package.json"
 ]
 markdown: redcarpet
 redcarpet:

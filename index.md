@@ -3,7 +3,7 @@ layout: main
 title: SMART on FHIR
 ---
 
-<h1>SMART: Tech Stack for Health Apps</h1>
+# SMART: Tech Stack for Health Apps
 
 SMART on FHIR is a set of **open specifications** to integrate apps with
 Electronic Health Records, portals, Health Information Exchanges, and other

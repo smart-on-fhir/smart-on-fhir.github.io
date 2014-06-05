@@ -36,3 +36,19 @@ the `_site` directory) is simply running
     $ jekyll serve --watch -b /
 
 on the commandline. 
+
+
+---
+
+If you prefer, you can serve the project with Node.js and grunt, which enables
+"live reload" behavior. This allows editing side-by-side with the web page; and
+every time you save, your changes appear automatically in the browser.
+
+Just install nodejs and grunt, and then run:
+
+```
+npm install
+grunt
+```
+
+And then open a brower to http://localhost:4000

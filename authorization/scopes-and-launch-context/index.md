@@ -15,7 +15,7 @@ data:
 
 Here's how these three aspects of authoriztion work.
 
-## Scopes for clinical data
+## Scopes for requesting clinical data
 
 SMART on FHIR defines OAuth2 access scopes that correspond directly to FHIR
 resource types. We define **read** and **write** permissions for
@@ -52,15 +52,30 @@ Manage all appointments to which the authorizing user has access | `user/Appoint
 Manage all resources on behalf ot he authorizing user| `user/*.read user/*.write `| Note that the permission is broader than our goal: with this scope, an app can add not only blood pressures, but other observations as well.
 
 
-## Scopes for contextual data
+## Scopes for requesting context data
 
-Contextual scopes begin with `launch`, and are used to request access to
-specific details about the EHR context in which an app is launched.
+Many apps rely on contextual data from the EHR to answer questions like:
 
-Apps that launch from the EHR will be passed an explicit `launch` parameter
-that must be passed along in the form of a context scope in the authorization
-request. If an app receives the paramter `launch=abc123`, then it must request the
-scope `launch:abc123`.
+* Which patient record is currently "open" in the EHR?
+* Which encounter is currently "open" in the EHR?
+* At which clinic, hospital ward, or patient room is the end-user currently working?
+
+To request access to such details, an app asks for "launch context" scopes in
+addition to whatever clinical access scopes it needs. Launch context scopes are
+easy to tell apart from clinical data scopes, because they always begin with
+`launch`.
+
+There are two general approaches to asking for launch context data, depending
+on the details of how your app is launched.
+
+### Apps that launch from the EHR
+
+Apps that launch from the EHR will be passed an explicit URL parameter called
+`launch`, whose value must be turned into an OAuth scope to bind the app's
+authorization request to the current EHR session.  If an app receives the URL
+paramter `launch=abc123`, then it requests the scope `launch:abc123`. That's all.
+
+### Standalone apps 
 
 Standalone apps that launch outside the EHR do not have any EHR context at the
 outset. These apps must explicitly request EHR context by using the following
@@ -75,19 +90,19 @@ Requested Scope | Meaning
 `launch/location` | Need location context at launch time (FHIR Location resource)
 (Others)| This list can be extended by any SMART EHR if additional context is requrireid.
 
-#### Receiving context alongside the access token
+### Launch context arrives with your `access_token`
 
 Once an app is authorized, the token response will include any context data the
-app requested -- as well as unsolicited context data if the EHR has any to
-communicate. For example, EHRs may use launch context to communicate UX and UI
-expectations to the app (see `need_patient_banner` below).
+app requested -- along with (potentially!) any unsolicited context data the EHR
+decides to communicate. For example, EHRs may use launch context to communicate
+UX and UI expectations to the app (see `need_patient_banner` below).
 
-Launch context parameters come alongside the access token. So in an ["implicit" or "token" flow for public clients]({{site.baseur/}}authorization/public) they will appear as parameters in the hash:
+Launch context parameters come alongside the access token. So in an ["implicit" or "token" flow for public clients]({{site.baseurl}}authorization/public) they will appear as parameters in the hash:
 
     https://app/after-auth#access_token=secret-xyz&patient=123&...
 
 And in a ["code" flow for confidential
-clients]({{site.baseur/}}authorization/confidential) they will appear as JSON
+clients]({{site.baseurl}}authorization/confidential) they will appear as JSON
 parameters:
 
 ```
@@ -107,7 +122,7 @@ Launch context parameter | Example value | Meaning
 `need_patient_banner` | `true` or `false` | App was launched in a UX context where a patient banner is required (when true) or not required (when false). An app receiving a value of `false` should not take up screen real estate displaying a patient banner.
 
 
-## Scopes for identity data
+## Scopes for requesting identity data
 
 Some apps need to authenticate the clinical end-user. This can be accomplished
 by requesting a pair of OpenID Connect scopes: `openid profile`.

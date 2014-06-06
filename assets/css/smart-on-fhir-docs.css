@@ -24,9 +24,11 @@ body {
 }
 
 header .container {
-background: #6bb1d3;
 }
 
+header {
+  background: #6bb1d3;
+}
 header a {
   color: rgba(240,240,240,1);
 }

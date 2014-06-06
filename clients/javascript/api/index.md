@@ -50,9 +50,9 @@ To search for resources you'll use either:
 
  * `smart.context.patient.Something.search()` when you only want results for the patient in context.
 
-(Note: that in any case your app will only be able to read the data it's
+(Note: in any case your app will only be able to read the data it's
 authorized to see -- so you could be lazy and query for "all" the data knowing
-that authorization restrictions will limit what you see. But it's a good
+that authorization restrictions will limit the data returned. But it's a good
 practice to write explicit patient-level queries when that's what you have in
 mind, because it will make your intentions more clear -- and make your code
 more portable.)

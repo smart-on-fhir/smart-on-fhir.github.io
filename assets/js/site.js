@@ -9,3 +9,15 @@ $("img.sequence-diagram-raw").each(function(i, d){
 $("table").each(function(i, d){
   $(d).addClass("table");
 });
+
+$(".edit-in-github").each(function(i,d){
+  var rel = window.location.pathname;
+  if (rel.match(/\/$/)){
+    rel += "index.md";
+  }
+  if (rel.match(/.html$/)){
+    rel = rel.substring(0,rel.length-4);
+    rel += "md";
+  }
+  $(d).attr("href", "https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit/master" + rel);
+});

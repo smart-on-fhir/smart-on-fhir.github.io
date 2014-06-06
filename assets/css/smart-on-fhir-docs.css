@@ -4,6 +4,11 @@ body {
 #background-attachment:fixed;
 #background-size:cover;
 }
+.navbar-brand {
+  
+  font-weight: bolder;
+  
+}
 .page-navbar li.active {
   border-left: 1px solid black;
 }

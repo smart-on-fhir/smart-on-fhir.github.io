@@ -1,8 +1,8 @@
 body {
-background-image:url('smart-logo.svg');
-background-repeat:no-repeat;
-background-attachment:fixed;
-background-size:cover;
+#background-image:url('smart-logo.svg');
+#background-repeat:no-repeat;
+#background-attachment:fixed;
+#background-size:cover;
 }
 .page-navbar li.active {
   border-left: 1px solid black;

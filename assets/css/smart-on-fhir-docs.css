@@ -13,6 +13,10 @@ body {
   border-left: 1px solid black;
 }
 
+.bs-navbar-collapse {
+  background: slateblue;
+  
+}
 
 .bs-docs-nav .navbar-toggle .icon-bar {
   background-color: #563d7c;
@@ -88,10 +92,6 @@ table td, table th {
 }
 img.sequence-diagram-raw {
   width: 100%;
-}
-
-.dropdown:hover .dropdown-menu {
-   display: block;
 }
 
 footer {

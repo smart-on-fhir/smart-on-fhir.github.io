@@ -13,7 +13,7 @@ body {
   border-left: 1px solid black;
 }
 
-.bs-navbar-collapse {
+.bs-navbar-collapse.in {
   background: slateblue;
   
 }

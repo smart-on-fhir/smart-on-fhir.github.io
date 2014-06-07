@@ -3,7 +3,7 @@ SMART Technical Documentation
 =============================
 
 This is the SMART technical documentation, hosted at
-<https://smart-on-fhir.github.io/docs>
+<https://smart-on-fhir.github.io>
 
 - See <http://smartplatforms.org> for high-level project info and news
 - Need help? Ask a question at <http://groups.google.com/group/smart-on-fhir>

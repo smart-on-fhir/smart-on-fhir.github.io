@@ -34,10 +34,11 @@ user-level app (like an appointment manager or a population dashboard). The EHR
 initiates a "launch sequence" in which a new browser instance (or `iframe`) is
 created, pointing to the app's registered launch URL and passing some context.
 At this point, the app enters a standard OAuth2 authorization flow using an
-Implicit Grant. Once the app is authorized, it knows about the current EHR
-session and can access clinical data through the FHIR API.
+Authorization Code Grant. Once the app is authorized, it knows about the
+current EHR session and can access clinical data through the FHIR API.
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRUhSIGFwcCB1c2luZyBjbGllbnQtc2lkZSBicm93c2VyIHRlY2hub2xvZ3kKCk5vdGUgIGxlZnQgb2YgRUhSOiBVc2VyIGxhdW5jaGVzIGFwcApFSFItPj5BcHA6IFJlZGlyZWN0IHRvIGFwcDoAIgYAQQZyaWdoAEIFACMHcXVlc3QgYXV0aG9yaXphdGlvbgpBcHAtPj4AYwUAPwxlaHI6ACEIZQCBARRPbiBhcHByb3ZhbABzHHIAgRgHX3VyaSNhY2Nlc3NfdG9rZW49c2VjcmV0LQAIBS14eXomLi4uAIEjFEEAMAUgcGF0aWVudCBkYXRhXG52aWEgRkhJUiBBUEkAgT0GAIIlBUdFVCAvZmhpci9QACkGLzEyM1xuQQCBZgw6IEJhc2ljIABwEACCUAUtAIJPBntyZXNvdXJjZVR5cGU6ICIARwciLCAiYmlydGhEYXRlIjogLi4ufQo&s=default"/> 
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRUhSIGFwcCB1c2luZyBzZXJ2ZXItc2lkZSB0ZWNobm9sb2d5CgpOb3RlICBsZWZ0IG9mIEVIUjogVXNlciBsYXVuY2hlcyBhcHAKRUhSLT4-QXBwOiBSZWRpcmVjdCB0byBhcHA6ACIGAEEGcmlnaABCBQAjB3F1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-AGMFAD8MZWhyOgAhCGUAgQEUT24gYXBwcm92YWwAcxxyAIEYB191cmk_Y29kZT0xMjMmLi4uAHMGAIFbBUdFVCAvdG9rZW4AGQkAggEGAIF5DUNyZWF0ZSAAIwU6XG4ge1xuYWNjZXNzXwA2BT1zZWNyZXQtAEMFLXh5eiZcbnBhdGllbnQ9NDU2JlxuZXhwaXJlc19pbjogMzYwMFxuLi4uXG59Cn0AgkoGAIJKBVsATgYAYQYgcmVzcG9uc2VdAIMRBwCCQw5BACUGAF8HIGRhdGFcbnZpYSBGSElSIEFQSQCBVBBmaGlyL1AAgQ8GLzEyM1xuQQCDAAw6IEJhc2ljIACBOhAAg2oFAIEZB3tyZXNvdXJjZVR5cGU6ICIARwciLCAiYmlydGhEYXRlIjogLi4ufQo&s=default"/> 
+
 ## Example "launch sequence"
 
 #### 1. EHR initiates launch sequence
@@ -63,8 +64,7 @@ URL for use below.
 
 *If your app is a <span class="label label-info">standalone</span> app that
 launches from outside of the, EHR, you won't receive a launch notification.
-Your authorization process will begin at step two below.*
-
+For this reason, your authorization process will begin at step two below.*
 
 #### 2. Apps asks EHR for authorization
 
@@ -83,10 +83,11 @@ Never fear: you can declare your launch context requirements by adding specific
 scopes to your request: for example, `launch/patient` to indicate that you need
 to know a patient ID, or `launch/encounter` to indicate you need an encounter.
 The EHR's "authorize" endpoint will take care of acquiring the context you need
-(and then making it available to you).  For example, the EHR may provide the
-end-user with a patient selection widget.  For full details, see <a
-href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch context
-parameters</a>.*
+(and then making it available to you).  For example, if your app needs patient
+context, the EHR may provide the end-user with a patient selection widget.  For
+full details, see <a
+href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch
+context parameters</a>.*
 
 
 The app then redirects the browser to the EHR's **authorization URL** as
@@ -94,7 +95,7 @@ determined above:
 
 ```
 Location: https://ehr/authorize?
-            response_type=token&
+            response_type=code&
             client_id=app-client-id&
             redirect_uri=https%3A%2F%2Fapp%2Fafter-auth&
             scope=launch:xyz123+patient%2FObservation.read+patient%2FPatient.read&
@@ -109,14 +110,36 @@ is communicated to the app by redirection to the app's registered
 `redirect_uri`:
 
 ```
-Location: https://app/after-auth#
-  access_token=kjqwr8wjoiernwinfwo8th4iutwbiug4o8ilfunwawf&
-  token_type=bearer&
-  expires_in=300&
-  scope=patient%2FObservation.read+patient%2FPatient.read&
-  state=98wrghuwuogerg97&
-  patient=123&
-  encounter=456
+Location: https://app/after-auth?
+  code=123abc&
+  state=98wrghuwuogerg97
+```
+
+#### 4. App exchanges authorization code for access token
+
+Given an authorization code, the app trades it for an access token via HTTP
+POST. Note that for a public client, no authorization header is required.
+
+##### Request
+```
+POST /token HTTP/1.1
+Host: server.example.com
+Content-Type: application/x-www-form-urlencoded/token?
+grant_type=authorization_code&
+code=123abc&
+redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
+```
+
+##### Response
+```
+{
+  "access_token": "i8hweunweunweofiwweoijewiwe",
+  "token_type": "bearer",
+  "expires_in": "3600",
+  "scope": "patient/Observation.read patient/Patient.read",
+  "patient":  "123",
+  "encounter": "456"
+}
 ```
 
 With this response, the app knows which patient is in-context, and has an
@@ -160,7 +183,7 @@ additional details about the EHR, including its authorization URL.
       <td><span class="label label-success">required</span></td>
       <td>
 
-      Opaque identifier for ths specific launch, and any EHR context associated
+      Opaque identifier for this specific launch, and any EHR context associated
 with it. This parameter must be communicated back to the app as a<code>launch:</code> 
 scope at authorization time.
 
@@ -178,7 +201,7 @@ scope at authorization time.
     <tr>
       <td><code>response_type</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>Fixed value: <code>token</code>. </td>
+      <td>Fixed value: <code>code</code>. </td>
     </tr>
     <tr>
       <td><code>client_id</code></td>
@@ -232,10 +255,72 @@ decision is made to grant or deny access. This decision is communicated to the
 app by when the EHR redirects the browser to the app's <code>redirect_uri</code>, with the
 following parameters embedded in the URI's #fragment component.
 
-
 <table class="table">
   <thead>
     <th colspan="3">Parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>code</code></td>
+      <td><span class="label label-success">required</span></td>
+
+      <td>
+
+The authorization code generated by the authorization server. The authorization
+code *must* expire shortly after it is issued to mitigate the risk of leaks.
+
+      </td>
+    </tr>
+    <tr>
+      <td><code>state</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The exact value received from the client.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4. App exchanges authorization code for access token
+
+After obtaining an authorization code, the app trades the code for an access
+token via HTTP `POS`T to the EHR's token URL, with content-type
+`application/x-www-form-urlencoded`. Note that for a public client, no authorization header is required.
+
+The following request parameters are defined:
+ 
+<table class="table">
+  <thead>
+    <th colspan="3">Parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>grant_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Fixed value: <code>authorization_code</code></td>
+    </tr>
+    <tr>
+      <td><code>code</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Code that an app can exchange for an access token</td>
+    </tr>
+    <tr>
+      <td><code>redirect_uri</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The same redirect_uri used in the initial authorization request</td>
+    </tr>
+    <tr>
+      <td><code>client_id</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The <code>client_id</code> of the app requesting authorization.</td>
+    </tr>
+  </tbody>
+</table>
+
+The response is a JSON object containing the access token, with the following
+keys:
+
+<table class="table">
+  <thead>
+    <th colspan="3">JSON Object property name</th>
   </thead>
   <tbody>
     <tr>
@@ -251,17 +336,12 @@ following parameters embedded in the URI's #fragment component.
     <tr>
       <td><code>expires_in</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>The lifetime in seconds of the access token. For public clients, this value SHOULD BE short (e.g. 300 for five minutes).</td>
+      <td>The lifetime in seconds of the access token. For example, the value "3600" denotes that the access token will expire in one hour from the time the response was generated.</td>
     </tr>
     <tr>
       <td><code>scope</code></td>
       <td><span class="label label-success">required</span></td>
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
-    </tr>
-    <tr>
-      <td><code>state</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td> The exact value received from the client.</td>
     </tr>
     <tr>
       <td><code>patient</code>, etc.</td>

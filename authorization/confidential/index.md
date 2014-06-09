@@ -61,7 +61,7 @@ URL for use below.
 
 *If your app is a <span class="label label-info">standalone</span> app that
 launches from outside of the, EHR, you won't receive a launch notification.
-Your authorization process will begin at step two below.*
+For thsi reason, your authorization process will begin at step two below.*
 
 #### 2. Apps asks EHR for authorization
 
@@ -80,7 +80,7 @@ Never fear: you can declare your launch context requirements by adding specific
 scopes to your request: for example, `launch/patient` to indicate that you need
 to know a patient ID, or `launch/encounter` to indicate you need an encounter.
 The EHR's "authorize" endpoint will take care of acquiring the context you need
-(and then making it available to you).  For example, the EHR may provide the
+(and then making it available to you).  For example, if your app needs patient context, the EHR may provide the
 end-user with a patient selection widget.  For full details, see <a
 href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch context
 parameters</a>.*
@@ -114,13 +114,15 @@ Location: https://app/after-auth?
 #### 4. App exchanges authorization code for access token
 
 Given an authorization code, the app trades it for an access token via HTTP
-POST, including an Authorization header to perform HTTP Basic authentication:
+POST, including an Authorization header for HTTP Basic authentication, where
+the username is the app's `client_id` and the password is the app's
+`client_secret`:
 
 ##### Request
 ```
 POST /token HTTP/1.1
 Host: server.example.com
-Authorization: Basic MTIzOjQ1Ng==
+Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
 Content-Type: application/x-www-form-urlencoded/token?
 grant_type=authorization_code&
 code=123abc&
@@ -180,9 +182,9 @@ additional details about the EHR, including its authorization URL.
       <td><span class="label label-success">required</span></td>
       <td>
 
-      Opaque identifier for ths specific launch, and any EHR context associated
-with it. This parameter must be communicated back to the app as a<code>launch:</code> 
-scope at authorization time.
+      Opaque identifier for this specific launch, and any EHR context associated
+with it. This parameter must be communicated back to the EHR  at authorization
+time by creating a <code>launch:[id]</code> scope (like <code>launch:123</code>).
 
       </td>
     </tr>
@@ -248,9 +250,9 @@ cross-site request forgery or session fixation attacks.
 
 The decision process itself is up to the EHR system. Based on any available
 information including local policies and (optionally!) end-user input, a
-decision is made to grant or deny access. This decision is communicated to the
-app by when the EHR redirects the browser to the app's <code>redirect_uri</code>, with the
-following parameters embedded in the URI's #fragment component.
+decision is made to grant or deny access. This decision is communicated when
+the EHR redirects the browser to the app's <code>redirect_uri</code>, with the
+following URL parameters:
 
 <table class="table">
   <thead>
@@ -283,6 +285,14 @@ token via HTTP `POS`T to the EHR's token URL, with content-type
 `application/x-www-form-urlencoded`. The POST must include an `Authorization`
 header using HTTP Basic Auth, where the user name is the `client_id` and the
 password is the `client_secret`.
+
+For example, if your `client_id` is `my-app` and your `client_secret` is
+`my-app-secret-123`, then your Authorization header would be include the
+Base64-encoded string "my-app:my-app-secret-123":
+
+```
+Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
+```
 
 The following request parameters are defined:
  
@@ -319,7 +329,7 @@ keys:
 
 <table class="table">
   <thead>
-    <th colspan="3">JSON key</th>
+    <th colspan="3">JSON Object property name</th>
   </thead>
   <tbody>
     <tr>

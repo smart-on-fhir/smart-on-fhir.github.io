@@ -12,7 +12,7 @@ app against our public apps container.
 
 ## General steps
 
-To test your app against FHIR Starter, first set up a local web server (such as Apache)
+To test your app against FHIR Starter, first set up a local web server<sup>*</sup>
 and server your FHIR app and its launch page at the following URLs:
 
 * [http://localhost:8000/fhir-app/index.html](http://localhost:8000/fhir-app/index.html)
@@ -21,6 +21,9 @@ and server your FHIR app and its launch page at the following URLs:
 Also, make sure that your `client_id` in `launch.html` is set to `my_web_app`. At this point
 you can open up FHIR Starter and launch the "My Web App" special application which will
 load your app.
+
+<sup>*</sup> You can use any web server you like. For prototyping, we're partial to [`http-server`](https://github.com/nodeapps/http-server) which you can launch via
+`http-server -p 8080 /path/to/fhir-app/..`.
 
 ### Sample Test App
 
@@ -50,40 +53,46 @@ index.html
 ```
 <!DOCTYPE html>
 <html>
- <head>
-    <script src="fhir-client.js"></script>
- </head>
- <body>
+  <head> <script src="fhir-client.js"></script> </head>
+  <body>
     <h1>Medications for <span id="name"></span></h1>
 
     <ul id="med_list"></ul>
 
     <script type="text/javascript">
-    (function () {
+      (function () {
         "use strict";
 
         FHIR.oauth2.ready(function(smart){
-            var patient = smart.context.patient;
+          var patient = smart.context.patient;
 
-            patient.read().then(function(pt) {
-                document.getElementById('name').innerHTML = pt.name[0].given.join(" ") +" "+ pt.name[0].family.join(" ");
-                
-                patient.MedicationPrescription.search().then(function(prescriptions) {
-                    var med_list = document.getElementById('med_list');
+          patient.read().then(function(pt) {
 
-                    prescriptions.forEach(function(prescription){
-                        var meds = prescription.contained;
-                        meds.forEach(function(med){
-                            med_list.innerHTML += "<li> " + med.name + "</li>";
-                        });
-                    });
+            var name =
+                pt.name[0].given.join(" ") + " " +  
+                pt.name[0].family.join(" ");
 
+            document.getElementById('name').innerHTML = name;
+
+            patient.MedicationPrescription
+            .search()
+            .then(function(prescriptions) {
+
+              var med_list = document.getElementById('med_list');
+
+              prescriptions.forEach(function(prescription){
+                var meds = prescription.contained;
+                meds.forEach(function(med){
+                  med_list.innerHTML += "<li> " + med.name + "</li>";
                 });
+              });
+
             });
+          });
         });
 
-    }());
+      }());
     </script>
- </body>
+  </body>
 </html>
 ```

@@ -252,8 +252,8 @@ cross-site request forgery or session fixation attacks.
 The decision process itself is up to the EHR system. Based on any available
 information including local policies and (optionally!) end-user input, a
 decision is made to grant or deny access. This decision is communicated to the
-app by when the EHR redirects the browser to the app's <code>redirect_uri</code>, with the
-following parameters embedded in the URI's #fragment component.
+app when the EHR redirects the browser to the app's <code>redirect_uri</code>,
+with the following URL parameters:
 
 <table class="table">
   <thead>

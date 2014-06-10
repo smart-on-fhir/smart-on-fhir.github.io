@@ -27,7 +27,8 @@ load your app.
 To get you started, here is the scaffolding of a simple SMART-on-FHIR app that you can use
 for testing this mechanism.
 
-launch.html:
+launch.html
+
 ```
 <!DOCTYPE html>
 <html>
@@ -45,6 +46,7 @@ launch.html:
 ```
 
 index.html
+
 ```
 <!DOCTYPE html>
 <html>

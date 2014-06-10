@@ -61,7 +61,7 @@ URL for use below.
 
 *If your app is a <span class="label label-info">standalone</span> app that
 launches from outside of the, EHR, you won't receive a launch notification.
-For thsi reason, your authorization process will begin at step two below.*
+For this reason, your authorization process will begin at step two below.*
 
 #### 2. Apps asks EHR for authorization
 

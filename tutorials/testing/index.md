@@ -3,7 +3,7 @@ layout: main
 title: SMART on FHIR -- Tutorials -- Testing
 ---
 
-# Testing you SMART-on-FHIR app
+# Testing your SMART-on-FHIR app
 
 ## Overview
 

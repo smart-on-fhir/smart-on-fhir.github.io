@@ -15,7 +15,7 @@ Easy-to-use, resource-oriented REST API for structured clinical data. Grab a
 resource with:
 
 ```
-$ curl https://open-api.fhir.me/Patient/1032702 -H 'Accept: application/json'
+$ curl https://fhir-open-api.smartplatforms.org/Patient/1032702 -H 'Accept: application/json'
 {
   "resourceType": "Patient",
   "identifier": [{

@@ -37,7 +37,7 @@ create a client via:
 
 ```
 var smart = FHIR.client({
-  fhirServiceUrl: 'https://open-api.fhir.me',
+  fhirServiceUrl: 'https://fhir-open-api.smartplatforms.org',
   patientId: '1137192'
 });
 ```

@@ -5,6 +5,8 @@ title: SMART on FHIR
 
 # SMART: Tech Stack for Health Apps
 
+<div class='red_box'>SMART "Classic" is being transitioned to support-only mode as we continue new development on SMART on FHIR. <a href="http://docs-v06.smartplatforms.org">Click here</a> to see the SMART "Classic" docs.</div>
+
 SMART on FHIR is a set of **open specifications** to integrate apps with
 Electronic Health Records, portals, Health Information Exchanges, and other
 Health IT systems. You get...

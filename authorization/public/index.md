@@ -147,7 +147,7 @@ OAuth2 bearer-type access token that can be used to fetch clinical data:
 
 ```
 GET https://ehr/fhir/Patient/123
-Authorization: Bearer 98wrghuwuogerg97
+Authorization: Bearer i8hweunweunweofiwweoijewiwe
 
 {
   "resourceType": "Patient",

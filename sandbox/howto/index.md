@@ -12,7 +12,7 @@ title: "SMART on FHIR Sandbox: How To Use"
 ### Step 1
 
 Log into the OpenID Connect Server at [https://authorize.smartplatforms.org](https://authorize.smartplatforms.org)
-and click on `Register a new client` in `Self-servixe client registration`.
+and click on `Register a new client` in `Self-service client registration`.
 
 <div style='text-align: center'>
   <img src="/assets/img/newapp1.png" />
@@ -48,7 +48,7 @@ In the `Credentials` tab change the authentication method to `No authentication`
 
 ### Step 5
 
-In the `Other` tab unccheck the `Always require that the auth_time claim be sent in the id token`
+In the `Other` tab uncheck the `Always require that the auth_time claim be sent in the id token`
 and enter the URL to your `launch.html` page in the `Initiate Login` box.
 
 <div style='text-align: center'>
@@ -118,6 +118,7 @@ Host: authorize.smartplatforms.org
 Based on: [http://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-17](http://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-17)
 
 REST call:
+
 ```
 POST /register HTTP/1.1
 Authorization: Basic Y2xpZW50OnNlY3JldA==

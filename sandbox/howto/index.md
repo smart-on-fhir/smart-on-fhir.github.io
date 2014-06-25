@@ -74,54 +74,16 @@ update or delete its record in the OpenID Connect Server.
   <img src="/assets/img/newapp7.png" />
 </div>
 
-## Via OpenID Connect Server internal admin REST API
-
-To register your client via the OpenID Connect Server internal admin REST API,
-execute the following REST call (substituting your client details as appropriate):
-
-```
-POST /api/clients HTTP/1.1
-Authorization: Basic Y2xpZW50OnNlY3JldA==
-Content-Type: application/json
-Accept: application/json
-Host: authorize.smartplatforms.org
-
-{
-  "clientId": "MYCOOLAPP",
-  "clientName": "Cool Smart-on-FHIR App",
-  "logoUri": "https://srv.me/img/cool.jpg",
-  "initiateLoginUri":"https://srv.me/app/launch.html",
-  "redirectUris": ["https://srv.me/app/cool"],
-  "scope": [
-    "launch",
-    "user/*.*",
-    "patient/*.read",
-    "smart/orchestrate_launch",
-    "openid",
-    "address",
-    "email"
-  ],
-  "clientDescription": null,
-  "tokenEndpointAuthMethod": "NONE",
-  "clientSecret": "unused-secret-for-public-app",
-  "grantTypes": [
-    "authorization_code",
-    "implicit"
-   ],
-  "responeType": ["token", "code"],
-  "accessTokenValiditySeconds": 3600
-}
-```
-
 ## Via OAuth 2.0 Dynamic Client Registration Protocol
 
 Based on: [http://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-17](http://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-17)
 
-REST call:
+To register your client dynamically in the OpenID Connect OAuth 2
+server, you may use a REST call like this:
 
 ```
 POST /register HTTP/1.1
-Authorization: Basic Y2xpZW50OnNlY3JldA==
+Authorization: Basic BASE64CREDENTIALS
 Content-Type: application/json
 Accept: application/json
 Host: authorize.smartplatforms.org
@@ -131,8 +93,19 @@ Host: authorize.smartplatforms.org
    "redirect_uris": [
      "https://srv.me/app/cool"
    ],
+   "token_endpoint_auth_method": "none",
+   "grant_types": [
+      "authorization_code",
+      "implicit"
+   ],
    "initiate_login_uri": "https://srv.me/app/launch.html",
    "logo_uri": "https://srv.me/img/cool.jpg",
    "scope": "launch user/*.* patient/*.read smart/orchestrate_launch openid address email"
 }
 ```
+
+You should substitute BASE64CREDENTIALS with your user credentials for the authorization server.
+If everything goes well, the server will respond with a JSON object that will contain the client
+id that you should use. The above example is for a public client. If you'd like to register
+a private client, you will need to change the "token_endpoint_auth_method" value to
+"client_secret_basic".

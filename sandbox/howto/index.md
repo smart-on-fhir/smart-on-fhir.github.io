@@ -40,7 +40,10 @@ In the `Access` tab make sure that the app is granted the following scopes: `lau
 
 ### Step 4
 
-In the `Credentials` tab change the authentication method to `No authentication`.
+On the `Credentials` tab change the authentication method:
+
+* If you're writing a [Confidential Client](http://docs.smartplatforms.org/authorization/confidential/), choose `Client Secret over HTTP Basic` 
+* * If you're writing a [Public Client](http://docs.smartplatforms.org/authorization/public/), choose `No authentication`
 
 <div style='text-align: center'>
   <img src="/assets/img/newapp4.png" />

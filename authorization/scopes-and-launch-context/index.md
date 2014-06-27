@@ -22,7 +22,6 @@ Scope              | Grants
 -------------------|-------
 `launch`           | Receive a launch context when the app launches
 `launch/patient`   | Ask for a patient to be selected at launch time
-`user/*.*`         | Permission to read and write any resource the current user has access to
 `patient/*.read`   | Permission to read any resource for the current patient
 `openid` `profile` | These two go together, allowing the app to retrieve information about the logged-in user
 

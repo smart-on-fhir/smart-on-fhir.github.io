@@ -103,7 +103,7 @@ Host: authorize.smartplatforms.org
    ],
    "initiate_login_uri": "https://srv.me/app/launch.html",
    "logo_uri": "https://srv.me/img/cool.jpg",
-   "scope": "launch user/*.* patient/*.read smart/orchestrate_launch openid address email"
+   "scope": "launch user/*.* patient/*.read openid profile"
 }
 ```
 

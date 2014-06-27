@@ -13,14 +13,18 @@ data:
 2. Contextual data
 3. Identity data
 
-Here is a quick overview of the most commonly used scopes, read on below for a more thorough explanation.
+
+### Quick Start
+
+Here is a quick overview of the most commonly used scopes. Read on below for complete details.
 
 Scope              | Grants
 -------------------|-------
-`launch`           | The right to receive a launch context when the app launches
-`user/*.*`         | Reading and writing any resource the current user has access to
-`patient/*.read`   | Reading any resource for the current patient, but not writing
-`openid` `profile` | These two go together and allow the app to retrieve information about the logged-in user
+`launch`           | Receive a launch context when the app launches
+`launch/patient`   | Ask for a patient to be selected at launch time
+`user/*.*`         | Permission to read and write any resource the current user has access to
+`patient/*.read`   | Permission to read any resource for the current patient
+`openid` `profile` | These two go together, allowing the app to retrieve information about the logged-in user
 
 ## Scopes for requesting clinical data
 

@@ -13,7 +13,15 @@ data:
 2. Contextual data
 3. Identity data
 
-Here's how these three aspects of authoriztion work.
+Here is a quick overview of the most commonly used scopes, read on below for a more thorough explanation.
+
+Scope              | Grants
+-------------------|-------
+`launch`           | The right to receive a launch context when the app launches
+`search`           | 
+`user/*.*`         | Reading and writing any resource the current user has access to
+`patient/*.read`   | Reading any resource for the current patient, but not writing
+`openid` `profile` | These two go together and allow the app to retrieve information about the logged-in user
 
 ## Scopes for requesting clinical data
 
@@ -48,8 +56,8 @@ Let's look at a few examples:
 Goal | Scope | Notes
 -----|-------|-----
 Read a feed of all new lab observations across a patient population: | `user/Observation.read` | 
-Manage all appointments to which the authorizing user has access | `user/Appointment.read user/Appointment.write` | Note that `read` and `write` both need to be supplied. (Write access does not imply read access.)
-Manage all resources on behalf ot he authorizing user| `user/*.read user/*.write `| Note that the permission is broader than our goal: with this scope, an app can add not only blood pressures, but other observations as well.
+Manage all appointments to which the authorizing user has access | `user/Appointment.read` `user/Appointment.write` | Note that `read` and `write` both need to be supplied. (Write access does not imply read access.)
+Manage all resources on behalf ot he authorizing user| `user/*.read` `user/*.write `| Note that the permission is broader than our goal: with this scope, an app can add not only blood pressures, but other observations as well.
 
 
 ## Scopes for requesting context data
@@ -73,7 +81,7 @@ on the details of how your app is launched.
 Apps that launch from the EHR will be passed an explicit URL parameter called
 `launch`, whose value must be turned into an OAuth scope to bind the app's
 authorization request to the current EHR session.  If an app receives the URL
-paramter `launch=abc123`, then it requests the scope `launch:abc123`. That's all.
+parameter `launch=abc123`, then it requests the scope `launch:abc123`. That's all.
 
 ### Standalone apps 
 
@@ -88,7 +96,7 @@ Requested Scope | Meaning
 `launch/patient` | Need patient context at launch time (FHIR Patient resource)
 `launch/encounter` | Need encounter context at launch time (FHIR Encounter resource)
 `launch/location` | Need location context at launch time (FHIR Location resource)
-(Others)| This list can be extended by any SMART EHR if additional context is requrireid.
+(Others)| This list can be extended by any SMART EHR if additional context is required.
 
 ### Launch context arrives with your `access_token`
 
@@ -125,7 +133,7 @@ Launch context parameter | Example value | Meaning
 ## Scopes for requesting identity data
 
 Some apps need to authenticate the clinical end-user. This can be accomplished
-by requesting a pair of OpenID Connect scopes: `openid profile`.
+by requesting a pair of OpenID Connect scopes: `openid` and  `profile`.
 
 When these scopes are requested (and the request is granted), the app will
 receive two useful ways to authenticate the end-user:
@@ -135,8 +143,8 @@ receive two useful ways to authenticate the end-user:
 that comes alongside the access token.  This token must be [validated according to the OIDC specification](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation).
 
 2. Access to a `UserInfo` endpoint which can return a more complete set of
-claims abuot the authenticated end-user. Details about OIDC's `UserInfo`
-endpoitn are [provided
+claims about the authenticated end-user. Details about OIDC's `UserInfo`
+endpoint are [provided
 here](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo). 
 
 *TODO*:

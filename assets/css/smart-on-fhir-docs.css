@@ -5,9 +5,7 @@ body {
 #background-size:cover;
 }
 .navbar-brand {
-  
   font-weight: bolder;
-  
 }
 .page-navbar li.active {
   border-left: 1px solid black;
@@ -43,25 +41,36 @@ header a {
 }
 
 
-html,body,.container
-{
+html,body,.container {
 }
-.container
-{
+.container {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-header
-{
+header {
   height: 50px;
 }
+h1,h2,h3 {
+  margin: 1em 0 0.5em;
+}
+h1:first-child, h2:first-child {
+  margin-top: 0;
+}
 
+@media (min-width: 768px) {
+  .navbar {
+    margin-bottom: 3em;
+  }
+}
+.page-content {
+  padding-bottom: 2em;
+}
 .row
 {
 }
-  .site-navbar.affix {
-    position: relative;
-  }
+.site-navbar.affix {
+  position: relative;
+}
  
 @media (min-width: 992px) {
   .site-navbar {

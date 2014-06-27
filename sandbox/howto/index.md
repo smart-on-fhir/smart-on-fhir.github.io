@@ -97,13 +97,10 @@ Host: authorize.smartplatforms.org
      "https://srv.me/app/cool"
    ],
    "token_endpoint_auth_method": "none",
-   "grant_types": [
-      "authorization_code",
-      "implicit"
-   ],
+   "grant_types": ["authorization_code"],
    "initiate_login_uri": "https://srv.me/app/launch.html",
    "logo_uri": "https://srv.me/img/cool.jpg",
-   "scope": "launch user/*.* patient/*.read openid profile"
+   "scope": "launch patient/*.read openid profile"
 }
 ```
 

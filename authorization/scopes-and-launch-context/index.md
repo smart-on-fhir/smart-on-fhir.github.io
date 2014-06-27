@@ -20,10 +20,12 @@ Here is a quick overview of the most commonly used scopes. Read on below for com
 
 Scope              | Grants
 -------------------|-------
-`launch`           | Receive a launch context when the app launches
-`launch/patient`   | Ask for a patient to be selected at launch time
 `patient/*.read`   | Permission to read any resource for the current patient
-`openid` `profile` | These two go together, allowing the app to retrieve information about the logged-in user
+`user/*.*`         | Permissino to read and write all resources that the current user can access
+`openid` `profile` | Permission to retrieve information about the current logged-in user
+`launch`           | Permission to obtain launch context when app is launched from an EHR
+`launch/patient`   | When launching outside the EHR, ask for a patient to be selected at launch time
+
 
 ## Scopes for requesting clinical data
 

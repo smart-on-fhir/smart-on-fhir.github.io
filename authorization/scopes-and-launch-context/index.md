@@ -18,7 +18,6 @@ Here is a quick overview of the most commonly used scopes, read on below for a m
 Scope              | Grants
 -------------------|-------
 `launch`           | The right to receive a launch context when the app launches
-`search`           | 
 `user/*.*`         | Reading and writing any resource the current user has access to
 `patient/*.read`   | Reading any resource for the current patient, but not writing
 `openid` `profile` | These two go together and allow the app to retrieve information about the logged-in user

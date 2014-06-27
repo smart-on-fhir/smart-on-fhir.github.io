@@ -86,7 +86,6 @@ server, you may use a REST call like this:
 
 ```
 POST /register HTTP/1.1
-Authorization: Basic BASE64CREDENTIALS
 Content-Type: application/json
 Accept: application/json
 Host: authorize.smartplatforms.org

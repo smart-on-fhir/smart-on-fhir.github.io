@@ -109,12 +109,7 @@ app requested -- along with (potentially!) any unsolicited context data the EHR
 decides to communicate. For example, EHRs may use launch context to communicate
 UX and UI expectations to the app (see `need_patient_banner` below).
 
-Launch context parameters come alongside the access token. So in an ["implicit" or "token" flow for public clients]({{site.baseurl}}authorization/public) they will appear as parameters in the hash:
-
-    https://app/after-auth#access_token=secret-xyz&patient=123&...
-
-And in a ["code" flow for confidential
-clients]({{site.baseurl}}authorization/confidential) they will appear as JSON
+Launch context parameters come alongside the access token. They will appear as JSON
 parameters:
 
 ```

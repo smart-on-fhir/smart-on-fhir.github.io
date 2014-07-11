@@ -8,7 +8,7 @@ title: "SMART on FHIR Authorization: Public clients"
 #### **Use this profile** when all of the following conditions apply:
 
 * Your app runs while the user is signed into the EHR
-* Your app runs directly on an end-user's device (HTML5/JS in-browser; native iOS or Windows app)
+* Your app runs entirely on an end-user's device (e.g. HTML5/JS in-browser; native iOS or Windows app)
 * Your app is unable to protect a "client secret"
 
 #### **Do not use this profile** if any of the following conditions apply:

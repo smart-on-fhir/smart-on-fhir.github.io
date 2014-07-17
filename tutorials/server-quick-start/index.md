@@ -26,7 +26,7 @@ Once you've exposed the necessary clinical data (see payload examples below for
 full details), you can launch the Growth Charts app in debugging mode (no
 authorization required)..
 
-You'll expose a "launch" button that users can click from within an existing EHR session, and when the user clicks this button, you'll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:
+You'll expose a "launch" button that users can click from within an existing EHR session.  When a user clicks this button, you'll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:
 
 [https://fhir.smartplatforms.org/apps/growth-chart/launch.html?](https://fhir.smartplatforms.org/apps/growth-chart/launch.html?fhirServiceUrl=https://fhir-open-api.smartplatforms.org&patientId=1482713)
 
@@ -44,7 +44,7 @@ sequence:
 
 #### 1. Create a launch context
 
-On your back-end, as soon as the user clicks the launch button you'll create a SMART "launch context" that includes (at least) the patient ID from the current EHR user session.  You'll assign a new "launch id" to
+On your back-end, as soon as a user clicks the launch button you'll create a SMART "launch context" that includes (at least) the patient ID from the current EHR user session.  You'll assign a new "launch id" to
 this context, and you'll pass that id to the Growth Charts app as a URL parameter. In
 the real world, you'd create a launch context every time a user launches an app
  -- though for prototyping, you might just want to create a trivial implementation

@@ -3,16 +3,17 @@ layout: main
 title: SMART on FHIR -- Tutorials -- Server Quick-start
 ---
 
-# Quick-start: Building a SMART on FHIR server
+# Quick-start: Making your EHR SMART
 
-This is a getting-started guide for SMART on FHIR server developers. It focused
-on getting a single app running: the open-source SMART Growth Charts app.   
+This is a getting-started guide for Health IT systems looking to support pluggable
+apps using SMART on FHIR. We'll take you through the process of allowing your users to launch
+a single app: the open-source SMART Growth Charts app.   
 
-To run the Growth Charts app against your own SMART on FHIR server, you'll need
-to:
+To get Growth Charts running inside your EHR, you'll implement a basic SMART on FHIR server that can:
 
 1. Expose clinical data using FHIR `Patient` and `Observation` resources
 2. Protect your clinical data via the [SMART on FHIR Authorization protocols](http://docs.smartplatforms.org/authorization/public) (based on OAuth2).
+3. Allow a user to launch Growth Charts by clicking a "launch" button
 
 To get up and running as easily as possible, this quick-start guide helps you
 through two scenarios: first, to run the app in debugging mode against an
@@ -23,32 +24,35 @@ OAuth2-protected server.
 
 Once you've exposed the necessary clinical data (see payload examples below for
 full details), you can launch the Growth Charts app in debugging mode (no
-authorization required) by supplying two URL parameters:
+authorization required)..
+
+You'll expose a "launch" button that users can click from within an existing EHR session, and when the user clicks this button, you'll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:
 
 [https://fhir.smartplatforms.org/apps/growth-chart/launch.html?](https://fhir.smartplatforms.org/apps/growth-chart/launch.html?fhirServiceUrl=https://fhir-open-api.smartplatforms.org&patientId=1482713)
 
  * `fhirServiceUrl={FHIR base URL of your unprotected server}`
- * `patientId={patient ID from your server}`
+ * `patientId={patient ID from the current user session}`
+
+You can click the URL above for a live example (running against our open testing server).
 
 ## For real: Launch Growth Charts against your OAuth2-protected server
 
 Once you've implemented the [SMART on FHIR Authorization
-protocols](http://docs.smartplatforms.org/authorization/public), you can launch
+protocols](http://docs.smartplatforms.org/authorization/public), you can wire up your "launch" button to launch
 the app in production mode (with authorization) by completing the following
 sequence:
 
 #### 1. Create a launch context
 
-On your back-end, create a SMART "launch context" that includes a patient ID
-and any other context details you want to track. You'll assign a "launch id" to
-this context, which you'll pass to the Growth Charts app as a URL parameter. In
+On your back-end, as soon as the user clicks the launch button you'll create a SMART "launch context" that includes (at least) the patient ID from the current EHR user session.  You'll assign a new "launch id" to
+this context, and you'll pass that id to the Growth Charts app as a URL parameter. In
 the real world, you'd create a launch context every time a user launches an app
  -- though for prototyping, you might just want to create a trivial implementation
-that hard-codes whatever values you care about.
+that hard-codes a set of sample values.
 
 #### 2. Open the app
 
-Create a new browser window with the following URL:
+When a user launches the Growth Charts app from inside your EHR, you'll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:
 
 [https://fhir.smartplatforms.org/apps/growth-chart/launch.html?](https://fhir.smartplatforms.org/apps/growth-chart/launch.html?iss=https://fhir-open-api.smartplatforms.org&launch=23)
 

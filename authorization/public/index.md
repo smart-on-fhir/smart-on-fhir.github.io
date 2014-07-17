@@ -60,7 +60,7 @@ On receiving the launch notification, App uses AJAX to query the issuer's
     Accept: application/json
 
 The metadata response contains (among other details) the EHR's authorization
-URL for use below.
+URL for use below. For details about how the EHR publishes the relevant OAuth URLs, <a href="{{site.baseurl}}authorization/conformance-statement">see here</a>.
 
 *If your app is a <span class="label label-info">standalone</span> app that
 launches from outside of the, EHR, you won't receive a launch notification.
@@ -192,7 +192,12 @@ scope at authorization time.
   </tbody>
 </table>
 
+To complete the following steps, the app discovers the server's OAuth
+`authorize` and `token` endpoint URLs by <a
+href="{{site.baseurl}}authorization/conformance-statement"> examining the EHR's
+
 #### 2. App asks EHR for authorization
+
 <table class="table">
   <thead>
     <th colspan="3">Parameters</th>

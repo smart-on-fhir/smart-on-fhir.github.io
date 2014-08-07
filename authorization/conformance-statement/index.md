@@ -5,7 +5,7 @@ title: "SMART on FHIR Authorization: Conformance statement"
 
 # Publishing OAuth2 URLs
 
-To support automated discovery of OAuth2 endpoints, a SMART on FHIR EHR publishes a set of OAuth2 endpoitn URLs inside its conformance statement using a pair of extensions on the `Conformance.rest.security` element.
+To support automated discovery of OAuth2 endpoints, a SMART on FHIR EHR publishes a set of OAuth2 endpoint URLs inside its conformance statement using a pair of extensions on the `Conformance.rest.security` element.
 
 These extensions are:
 

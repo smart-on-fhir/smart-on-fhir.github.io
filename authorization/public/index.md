@@ -194,7 +194,7 @@ scope at authorization time.
 
 To complete the following steps, the app discovers the server's OAuth
 `authorize` and `token` endpoint URLs by <a
-href="{{site.baseurl}}authorization/conformance-statement"> examining the EHR's
+href="{{site.baseurl}}authorization/conformance-statement"> examining the EHR's conformance statement</a>.
 
 #### 2. App asks EHR for authorization
 

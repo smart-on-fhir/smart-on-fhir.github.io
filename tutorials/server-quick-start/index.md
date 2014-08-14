@@ -23,8 +23,18 @@ OAuth2-protected server.
 ## Debugging: Launch Growth Charts against your unprotected server
 
 Once you've exposed the necessary clinical data (see payload examples below for
-full details), you can launch the Growth Charts app in debugging mode (no
-authorization required)..
+full details), make sure that you're exposing Cross-Origin Request Support (CORS) headers
+with your HTTP responses. A quick set of headers to get starter would be:
+
+```
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: origin, authorization, accept, content-type, x-requested-with
+Access-Control-Allow-Methods: GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS
+Access-Control-Allow-Origin: *
+```
+
+At this point, you can launch the Growth Charts app in debugging mode (no
+authorization required).
 
 You'll expose a "launch" button that users can click from within an existing EHR session.  When a user clicks this button, you'll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:
 

@@ -101,12 +101,31 @@ using FDA UNII codes.
 
 ##### Example: shrimp [https://fhir-open-api.smartplatforms.org/Substance/1891LE191T](https://fhir-open-api.smartplatforms.org/Substance/1891LE191T?_format=json)
 
+# Immunizations
+
+Each
+[Immunization](http://www.hl7.org/implement/standards/fhir/immunization.html#Immunization)
+must have:
+
+ * `1..1` patient in `Immunization.subject`
+ * `1..1` refusal indicator in `Immunization.refusalIndicator`
+ * `1..1` self-reported indicator in `Immunization.reported`
+ * `1..1` vaccine code in `Immunization.vaccineType`
+
+#### Vaccines coded with CVX
+
+Each immunizations is coded with a `vaccineType` drawn from CDC's [CVX
+vocabulary](http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx).
+This is a coding with:
+System: `http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx`
+
+##### Example: [https://fhir-open-api.smartplatforms.org/Immunization/4310](https://fhir-open-api.smartplatforms.org/Immunization/4310?_format=json)
+
 # TODO: work in progress.
 
 ```
 # Vital Signs
 ### Blood Pressure
-# Immunization
 # "No allergies"
 # Condition
 # Medication Prescription

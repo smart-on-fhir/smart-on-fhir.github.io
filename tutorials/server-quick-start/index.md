@@ -208,6 +208,7 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
         },
         "appliesDateTime": "2003-11-28",
         "status": "final",
+        "reliability": "ok",
         "subject": {
           "reference": "Patient/1482713"
         }
@@ -239,6 +240,7 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
         },
         "appliesDateTime": "2003-11-28",
         "status": "final",
+        "reliability": "ok",
         "subject": {
           "reference": "Patient/1482713"
         }
@@ -270,6 +272,7 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
         },
         "appliesDateTime": "2003-11-28",
         "status": "final",
+        "reliability": "ok",
         "subject": {
           "reference": "Patient/1482713"
         }

@@ -125,6 +125,7 @@ POST. Note that for a public client, no authorization header is required.
 POST /token HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded/token?
+
 grant_type=authorization_code&
 code=123abc&
 redirect_uri=https%3A%2F%2Fapp%2Fafter-auth

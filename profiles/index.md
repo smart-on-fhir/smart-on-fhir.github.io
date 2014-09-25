@@ -78,7 +78,7 @@ allergy is captured using the ingredient code for Sulfamethoxazole
 ([rxnorm:10180](http://schemes.caregraf.info/rxnorm#!10180)).
 
 `Substance.type.coding.system`: `http://rxnav.nlm.nih.gov/REST/rxcui`
-##### Example: cipro [https://fhir-open-api.smartplatforms.org/Substance/203563](https://fhir-open-api.smartplatforms.org/Substance/203563?_format=json)
+##### Example: cipro [https://fhir-open-api.smartplatforms.org/Substance/rxnorm-203563](https://fhir-open-api.smartplatforms.org/Substance/rxnorm-203563?_format=json)
 
 ### Allergy to a drug class
 #### Coded with NDF-RT
@@ -89,7 +89,7 @@ Sulfonamide drugs is captured using the drug class code
 
 `Substance.type.coding.system`: `http://rxnav.nlm.nih.gov/REST/Ndfrt`
 
-##### Example: sulfonamides [https://fhir-open-api.smartplatforms.org/Substance/N0000175503](https://fhir-open-api.smartplatforms.org/Substance/N0000175503?_format=json)
+##### Example: sulfonamides [https://fhir-open-api.smartplatforms.org/Substance/ndfrt-N0000175503](https://fhir-open-api.smartplatforms.org/Substance/ndfrt-N0000175503?_format=json)
 
 ### Food and environmental allergies
 #### Coded with FDA UNII
@@ -99,7 +99,7 @@ using FDA UNII codes.
 
 `Substance.type.coding.system`: `http://fda.gov/UNII/`
 
-##### Example: shrimp [https://fhir-open-api.smartplatforms.org/Substance/1891LE191T](https://fhir-open-api.smartplatforms.org/Substance/1891LE191T?_format=json)
+##### Example: shrimp [https://fhir-open-api.smartplatforms.org/Substance/unii-1891LE191T](https://fhir-open-api.smartplatforms.org/Substance/unii-1891LE191T?_format=json)
 
 # Immunizations
 

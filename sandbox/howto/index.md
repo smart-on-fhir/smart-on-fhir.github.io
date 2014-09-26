@@ -32,7 +32,7 @@ authorization process.
 
 ### Step 3
 
-In the `Access` tab make sure that the app is granted the following scopes: `launch`, `openid`, `user/*.*`, `address`, `email`, `patient/*.read`, `smart/orchestrate_launch`. The `code` response type should be unchecked.
+In the `Access` tab make sure that the app is granted the following scopes: `launch`, `openid`, `user/*.*`, `address`, `email`, `patient/*.read`. The `code` response type should be unchecked.
 
 <div style='text-align: center'>
   <img src="/assets/img/newapp3.png" />

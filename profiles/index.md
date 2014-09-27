@@ -61,7 +61,7 @@ Each [AllergyIntolerance](http://www.hl7.org/implement/standards/fhir/allergyint
  * `1` patient in `AllergyIntolerance.subject`
  * `1` substance in `AllergyIntolerance.substance`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/AllergyIntolerance/634](https://fhir-open-api.smartplatforms.org/AllergyIntolerance/634?_format=json)
+##### Example: [https://fhir-open-api.smartplatforms.org/AllergyIntolerance/59](https://fhir-open-api.smartplatforms.org/AllergyIntolerance/59?_format=json)
 
 The coding system used to record the substance depends on the substance type.
 There are three	cases: drug allergies, drug class allergies, and other.
@@ -119,7 +119,7 @@ vocabulary](http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx)
 This is a coding with:
 System: `http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/Immunization/4310](https://fhir-open-api.smartplatforms.org/Immunization/4310?_format=json)
+##### Example: [https://fhir-open-api.smartplatforms.org/Immunization/18](https://fhir-open-api.smartplatforms.org/Immunization/18?_format=json)
 
 # TODO: work in progress.
 

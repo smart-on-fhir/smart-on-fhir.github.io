@@ -100,7 +100,7 @@ See the source, or click "preview" to see the app in action!
 
 <iframe
   style="border: 1px solid black"
-  src="http://embed.plnkr.co/LGeadiGPQV8VTSisrybf/get-data.js"
+  src="http://embed.plnkr.co/nN4yMXzK5aYxdyZFJHii/get-data.js"
   width="100%" height="500px"></iframe>
 
 For more details, see our JS client [API docs](../api)

@@ -47,8 +47,8 @@ Each
 [Patient](http://www.hl7.org/implement/standards/fhir/patient.html#Patient)
 must have:
 
- * `1..*` medical record numbers in `Patient.identifier`
- * `1..*` names in `Patient.name`
+ * `1 or more` medical record numbers in `Patient.identifier`
+ * `1 or more` names in `Patient.name`
  * `1` administrative gender in `Patient.gender`
 
 ##### Example: [https://fhir-open-api.smartplatforms.org/Patient/1032702](https://fhir-open-api.smartplatforms.org/Patient/1032702?_format=json)
@@ -107,10 +107,10 @@ Each
 [Immunization](http://www.hl7.org/implement/standards/fhir/immunization.html#Immunization)
 must have:
 
- * `1..1` patient in `Immunization.subject`
- * `1..1` refusal indicator in `Immunization.refusalIndicator`
- * `1..1` self-reported indicator in `Immunization.reported`
- * `1..1` vaccine code in `Immunization.vaccineType`
+ * `1` patient in `Immunization.subject`
+ * `1` refusal indicator in `Immunization.refusalIndicator`
+ * `1` self-reported indicator in `Immunization.reported`
+ * `1` vaccine code in `Immunization.vaccineType`
 
 #### Vaccines coded with CVX
 
@@ -121,17 +121,65 @@ System: `http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx`
 
 ##### Example: [https://fhir-open-api.smartplatforms.org/Immunization/18](https://fhir-open-api.smartplatforms.org/Immunization/18?_format=json)
 
+# Conditions
+
+Each
+[Condition](http://www.hl7.org/implement/standards/fhir/condition.html#Condition)
+must have:
+
+ * `1` patient in `Condition.subject`
+ * `1` condition in `Condition.code` with System of `http://snomed.info/sct`
+ * `1` code (confirmed) in `Condition.status`
+ * `1` date in `Condition.onsetDate`
+ 
+##### Example: fever [https://fhir-open-api.smartplatforms.org/Condition/454](https://fhir-open-api.smartplatforms.org/Condition/454?_format=json)
+ 
+# Procedures
+
+Each
+[Procedure](http://www.hl7.org/implement/standards/fhir/procedure.html#Procedure)
+must have:
+
+ * `1` patient in `Procedure.subject`
+ * `1` procedure in `Procedure.type` with System of `http://snomed.info/sct`
+ * `1` date in `Procedure.date.start`
+ * `1` date in `Procedure.date.end`
+
+##### Example: mastectomy [https://fhir-open-api.smartplatforms.org/Procedure/5](https://fhir-open-api.smartplatforms.org/Procedure/5?_format=json)
+
+# Family History
+
+Each
+[FamilyHistory](http://www.hl7.org/implement/standards/fhir/familyhistory.html#FamilyHistory)
+must have:
+
+ * `1` patient in `FamilyHitory.subject`
+ * `up to 1` height measurement as an `valueQuantity` extension of url `http://fhir-registry.smartplatforms.org/Profile/family-history#height` with units of `centimeters` and system of `http://unitsofmeasure.org`
+ * `1` relationship to patient in `FamilyHitory.reation.relationship` with system `http://hl7.org/fhir/v3/RoleCode`
+
+##### Example: [https://fhir-open-api.smartplatforms.org/FamilyHistory/8](https://fhir-open-api.smartplatforms.org/FamilyHistory/8?_format=json)
+
+# Smoking Status
+
+Each Smoking Status
+[Observation](http://www.hl7.org/implement/standards/fhir/observation.html#Observation)
+must have:
+
+ * `1` patient in `Observation.subject`
+ * `1` code value of `72166-2` and system of `http://loinc.org` in `Observation.name`
+ * `1` code with system `http://snomed.info/sct` in `Observation.valueCodeableConcept`
+ * `1` status of `final` in `Observation.status`
+ * `1` value of `ok` in `Observation.reliability`
+
+##### Example: former smoker [https://fhir-open-api.smartplatforms.org/Observation/6-smokingstatus](https://fhir-open-api.smartplatforms.org/Observation/6-smokingstatus?_format=json)
+
 # TODO: work in progress.
 
 ```
 # Vital Signs
 ### Blood Pressure
 # "No allergies"
-# Condition
 # Medication Prescription
 # Medication Dispense
-# Procedure
-# Smoking Status
-# Family History
 # Lab result
 ```

@@ -101,6 +101,34 @@ using FDA UNII codes.
 
 ##### Example: shrimp [https://fhir-open-api.smartplatforms.org/Substance/unii-1891LE191T](https://fhir-open-api.smartplatforms.org/Substance/unii-1891LE191T?_format=json)
 
+### "No known allergies"
+
+Encoded as 
+[List](http://www.hl7.org/implement/standards/fhir/list.html#List)
+must have:
+
+ * `1` patient in `List.subject`
+ * `1` code value of `52473-6` and system of `http://loinc.org` in `List.code`
+ * `1` date in `List.date`
+ * `1` value of `snapshot` in `List.mode`
+ * `1` code value of `nilknown` and system of `http://hl7.org/fhir/list-empty-reason` in `List.emptyReason`
+
+##### Example: [https://fhir-open-api.smartplatforms.org/List/24](https://fhir-open-api.smartplatforms.org/List/24?_format=json)
+
+### "No known history of drug allergy"
+
+Encoded as 
+[List](http://www.hl7.org/implement/standards/fhir/list.html#List)
+must have:
+
+ * `1` patient in `List.subject`
+ * `1` code value of `11382-9` and system of `http://loinc.org` in `List.code`
+ * `1` date in `List.date`
+ * `1` value of `snapshot` in `List.mode`
+ * `1` code value of `nilknown` and system of `http://hl7.org/fhir/list-empty-reason` in `List.emptyReason`
+
+##### Example: [https://fhir-open-api.smartplatforms.org/List/62](https://fhir-open-api.smartplatforms.org/List/62?_format=json)
+
 # Immunizations
 
 Each
@@ -173,13 +201,43 @@ must have:
 
 ##### Example: former smoker [https://fhir-open-api.smartplatforms.org/Observation/6-smokingstatus](https://fhir-open-api.smartplatforms.org/Observation/6-smokingstatus?_format=json)
 
+# Medication Prescription
+
+Each 
+[MedicationPrescription](http://www.hl7.org/implement/standards/fhir/medicationprescription.html#MedicationPrescription)
+must have:
+
+ * `1` patient in `MedicationPrescription.subject`
+ * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationPrescription.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.coding.system`
+ * `1` status of `active` in `MedicationPrescription.status`
+ * `1` patient in `MedicationPrescription.patient`
+ * `1` object in `MedicationPrescription.dosageInstruction.timingSchedule` with `1` date in `event.start` and `0 or 1` date in `event.end` and `0 or 1` objects in `repeat` (with `1` value in `repeat.frequency`, `1` value in `repeat.units`, and `1` value in `repeat.duration`)
+ * `0 or 1` code in `MedicationPrescription.dosageInstruction.doseQuantity` with system of `http://unitsofmeasure.org`
+ * `0 or 1` objects in `MedicationPrescription.dispense` with `1` value in `numberOfRepeatsAllowed`, `1` code with system of `http://unitsofmeasure.org` in `quantity`, and `0 or 1` codes with system of `http://unitsofmeasure.org` in `expectedSupplyDuration` 
+
+##### Example: [https://fhir-open-api.smartplatforms.org/MedicationPrescription/102](https://fhir-open-api.smartplatforms.org/MedicationPrescription/102?_format=json)
+
+# Medication Dispense
+
+Each 
+[MedicationDispense](http://www.hl7.org/implement/standards/fhir/medicationdispense.html#MedicationDispense)
+must have:
+
+ * `1` patient in `MedicationDispense.subject`
+ * `1` patient in `MedicationDispense.patient`
+ * `1` reference to `MedicationPrescription` in `MedicationDispense.authorizingPrescription`
+ * `1` object in `MedicationDispense.dispense` with `1` extension of `http://fhir-registry.smartplatforms.org/Profile/dispense#days-supply` of type `valueQuantity` with system of `http://unitsofmeasure.org` with units of `days` and code of `d`
+ * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationDispense.dispense.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.coding.system`
+ * `1` status of `completed` in `MedicationDispense.dispense.status`
+ * `1` quantity with system `http://unitsofmeasure.org` and code of `{tablets}` and units of `tablets` in `MedicationDispense.dispense.quantity`
+ * `1` date in `MedicationDispense.dispense.whenHandedOver`
+
+##### Example: [https://fhir-open-api.smartplatforms.org/MedicationDispense/1229](https://fhir-open-api.smartplatforms.org/MedicationDispense/1229?_format=json)
+
 # TODO: work in progress.
 
 ```
 # Vital Signs
 ### Blood Pressure
-# "No allergies"
-# Medication Prescription
-# Medication Dispense
 # Lab result
 ```

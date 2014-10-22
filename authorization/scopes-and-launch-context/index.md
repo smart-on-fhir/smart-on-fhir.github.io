@@ -146,6 +146,12 @@ claims about the authenticated end-user. Details about OIDC's `UserInfo`
 endpoint are [provided
 here](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo). 
 
-*TODO*:
-describe discovery process by which apps can determine the URL of this
-endpoint!
+Note: to obtain the URL of the `UserInfo` endpoint, an app would follow the
+discovery process described in the [OIDC
+standard](http://openid.net/specs/openid-connect-discovery-1_0.html#RFC5785).
+The steps are:
+
+ 1. Examine the ID token for its "issuer" property
+ 2. Perform a `GET {issuer}/.well-known/openid-configuration`
+ 3. Examine the payload payload (a JSON document) for the "userinfo_endpoint" property.
+

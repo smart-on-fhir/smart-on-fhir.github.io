@@ -54,7 +54,9 @@ index.html
 ```
 <!DOCTYPE html>
 <html>
-  <head> <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script> </head>
+  <head>
+    <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script>
+  </head>
   <body>
     <h1>Medications for <span id="name"></span></h1>
 

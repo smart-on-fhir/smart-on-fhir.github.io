@@ -28,7 +28,8 @@ load your app.
 ### Sample Test App
 
 To get you started, here is the scaffolding of a simple SMART-on-FHIR app that you can use
-for testing this mechanism.
+for testing this mechanism. Note that you can't use teh "rawgithub" domain in production, 
+but it can be handy for testing.
 
 launch.html
 
@@ -36,7 +37,7 @@ launch.html
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="fhir-client.js"></script>
+    <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script>
     <script>
       FHIR.oauth2.authorize({
         "client_id": "my_web_app",
@@ -53,7 +54,7 @@ index.html
 ```
 <!DOCTYPE html>
 <html>
-  <head> <script src="fhir-client.js"></script> </head>
+  <head> <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script> </head>
   <body>
     <h1>Medications for <span id="name"></span></h1>
 

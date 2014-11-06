@@ -18,8 +18,7 @@ To get started with the SMART on FHIR JavaScript client library, you'll need to:
 
 Include a `script` tag referencing the library. The latest code is always
 available *for download* (not live hosting) in GitHub at
-[smart-on-fhir/client-js
-](https://raw.githubusercontent.com/smart-on-fhir/client-js/master/dist/fhir-client.js).
+[https://raw.githubusercontent.com/smart-on-fhir/client-js/master/dist/fhir-client.js](https://raw.githubusercontent.com/smart-on-fhir/client-js/master/dist/fhir-client.js).
 
 You'll want to download and host this file alongside your app. Unless you're
 just prototyping -- in which case you can use this [rawgithub

@@ -127,6 +127,7 @@ Launch context parameter | Example value | Meaning
 `encounter` | `123`| App was launched in the context of FHIR Encounter 123. 
 `location` | `123`| App was launched from the phyical place corresponding to FHIR Location 123. 
 `need_patient_banner` | `true` or `false` | App was launched in a UX context where a patient banner is required (when true) or not required (when false). An app receiving a value of `false` should not take up screen real estate displaying a patient banner.
+`resource` | `MedicationPrescription/123`| App was launched in the context of a specific resource (in this case, a particular medication prescription). This is a generic mechanism to communicate to an app that a particular resource is "of interest" at launch time.
 
 
 ## Scopes for requesting identity data

@@ -22,7 +22,7 @@ $ curl https://fhir-open-api.smartplatforms.org/Patient/1032702 -H 'Accept: appl
   "resourceType": "Patient",
   "identifier": [{
       "use": "usual",
-      "label": "SMART Hospiptal MRN",
+      "label": "SMART Hospital MRN",
       "system": "http://smart-hospital/mrn",
       "value": "1032702"
     }],

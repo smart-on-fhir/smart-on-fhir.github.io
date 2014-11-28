@@ -147,7 +147,7 @@ title: "SMART on FHIR Sandbox: How To Use"
   <div class="panel-body">
     <div><strong>Client ID:</strong> <span id="client_id"></span></div>
     <div id="client_secret_div" style="display:none"><strong>Client Secret:</strong> <span id="client_secret"></span></div>
-    <div><strong>Registration Access Token:</strong> <span id="registration_access_token"></span></div>
+    <div><strong>Registration Access Token:</strong><br/><textarea style="width:100%; height:100px" readonly="readonly" id="registration_access_token"></textarea></div>
   </div>
 </div>
 

@@ -110,7 +110,7 @@ title: "SMART on FHIR Sandbox: How To Use"
     </div>
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button type="submit" class="btn btn-default btn-primary" onClick="registerClient()">Register Client</button>
+        <button class="btn btn-default btn-primary" onclick="registerClient()">Register Client</button>
       </div>
     </div>
    </fieldset>

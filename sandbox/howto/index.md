@@ -11,7 +11,31 @@ title: "SMART on FHIR Sandbox: How To Use"
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
+    function validateInput (id) {
+        var element = $('#' + id);
+        var parent = element.parent().parent();
+        if (element.val().length === 0) {
+            parent.addClass("has-error");
+            return false;
+        } else {
+            parent.removeClass("has-error");
+            return true;
+        }
+    }
+
+    function validateForm () {
+        var isValid = true;
+        isValid = isValid && validateInput("input_client_name");
+        isValid = isValid && validateInput("input_launch_uri");
+        isValid = isValid && validateInput("input_redirect_uri");
+        isValid = isValid && validateInput("input_logo_uri");
+        isValid = isValid && validateInput("input_contact");
+        return isValid;
+    }
+    
     function registerClient () {
+        if (! validateForm ()) return;
+    
         var client_type = "none";
         
         if ($("input[name=input_client_type]:checked").val() === "confidential") {
@@ -50,7 +74,6 @@ title: "SMART on FHIR Sandbox: How To Use"
     }
 </script>
 
-<!-- TO DO: style this form with bootstrap -->
 <div id="reg-form" class="well bs-component">
   <form class="form-horizontal">
    <fieldset>

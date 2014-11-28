@@ -25,11 +25,11 @@ title: "SMART on FHIR Sandbox: How To Use"
 
     function validateForm () {
         var isValid = true;
-        isValid = isValid && validateInput("input_client_name");
-        isValid = isValid && validateInput("input_launch_uri");
-        isValid = isValid && validateInput("input_redirect_uri");
-        isValid = isValid && validateInput("input_logo_uri");
-        isValid = isValid && validateInput("input_contact");
+        isValid = validateInput("input_client_name") && isValid;
+        isValid = validateInput("input_launch_uri") && isValid;
+        isValid = validateInput("input_redirect_uri") && isValid;
+        isValid = validateInput("input_logo_uri") && isValid;
+        isValid = validateInput("input_contact") && isValid;
         return isValid;
     }
     

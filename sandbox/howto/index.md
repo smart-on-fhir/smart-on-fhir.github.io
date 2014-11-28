@@ -51,40 +51,70 @@ title: "SMART on FHIR Sandbox: How To Use"
 </script>
 
 <!-- TO DO: style this form with bootstrap -->
-<div id="reg-form">
-    <h3>New Client Registration</h3>
-    <div>
-    <table border="0">
-    <tr>
-        <td>Client name:</td><td><input id='input_client_name' size="50" type='text' value='My Cool App' placeholder='My Cool App'/></td>
-    </tr>
-    <tr>
-        <td>Launch URI:</td><td><input id='input_launch_uri' size="50" type='text' value='http://localhost:8000/fhir-app/launch.html' placeholder='http://localhost:8000/fhir-app/launch.html'/></td>
-    </tr>
-    <tr>
-        <td>Redirect URI:</td><td><input id='input_redirect_uri' size="50" type='text' value='http://localhost:8000/fhir-app/' placeholder='http://localhost:8000/fhir-app/'/></td>
-    </tr>
-    <tr>
-        <td>Logo URI:</td><td><input id='input_logo_uri' size="50" type='text' value='http://localhost:8000/fhir-app/logo.png' placeholder='http://localhost:8000/fhir-app/logo.png'/></td>
-    </tr>
-    <tr>
-        <td>Client type:</td>
-        <td>
-        <input name='input_client_type' type='radio' value='public' checked='checked'/> public
-        (<a href='http://docs.smartplatforms.org/authorization/public/'>details</a>)
-        <input name='input_client_type' type='radio' value='confidential'/> confidential
-        (<a href='http://docs.smartplatforms.org/authorization/confidential/'>details</a>)
-        </td>
-    </tr>
-    <tr>
-        <td>Owner:</td><td><input id='input_contact' size="50" type='text' value='john@doe.com' placeholder='john@doe.com'/></td>
-    </tr>
-    <tr>
-        <td>Scopes:</td><td><span id="input_scopes">email address launch openid user/*.* patient/*.read profile smart/orchestrate_launch</span></td>
-    </tr>
-    </table>
+<div id="reg-form" class="well bs-component">
+  <form class="form-horizontal">
+   <fieldset>
+    <legend>Client Quick Registration</legend>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="input_client_name">Client name</label>
+        <div class="col-lg-10">
+            <input id="input_client_name" class="form-control" size="50" type="text" placeholder='App Name'>
+        </div>
     </div>
-    <div><input type="submit" value="Register Client" onClick="registerClient()" /></div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="input_launch_uri">Launch URI</label>
+        <div class="col-lg-10">
+            <input id="input_launch_uri" class="form-control" size="50" type="text" placeholder='http://localhost:8000/launch.html'>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="input_redirect_uri">Redirect URI</label>
+        <div class="col-lg-10">
+            <input id="input_redirect_uri" class="form-control" size="50" type="text" placeholder='http://localhost:8000/'>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="input_logo_uri">Logo URI</label>
+        <div class="col-lg-10">
+            <input id="input_logo_uri" class="form-control" size="50" type="text" placeholder='http://localhost:8000/logo.png'>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="input_contact">Owner</label>
+        <div class="col-lg-10">
+            <input id="input_contact" class="form-control" size="50" type="text" placeholder='your@email.com'>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Client type</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input name="input_client_type" value='public' checked='checked' type="radio">
+            public (<a href='http://docs.smartplatforms.org/authorization/public/'>details</a>)
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input name="input_client_type" type='radio' value='confidential'>
+            confidential (<a href='http://docs.smartplatforms.org/authorization/confidential/'>details</a>)
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Scopes</label>
+        <div class="col-lg-10">
+            <span id="input_scopes">email address launch openid user/*.* patient/*.read profile smart/orchestrate_launch</span>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-default btn-primary" onClick="registerClient()">Register Client</button>
+      </div>
+    </div>
+   </fieldset>
+  </form>
 </div>
 <div id="reg-result" style="display:none">
     <h3>Client registration successful. Please write down the following client access details.</h3>

@@ -67,7 +67,7 @@ title: "SMART on FHIR Sandbox: How To Use"
                     $('#client_secret_div').show();
                 }
                 $('#registration_access_token').text(r.registration_access_token);
-                $('#reg-form').fadeOut().complete(function() {
+                $('#reg-form').fadeOut(400, function() {
                     $('#reg-result').fadeIn();
                 });
             }

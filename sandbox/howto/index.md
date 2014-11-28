@@ -7,6 +7,95 @@ title: "SMART on FHIR Sandbox: How To Use"
 
 # How to Register a New App
 
+## Via Quick Registration Form
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function registerClient () {
+        var client_type = "none";
+        
+        if ($("input[name=input_client_type]:checked").val() === "confidential") {
+            client_type = "client_secret_basic";
+        }
+        
+        var call_params = {
+            "client_name": $('#input_client_name').val(),
+            "initiate_login_uri": [$('#input_launch_uri').val()],
+            "redirect_uris": [$('#input_redirect_uri').val()],
+            "logo_uri": $('#input_logo_uri').val(),
+            "contacts": [$('#input_contact').val()],
+            "scope": $('#input_scopes').text(),
+            "grant_types": ["authorization_code"],
+            "token_endpoint_auth_method": client_type
+        };
+        
+        $.ajax({
+            url: 'https://authorize.smartplatforms.org/register',
+            type: 'POST',
+            data: JSON.stringify(call_params),
+            contentType:"application/json",
+            dataType:"json"
+        }).done(function(r){
+            if (call_params.scope === r.scope && call_params.client_name === r.client_name && call_params.token_endpoint_auth_method === r.token_endpoint_auth_method) {
+                $('#client_id').text(r.client_id);
+                if (r.client_secret) {
+                    $('#client_secret').text(r.client_secret);
+                    $('#client_secret_div').show();
+                }
+                $('#registration_access_token').text(r.registration_access_token);
+                $('#reg-form').hide();
+                $('#reg-result').show();
+            }
+        });
+    }
+</script>
+
+<!-- TO DO: style this form with bootstrap -->
+<div id="reg-form">
+    <h3>New Client Registration</h3>
+    <div>
+    <table border="0">
+    <tr>
+        <td>Client name:</td><td><input id='input_client_name' size="50" type='text' value='My Cool App' placeholder='My Cool App'/></td>
+    </tr>
+    <tr>
+        <td>Launch URI:</td><td><input id='input_launch_uri' size="50" type='text' value='http://localhost:8000/fhir-app/launch.html' placeholder='http://localhost:8000/fhir-app/launch.html'/></td>
+    </tr>
+    <tr>
+        <td>Redirect URI:</td><td><input id='input_redirect_uri' size="50" type='text' value='http://localhost:8000/fhir-app/' placeholder='http://localhost:8000/fhir-app/'/></td>
+    </tr>
+    <tr>
+        <td>Logo URI:</td><td><input id='input_logo_uri' size="50" type='text' value='http://localhost:8000/fhir-app/logo.png' placeholder='http://localhost:8000/fhir-app/logo.png'/></td>
+    </tr>
+    <tr>
+        <td>Client type:</td>
+        <td>
+        <input name='input_client_type' type='radio' value='public' checked='checked'/> public
+        (<a href='http://docs.smartplatforms.org/authorization/public/'>details</a>)
+        <input name='input_client_type' type='radio' value='confidential'/> confidential
+        (<a href='http://docs.smartplatforms.org/authorization/confidential/'>details</a>)
+        </td>
+    </tr>
+    <tr>
+        <td>Owner:</td><td><input id='input_contact' size="50" type='text' value='john@doe.com' placeholder='john@doe.com'/></td>
+    </tr>
+    <tr>
+        <td>Scopes:</td><td><span id="input_scopes">email address launch openid user/*.* patient/*.read profile smart/orchestrate_launch</span></td>
+    </tr>
+    </table>
+    </div>
+    <div><input type="submit" value="Register Client" onClick="registerClient()" /></div>
+</div>
+<div id="reg-result" style="display:none">
+    <h3>Client registration successful. Please write down the following client access details.</h3>
+    <div><strong>Client ID:</strong></div>
+    <div><span id="client_id"></span></div>
+    <div id="client_secret_div" style="display:none"><strong>Client Secret:</strong></div>
+    <div><span id="client_secret"></span></div>
+    <div><strong>Registration Access Token:</strong></div>
+    <div><span id="registration_access_token"></span></div>
+</div>
+
 ## Via Authorization Server UI
 
 ### Step 1

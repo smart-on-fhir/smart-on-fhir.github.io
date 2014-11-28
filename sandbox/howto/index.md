@@ -140,14 +140,15 @@ title: "SMART on FHIR Sandbox: How To Use"
    </fieldset>
   </form>
 </div>
-<div id="reg-result" style="display:none">
-    <h3>Client registration successful. Please write down the following client access details.</h3>
-    <div><strong>Client ID:</strong></div>
-    <div><span id="client_id"></span></div>
-    <div id="client_secret_div" style="display:none"><strong>Client Secret:</strong></div>
-    <div><span id="client_secret"></span></div>
-    <div><strong>Registration Access Token:</strong></div>
-    <div><span id="registration_access_token"></span></div>
+<div id="reg-result" style="display:none" class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Client registration successful. Please write down the following client access details.</h3>
+  </div>
+  <div class="panel-body">
+    <div><strong>Client ID:</strong> <span id="client_id"></span></div>
+    <div id="client_secret_div" style="display:none"><strong>Client Secret:</strong> <span id="client_secret"></span></div>
+    <div><strong>Registration Access Token:</strong> <span id="registration_access_token"></span></div>
+  </div>
 </div>
 
 ## Via Authorization Server UI

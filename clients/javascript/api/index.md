@@ -16,7 +16,7 @@ The JS client supports the following FHIR API calls:
 
 * `search` Search for resources of a given type that match a set of filters
 
-For full deatils on these operations, the FHIR API calls are documented at:
+For full details on these operations, the FHIR API calls are documented at:
 http://www.hl7.org/implement/standards/fhir/http.html
 
 ## Reading a single resource

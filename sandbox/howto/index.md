@@ -48,7 +48,7 @@ title: "SMART on FHIR Sandbox: How To Use"
             "redirect_uris": [$('#input_redirect_uri').val()],
             "logo_uri": $('#input_logo_uri').val(),
             "contacts": [$('#input_contact').val()],
-            "scope": $('#input_scopes').text(),
+            "scope": $('#input_scopes').text().replace(/\s+/g, " "),
             "grant_types": ["authorization_code"],
             "token_endpoint_auth_method": client_type
         };
@@ -129,7 +129,14 @@ title: "SMART on FHIR Sandbox: How To Use"
     <div class="form-group">
         <label class="col-lg-2 control-label">Scopes</label>
         <div class="col-lg-10">
-            <span id="input_scopes">email address launch openid user/*.* patient/*.read profile smart/orchestrate_launch</span>
+            <span id="input_scopes"><pre>launch
+patient/*.read
+user/*.*
+openid
+profile
+email
+address
+smart/orchestrate_launch</pre></span>
         </div>
     </div>
     <div class="form-group">

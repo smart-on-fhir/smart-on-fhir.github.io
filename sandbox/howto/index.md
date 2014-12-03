@@ -60,7 +60,13 @@ title: "SMART on FHIR Sandbox: How To Use"
             contentType:"application/json",
             dataType:"json"
         }).done(function(r){
-            if (call_params.scope === r.scope && call_params.client_name === r.client_name && call_params.token_endpoint_auth_method === r.token_endpoint_auth_method) {
+            var canonical = function(scopes){
+              JSON.stringify(scopes.split(/\s+/).sort())
+            };
+            var scopes_match = (canonical(r.scope) === canonical(call_params.scope);
+            var clients_match = (call_params.client_name === r.client_name);
+            var auth_methods_match = (call_params.token_endpoint_auth_method === r.token_endpoint_auth_method);
+            if (scopes_match && clients_match && auth_methods_match) {
                 $('#client_id').text(r.client_id);
                 if (r.client_secret) {
                     $('#client_secret').text(r.client_secret);

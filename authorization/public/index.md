@@ -37,7 +37,7 @@ At this point, the app enters a standard OAuth2 authorization flow using an
 Authorization Code Grant. Once the app is authorized, it knows about the
 current EHR session and can access clinical data through the FHIR API.
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRUhSIGFwcCB1c2luZyBzZXJ2ZXItc2lkZSB0ZWNobm9sb2d5CgpOb3RlICBsZWZ0IG9mIEVIUjogVXNlciBsYXVuY2hlcyBhcHAKRUhSLT4-QXBwOiBSZWRpcmVjdCB0byBhcHA6ACIGAEEGcmlnaABCBQAjB3F1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-AGMFAD8MZWhyOgAhCGUAgQEUT24gYXBwcm92YWwAcxxyAIEYB191cmk_Y29kZT0xMjMmLi4uAHMGAIFbBVBPU1QgL3Rva2VuABoJAIICBgCBeg1DcmVhdGUgACMFOlxuIHtcbmFjY2Vzc18ANgU9c2VjcmV0LQBDBS14eXomXG5wYXRpZW50PTQ1NiZcbmV4cGlyZXNfaW46IDM2MDBcbi4uLlxufQp9AIJLBgCCSwVbAE4GAGEGIHJlc3BvbnNlXQCDEgcAgkQOQQAlBgBfByBkYXRhXG52aWEgRkhJUiBBUEkAgVoLR0VUIC9maGlyL1AAgQ8GLzQ1NlxuQQCDAQw6IEJhc2ljIACBOhAAg2sFAIEZB3tyZXNvdXJjZVR5cGU6ICIARwciLCAiYmlydGhEYXRlIjogLi4ufQo&s=default"/> 
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRUhSIGFwcCB1c2luZyBzZXJ2ZXItc2lkZSB0ZWNobm9sb2d5CgpOb3RlICBsZWZ0IG9mIEVIUjogVXNlciBsYXVuY2hlcyBhcHAKRUhSLT4-QXBwOiBSZWRpcmVjdCB0byBhcHA6ACIGAEEGcmlnaABCBQAjB3F1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-AGMFAD8MZWhyOgAhCGUAgQEUT24gYXBwcm92YWwAcxxyAIEYB191cmk_Y29kZT0xMjMmLi4uAHMGAIFbBVBPU1QgL3Rva2VuABoJAIICBgCBeg1DcmVhdGUgACMFOlxuIHtcbmFjY2Vzc18ANgU9c2VjcmV0LQBDBS14eXomXG5wYXRpZW50PTQ1NiZcbmV4cGlyZXNfaW46IDM2MDBcbi4uLlxufQp9AIJLBgCCSwVbAE4GAGEGIHJlc3BvbnNlXQCDEgcAgkQOQQAlBgBfByBkYXRhXG52aWEgRkhJUiBBUEkAgVoLR0VUIC9maGlyL1AAgQ8GLzQ1NlxuQQCDAQw6IEJhc2ljIACBOhAAg2sFAIEZB3tyZXNvdXJjZVR5cGU6ICIARwciLCAiYmlydGhEYXRlIjogLi4ufQo&s=default"/>
 
 ## Example "launch sequence"
 
@@ -138,6 +138,7 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
   "token_type": "bearer",
   "expires_in": "3600",
   "scope": "patient/Observation.read patient/Patient.read",
+  "intent": "client-ui-name",
   "patient":  "123",
   "encounter": "456"
 }
@@ -185,7 +186,7 @@ additional details about the EHR, including its authorization URL.
       <td>
 
       Opaque identifier for this specific launch, and any EHR context associated
-with it. This parameter must be communicated back to the app as a<code>launch:</code> 
+with it. This parameter must be communicated back to the app as a<code>launch:</code>
 scope at authorization time.
 
       </td>
@@ -292,7 +293,7 @@ token via HTTP `POS`T to the EHR's token URL, with content-type
 `application/x-www-form-urlencoded`. Note that for a public client, no authorization header is required.
 
 The following request parameters are defined:
- 
+
 <table class="table">
   <thead>
     <th colspan="3">Parameters</th>
@@ -348,6 +349,11 @@ keys:
       <td><code>scope</code></td>
       <td><span class="label label-success">required</span></td>
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
+    </tr>
+    <tr>
+      <td><code>intent</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>A string value describing the intent of the application launch. Launch intent values are agreed upon in advance by both the SMART host and client.</td>
     </tr>
     <tr>
       <td><code>patient</code>, etc.</td>

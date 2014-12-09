@@ -130,6 +130,16 @@ Launch context parameter | Example value | Meaning
 `resource` | `MedicationPrescription/123`| App was launched in the context of a specific resource (in this case, a particular medication prescription). This is a generic mechanism to communicate to an app that a particular resource is "of interest" at launch time.
 `intent` | `client-UI-target`| A string value describing the intent of the application launch, used by the client to select a particular UI context for initial display. Launch intent values are agreed upon in advance by both the SMART host and client.
 
+### Application Launch Intent
+Some client apps might provide more than one context or user interface that can be accessed during the SMART launch. The optional `intent` parameter in the launch context provides a mechanism for the SMART host to communicate to the client app which specific context should be displayed as the outcome of the launch. This allows for closer integration between the host and client, so that different launch points in the host can target specific displays within the client app.
+
+For example, a client app might provide three specific UI contexts, and inform the SMART host of the `intent` values that can be used to launch the app directly to one of the three contexts:
+
+* `summary` - A default UI context, showing a data summary
+* `recent-history` - A history display, showing a list of entries
+* `new-entry` - A form to create a new entry
+
+If a SMART host provides a value that the client does not recognize, or does not provide a value, the client app should display the default application UI context.
 
 ## Scopes for requesting identity data
 

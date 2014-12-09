@@ -153,7 +153,7 @@ If a SMART host provides a value that the client does not recognize, or does
 not provide a value, the client app should display a default application UI
 context. 
 
-Note:  *SMAR makes no effort to standardize `intent` values*.  Intents simply
+Note:  *SMART makes no effort to standardize `intent` values*.  Intents simply
 provide a mechanism for tighter custom integration between an app and a SMART
 host. The meaning of intents must be negotiated between the app and the host.
 

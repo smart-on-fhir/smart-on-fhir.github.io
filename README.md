@@ -35,7 +35,7 @@ the `_site` directory) is simply running
 
     $ jekyll serve --watch -b /
 
-on the commandline. 
+on the commandline.
 
 
 ---
@@ -51,4 +51,4 @@ npm install
 grunt
 ```
 
-And then open a brower to http://localhost:4000
+And then open a browser to http://localhost:4000

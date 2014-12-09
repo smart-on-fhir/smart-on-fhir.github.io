@@ -44,7 +44,7 @@ Let's look at a few examples:
 
 Goal | Scope | Notes
 -----|-------|-----
-Read all observations about a patient | `patient/Observation.read` | 
+Read all observations about a patient | `patient/Observation.read` |
 Read demographs about a patient | `patient/Patient.read` | Note the difference in capitalization between "patient" the permission type and "Patient" the resource.
 Add new blood pressure readings for a patient| `patient/Observation.write`| Note that the permission is broader than our goal: with this scope, an app can add not only blood pressures, but other observations as well. Note also that write access does not imply read access.
 Read all available data about a patient| `patient/*.read`||
@@ -59,7 +59,7 @@ Let's look at a few examples:
 
 Goal | Scope | Notes
 -----|-------|-----
-Read a feed of all new lab observations across a patient population: | `user/Observation.read` | 
+Read a feed of all new lab observations across a patient population: | `user/Observation.read` |
 Manage all appointments to which the authorizing user has access | `user/Appointment.read` `user/Appointment.write` | Note that `read` and `write` both need to be supplied. (Write access does not imply read access.)
 Manage all resources on behalf ot he authorizing user| `user/*.read` `user/*.write `| Note that the permission is broader than our goal: with this scope, an app can add not only blood pressures, but other observations as well.
 
@@ -87,7 +87,7 @@ Apps that launch from the EHR will be passed an explicit URL parameter called
 authorization request to the current EHR session.  If an app receives the URL
 parameter `launch=abc123`, then it requests the scope `launch:abc123`. That's all.
 
-### Standalone apps 
+### Standalone apps
 
 Standalone apps that launch outside the EHR do not have any EHR context at the
 outset. These apps must explicitly request EHR context by using the following
@@ -95,7 +95,7 @@ scopes:
 
 #### Requesting context with scopes
 
-Requested Scope | Meaning 
+Requested Scope | Meaning
 ------|---------|-------------------
 `launch/patient` | Need patient context at launch time (FHIR Patient resource)
 `launch/encounter` | Need encounter context at launch time (FHIR Encounter resource)
@@ -118,17 +118,44 @@ parameters:
   patient: "123",
   ...
 }
-``` 
+```
 Here are the launch context paramaters to expect:
 
 Launch context parameter | Example value | Meaning
 ------|---------|-------------------
 `patient` | `123`| App was launched in the context of FHIR Patient 123. If the app has any patient-level scopes, they will be scoped to Patient 123.
-`encounter` | `123`| App was launched in the context of FHIR Encounter 123. 
-`location` | `123`| App was launched from the phyical place corresponding to FHIR Location 123. 
+`encounter` | `123`| App was launched in the context of FHIR Encounter 123.
+`location` | `123`| App was launched from the phyical place corresponding to FHIR Location 123.
 `need_patient_banner` | `true` or `false` | App was launched in a UX context where a patient banner is required (when true) or not required (when false). An app receiving a value of `false` should not take up screen real estate displaying a patient banner.
 `resource` | `MedicationPrescription/123`| App was launched in the context of a specific resource (in this case, a particular medication prescription). This is a generic mechanism to communicate to an app that a particular resource is "of interest" at launch time.
+`intent` | `client-UI-target`| A string value describing the intent of the application launch (see notes below)
 
+#### Notes on launch context parameters
+
+`intent`: Some SMART apps might offer more than one context or user interface
+that can be accessed during the SMART launch. The optional `intent` parameter
+in the launch context provides a mechanism for the SMART host to communicate to
+the client app which specific context should be displayed as the outcome of the
+launch. This allows for closer integration between the host and client, so that
+different launch points in the host UI can target specific displays within the
+client app. 
+
+For example, a patient timeline app might provide three specific UI contexts,
+and inform the SMART host (out of band, at app configuration time)  of the
+`intent` values that can be used to launch the app directly into one of the
+three contexts. The app might respond to `intent` values like:
+
+* `summary-timeline-view` - A default UI context, showing a data summary
+* `recent-history-timeline` - A history display, showing a list of entries
+* `encounter-focused-timeline` - A timeline focused on the currently in-context encounter
+
+If a SMART host provides a value that the client does not recognize, or does
+not provide a value, the client app should display a default application UI
+context. 
+
+Note:  *SMAR makes no effort to standardize `intent` values*.  Intents simply
+provide a mechanism for tighter custom integration between an app and a SMART
+host. The meaning of intents must be negotiated between the app and the host.
 
 ## Scopes for requesting identity data
 

@@ -136,23 +136,22 @@ Some apps need to authenticate the clinical end-user. This can be accomplished
 by requesting a pair of OpenID Connect scopes: `openid` and  `profile`.
 
 When these scopes are requested (and the request is granted), the app will
-receive two useful ways to authenticate the end-user:
+receive an [`id_token`](http://openid.net/specs/openid-connect-core-1_0.html#CodeIDToken)
+that comes alongside the access token. 
 
-1. An
-[`id_token`](http://openid.net/specs/openid-connect-core-1_0.html#CodeIDToken)
-that comes alongside the access token.  This token must be [validated according to the OIDC specification](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation).
+This token must be [validated according to the OIDC specification](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation).
+To learn more about the user, the app should treat the "profile" claim as the URL of
+a FHIR resource representing the current user. This will be a resource of type
+`Patient`, `Practitioner`, or `RelatedPerson`.
 
-2. Access to a `UserInfo` endpoint which can return a more complete set of
-claims about the authenticated end-user. Details about OIDC's `UserInfo`
-endpoint are [provided
-here](http://openid.net/specs/openid-connect-core-1_0.html#UserInfo). 
-
-Note: to obtain the URL of the `UserInfo` endpoint, an app would follow the
-discovery process described in the [OIDC
-standard](http://openid.net/specs/openid-connect-discovery-1_0.html#RFC5785).
-The steps are:
+## Steps for using an ID token
 
  1. Examine the ID token for its "issuer" property
  2. Perform a `GET {issuer}/.well-known/openid-configuration`
- 3. Examine the payload payload (a JSON document) for the "userinfo_endpoint" property.
+ 3. Fetch the server's JSON Web Key by following the "jwks_uri" property
+ 4. Validate the token's signature against the public key from step #3
+ 5. Extract the "profile" claim and treat it as the URL of a FHIR resource
 
+## Worked examples
+
+For worked examples (in Python), see [this ipython notebook](http://nbviewer.ipython.org/url/docs.smartplatforms.org/authorization/smart-on-fhir-jwt-examples.ipynb).

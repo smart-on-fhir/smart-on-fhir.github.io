@@ -356,6 +356,11 @@ keys:
       <td>A string value describing the intent of the application launch. Launch intent values are agreed upon in advance by both the SMART host and client.</td>
     </tr>
     <tr>
+      <td><code>smart_style_url</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>A URL at which host style parameters can be retrieved for client app style-matching.</td>
+    </tr>
+    <tr>
       <td><code>patient</code>, etc.</td>
       <td><span class="label label-info">optional</span></td>
       <td>

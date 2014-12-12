@@ -369,7 +369,7 @@ keys:
     <tr>
       <td><code>smart_style_url</code></td>
       <td><span class="label label-info">optional</span></td>
-      <td>A URL at which host style parameters can be retrieved for client app style-matching.</td>
+      <td>A URL where the host's style parameters can be retrieved (for apps that support <a href="../scopes-and-launch-context#styling">styling</a>).</td>
     </tr>
     <tr>
       <td><code>patient</code>, etc.</td>

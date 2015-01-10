@@ -15,7 +15,7 @@ Log into the OpenID Connect Server at [https://authorize.smartplatforms.org](htt
 and click on `Register a new client` in `Self-service client registration`.
 
 <div style='text-align: center'>
-  <img src="/assets/img/newapp1.png" />
+  <img src="{{site.baseurl}}assets/img/newapp1.png" />
 </div>
 
 ### Step 2
@@ -27,7 +27,7 @@ enter the URL of the app's logo that will be displayed to the user during the
 authorization process.
 
 <div style='text-align: center'>
-  <img src="/assets/img/newapp2.png" />
+  <img src="{{site.baseurl}}assets/img/newapp2.png" />
 </div>
 
 ### Step 3
@@ -35,7 +35,7 @@ authorization process.
 In the `Access` tab make sure that the app is granted the following scopes: `launch`, `openid`, `user/*.*`, `address`, `email`, `patient/*.read`, `smart/orchestrate_launch`. The `code` response type should be unchecked.
 
 <div style='text-align: center'>
-  <img src="/assets/img/newapp3.png" />
+  <img src="{{site.baseurl}}assets/img/newapp3.png" />
 </div>
 
 ### Step 4
@@ -46,7 +46,7 @@ On the `Credentials` tab change the authentication method:
 * * If you're writing a [Public Client](http://docs.smartplatforms.org/authorization/public/), choose `No authentication`
 
 <div style='text-align: center'>
-  <img src="/assets/img/newapp4.png" />
+  <img src="{{site.baseurl}}assets/img/newapp4.png" />
 </div>
 
 ### Step 5
@@ -55,7 +55,7 @@ In the `Other` tab uncheck the `Always require that the auth_time claim be sent 
 and enter the URL to your `launch.html` page in the `Initiate Login` box.
 
 <div style='text-align: center'>
-  <img src="/assets/img/newapp5.png" />
+  <img src="{{site.baseurl}}assets/img/newapp5.png" />
 </div>
 
 ### Step 6
@@ -65,7 +65,7 @@ to your self-service client. Make sure to copy them to a file on your local mach
 them to update your client configuration.
 
 <div style='text-align: center'>
-  <img src="/assets/img/newapp6.png" />
+  <img src="{{site.baseurl}}assets/img/newapp6.png" />
 </div>
 
 ### Step 7
@@ -74,7 +74,7 @@ You can use the `Client ID` and `Registration Access Token` for your self-servic
 update or delete its record in the OpenID Connect Server.
 
 <div style='text-align: center'>
-  <img src="/assets/img/newapp7.png" />
+  <img src="{{site.baseurl}}assets/img/newapp7.png" />
 </div>
 
 ## Via OAuth 2.0 Dynamic Client Registration Protocol

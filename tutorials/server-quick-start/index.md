@@ -156,6 +156,24 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
 
 
 ## Sample vitals (height, weight, BMI)
+```
+{
+  "resourceType": "Encounter",
+  "text": {
+    "status": "generated",
+    "div": "<div>2003-11-28: ambulatory encounter</div>"
+  },
+  "status": "finished",
+  "class": "ambulatory",
+  "subject": {
+    "reference": "Patient/1482713"
+  },
+  "period": {
+    "start": "2003-11-28",
+    "end": "2003-11-28"
+  }
+}
+```
 
 ```
 {

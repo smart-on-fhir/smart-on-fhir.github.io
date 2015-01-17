@@ -95,7 +95,7 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
   "resourceType": "Patient",
   "text": {
     "status": "generated",
-    "div": "<div>\n        \n            <p>Susan A. Clark</p>\n      \n          </div>"
+    "div": "<div>\n        \n            <p>Susan Clark</p>\n      \n          </div>"
   },
   "identifier": [
     {
@@ -122,10 +122,6 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
       "system": "phone",
       "value": "800-576-9327",
       "use": "home"
-    },
-    {
-      "system": "phone",
-      "use": "mobile"
     },
     {
       "system": "email",
@@ -165,19 +161,19 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
 {
   "resourceType": "Bundle",
   "title": "FHIR Atom Feed",
-  "id": "https://fhir-open-api.smartplatforms.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5",
+  "id": "https://fhir-open-api.smartplatforms.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_format=json",
   "link": [
     {
       "rel": "self",
-      "href": "https://fhir-open-api.smartplatforms.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5"
+      "href": "https://fhir-open-api.smartplatforms.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_format=json"
     },
     {
       "rel": "next",
-      "href": "https://fhir-open-api.smartplatforms.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_count=50&_skip=50"
+      "href": "https://fhir-open-api.smartplatforms.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_format=json&_count=50&_skip=50"
     }
   ],
   "totalResults": 69,
-  "updated": "2014-07-17T18:29:18.531-00:00",
+  "updated": "2015-01-17T19:52:49.977-00:00",
   "author": [
     {
       "name": "groovy.config.atom.author-name",
@@ -186,11 +182,19 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
   ],
   "entry": [
     {
-      "title": "Observation/8814",
-      "id": "https://fhir-open-api.smartplatforms.org/Observation/8814",
-      "updated": "2014-07-17T18:29:18.531-00:00",
+      "title": "Observation/428-height",
+      "id": "https://fhir-open-api.smartplatforms.org/Observation/428-height",
+      "updated": "2015-01-17T19:52:49.977-00:00",
       "content": {
         "resourceType": "Observation",
+        "extension": [
+          {
+            "url": "http://fhir-registry.smartplatforms.org/Profile/vital-signs#encounter",
+            "valueResource": {
+              "reference": "Encounter/428"
+            }
+          }
+        ],
         "text": {
           "status": "generated",
           "div": "<div>2003-11-28: height = 115.316 cm</div>"
@@ -207,6 +211,7 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
         "valueQuantity": {
           "value": 115.316,
           "units": "cm",
+          "system": "http://unitsofmeasure.org",
           "code": "cm"
         },
         "appliesDateTime": "2003-11-28",
@@ -218,11 +223,19 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
       }
     },
     {
-      "title": "Observation/8818",
-      "id": "https://fhir-open-api.smartplatforms.org/Observation/8818",
-      "updated": "2014-07-17T18:29:18.531-00:00",
+      "title": "Observation/428-weight",
+      "id": "https://fhir-open-api.smartplatforms.org/Observation/428-weight",
+      "updated": "2015-01-17T19:52:49.977-00:00",
       "content": {
         "resourceType": "Observation",
+        "extension": [
+          {
+            "url": "http://fhir-registry.smartplatforms.org/Profile/vital-signs#encounter",
+            "valueResource": {
+              "reference": "Encounter/428"
+            }
+          }
+        ],
         "text": {
           "status": "generated",
           "div": "<div>2003-11-28: weight = 18.55193 kg</div>"
@@ -239,6 +252,7 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
         "valueQuantity": {
           "value": 18.55193,
           "units": "kg",
+          "system": "http://unitsofmeasure.org",
           "code": "kg"
         },
         "appliesDateTime": "2003-11-28",
@@ -250,11 +264,19 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
       }
     },
     {
-      "title": "Observation/8819",
-      "id": "https://fhir-open-api.smartplatforms.org/Observation/8819",
-      "updated": "2014-07-17T18:29:18.531-00:00",
+      "title": "Observation/428-bmi",
+      "id": "https://fhir-open-api.smartplatforms.org/Observation/428-bmi",
+      "updated": "2015-01-17T19:52:49.977-00:00",
       "content": {
         "resourceType": "Observation",
+        "extension": [
+          {
+            "url": "http://fhir-registry.smartplatforms.org/Profile/vital-signs#encounter",
+            "valueResource": {
+              "reference": "Encounter/428"
+            }
+          }
+        ],
         "text": {
           "status": "generated",
           "div": "<div>2003-11-28: bmi = 13.9 kg/m2</div>"
@@ -271,6 +293,7 @@ curl 'https://fhir-open-api.smartplatforms.org/Observation?subject%3APatient=148
         "valueQuantity": {
           "value": 13.9,
           "units": "kg/m2",
+          "system": "http://unitsofmeasure.org",
           "code": "kg/m2"
         },
         "appliesDateTime": "2003-11-28",

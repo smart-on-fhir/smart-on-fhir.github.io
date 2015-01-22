@@ -198,7 +198,7 @@ To complete the following steps, the app discovers the server's OAuth
 href="{{site.baseurl}}authorization/conformance-statement"> examining the EHR's
 conformance statement</a>.
 
-#### 2. App asks EHR for authorization
+#### 2. App asks for authorization
 
 
 <table class="table">
@@ -255,7 +255,7 @@ cross-site request forgery or session fixation attacks.
   </tbody>
 </table>
 
-#### 3. EHR evaluates authorization request
+#### 3. EHR evaluates authorization request, asking for end-user input
 
 The decision process itself is up to the EHR system. Based on any available
 information including local policies and (optionally!) end-user input, a

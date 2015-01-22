@@ -66,7 +66,7 @@ URL for use below. For details about how the EHR publishes the relevant OAuth UR
 launches from outside of the, EHR, you won't receive a launch notification.
 For this reason, your authorization process will begin at step two below.*
 
-#### 2. Apps asks EHR for authorization
+#### 2. Apps asks for authorization
 
 The app prepares a list of required access scopes. For example, an app that
 needs demographics and observations for a single patient can request:
@@ -102,11 +102,11 @@ Location: https://ehr/authorize?
             state=98wrghuwuogerg97
 ```
 
-#### 3. EHR evaluates authorization request
+#### 3. EHR evaluates authorization request, with end-user input
 
-Based on the `client_id`, current EHR user, local policy, and (optionally!)
-user input, the EHR makes a decision to approve or deny access.  This decision
-is communicated to the app by redirection to the app's registered
+Based on the `client_id`, current EHR user, configured policy, and perhaps
+direct user input, the EHR makes a decision to approve or deny access.  This
+decision is communicated to the app by redirection to the app's registered
 `redirect_uri`:
 
 ```

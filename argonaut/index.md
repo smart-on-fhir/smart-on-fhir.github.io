@@ -26,5 +26,5 @@ For full details about the Argonaut Project's security workgroup, please see:
 
  * Specification: [SMART on FHIR Auth Specification](http://docs.smartplatforms.org/authorization/)
  * Discussion forum: [SMART on FHIR Google Group](https://groups.google.com/forum/#!forum/smart-on-fhir)
- * Use Cases and Slides: [Argonaut Auth Folder on Google Drive](https://drive.google.com/drive/#folders/0BzDLBlJ9IyUCZ0lOY3dPTWE0TDA)
+ * Use Cases and Slides: [Argonaut Auth Folder on Google Drive](https://drive.google.com/folderview?id=0BzDLBlJ9IyUCZ0lOY3dPTWE0TDA&usp=sharing)
 

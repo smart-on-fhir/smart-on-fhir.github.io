@@ -1,6 +1,6 @@
 ---
 layout: main
-title: SMART on FHIR Authorization: Best Practices
+title: "SMART on FHIR Authorization: Best Practices"
 ---
 
 # Best Practices in Authorization for SMART on FHIR EHRs

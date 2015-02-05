@@ -11,11 +11,6 @@ title: SMART on FHIR
     to see the SMART "Classic" docs.
 </div>
 
-<div class='alert alert-dismissable alert-info'>
-    <a class="alert-link" href="{{site.baseurl}}releases/">Click here</a>
-    for other SMART on FHIR docs releases
-</div>
-
 SMART on FHIR is a set of **open specifications** to integrate apps with
 Electronic Health Records, portals, Health Information Exchanges, and other
 Health IT systems. You get...

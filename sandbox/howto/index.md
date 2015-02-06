@@ -136,13 +136,14 @@ title: "SMART on FHIR Sandbox: How To Use"
         <label class="col-lg-2 control-label">Scopes</label>
         <div class="col-lg-10">
             <span id="input_scopes"><pre>launch
+launch/patient
+launch/encounter
 patient/*.read
 user/*.*
 openid
 profile
 email
-address
-smart/orchestrate_launch</pre></span>
+address</pre></span>
         </div>
     </div>
     <div class="form-group">

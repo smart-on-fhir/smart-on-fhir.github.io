@@ -8,7 +8,14 @@ title: SMART on FHIR -- Tutorials -- Authorization
 ## Overview
 
 This tutorial will demonstrate the basic implementation steps to perform SMART on FHIR
-OAuth2 authorization and retrieve patient data from a SMART on FHIR API server.
+OAuth2 authorization and retrieve patient data from
+scratch without relying on a specialized SMART on FHIR client. Understanding the 
+implementation steps of this mechanism is useful if you are planning on developing
+your own SMART on FHIR client or would simply like to gain insight into the SMART on FHIR
+authorization protocol. If you would rather start with writing SMART on FHIR apps
+as quickly as possible, you can use our Java Script client which handles the
+authroization process for you (see [`this tutorial`]({{site.baseurl}}clients/javascript/tutorial/)
+to learn about the JS client)
 
 ## Registering A Client
 
@@ -226,3 +233,15 @@ box like this:
 
 Finally press the `Custom App` button to launch your app and watch it
 request authorization and print the patient's name.
+
+## Next steps
+
+The sampe app that we looked at provides a simple scaffolding for developing a SMART on FHIR
+client. Of course, there are a number of nice features that we have ommited for the sake of
+simplicity, which we leave as an exercise to the reader. Here are a couple such features:
+
+ * caching of the authorization token and stripping the code and state parameters from
+ the app location bar to enable handling of browser refresh events
+ * exception handling for the REST calls and parameter validation
+ * object models for representing the FHIR resources
+ * convenience methods for the API calls

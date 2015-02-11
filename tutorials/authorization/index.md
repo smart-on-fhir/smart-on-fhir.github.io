@@ -14,7 +14,7 @@ implementation steps of this mechanism is useful if you are planning on developi
 your own SMART on FHIR client or would simply like to gain insight into the SMART on FHIR
 authorization protocol. If you would rather start with writing SMART on FHIR apps
 as quickly as possible, you can use our Java Script client which handles the
-authroization process for you (see [`this tutorial`]({{site.baseurl}}clients/javascript/tutorial/)
+authorization process for you (see [`this tutorial`]({{site.baseurl}}clients/javascript/tutorial/)
 to learn about the JS client)
 
 ## Registering A Client
@@ -43,7 +43,7 @@ a Registration Access Token like this:
   <img src="{{site.baseurl}}assets/img/regexample2.png" />
 </div>
 
-You should record these, since you can later use them to update your client via the [`auhtorization server UI`](https://authorize.smartplatforms.org/). At very minimum, you will need the Client ID, which
+You should record these, since you can later use them to update your client via the [`authorization server UI`](https://authorize.smartplatforms.org/). At very minimum, you will need the Client ID, which
 you should configure within your sample app in the next step.
 
 ## Sample App
@@ -236,8 +236,8 @@ request authorization and print the patient's name.
 
 ## Next steps
 
-The sampe app that we looked at provides a simple scaffolding for developing a SMART on FHIR
-client. Of course, there are a number of nice features that we have ommited for the sake of
+The sample app that we looked at provides a simple scaffolding for developing a SMART on FHIR
+client. Of course, there are a number of nice features that we have omitted for the sake of
 simplicity, which we leave as an exercise to the reader. Here are a couple such features:
 
  * caching of the authorization token and stripping the code and state parameters from

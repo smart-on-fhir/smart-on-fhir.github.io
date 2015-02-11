@@ -141,9 +141,7 @@ launch/encounter
 patient/*.read
 user/*.*
 openid
-profile
-email
-address</pre></span>
+profile</pre></span>
         </div>
     </div>
     <div class="form-group">

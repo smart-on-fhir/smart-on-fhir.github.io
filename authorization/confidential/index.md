@@ -34,7 +34,7 @@ At this point, the app enters a standard OAuth2 authorization flow using an
 Authorization Code Grant. Once the app is authorized, it knows about the
 current EHR session and can access clinical data through the FHIR API.
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRUhSIGFwcCB1c2luZyBzZXJ2ZXItc2lkZSB0ZWNobm9sb2d5CgpOb3RlICBsZWZ0IG9mIEVIUjogVXNlciBsYXVuY2hlcyBhcHAKRUhSLT4-QXBwOiBSZWRpcmVjdCB0byBhcHA6ACIGAEEGcmlnaABCBQAjB3F1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-AGMFAD8MZWhyOgAhCGUAgQEUT24gYXBwcm92YWwAcxxyAIEYB191cmk_Y29kZT0xMjMmLi4uAHMGAIFbBVBPU1QgL3Rva2VuABoJAIICBgCBeg1DcmVhdGUgACMFOlxuIHtcbmFjY2Vzc18ANgU9c2VjcmV0LQBDBS14eXomXG5wYXRpZW50PTQ1NiZcbmV4cGlyZXNfaW46IDM2MDBcbi4uLlxufQp9AIJLBgCCSwVbAE4GAGEGIHJlc3BvbnNlXQCDEgcAgkQOQQAlBgBfByBkYXRhXG52aWEgRkhJUiBBUEkAgVoLR0VUIC9maGlyL1AAgQ8GLzQ1NlxuQQCDAQw6IEJlYXJlciAAgTsQAINsBQCBGgd7cmVzb3VyY2VUeXBlOiAiAEgHIiwgImJpcnRoRGF0ZSI6IC4uLn0K&s=default"/>
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUgRUhSIEFwcCBMYXVuY2ggRmxvdwoKTm90ZSAgbGVmdCBvZiBFSFI6IFVzZXIgbAAgBWVzIGFwcApFSFItPj5BcHA6IFJlZGlyZWN0IHRvIGFwcDoAIgYAQQZyaWdoAEIFACMHcXVlc3QgYXV0aG9yaXphdGlvbgpBcHAtPj4AYwUAPwxlaHI6ACEIZQCBARRPbiBhcHByb3ZhbABzHHIAgRgHX3VyaT9jb2RlPTEyMyYuLi4AcwYAgVsFUE9TVCAvdG9rZW4AGgkAggIGAIF6DUNyZWF0ZSAAIwU6XG4ge1xuYWNjZXNzXwA2BT1zZWNyZXQtAEMFLXh5eiZcbnBhdGllbnQ9NDU2JlxuZXhwaXJlc19pbjogMzYwMFxuLi4uXG59Cn0AgksGAIJLBVsATgYAYQYgcmVzcG9uc2VdAIMSBwCCRA5BACUGAF8HIGRhdGFcbnZpYSBGSElSIEFQSQCBWgtHRVQgL2ZoaXIvUACBDwYvNDU2XG5BAIMBDDogQmVhcmVyIACBOxAAg2wFAIEaB3tyZXNvdXJjZVR5cGU6ICIASAciLCAiYmlydGhEYXRlIjogLi4ufQo&s=default"/>
 
 ## Example "launch sequence"
 
@@ -111,6 +111,7 @@ Location: https://app/after-auth?
   state=98wrghuwuogerg97
 ```
 
+<a id="step-4"></a>
 #### 4. App exchanges authorization code for access token
 
 Given an authorization code, the app trades it for an access token via HTTP
@@ -121,7 +122,7 @@ the username is the app's `client_id` and the password is the app's
 ##### Request
 ```
 POST /token HTTP/1.1
-Host: server.example.com
+Host: ehr
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
 Content-Type: application/x-www-form-urlencoded/token?
 
@@ -142,6 +143,7 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
   "encounter": "456"
 }
 ```
+#### 5. App accesses clinical data via FHIR API
 
 With this response, the app knows which patient is in-context, and has an
 OAuth2 bearer-type access token that can be used to fetch clinical data:
@@ -153,6 +155,34 @@ Authorization: Bearer i8hweunweunweofiwweoijewiwe
 {
   "resourceType": "Patient",
   "birthTime": ...
+}
+```
+
+#### 6. (Later...) App uses a refresh token to obtain a new access token
+
+If the EHR supports refresh tokens, an app may be able to replace an expired
+access token programatically, without user interaction:
+
+##### Request
+
+```
+POST /token HTTP/1.1
+Host: ehr
+Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
+Content-Type: application/x-www-form-urlencoded/token?
+
+grant_type=refresh_token&
+refresh_token=a47txjiipgxkvohibvsm
+```
+
+##### Response
+
+```
+{
+  "access_token": "m7rt6i7s9nuxkjvi8vsx",
+  "token_type": "bearer",
+  "expires_in": "3600",
+  "scope": "patient/Observation.read patient/Patient.read"
 }
 ```
 
@@ -384,6 +414,94 @@ href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch
 context parameters</a>.
 
       </td>
+    </tr>
+  </tbody>
+</table>
+
+A this point, **the launch flow is complete**. Follow the steps below 
+to use a refresh token when your access token expires.
+<br><br>
+
+#### 5. App accesses clinical data via FHIR API
+
+With a valid access token, the app can access protected EHR data by issuing a
+FHIR API call to the EHR's FHIR endpoint. The request includes an
+`Authorization` header that presents the `access_token` as "Bearer" token:
+
+{% raw %}
+    Authorization: Bearer {{access_token}}
+{% endraw %}
+
+(Note that in a real request, {%raw%}`{{access_token}}`{%endraw%} is replaced with the actual token value.)
+
+#### 6. (Later...) App uses a refresh token to obtain a new access token
+
+You can use the `expires_in` field from the authorization response (see <a
+href="#step-4">step 4</a>) to determine when your access token will expire.
+After an access token expires, it may be possible to request an updated token
+without user intervention, if the EHR supplied a `refresh_token` in the
+authorization response.  To obtain a new access token, the app issues an HTTP
+`POST` to the EHR authorization server's token URL, with content-type
+`application/x-www-form-urlencoded`, including an Authorization header for HTTP
+Basic authentication, where the username is the app's client_id and the
+password is the app's client_secret.
+
+The following request parameters are defined:
+
+<table class="table">
+  <thead>
+    <th colspan="3">Parameters</th>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><code>grant_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Fixed value: <code>refresh_token</code>. </td>
+    </tr>
+    <tr>
+      <td><code>refresh_token</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The refresh token from a prior authorization response</td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>
+The scopes of access requested. If present, this value must be a strict sub-set
+of the scopes granted in the original launch (no new permissions can be
+obtained at refresh time). A missing value indicates a request for the same
+scopes granted in the original launch. 
+      </td>
+    </tr>
+  </tbody>
+</table>
+The response is a JSON object containing the access token, with the following keys:
+
+<table class="table">
+  <thead>
+    <th colspan="3">JSON Object property name</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>access_token</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>New access token issued by the authorization server.</td>
+    </tr>
+    <tr>
+      <td><code>expires_in</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The lifetime in seconds of the access token. For example, the value "3600" denotes that the access token will expire in one hour from the time the response was generated.</td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
+    </tr>
+    <tr>
+      <td><code>refresh_token</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>The refresh token issued by the authorization server. If present, the app should discard any previosu <code>refresh_token</code> associated with this launch, replacing it with this new value.</td>
     </tr>
   </tbody>
 </table>

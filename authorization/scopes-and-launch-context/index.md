@@ -123,13 +123,13 @@ Here are the launch context paramaters to expect:
 
 Launch context parameter | Example value | Meaning
 ------|---------|-------------------
-`patient` | `123`| App was launched in the context of FHIR Patient 123. If the app has any patient-level scopes, they will be scoped to Patient 123.
-`encounter` | `123`| App was launched in the context of FHIR Encounter 123.
-`location` | `123`| App was launched from the phyical place corresponding to FHIR Location 123.
-`need_patient_banner` | `true` or `false` | App was launched in a UX context where a patient banner is required (when true) or not required (when false). An app receiving a value of `false` should not take up screen real estate displaying a patient banner.
-`resource` | `MedicationPrescription/123`| App was launched in the context of a specific resource (in this case, a particular medication prescription). This is a generic mechanism to communicate to an app that a particular resource is "of interest" at launch time.
-`intent` | `client-UI-target`| A string value describing the intent of the application launch (see notes [below](#launch-intent))
-`smart_style_url` | `https://ehr/styles/smart_v1.json`| A URL where the host's style parameters can be retrieved (for apps that support [styling](#styling))
+`patient` | `"123"`| String value with a patient id, indicating that the app was launched in the context of FHIR Patient 123. If the app has any patient-level scopes, they will be scoped to Patient 123.
+`encounter` | `"123"`| String value with an encounter id, indicating that the app was launched in the context of FHIR Encounter 123.
+`location` | `"123"`| String value with a location id, indicating that the app app was launched from the phyical place corresponding to FHIR Location 123.
+`need_patient_banner` | `true` or `false` (boolean) | Boolean value indicating whether the app was launched in a UX context where a patient banner is required (when `true`) or not required (when `false`). An app receiving a value of `false` should not take up screen real estate displaying a patient banner.
+`resource` | `"MedicationPrescription/123"`| String value with a relative resource link, describing some specific resource context for the (in this case, a particular medication prescription). This is a generic mechanism to communicate to an app that a particular resource is "of interest" at launch time.
+`intent` | `"reconcile-medications"`| String value describing the intent of the application launch (see notes [below](#launch-intent))
+`smart_style_url` | `"https://ehr/styles/smart_v1.json"`| String URL where the host's style parameters can be retrieved (for apps that support [styling](#styling))
 
 
 #### Notes on launch context parameters

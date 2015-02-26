@@ -1,9 +1,9 @@
 ---
 layout: main
-title: SMART on FHIR -- Clients -- JavaScript
+title: SMART on FHIR -- Tutorials -- JavaScript
 ---
 
-# SMART on FHIR: JavaScript Client Library
+# Tutorial - Building a JavaScript App
 
 ## Getting started
 

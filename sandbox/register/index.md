@@ -3,11 +3,26 @@ layout: main
 title: "SMART on FHIR Sandbox: How To Use"
 ---
 
-# SMART on FHIR Sandbox General Usage
+# Sandbox - Registering a New App
 
-# How to Register a New App
+## Overview
 
-## Via Quick Registration Form
+In order to run your app against the SMART public sandbox, you will first need to register
+your app with out authorization service (i.e. create a new client). There are three
+ways to do this that we offer.
+
+ * The easiest way to register your app is by using our *Quick Registration Form* below. The form
+ simplifies the registration process by picking up reasonable defaults for your new client on your
+ behalf that should meet most app's needs. You can always tweak the client's settings later using
+ the authorization server's interface.
+ * The *Authorization Server UI* provides a more advanced interface for client registration and management.
+ If you know what you are doing and would like to exercise more control over your client, this may be a
+ better option for you than the *Quick Registration Form*.
+ * If you would like to use an API to be able to register your apps and clients from your own code or application,
+ you can use the *OAuth 2.0 Dynamic Client Registration Protocol* described in the last section
+ of this document
+
+## Quick Registration Form
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -163,7 +178,9 @@ profile</pre></span>
   </div>
 </div>
 
-## Via Authorization Server UI
+## Authorization Server UI
+
+This is a more advanced alternative to using the *Quick Registration Form*.
 
 ### Step 1
 
@@ -233,7 +250,7 @@ update or delete its record in the OpenID Connect Server.
   <img src="{{site.baseurl}}assets/img/newapp7.png" />
 </div>
 
-## Via OAuth 2.0 Dynamic Client Registration Protocol
+## OAuth 2.0 Dynamic Client Registration Protocol
 
 Based on: [http://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-17](http://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-17)
 

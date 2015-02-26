@@ -3,11 +3,11 @@ layout: main
 title: SMART on FHIR -- Tutorials -- Testing
 ---
 
-# Testing your SMART-on-FHIR app
+# Tutorials - Testing Your SMART App Against The Public Sandbox
 
 ## Overview
 
-This tutorial will walk you through the steps for testing your SMART-on-FHIR
+This tutorial will walk you through the steps for testing your SMART on mFHIR
 app against our public apps container.
 
 ## General steps

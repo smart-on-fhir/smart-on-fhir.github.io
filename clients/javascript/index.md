@@ -3,6 +3,12 @@ layout: main
 title: SMART on FHIR -- Clients -- JavaScript
 ---
 
+# Clients - JavaScript
+
+## Downloading the client
+
+Please see [https://github.com/smart-on-fhir/client-js](https://github.com/smart-on-fhir/client-js)
+
 ## Supported API operations
 
 The JS client supports the following FHIR API calls:

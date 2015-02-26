@@ -3,7 +3,7 @@ layout: main
 title: SMART on FHIR -- Tutorials -- Authorization
 ---
 
-# Simple Authorization App
+# Tutorials - Simple Authorization App
 
 ## Overview
 

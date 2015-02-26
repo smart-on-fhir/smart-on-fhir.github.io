@@ -18,3 +18,6 @@ The best place to start if you are new to SMART on FHIR is by visiting
 the [Sample Apps Server](https://fhir.smartplatforms.org), but before you
 do this, you should [create an account]({{site.baseurl}}sandbox/account)
 for yourself on the system.
+
+If our public sandbox does not meet your needs, you can always
+[build your own sandbox]({{site.baseurl}}sandbox/install) with our code stack.

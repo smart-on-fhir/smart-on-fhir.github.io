@@ -3,7 +3,7 @@ layout: main
 title: SMART on FHIR -- Tutorials -- Server Quick-start
 ---
 
-# Quick-start: Making your EHR SMART
+# Tutorials - Quick-start: Making your EHR SMART
 
 This is a getting-started guide for Health IT systems looking to support pluggable
 apps using SMART on FHIR. We'll take you through the process of allowing your users to launch

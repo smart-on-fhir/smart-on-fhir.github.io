@@ -7,4 +7,8 @@ title: SMART on FHIR -- Clients -- Python
 
 ## Downloading the client
 
-Please see [https://github.com/smart-on-fhir/client-py](https://github.com/smart-on-fhir/client-py)
+[https://github.com/smart-on-fhir/client-py](https://github.com/smart-on-fhir/client-py)
+
+## Documentation
+
+[http://docs.smartplatforms.org/client-py](http://docs.smartplatforms.org/client-py)

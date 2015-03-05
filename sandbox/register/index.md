@@ -205,7 +205,8 @@ authorization process.
 
 ### Step 3
 
-In the `Access` tab make sure that the app is granted the following scopes: `launch`, `openid`, `user/*.*`, `address`, `email`, `patient/*.read`. The `code` response type should be unchecked.
+In the `Access` tab make sure that the app is granted the following scopes: `launch`, `launch/patient`, `launch/encounter`,
+`patient/*.read`, `user/*.*`, `openid`, `profile`. The `code` response type should be unchecked.
 
 <div style='text-align: center'>
   <img src="{{site.baseurl}}assets/img/newapp3.png" />
@@ -216,7 +217,7 @@ In the `Access` tab make sure that the app is granted the following scopes: `lau
 On the `Credentials` tab change the authentication method:
 
 * If you're writing a [Confidential Client](http://docs.smartplatforms.org/authorization/confidential/), choose `Client Secret over HTTP Basic` 
-* * If you're writing a [Public Client](http://docs.smartplatforms.org/authorization/public/), choose `No authentication`
+* If you're writing a [Public Client](http://docs.smartplatforms.org/authorization/public/), choose `No authentication`
 
 <div style='text-align: center'>
   <img src="{{site.baseurl}}assets/img/newapp4.png" />
@@ -264,20 +265,19 @@ Accept: application/json
 Host: authorize.smartplatforms.org
 
 {
-   "client_name": "Cool Smart-on-FHIR App",
+   "client_name": "Cool SMART App",
    "redirect_uris": [
      "https://srv.me/app/cool"
    ],
    "token_endpoint_auth_method": "none",
    "grant_types": ["authorization_code"],
    "initiate_login_uri": "https://srv.me/app/launch.html",
-   "logo_uri": "https://srv.me/img/cool.jpg",
-   "scope": "launch patient/*.read openid profile"
+   "logo_uri": "https://srv.me/img/cool.png",
+   "scope": "launch launch/patient launch/encounter patient/*.read user/*.* openid profile"
 }
 ```
 
-You should substitute BASE64CREDENTIALS with your user credentials for the authorization server.
 If everything goes well, the server will respond with a JSON object that will contain the client
 id that you should use. The above example is for a public client. If you'd like to register
-a private client, you will need to change the "token_endpoint_auth_method" value to
+a private client, you will need to change the `token_endpoint_auth_method` value to
 "client_secret_basic".

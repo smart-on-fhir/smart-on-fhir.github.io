@@ -29,7 +29,7 @@ to handle these URLs (or the ones that you pick) by serving the two sample pages
 Now that you have established the client endpoints for your app, it's time to register your very own
 client with the SMART on FHIR authorization server (in this case it is at `https://authorize.smartplatforms.org/`).
 There are a couple different approaches to register a new dynamic client with the server outlined
-in the [`How to Register a New App`](http://docs.smartplatforms.org/sandbox/howto/) tutorial. We chose
+in the [`How to Register a New App`](http://docs.smartplatforms.org/sandbox/register/) tutorial. We chose
 to use the "Client Quick Registration" form available there. (Use your favorite image URL for the logo URL)
 
 <div style='text-align: center'>

@@ -3,9 +3,9 @@ SMART Technical Documentation
 =============================
 
 This is the SMART technical documentation, hosted at
-<https://smart-on-fhir.github.io>
+<http://docs.smarthealthit.org>
 
-- See <http://smartplatforms.org> for high-level project info and news
+- See <http://smarthealthit.org> for high-level project info and news
 - Need help? Ask a question at <http://groups.google.com/group/smart-on-fhir>
 - Found an error in these docs? Fork them on Github and send us a pull
   request!

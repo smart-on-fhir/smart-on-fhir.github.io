@@ -234,4 +234,4 @@ a FHIR resource representing the current user. This will be a resource of type
 
 ## Worked examples
 
-For worked examples (in Python), see [this ipython notebook](http://nbviewer.ipython.org/url/docs.smartplatforms.org/authorization/smart-on-fhir-jwt-examples.ipynb).
+For worked examples (in Python), see [this ipython notebook](http://nbviewer.ipython.org/url/docs.smarthealthit.org/authorization/smart-on-fhir-jwt-examples.ipynb).

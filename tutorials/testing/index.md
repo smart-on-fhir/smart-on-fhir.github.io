@@ -12,14 +12,14 @@ app against our public apps container.
 
 ## General steps
 
-To test your app against [our public sandbox server](https://fhir.smartplatforms.org), first set up a local web server<sup>*</sup>
+To test your app against [our public sandbox server](https://fhir.smarthealthit.org), first set up a local web server<sup>*</sup>
 and server your FHIR app and its launch page at the following URLs:
 
 * [http://localhost:8000/fhir-app/index.html](http://localhost:8000/fhir-app/index.html)
 * [http://localhost:8000/fhir-app/launch.html](http://localhost:8000/fhir-app/launch.html)
 
 Also, make sure that your `client_id` in `launch.html` is set to `my_web_app`. At this point
-you can [sign into our sandbox](https://fhir.smartplatforms.org) and launch the "My Web App" special application which will
+you can [sign into our sandbox](https://fhir.smarthealthit.org) and launch the "My Web App" special application which will
 load your app.
 
 <sup>*</sup> You can use any web server you like. For prototyping, we're partial to [`http-server`](https://github.com/nodeapps/http-server) which you can launch via

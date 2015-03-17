@@ -51,7 +51,7 @@ must have:
  * `1 or more` names in `Patient.name`
  * `1` administrative gender in `Patient.gender`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/Patient/1032702](https://fhir-open-api.smartplatforms.org/Patient/1032702?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/Patient/1032702](https://fhir-open-api.smarthealthit.org/Patient/1032702?_format=json)
 
 # Allergy or intolerance
 
@@ -61,7 +61,7 @@ Each [AllergyIntolerance](http://www.hl7.org/implement/standards/fhir/allergyint
  * `1` patient in `AllergyIntolerance.subject`
  * `1` substance in `AllergyIntolerance.substance`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/AllergyIntolerance/59](https://fhir-open-api.smartplatforms.org/AllergyIntolerance/59?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/AllergyIntolerance/59](https://fhir-open-api.smarthealthit.org/AllergyIntolerance/59?_format=json)
 
 The coding system used to record the substance depends on the substance type.
 There are three	cases: drug allergies, drug class allergies, and other.
@@ -78,7 +78,7 @@ allergy is captured using the ingredient code for Sulfamethoxazole
 ([rxnorm:10180](http://schemes.caregraf.info/rxnorm#!10180)).
 
 `Substance.type.coding.system`: `http://rxnav.nlm.nih.gov/REST/rxcui`
-##### Example: cipro [https://fhir-open-api.smartplatforms.org/Substance/rxnorm-203563](https://fhir-open-api.smartplatforms.org/Substance/rxnorm-203563?_format=json)
+##### Example: cipro [https://fhir-open-api.smarthealthit.org/Substance/rxnorm-203563](https://fhir-open-api.smarthealthit.org/Substance/rxnorm-203563?_format=json)
 
 ### Allergy to a drug class
 #### Coded with NDF-RT
@@ -89,7 +89,7 @@ Sulfonamide drugs is captured using the drug class code
 
 `Substance.type.coding.system`: `http://rxnav.nlm.nih.gov/REST/Ndfrt`
 
-##### Example: sulfonamides [https://fhir-open-api.smartplatforms.org/Substance/ndfrt-N0000175503](https://fhir-open-api.smartplatforms.org/Substance/ndfrt-N0000175503?_format=json)
+##### Example: sulfonamides [https://fhir-open-api.smarthealthit.org/Substance/ndfrt-N0000175503](https://fhir-open-api.smarthealthit.org/Substance/ndfrt-N0000175503?_format=json)
 
 ### Food and environmental allergies
 #### Coded with FDA UNII
@@ -99,7 +99,7 @@ using FDA UNII codes.
 
 `Substance.type.coding.system`: `http://fda.gov/UNII/`
 
-##### Example: shrimp [https://fhir-open-api.smartplatforms.org/Substance/unii-1891LE191T](https://fhir-open-api.smartplatforms.org/Substance/unii-1891LE191T?_format=json)
+##### Example: shrimp [https://fhir-open-api.smarthealthit.org/Substance/unii-1891LE191T](https://fhir-open-api.smarthealthit.org/Substance/unii-1891LE191T?_format=json)
 
 ### "No known allergies"
 
@@ -113,7 +113,7 @@ must have:
  * `1` value of `snapshot` in `List.mode`
  * `1` code value of `nilknown` and system of `http://hl7.org/fhir/list-empty-reason` in `List.emptyReason`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/List/24](https://fhir-open-api.smartplatforms.org/List/24?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/List/24](https://fhir-open-api.smarthealthit.org/List/24?_format=json)
 
 ### "No known history of drug allergy"
 
@@ -127,7 +127,7 @@ must have:
  * `1` value of `snapshot` in `List.mode`
  * `1` code value of `nilknown` and system of `http://hl7.org/fhir/list-empty-reason` in `List.emptyReason`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/List/62](https://fhir-open-api.smartplatforms.org/List/62?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/List/62](https://fhir-open-api.smarthealthit.org/List/62?_format=json)
 
 # Immunizations
 
@@ -147,7 +147,7 @@ vocabulary](http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx)
 This is a coding with:
 System: `http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/Immunization/18](https://fhir-open-api.smartplatforms.org/Immunization/18?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/Immunization/18](https://fhir-open-api.smarthealthit.org/Immunization/18?_format=json)
 
 # Conditions
 
@@ -160,7 +160,7 @@ must have:
  * `1` code (confirmed) in `Condition.status`
  * `1` date in `Condition.onsetDate`
  
-##### Example: fever [https://fhir-open-api.smartplatforms.org/Condition/454](https://fhir-open-api.smartplatforms.org/Condition/454?_format=json)
+##### Example: fever [https://fhir-open-api.smarthealthit.org/Condition/454](https://fhir-open-api.smarthealthit.org/Condition/454?_format=json)
  
 # Procedures
 
@@ -173,7 +173,7 @@ must have:
  * `1` date in `Procedure.date.start`
  * `1` date in `Procedure.date.end`
 
-##### Example: mastectomy [https://fhir-open-api.smartplatforms.org/Procedure/5](https://fhir-open-api.smartplatforms.org/Procedure/5?_format=json)
+##### Example: mastectomy [https://fhir-open-api.smarthealthit.org/Procedure/5](https://fhir-open-api.smarthealthit.org/Procedure/5?_format=json)
 
 # Family History
 
@@ -182,10 +182,10 @@ Each
 must have:
 
  * `1` patient in `FamilyHitory.subject`
- * `up to 1` height measurement as an `valueQuantity` extension of url `http://fhir-registry.smartplatforms.org/Profile/family-history#height` with units of `centimeters` and system of `http://unitsofmeasure.org`
+ * `up to 1` height measurement as an `valueQuantity` extension of url `http://fhir-registry.smarthealthit.org/Profile/family-history#height` with units of `centimeters` and system of `http://unitsofmeasure.org`
  * `1` relationship to patient in `FamilyHitory.reation.relationship` with system `http://hl7.org/fhir/v3/RoleCode`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/FamilyHistory/8](https://fhir-open-api.smartplatforms.org/FamilyHistory/8?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/FamilyHistory/8](https://fhir-open-api.smarthealthit.org/FamilyHistory/8?_format=json)
 
 # Smoking Status
 
@@ -199,7 +199,7 @@ must have:
  * `1` status of `final` in `Observation.status`
  * `1` value of `ok` in `Observation.reliability`
 
-##### Example: former smoker [https://fhir-open-api.smartplatforms.org/Observation/6-smokingstatus](https://fhir-open-api.smartplatforms.org/Observation/6-smokingstatus?_format=json)
+##### Example: former smoker [https://fhir-open-api.smarthealthit.org/Observation/6-smokingstatus](https://fhir-open-api.smarthealthit.org/Observation/6-smokingstatus?_format=json)
 
 # Medication Prescription
 
@@ -215,7 +215,7 @@ must have:
  * `0 or 1` code in `MedicationPrescription.dosageInstruction.doseQuantity` with system of `http://unitsofmeasure.org`
  * `0 or 1` objects in `MedicationPrescription.dispense` with `1` value in `numberOfRepeatsAllowed`, `1` code with system of `http://unitsofmeasure.org` in `quantity`, and `0 or 1` codes with system of `http://unitsofmeasure.org` in `expectedSupplyDuration` 
 
-##### Example: [https://fhir-open-api.smartplatforms.org/MedicationPrescription/102](https://fhir-open-api.smartplatforms.org/MedicationPrescription/102?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/MedicationPrescription/102](https://fhir-open-api.smarthealthit.org/MedicationPrescription/102?_format=json)
 
 # Medication Dispense
 
@@ -226,13 +226,13 @@ must have:
  * `1` patient in `MedicationDispense.subject`
  * `1` patient in `MedicationDispense.patient`
  * `1` reference to `MedicationPrescription` in `MedicationDispense.authorizingPrescription`
- * `1` object in `MedicationDispense.dispense` with `1` extension of `http://fhir-registry.smartplatforms.org/Profile/dispense#days-supply` of type `valueQuantity` with system of `http://unitsofmeasure.org` with units of `days` and code of `d`
+ * `1` object in `MedicationDispense.dispense` with `1` extension of `http://fhir-registry.smarthealthit.org/Profile/dispense#days-supply` of type `valueQuantity` with system of `http://unitsofmeasure.org` with units of `days` and code of `d`
  * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationDispense.dispense.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.coding.system`
  * `1` status of `completed` in `MedicationDispense.dispense.status`
  * `1` quantity with system `http://unitsofmeasure.org` and code of `{tablets}` and units of `tablets` in `MedicationDispense.dispense.quantity`
  * `1` date in `MedicationDispense.dispense.whenHandedOver`
 
-##### Example: [https://fhir-open-api.smartplatforms.org/MedicationDispense/1229](https://fhir-open-api.smartplatforms.org/MedicationDispense/1229?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/MedicationDispense/1229](https://fhir-open-api.smarthealthit.org/MedicationDispense/1229?_format=json)
 
 # TODO: work in progress.
 

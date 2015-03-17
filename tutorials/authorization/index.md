@@ -19,7 +19,7 @@ to learn about the JS client)
 
 ## Registering A Client
 
-To run this sample app against [our public sandbox server](https://fhir.smartplatforms.org), first you will need 
+To run this sample app against [our public sandbox server](https://fhir.smarthealthit.org), first you will need 
 to decide two endpoint URLs for your app which will handle the launch and redirect requests. For this tutorial
 we decided to use `http://localhost:4000/simple-auth/launch.html` as our launch endpoint and 
 `http://localhost:4000/simple-auth/index.html` as our redirect URL. You should configure a web server
@@ -27,9 +27,9 @@ to handle these URLs (or the ones that you pick) by serving the two sample pages
 `http-server -p 4000 /path/to/simple-auth/..`.
 
 Now that you have established the client endpoints for your app, it's time to register your very own
-client with the SMART on FHIR authorization server (in this case it is at `https://authorize.smartplatforms.org/`).
+client with the SMART on FHIR authorization server (in this case it is at `https://authorize.smarthealthit.org/`).
 There are a couple different approaches to register a new dynamic client with the server outlined
-in the [`How to Register a New App`](http://docs.smartplatforms.org/sandbox/register/) tutorial. We chose
+in the [`How to Register a New App`](http://docs.smarthealthit.org/sandbox/register/) tutorial. We chose
 to use the "Client Quick Registration" form available there. (Use your favorite image URL for the logo URL)
 
 <div style='text-align: center'>
@@ -43,7 +43,7 @@ a Registration Access Token like this:
   <img src="{{site.baseurl}}assets/img/regexample2.png" />
 </div>
 
-You should record these, since you can later use them to update your client via the [`authorization server UI`](https://authorize.smartplatforms.org/). At very minimum, you will need the Client ID, which
+You should record these, since you can later use them to update your client via the [`authorization server UI`](https://authorize.smarthealthit.org/). At very minimum, you will need the Client ID, which
 you should configure within your sample app in the next step.
 
 ## Sample App
@@ -102,9 +102,9 @@ launch.html
 
             // get the two authorization service endpoint URLs
             jQuery.each(r.rest[0].security.extension, function(responseNum, arg){
-              if (arg.url === "http://fhir-registry.smartplatforms.org/Profile/oauth-uris#authorize") {
+              if (arg.url === "http://fhir-registry.smarthealthit.org/Profile/oauth-uris#authorize") {
                 authUri = arg.valueUri;
-              } else if (arg.url === "http://fhir-registry.smartplatforms.org/Profile/oauth-uris#token") {
+              } else if (arg.url === "http://fhir-registry.smarthealthit.org/Profile/oauth-uris#token") {
                 tokenUri = arg.valueUri;
               }
             });
@@ -223,7 +223,7 @@ index.html
 
 ## Launching the Sample App
 
-To launch the sample app, first log into [`FHIR Starter`](http://fhir.smartplatforms.org) and 
+To launch the sample app, first log into [`FHIR Starter`](http://fhir.smarthealthit.org) and 
 select a sample patient. Next, enter your `Client ID` and `Launch URL` in the Custom App
 box like this:
 

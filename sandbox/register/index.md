@@ -69,7 +69,7 @@ ways to do this that we offer.
         };
         
         $.ajax({
-            url: 'https://authorize.smartplatforms.org/register',
+            url: 'https://authorize.smarthealthit.org/register',
             type: 'POST',
             data: JSON.stringify(call_params),
             contentType:"application/json",
@@ -136,13 +136,13 @@ ways to do this that we offer.
         <div class="radio">
           <label>
             <input name="input_client_type" value='public' checked='checked' type="radio">
-            public (apps that don't use server-side logic <a href='http://docs.smartplatforms.org/authorization/public/'>[details]</a>)
+            public (apps that don't use server-side logic <a href='http://docs.smarthealthit.org/authorization/public/'>[details]</a>)
           </label>
         </div>
         <div class="radio">
           <label>
             <input name="input_client_type" type='radio' value='confidential'>
-            confidential (apps that have server-side logic <a href='http://docs.smartplatforms.org/authorization/confidential/'>[details]</a>)
+            confidential (apps that have server-side logic <a href='http://docs.smarthealthit.org/authorization/confidential/'>[details]</a>)
           </label>
         </div>
       </div>
@@ -184,7 +184,7 @@ This is a more advanced alternative to using the *Quick Registration Form*.
 
 ### Step 1
 
-Log into the OpenID Connect Server at [https://authorize.smartplatforms.org](https://authorize.smartplatforms.org)
+Log into the OpenID Connect Server at [https://authorize.smarthealthit.org](https://authorize.smarthealthit.org)
 and click on `Register a new client` in `Self-service client registration`.
 
 <div style='text-align: center'>
@@ -216,8 +216,8 @@ In the `Access` tab make sure that the app is granted the following scopes: `lau
 
 On the `Credentials` tab change the authentication method:
 
-* If you're writing a [Confidential Client](http://docs.smartplatforms.org/authorization/confidential/), choose `Client Secret over HTTP Basic` 
-* If you're writing a [Public Client](http://docs.smartplatforms.org/authorization/public/), choose `No authentication`
+* If you're writing a [Confidential Client](http://docs.smarthealthit.org/authorization/confidential/), choose `Client Secret over HTTP Basic` 
+* If you're writing a [Public Client](http://docs.smarthealthit.org/authorization/public/), choose `No authentication`
 
 <div style='text-align: center'>
   <img src="{{site.baseurl}}assets/img/newapp4.png" />
@@ -262,7 +262,7 @@ server, you may use a REST call like this:
 POST /register HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Host: authorize.smartplatforms.org
+Host: authorize.smarthealthit.org
 
 {
    "client_name": "Cool SMART App",

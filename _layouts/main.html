@@ -117,7 +117,7 @@
              an issue</a>. 
            
            Or better yet, you can <a class="alert-link edit-in-github" 
-             href="https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues">edit
+             href="">edit
              this page</a>.
 
           </div> 
@@ -125,6 +125,9 @@
 
       </div>
     </div>
+    <script>
+      window.github_branch = "{{site.github_branch}}";
+    </script>
     <script src="{{site.baseurl}}assets/js/jquery-2.1.0.js"></script>
     <script src="{{site.baseurl}}assets/js/bootstrap3.min.js"></script>
     <script src="{{site.baseurl}}assets/js/site.js"></script>
@@ -137,7 +140,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            Version: <a href="{{site.baseurl}}releases/">edge</a> - <a href="http://smarthealthit.org">SMART Health IT 2015</a>
+            Version: <a href="{{site.baseurl}}releases/">{{site.github_branch}}</a> - <a href="http://smarthealthit.org">SMART Health IT 2015</a>
           </div>
         </div>
       </div>

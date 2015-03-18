@@ -10,7 +10,7 @@ architectures with a consistent, easy-to-implement set of building blocks.
 Because different app architectures bring different security considerations to
 the table, we've organized authorization profiles by one key question:
 
-### Can your app keep a secret?
+## Support for "public" and "confidential" apps
 
 Pure client-side apps (for example, HTML5/JS browser-based apps, iOS mobile
 apps, or Windows desktop apps) can provide adequate security -- but they can't
@@ -18,8 +18,6 @@ apps, or Windows desktop apps) can provide adequate security -- but they can't
 string that's embedded in the app can potentially be extracted by an end-user
 or attacker. So security for these apps can't depend on secrets embedded at
 install-time. Instead, security comes from being hosted at a trusted URL.
-
-###  Determining whether an app is "public" or "confidential":
 
 #### Use the <span class="label label-primary">confidential app</span> profile when all of the following apply:
 * App has server-side business logic (e.g. using PHP, Python, Ruby, .NET, etc.)
@@ -32,7 +30,7 @@ install-time. Instead, security comes from being hosted at a trusted URL.
 * App runs entirely on an end-user's device (e.g. HTML5/JS in-browser; native iOS or Windows)
 * App is *unable to protect* a `client_secret`
 
-### Registering a SMART App with an EHR
+## Registering a SMART App with an EHR
 
 Before a SMART app can run against an EHR, the app must be registered with that
 EHR.  SMART does not specify a standards-based registration process, but we
@@ -66,156 +64,7 @@ gather launch context during the authorization process.
 
 <img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBsZWZ0IG9mIEFwcDogVXNlciBoYXMgbGF1bmNoZWQgYXBwXG5mcm9tIGFuIEVIUlxub3Igc3RhbmRhbG9uZSBmbG93CgBEBXJpZ2gAQApSZXF1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-RUhSIEF1dGggU2VydmVyOiAgUmVkaXJlY3QgdG8gABkFUzogAB4Fb3JpemUAUQ8ALhEAIAkgQXBwXG4obWF5IGluY2x1ZGUgZW5kLXVzZXIAew4pAIEfFCBPbiBhcHByb3ZhbAoAgRUPLT4-AB4GAIEeDGFwcDpyAIEzB191cmw_Y29kZT0xMjMmLi4uAE0VRXhjaGFuZ2UgY29kZSBmb3IgYWNjZXNzIHRva2VuCgCCGgYAgg0SUE9TVCAvAB8FAFsJAIFxJGVudGljYXRlIGFwcACCJSBDcmVhdGUAgQMGOlxue1xuAIEVBl8AgRYFPXNlY3JldC0AgSMFLXh5eiZcbnBhdGllbnQ9NDU2JlxuZXhwaXJlc19pbjogMzYwMFxuLi4uXG59AII4EgCEZQVbAIFtDCByZXNwb25zZV0AhDcUQQCCHQYAaAcgZGF0YSB2aWEgRkhJUiBBUEkAgiwKUmVzb3VyY2UAhFAJR0VUIC9maGlyL1AAgScGLzQ1NlxuAIRSCACFEAU6IEJlYXJlciAAgVMQAIRkEwBQEVJldHVybgCBBQZyAHYIAIQVBgCEPgUAgQMPAIF2B3sAIwhUeXBlOiAiAIEWByIsICJiaXJ0aERhdGUiOi4uLn0KCgoKCgoAAQU&s=default"/>
 
-## Example "launch sequence"
-
-#### 1. EHR initiates launch sequence
-
-For apps that use the <span class="label label-primary">EHR launch</span> flow,
-the EHR creatse a new browser widget, window, or `iframe` on the app's
-**launch URL** with two URL parameters:
-
-* `iss` FHIR base URL of EHR responsible for "issuing" the launch notification
-* `launch` Unique string identifying this specific launch context notification
-
-So the browser redirects to:
-
-    Location: https://app/launch?iss=https%3A%2F%2Fehr%2Ffhir&launch=xyz123
-
-On receiving the launch notification, App uses AJAX to query the issuer's
-`/metadata` endpoint:
-
-    GET https://ehr/fhir/metadata
-    Accept: application/json
-
-The metadata response contains (among other details) the EHR's authorization
-URL for use below. For details about how the EHR publishes the relevant OAuth URLs, <a href="{{site.baseurl}}authorization/conformance-statement">see here</a>.
-
-*Note that apps using the <span class="label label-primary">standalone
-launch</span> flow will launch from outside of the EHR, so no launch
-notification is required. These apps will begin the process at step 2 below.*
-
-#### 2. App asks for authorization
-
-The app prepares a list of required access scopes. For example, an app that
-needs demographics and observations for a single patient can request:
-
-* `patient/Patient.read`
-* `patient/Observation.read`
-
-To this list of scopes, the app adds a `launch:xyz123` scope, binding to the
-existing EHR context of this launch notification.
-
-*Apps using the <span class="label label-primary">standalone launch</span> flow
-won't have a `launch` id at this point.  These apps can declare launch context
-requirements by adding specific scopes to the authorization request: for
-example, `launch/patient` to indicate that you need to know a patient ID, or
-`launch/encounter` to indicate you need an encounter.  The EHR's "authorize"
-endpoint will take care of acquiring the context you need (and then making it
-available to you).  For example, if your app needs patient context, the EHR may
-provide the end-user with a patient selection widget.  For full details, see <a
-href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch
-context parameters</a>.*
-
-
-The app then redirects the browser to the EHR's **authorization URL** as
-determined above:
-
-```
-Location: https://ehr/authorize?
-            response_type=code&
-            client_id=app-client-id&
-            redirect_uri=https%3A%2F%2Fapp%2Fafter-auth&
-            scope=launch:xyz123+patient%2FObservation.read+patient%2FPatient.read&
-            state=98wrghuwuogerg97
-```
-
-#### 3. EHR evaluates authorization request, asking for end-user input
-
-Based on the `client_id`, current EHR user, configured policy, and perhaps
-direct user input, the EHR makes a decision to approve or deny access.  This
-decision is communicated to the app by redirection to the app's registered
-`redirect_uri`:
-
-```
-Location: https://app/after-auth?
-  code=123abc&
-  state=98wrghuwuogerg97
-```
-
-<a id="step-4"></a>
-#### 4. App exchanges authorization code for access token
-
-Given an authorization code, the app trades it for an access token via HTTP
-POST.
-
-##### Request for 
-```
-POST /token HTTP/1.1
-Host: ehr
-Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
-Content-Type: application/x-www-form-urlencoded/token?
-
-grant_type=authorization_code&
-code=123abc&
-redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
-```
-
-##### Response
-```
-{
-  "access_token": "i8hweunweunweofiwweoijewiwe",
-  "token_type": "bearer",
-  "expires_in": "3600",
-  "scope": "patient/Observation.read patient/Patient.read",
-  "intent": "client-ui-name",
-  "patient":  "123",
-  "encounter": "456"
-}
-```
-#### 5. App accesses clinical data via FHIR API
-
-With this response, the app knows which patient is in-context, and has an
-OAuth2 bearer-type access token that can be used to fetch clinical data:
-
-```
-GET https://ehr/fhir/Patient/123
-Authorization: Bearer i8hweunweunweofiwweoijewiwe
-
-{
-  "resourceType": "Patient",
-  "birthTime": ...
-}
-```
-
-#### 6. (Later...) App uses a refresh token to obtain a new access token
-
-If the EHR supports refresh tokens, an app may be able to replace an expired
-access token programatically, without user interaction:
-
-##### Request
-
-```
-POST /token HTTP/1.1
-Host: ehr
-Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
-Content-Type: application/x-www-form-urlencoded/token?
-
-grant_type=refresh_token&
-refresh_token=a47txjiipgxkvohibvsm
-```
-
-##### Response
-
-```
-{
-  "access_token": "m7rt6i7s9nuxkjvi8vsx",
-  "token_type": "bearer",
-  "expires_in": "3600",
-  "scope": "patient/Observation.read patient/Patient.read"
-}
-```
-
-## Details of authorization process
+## SMART "launch sequence"
 
 #### 1. EHR initiates launch sequence
 
@@ -257,8 +106,30 @@ To complete the following steps, the app discovers the server's OAuth
 href="{{site.baseurl}}authorization/conformance-statement"> examining the EHR's
 conformance statement</a>.
 
+
+#### *For example*
+A launch might cause the browser redirects to:
+
+    Location: https://app/launch?iss=https%3A%2F%2Fehr%2Ffhir&launch=xyz123
+
+On receiving the launch notification, the app would query the issuer's
+`/metadata` endpoint:
+
+    GET https://ehr/fhir/metadata
+    Accept: application/json
+
+The metadata response contains (among other details) the EHR's authorization
+URL for use below. For details about how the EHR publishes the relevant OAuth URLs, <a href="{{site.baseurl}}authorization/conformance-statement">see here</a>.
+
+*Note that apps using the <span class="label label-primary">standalone
+launch</span> flow will launch from outside of the EHR, so no launch
+notification is required. These apps will begin the process at step 2 below.*
+
+<br><br>
+
 #### 2. App asks for authorization
 
+At launch time, the app redirect to the EHR's "authorize" endpoint with the following parameters:
 
 <table class="table">
   <thead>
@@ -314,6 +185,42 @@ cross-site request forgery or session fixation attacks.
   </tbody>
 </table>
 
+
+#### *For example*
+An app that needs demographics and observations for a single
+patient can request:
+
+* `patient/Patient.read`
+* `patient/Observation.read`
+
+To this list of scopes, the app adds a `launch:xyz123` scope, binding to the
+existing EHR context of this launch notification.
+
+*Apps using the <span class="label label-primary">standalone launch</span> flow
+won't have a `launch` id at this point.  These apps can declare launch context
+requirements by adding specific scopes to the authorization request: for
+example, `launch/patient` to indicate that you need to know a patient ID, or
+`launch/encounter` to indicate you need an encounter.  The EHR's "authorize"
+endpoint will take care of acquiring the context you need (and then making it
+available to you).  For example, if your app needs patient context, the EHR may
+provide the end-user with a patient selection widget.  For full details, see <a
+href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch
+context parameters</a>.*
+
+
+The app then redirects the browser to the EHR's **authorization URL** as
+determined above:
+
+```
+Location: https://ehr/authorize?
+            response_type=code&
+            client_id=app-client-id&
+            redirect_uri=https%3A%2F%2Fapp%2Fafter-auth&
+            scope=launch:xyz123+patient%2FObservation.read+patient%2FPatient.read&
+            state=98wrghuwuogerg97
+```
+
+<br><br>
 #### 3. EHR evaluates authorization request, asking for end-user input
 
 The authorization decision is up to the EHR system and the end-user. Based on
@@ -346,6 +253,20 @@ code *must* expire shortly after it is issued to mitigate the risk of leaks.
   </tbody>
 </table>
 
+#### *For example*
+
+Based on the `client_id`, current EHR user, configured policy, and perhaps
+direct user input, the EHR makes a decision to approve or deny access.  This
+decision is communicated to the app by redirection to the app's registered
+`redirect_uri`:
+
+```
+Location: https://app/after-auth?
+  code=123abc&
+  state=98wrghuwuogerg97
+```
+
+<br><br>
 #### 4. App exchanges authorization code for access token
 
 After obtaining an authorization code, the app trades the code for an access
@@ -442,10 +363,41 @@ context parameters</a>.
   </tbody>
 </table>
 
-A this point, **the launch flow is complete**. Follow the steps below 
-to use a refresh token when your access token expires.
-<br><br>
 
+
+#### *For example*
+<a id="step-4"></a>
+Given an authorization code, the app trades it for an access token via HTTP
+POST.
+
+##### Request for 
+```
+POST /token HTTP/1.1
+Host: ehr
+Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
+Content-Type: application/x-www-form-urlencoded/token?
+
+grant_type=authorization_code&
+code=123abc&
+redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
+```
+
+##### Response
+```
+{
+  "access_token": "i8hweunweunweofiwweoijewiwe",
+  "token_type": "bearer",
+  "expires_in": "3600",
+  "scope": "patient/Observation.read patient/Patient.read",
+  "intent": "client-ui-name",
+  "patient":  "123",
+  "encounter": "456"
+}
+```
+
+At this point, **the launch flow is complete**. Follow steps below to work with data and refresh access tokens.
+
+<br><br>
 #### 5. App accesses clinical data via FHIR API
 
 With a valid access token, the app can access protected EHR data by issuing a
@@ -458,6 +410,21 @@ FHIR API call to the EHR's FHIR endpoint. The request includes an
 
 (Note that in a real request, {%raw%}`{{access_token}}`{%endraw%} is replaced with the actual token value.)
 
+#### For example
+With this response, the app knows which patient is in-context, and has an
+OAuth2 bearer-type access token that can be used to fetch clinical data:
+
+```
+GET https://ehr/fhir/Patient/123
+Authorization: Bearer i8hweunweunweofiwweoijewiwe
+
+{
+  "resourceType": "Patient",
+  "birthTime": ...
+}
+```
+
+<br><br>
 #### 6. (Later...) App uses a refresh token to obtain a new access token
 
 You can use the `expires_in` field from the authorization response (see <a
@@ -533,3 +500,30 @@ The response is a JSON object containing the access token, with the following ke
     </tr>
   </tbody>
 </table>
+
+#### *For example*
+If the EHR supports refresh tokens, an app may be able to replace an expired
+access token programatically, without user interaction:
+
+##### Request
+
+```
+POST /token HTTP/1.1
+Host: ehr
+Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
+Content-Type: application/x-www-form-urlencoded/token?
+
+grant_type=refresh_token&
+refresh_token=a47txjiipgxkvohibvsm
+```
+
+##### Response
+
+```
+{
+  "access_token": "m7rt6i7s9nuxkjvi8vsx",
+  "token_type": "bearer",
+  "expires_in": "3600",
+  "scope": "patient/Observation.read patient/Patient.read"
+}
+```

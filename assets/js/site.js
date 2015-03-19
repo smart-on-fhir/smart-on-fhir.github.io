@@ -19,6 +19,6 @@ $(".edit-in-github").each(function(i,d){
     rel = rel.substring(0,rel.length-4);
     rel += "md";
   }
-  $(d).attr("href", "https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit/"+(github_branch || "master")+ rel);
+  $(d).attr("href", "https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit/"+ rel);
 
 });

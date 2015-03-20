@@ -44,7 +44,10 @@ No matter how an app registers with ah EHR, at registration time **every SMART a
 * Register one or more fixed, fully-specified launch URL with the EHR
 * Register a fixed, fully-specified `redirect_uri` with the EHR
 
-## App launch and authorization: overview
+## SMART authorization and retrieval of FHIR resources: overview
+
+An app (confidential or public) can launch from within an existing EHR session ("EHR launch"), or as a standalone app.  If the app launches from an existing EHR session, the EHR context is passed along to the app as part of the launch URL.  The app later will include this context as a scope parameter when it requests authorization to access resources.   Note that the complete URLs of all apps approved for use by users of this EHR will have been registered with the EHR authorization server.
+If the app is a standalone app that launches from outside an EHR session, the app will acquire context from the EHR AS during the authorization process.  
 
 In SMART's <span class="label label-primary">EHR launch</span> flow, a user has
 established an EHR session, and then decides to launch an app. This could be a
@@ -61,6 +64,8 @@ launch</span> flow, a user selects an app from outside of the EHR, for example
 by tapping an app icon on a mobile phone home screen. This app declares its
 context requirements to the EHR's authorization server, which allows the EHR to
 gather launch context during the authorization process.
+
+Once the app is launched, it requests authorization to access a FHIR resource by redirecting its authorization request to the EHR’s authorization server.  Based on pre-defined rules and possibly end-user authorization, the EHR authorization server either grants the request by returning an authorization code to the app’s redirect URL, or denies the request.   The app then exchanges the authorization code for an access token, which the app presents to the EHR’s resource server to obtain the FHIR resource.  If a refresh token is returned along with the access token, the app may use this to request a new access token, with the same scope, once the access token expires.  
 
 <img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBsZWZ0IG9mIEFwcDogVXNlciBoYXMgbGF1bmNoZWQgYXBwXG5mcm9tIGFuIEVIUlxub3Igc3RhbmRhbG9uZSBmbG93CgBEBXJpZ2gAQApSZXF1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-RUhSIEF1dGggU2VydmVyOiAgUmVkaXJlY3QgdG8gABkFUzogAB4Fb3JpemUAUQ8ALhEAIAkgQXBwXG4obWF5IGluY2x1ZGUgZW5kLXVzZXIAew4pAIEfFCBPbiBhcHByb3ZhbAoAgRUPLT4-AB4GAIEeDGFwcDpyAIEzB191cmw_Y29kZT0xMjMmLi4uAE0VRXhjaGFuZ2UgY29kZSBmb3IgYWNjZXNzIHRva2VuCgCCGgYAgg0SUE9TVCAvAB8FAFsJAIFxJGVudGljYXRlIGFwcACCJSBDcmVhdGUAgQMGOlxue1xuAIEVBl8AgRYFPXNlY3JldC0AgSMFLXh5eiZcbnBhdGllbnQ9NDU2JlxuZXhwaXJlc19pbjogMzYwMFxuLi4uXG59AII4EgCEZQVbAIFtDCByZXNwb25zZV0AhDcUQQCCHQYAaAcgZGF0YSB2aWEgRkhJUiBBUEkAgiwKUmVzb3VyY2UAhFAJR0VUIC9maGlyL1AAgScGLzQ1NlxuAIRSCACFEAU6IEJlYXJlciAAgVMQAIRkEwBQEVJldHVybgCBBQZyAHYIAIQVBgCEPgUAgQMPAIF2B3sAIwhUeXBlOiAiAIEWByIsICJiaXJ0aERhdGUiOi4uLn0KCgoKCgoAAQU&s=default"/>
 

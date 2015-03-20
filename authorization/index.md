@@ -44,7 +44,7 @@ No matter how an app registers with ah EHR, at registration time **every SMART a
 * Register one or more fixed, fully-specified launch URL with the EHR
 * Register a fixed, fully-specified `redirect_uri` with the EHR
 
-## App launch and authorization: overview
+## App launch and authorization: underview
 
 In SMART's <span class="label label-primary">EHR launch</span> flow, a user has
 established an EHR session, and then decides to launch an app. This could be a

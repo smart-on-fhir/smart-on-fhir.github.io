@@ -33,16 +33,16 @@ install-time. Instead, security comes from being hosted at a trusted URL.
 ## Registering a SMART App with an EHR
 
 Before a SMART app can run against an EHR, the app must be registered with that
-EHR.  SMART does not specify a standards-based registration process, but we
+EHR's authorization service.  SMART does not specify a standards-based registration process, but we
 encourage EHR implementers to consider the [OAuth 2.0 Dynamic Client
 Registration Protocol](https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg)
 for an out-of-the-box solution.
 
-No matter how an app registers with ah EHR, at registration time **every SMART app must**:
+No matter how an app registers with an EHR's authorization service, at registration time **every SMART app must**:
 
 * Be hosted at a published, TLS-protected URL
-* Register one or more fixed, fully-specified launch URL with the EHR
-* Register a fixed, fully-specified `redirect_uri` with the EHR
+* Register one or more fixed, fully-specified launch URL with the EHR's authorization server
+* Register a single, fixed, fully-specified `redirect_uri` with the EHR's authorization server
 
 ## App launch and authorization: overview
 

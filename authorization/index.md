@@ -132,9 +132,10 @@ notification is required. These apps will begin the process at step 2 below.*
 
 <br><br>
 
-#### 2. App asks for authorization
+## SMART authorization and resource retrieval 
+#### 1. App asks for authorization
 
-At launch time, the app redirect to the EHR's "authorize" endpoint with the following parameters:
+At launch time, the app constructs a request for authorization by adding the following parameters to the query component of the EHR’s "authorize" endpoint URL using the "application/x-www-form-urlencoded" format:  
 
 <table class="table">
   <thead>
@@ -177,7 +178,7 @@ Scopes</a> details.
     </tr>
     <tr>
       <td><code>state</code></td>
-      <td><span class="label label-default">recommended</span></td>
+      <td><span class="label label-default">required</span></td>
       <td>
 
 An opaque value used by the client to maintain state between the request and
@@ -187,18 +188,32 @@ cross-site request forgery or session fixation attacks.
 
       </td>
     </tr>
+     <tr>
+      <td><code>aud</code></td>
+      <td><span class="label label-default">recommended</span></td>
+      <td>
+
+URL of the EHR resource server from which the app wishes to retrieve a FHIR resource.  This parameter SHOULD be used to prevent presenting a bearer token to a counterfeit resource server (which then could use it to retrieve the authorized resource from the authentic resource server).  
+
+      </td>
+    </tr>
   </tbody>
 </table>
 
+The app MUST use an unpredictable value for the state parameter with at least 128 bits of entropy. The app MUST validate the value of the state parameter upon return to the redirect URL and MUST ensure that the state value is securely tied to the user’s current session (e.g., by relating the state value to a session identifier issued by the app).
+The app SHOULD limit the grants, scope, and period of time requested to the minimum necessary.   The app MAY digitally sign the request, with the EHR validating the signature.  
+
+If the app needs to authenticate the identity of the end-user, it should include two OpenID Connect scopes:  openid and profile.   When these scopes are requested, and the request is granted, the app will receive an id_token along with the access token.  For full details, see SMART launch context parameters (/authorization/scopes-and-launch-context).
 
 #### *For example*
 An app that needs demographics and observations for a single
-patient can request:
+patient, and also wants information about the current logged-in user, the app  can request:
 
 * `patient/Patient.read`
 * `patient/Observation.read`
+* `openid profile`
 
-To this list of scopes, the app adds a `launch:xyz123` scope, binding to the
+If the app was launched from an EHR, the app adds a `launch:xyz123` scope, binding to the
 existing EHR context of this launch notification.
 
 *Apps using the <span class="label label-primary">standalone launch</span> flow

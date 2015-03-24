@@ -54,8 +54,8 @@ scope parameter when it requests authorization to access resources.   Note that
 the complete URLs of all apps approved for use by users of this EHR will have
 been registered with the EHR authorization server.
 
-If the app is a standalone app that launches from outside an EHR session, 
-the app will acquire context from the EHR AS during the authorization process.  
+If the app is a standalone app that launches from outside an EHR session,
+the app will acquire context from the EHR AS during the authorization process.
 
 In SMART's <span class="label label-primary">EHR launch</span> flow, a user has
 established an EHR session, and then decides to launch an app. This could be a
@@ -73,16 +73,16 @@ by tapping an app icon on a mobile phone home screen. This app declares its
 context requirements to the EHR's authorization server, which allows the EHR to
 gather launch context during the authorization process.
 
-Once the app is launched, it requests authorization to access a FHIR resource 
-by redirecting its authorization request to the EHR’s authorization server.  
-Based on pre-defined rules and possibly end-user authorization, the EHR 
-authorization server either grants the request by returning an 
-authorization code to the app’s redirect URL, or denies the request.   
-The app then exchanges the authorization code for an access token, which 
-the app presents to the EHR’s resource server to obtain the FHIR resource.  
-If a refresh token is returned along with the access token, the app may 
-use this to request a new access token, with the same scope, once 
-the access token expires.  
+Once the app is launched, it requests authorization to access a FHIR resource
+by redirecting its authorization request to the EHR’s authorization server.
+Based on pre-defined rules and possibly end-user authorization, the EHR
+authorization server either grants the request by returning an
+authorization code to the app’s redirect URL, or denies the request.
+The app then exchanges the authorization code for an access token, which
+the app presents to the EHR’s resource server to obtain the FHIR resource.
+If a refresh token is returned along with the access token, the app may
+use this to request a new access token, with the same scope, once
+the access token expires.
 
 <img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBsZWZ0IG9mIEFwcDogVXNlciBoYXMgbGF1bmNoZWQgYXBwXG5mcm9tIGFuIEVIUlxub3Igc3RhbmRhbG9uZSBmbG93CgBEBXJpZ2gAQApSZXF1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-RUhSIEF1dGggU2VydmVyOiAgUmVkaXJlY3QgdG8gABkFUzogAB4Fb3JpemUAUQ8ALhEAIAkgQXBwXG4obWF5IGluY2x1ZGUgZW5kLXVzZXIAew4pAIEfFCBPbiBhcHByb3ZhbAoAgRUPLT4-AB4GAIEeDGFwcDpyAIEzB191cmw_Y29kZT0xMjMmLi4uAE0VRXhjaGFuZ2UgY29kZSBmb3IgYWNjZXNzIHRva2VuCgCCGgYAgg0SUE9TVCAvAB8FAFsJAIFxJGVudGljYXRlIGFwcACCJSBDcmVhdGUAgQMGOlxue1xuAIEVBl8AgRYFPXNlY3JldC0AgSMFLXh5eiZcbnBhdGllbnQ9NDU2JlxuZXhwaXJlc19pbjogMzYwMFxuLi4uXG59AII4EgCEZQVbAIFtDCByZXNwb25zZV0AhDcUQQCCHQYAaAcgZGF0YSB2aWEgRkhJUiBBUEkAgiwKUmVzb3VyY2UAhFAJR0VUIC9maGlyL1AAgScGLzQ1NlxuAIRSCACFEAU6IEJlYXJlciAAgVMQAIRkEwBQEVJldHVybgCBBQZyAHYIAIQVBgCEPgUAgQMPAIF2B3sAIwhUeXBlOiAiAIEWByIsICJiaXJ0aERhdGUiOi4uLn0KCgoKCgoAAQU&s=default"/>
 
@@ -153,7 +153,7 @@ If the app is a standalone app that launches from outside the EHR, it will
 launch from its registered URL without a launch id.  Such an app will declare
 its launch context requirements by adding specific scopes to the authorization
 request.  The EHR’s "authorize" endpoint will acquire the context the app needs
-and making it available.   
+and making it available.
 
 For example:
 
@@ -171,12 +171,12 @@ conformance statement.
 
 <br><br>
 
-## SMART authorization and resource retrieval 
+## SMART authorization and resource retrieval
 #### 1. App asks for authorization
 
 At launch time, the app constructs a request for authorization by adding the
 following parameters to the query component of the EHR’s "authorize" endpoint
-URL using the "application/x-www-form-urlencoded" format:  
+URL using the "application/x-www-form-urlencoded" format:
 
 <table class="table">
   <thead>
@@ -237,20 +237,20 @@ cross-site request forgery or session fixation attacks.
 URL of the EHR resource server from which the app wishes to retrieve a FHIR
 resource.  This parameter SHOULD be used to prevent presenting a bearer token
 to a counterfeit resource server (which then could use it to retrieve the
-authorized resource from the authentic resource server).  
+authorized resource from the authentic resource server).
 
       </td>
     </tr>
   </tbody>
 </table>
 
-The app MUST use an unpredictable value for the state parameter 
-with at least 128 bits of entropy. The app MUST validate the value 
-of the state parameter upon return to the redirect URL and MUST ensure 
-that the state value is securely tied to the user’s current session 
-(e.g., by relating the state value to a session identifier issued 
-by the app). The app SHOULD limit the grants, scope, and period of 
-time requested to the minimum necessary.   
+The app MUST use an unpredictable value for the state parameter
+with at least 128 bits of entropy. The app MUST validate the value
+of the state parameter upon return to the redirect URL and MUST ensure
+that the state value is securely tied to the user’s current session
+(e.g., by relating the state value to a session identifier issued
+by the app). The app SHOULD limit the grants, scope, and period of
+time requested to the minimum necessary.
 
 If the app needs to authenticate the identity of the end-user, it should
 include two OpenID Connect scopes:  `openid` and `profile`.   When these scopes
@@ -296,31 +296,31 @@ Location: https://ehr/authorize?
 <br><br>
 ## SMART authorization and resource retrieval
 
-#### First, a word about app protection… 
-The app is responsible for protecting itself from potential misbehaving or 
-malicious values passed to its redirect URL (e.g., values injected with 
-executable code, such as SQL) and for protecting authorization codes, access 
-tokens, and refresh tokens from unauthorized access and use.  The app 
-developer must be aware of potential threats, such as malicious apps running 
-on the same platform, counterfeit authorization servers, and counterfeit 
-resource servers, and implement countermeasures to help protect both the 
-app itself and any sensitive information it may hold.    
+#### First, a word about app protection...
+The app is responsible for protecting itself from potential misbehaving or
+malicious values passed to its redirect URL (e.g., values injected with
+executable code, such as SQL) and for protecting authorization codes, access
+tokens, and refresh tokens from unauthorized access and use.  The app
+developer must be aware of potential threats, such as malicious apps running
+on the same platform, counterfeit authorization servers, and counterfeit
+resource servers, and implement countermeasures to help protect both the
+app itself and any sensitive information it may hold.
 
-* Apps MUST assure that sensitive information (authentication secrets, 
-authorization codes, tokens) is transmitted ONLY to authenticated servers, 
+* Apps MUST assure that sensitive information (authentication secrets,
+authorization codes, tokens) is transmitted ONLY to authenticated servers,
 over TLS-secured channels.
-* Apps MUST generate an unpredictable `state` parameter for each user 
-session.  An app MUST validate the `state` value for any request sent to its 
-redirect URL; include `state` with all authorization requests; and validate 
-the `state` value included in access and refresh tokens it receives.    
-* An app should NEVER treat any inputs it receives as executable code.  
-* An app MUST NOT forward values passed back to its redirect URL to any 
-other arbitrary or user-provided URL (a practice known as an “open 
+* Apps MUST generate an unpredictable `state` parameter for each user
+session.  An app MUST validate the `state` value for any request sent to its
+redirect URL; include `state` with all authorization requests; and validate
+the `state` value included in access and refresh tokens it receives.
+* An app should NEVER treat any inputs it receives as executable code.
+* An app MUST NOT forward values passed back to its redirect URL to any
+other arbitrary or user-provided URL (a practice known as an “open
 redirector”).
-* An app should NEVER store bearer tokens in cookies that are transmitted 
+* An app should NEVER store bearer tokens in cookies that are transmitted
 in the clear.
-* Apps should persist tokens and other sensitive data in app-specific 
-storage locations only, not in system-wide-discoverable locations.  
+* Apps should persist tokens and other sensitive data in app-specific
+storage locations only, not in system-wide-discoverable locations.
 
 #### 1. App asks for authorization
 The authorization decision is up to the EHR system and the end-user. Based on
@@ -340,14 +340,14 @@ communicated to the app when the EHR redirects the browser to the app's
 
       <td>
 
-WARNING:  The app is responsible for protecting itself from potential 
-misbehaving or malicious values passed to its redirect URL (e.g., values 
-injected with executable code, such as SQL) and for protecting 
-authorization codes, access tokens, and refresh tokens from unauthorized 
-access and use.  An app should never treat any inputs it receives as 
-executable code.  An app MUST NOT forward values passed back to its redirect 
-URL to any other arbitrary or user-provided URL (a practice known as an 
-“open redirector”).  
+WARNING:  The app is responsible for protecting itself from potential
+misbehaving or malicious values passed to its redirect URL (e.g., values
+injected with executable code, such as SQL) and for protecting
+authorization codes, access tokens, and refresh tokens from unauthorized
+access and use.  An app should never treat any inputs it receives as
+executable code.  An app MUST NOT forward values passed back to its redirect
+URL to any other arbitrary or user-provided URL (a practice known as an
+“open redirector”).
 
       </td>
     </tr>
@@ -377,7 +377,7 @@ Location: https://app/after-auth?
 
 After obtaining an authorization code, the app trades the code for an access
 token via HTTP `POST` to the EHR's token URL, with content-type
-`application/x-www-form-urlencoded`. 
+`application/x-www-form-urlencoded`.
 
 For <span class="label label-primary">public apps</span>, no authentication is
 required at this step. For <span class="label label-primary">confidential
@@ -476,7 +476,7 @@ context parameters</a>.
 Given an authorization code, the app trades it for an access token via HTTP
 POST.
 
-##### Request for 
+##### Request for
 ```
 POST /token HTTP/1.1
 Host: ehr
@@ -547,7 +547,7 @@ For <span class="label label-primary">public apps</span>, no authentication is
 required at this step. For <span class="label label-primary">confidential
 apps</span>, an `Authorization` header using HTTP Basic authentication is
 required, where the username is the app's `client_id` and the password is the
-app's `client_secret` (see [example](./basic-auth-example)). 
+app's `client_secret` (see [example](./basic-auth-example)).
 
 The following request parameters are defined:
 
@@ -574,7 +574,7 @@ The following request parameters are defined:
 The scopes of access requested. If present, this value must be a strict sub-set
 of the scopes granted in the original launch (no new permissions can be
 obtained at refresh time). A missing value indicates a request for the same
-scopes granted in the original launch. 
+scopes granted in the original launch.
       </td>
     </tr>
   </tbody>

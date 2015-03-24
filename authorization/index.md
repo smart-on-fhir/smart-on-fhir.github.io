@@ -46,13 +46,13 @@ No matter how an app registers with ah EHR, at registration time **every SMART a
 
 ## SMART authorization and retrieval of FHIR resources: overview
 
-An app (confidential or public) can launch from within an existing EHR 
-session ("EHR launch"), or as a standalone app.  If the app launches 
-from an existing EHR session, the EHR context is passed along to the app 
-as part of the launch URL.  The app later will include this context as a 
-scope parameter when it requests authorization to access resources.   Note 
-that the complete URLs of all apps approved for use by users of this EHR 
-will have been registered with the EHR authorization server.
+An app (confidential or public) can launch from within an existing EHR session
+("EHR launch"), or as a standalone app.  If the app launches from an existing
+EHR session, an opaque handle to the EHR context is passed along to the app as
+part of the launch URL.  The app later will include this context handle as a
+scope parameter when it requests authorization to access resources.   Note that
+the complete URLs of all apps approved for use by users of this EHR will have
+been registered with the EHR authorization server.
 
 If the app is a standalone app that launches from outside an EHR session, 
 the app will acquire context from the EHR AS during the authorization process.  
@@ -222,14 +222,14 @@ with at least 128 bits of entropy. The app MUST validate the value
 of the state parameter upon return to the redirect URL and MUST ensure 
 that the state value is securely tied to the user’s current session 
 (e.g., by relating the state value to a session identifier issued 
-by the app).  The app SHOULD limit the grants, scope, and period of 
+by the app). The app SHOULD limit the grants, scope, and period of 
 time requested to the minimum necessary.   
 
-If the app needs to authenticate the identity of the end-user, it 
-should include two OpenID Connect scopes:  openid and profile.   When 
-these scopes are requested, and the request is granted, the app will 
-receive an id_token along with the access token.  For full details, 
-see [SMART launch context parameters](./scopes-and-launch-context).
+If the app needs to authenticate the identity of the end-user, it should
+include two OpenID Connect scopes:  `openid` and `profile`.   When these scopes
+are requested, and the request is granted, the app will receive an id_token
+along with the access token.  For full details, see [SMART launch context
+parameters](./scopes-and-launch-context).
 
 #### *For example*
 An app that needs demographics and observations for a single

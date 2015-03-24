@@ -226,8 +226,35 @@ Location: https://ehr/authorize?
 ```
 
 <br><br>
-#### 3. EHR evaluates authorization request, asking for end-user input
+## SMART authorization and resource retrieval
 
+#### First, a word about app protection… 
+The app is responsible for protecting itself from potential misbehaving or 
+malicious values passed to its redirect URL (e.g., values injected with 
+executable code, such as SQL) and for protecting authorization codes, access 
+tokens, and refresh tokens from unauthorized access and use.  The app 
+developer must be aware of potential threats, such as malicious apps running 
+on the same platform, counterfeit authorization servers, and counterfeit 
+resource servers, and implement countermeasures to help protect both the 
+app itself and any sensitive information it may hold.    
+
+* Apps MUST assure that sensitive information (authentication secrets, 
+authorization codes, tokens) is transmitted ONLY to authenticated servers, 
+over TLS-secured channels.
+* Apps MUST generate an unpredictable `state`parameter for each user 
+session.  An app MUST validate the `state` value for any request sent to its 
+redirect URL; include `state` with all authorization requests; and validate 
+the `state` value included in access and refresh tokens it receives.    
+* An app should NEVER treat any inputs it receives as executable code.  
+* An app MUST NOT forward values passed back to its redirect URL to any 
+other arbitrary or user-provided URL (a practice known as an “open 
+redirector”).
+* An app should NEVER store bearer tokens in cookies that are transmitted 
+in the clear.
+* Apps should persist tokens and other sensitive data in app-specific 
+storage locations only, not in system-wide-discoverable locations.  
+
+#### 1. App asks for authorization
 The authorization decision is up to the EHR system and the end-user. Based on
 any available information including local policies and perhaps direct end-user
 input, a decision is made to grant or deny access. This decision is
@@ -275,7 +302,7 @@ Location: https://app/after-auth?
 #### 4. App exchanges authorization code for access token
 
 After obtaining an authorization code, the app trades the code for an access
-token via HTTP `POS`T to the EHR's token URL, with content-type
+token via HTTP `POST` to the EHR's token URL, with content-type
 `application/x-www-form-urlencoded`. 
 
 For <span class="label label-primary">public apps</span>, no authentication is

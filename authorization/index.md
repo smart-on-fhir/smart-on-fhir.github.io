@@ -141,19 +141,32 @@ On receiving the launch notification, the app would query the issuer's
     Accept: application/json
 
 The metadata response contains (among other details) the EHR's authorization
-URL for use below. For details about how the EHR publishes the relevant OAuth URLs, <a href="{{site.baseurl}}authorization/conformance-statement">see here</a>.  
-Later, when the app prepares a list of access scopes to request from the EHR authorization server, it will bind to the existing EHR context by including the launch notification in the scope.
+URL for use below. For details about how the EHR publishes the relevant OAuth
+URLs, <a href="{{site.baseurl}}authorization/conformance-statement">see
+here</a>.  Later, when the app prepares a list of access scopes to request from
+the EHR authorization server, it will bind to the existing EHR context by
+including the launch notification in the scope.
 
 #### Standalone launch sequence
-If the app is a standalone app that launches from outside the EHR, it will launch from its registered URL without a launch id.  Such an app will declare its launch context requirements by adding specific scopes to the authorization request.  The EHR’s "authorize" endpoint will acquire the context the app needs and making it available.   
+
+If the app is a standalone app that launches from outside the EHR, it will
+launch from its registered URL without a launch id.  Such an app will declare
+its launch context requirements by adding specific scopes to the authorization
+request.  The EHR’s "authorize" endpoint will acquire the context the app needs
+and making it available.   
 
 For example:
-If the app needs patient context, the EHR AS may provide the end-user with a patient selection widget.  For full details, see SMART launch context parameters (/authorization/scopes-and-launch-context).
+
+If the app needs patient context, the EHR AS may provide the end-user with a
+patient selection widget.  For full details, see SMART launch context
+parameters (/authorization/scopes-and-launch-context).
 
 *	launch/patient - to indicate that the app needs to know a patient ID
 *	launch/encounter - to indicate the app needs an encounter
 
-To complete the authorization and retrieval steps below, the app discovers the server's OAuth authorize and token endpoint URLs by examining the EHR's conformance statement.
+To complete the authorization and retrieval steps below, the app discovers the
+server's OAuth authorize and token endpoint URLs by examining the EHR's
+conformance statement.
 
 
 <br><br>
@@ -161,7 +174,9 @@ To complete the authorization and retrieval steps below, the app discovers the s
 ## SMART authorization and resource retrieval 
 #### 1. App asks for authorization
 
-At launch time, the app constructs a request for authorization by adding the following parameters to the query component of the EHR’s "authorize" endpoint URL using the "application/x-www-form-urlencoded" format:  
+At launch time, the app constructs a request for authorization by adding the
+following parameters to the query component of the EHR’s "authorize" endpoint
+URL using the "application/x-www-form-urlencoded" format:  
 
 <table class="table">
   <thead>
@@ -219,7 +234,10 @@ cross-site request forgery or session fixation attacks.
       <td><span class="label label-default">recommended</span></td>
       <td>
 
-URL of the EHR resource server from which the app wishes to retrieve a FHIR resource.  This parameter SHOULD be used to prevent presenting a bearer token to a counterfeit resource server (which then could use it to retrieve the authorized resource from the authentic resource server).  
+URL of the EHR resource server from which the app wishes to retrieve a FHIR
+resource.  This parameter SHOULD be used to prevent presenting a bearer token
+to a counterfeit resource server (which then could use it to retrieve the
+authorized resource from the authentic resource server).  
 
       </td>
     </tr>
@@ -483,7 +501,8 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
 }
 ```
 
-At this point, **the launch flow is complete**. Follow steps below to work with data and refresh access tokens.
+At this point, **the launch flow is complete**. Follow steps below to work with
+data and refresh access tokens.
 
 <br><br>
 #### 5. App accesses clinical data via FHIR API
@@ -496,7 +515,8 @@ FHIR API call to the EHR's FHIR endpoint. The request includes an
     Authorization: Bearer {{access_token}}
 {% endraw %}
 
-(Note that in a real request, {%raw%}`{{access_token}}`{%endraw%} is replaced with the actual token value.)
+(Note that in a real request, {%raw%}`{{access_token}}`{%endraw%} is replaced
+with the actual token value.)
 
 #### For example
 With this response, the app knows which patient is in-context, and has an

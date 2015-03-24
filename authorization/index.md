@@ -44,7 +44,7 @@ No matter how an app registers with ah EHR, at registration time **every SMART a
 * Register one or more fixed, fully-specified launch URL with the EHR
 * Register a fixed, fully-specified `redirect_uri` with the EHR
 
-## SMART authorization and retrieval of FHIR resources: overview
+## SMART authorization & FHIR access: overview
 
 An app (confidential or public) can launch from within an existing EHR session
 ("EHR launch"), or as a standalone app.  If the app launches from an existing

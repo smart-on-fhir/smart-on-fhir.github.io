@@ -246,7 +246,7 @@ Scopes</a> details.
     </tr>
     <tr>
       <td><code>state</code></td>
-      <td><span class="label label-default">required</span></td>
+      <td><span class="label label-sucess">required</span></td>
       <td>
 
 An opaque value used by the client to maintain state between the request and
@@ -258,7 +258,7 @@ cross-site request forgery or session fixation attacks.
     </tr>
      <tr>
       <td><code>aud</code></td>
-      <td><span class="label label-default">recommended</span></td>
+      <td><span class="label label-info">recommended</span></td>
       <td>
 
 URL of the EHR resource server from which the app wishes to retrieve a FHIR
@@ -417,7 +417,7 @@ app's `client_secret` (see [example](./basic-auth-example)).
     </tr>
     <tr>
       <td><code>client_id</code></td>
-      <td><span class="label label-default">optional</span></td>
+      <td><span class="label label-info">optional</span></td>
       <td>If present, must match the client_id found in the Authorization header.</td>
     </tr>
   </tbody>

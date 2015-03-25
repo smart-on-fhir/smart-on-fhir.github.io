@@ -263,7 +263,7 @@ cross-site request forgery or session fixation attacks.
 
 URL of the EHR resource server from which the app wishes to retrieve FHIR data.
 This parameter prevents leaking a genuine bearer token to a counterfeit
-resource server. (Note: in the case of a <span class="label label-primary">EHR launch</span>
+resource server. (Note: in the case of an <span class="label label-primary">EHR launch</span>
 flow, this <code>aud</code> value is the same as the launch's <code>iss</code> value.)
 
       </td>

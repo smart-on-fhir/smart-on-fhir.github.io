@@ -15,7 +15,7 @@ app against our public apps container.
 To test your app against [our public sandbox server](https://fhir.smarthealthit.org), first set up a local web server<sup>*</sup>
 and server your FHIR app and its launch page at the following URLs:
 
-* [http://localhost:8000/fhir-app/index.html](http://localhost:8000/fhir-app/index.html)
+* [http://localhost:8000/fhir-app/](http://localhost:8000/fhir-app/)
 * [http://localhost:8000/fhir-app/launch.html](http://localhost:8000/fhir-app/launch.html)
 
 Also, make sure that your `client_id` in `launch.html` is set to `my_web_app`. At this point

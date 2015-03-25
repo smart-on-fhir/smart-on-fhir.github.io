@@ -172,6 +172,7 @@ conformance statement.
 <br><br>
 
 ## SMART authorization and resource retrieval
+
 #### 1. App asks for authorization
 
 At launch time, the app constructs a request for authorization by adding the
@@ -373,14 +374,15 @@ Location: https://app/after-auth?
 ```
 
 <br><br>
-#### 4. App exchanges authorization code for access token
+#### 3. App exchanges authorization code for access token
 
 After obtaining an authorization code, the app trades the code for an access
-token via HTTP `POST` to the EHR's token URL, with content-type
-`application/x-www-form-urlencoded`.
+token via HTTP `POST` to the EHR authorization server's token endpoint URL, 
+using content-type `application/x-www-form-urlencoded`.
 
-For <span class="label label-primary">public apps</span>, no authentication is
-required at this step. For <span class="label label-primary">confidential
+For <span class="label label-primary">public apps</span>, authentication is
+not possible, since the app cannot be trusted to protect a secret.  For 
+<span class="label label-primary">confidential
 apps</span>, an `Authorization` header using HTTP Basic authentication is
 required, where the username is the app's `client_id` and the password is the
 app's `client_secret` (see [example](./basic-auth-example)).
@@ -414,8 +416,8 @@ app's `client_secret` (see [example](./basic-auth-example)).
   </tbody>
 </table>
 
-The response is a JSON object containing the access token, with the following
-keys:
+The response is a JSON Web Token (JWT) bearer token, with the following
+claims:
 
 <table class="table">
   <thead>
@@ -441,6 +443,26 @@ keys:
       <td><code>scope</code></td>
       <td><span class="label label-success">required</span></td>
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
+    </tr>
+    <tr>
+      <td><code>host</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>URL of the server that issued the token.</td>
+    </tr>
+    <tr>
+      <td><code>client_id</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Client ID of the client to whom the token was issued.  Required for confidential clients.</td>
+    </tr>
+    <tr>
+      <td><code>username</code></td>
+      <td><span class="label label-success">optional</span></td>
+      <td>ID of the end-user that authorized the client, or the client ID of a client acting on its own behalf (such as for bulk transfer).</td>
+    </tr>
+    <tr>
+      <td><code>timestamp</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Time when token was issued.</td>
     </tr>
     <tr>
       <td><code>intent</code></td>
@@ -469,12 +491,29 @@ context parameters</a>.
   </tbody>
 </table>
 
+The EHR authorization server decides what `expires_in` value to assign to an 
+access token and whether to issue a refresh token along with the access token.   
+If the app receives a refresh token along with the access token, it can 
+exchange this refresh token for a new access token when the current access 
+token expires (see step 5 below).  A refresh token should be bound to the 
+same `client_id` and should contain the same set of claims as the access 
+token with which it is associated. 
+
+Apps SHOULD store tokens in app-specific storage locations only, not in 
+system-wide-discoverable locations.  Access tokens SHOULD have a valid 
+lifetime no greater than one hour, and refresh tokens (if issued) SHOULD 
+have a valid lifetime no greater than twenty-four hours.  Confidential 
+clients may be issued longer-lived tokens than public clients.  
+
+Depending upon applicable policy, access tokens and refresh tokens 
+MAY be signed by the EHR authorization server using JSON Web Signature 
+(JWS).  
 
 
 #### *For example*
 <a id="step-4"></a>
 Given an authorization code, the app trades it for an access token via HTTP
-POST.
+`POST`.
 
 ##### Request for
 ```
@@ -498,6 +537,10 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
   "intent": "client-ui-name",
   "patient":  "123",
   "encounter": "456"
+  "host": "https://hospital.org/EHR_authsvr/endpoint", 
+  "client_id":  "123abcf8",
+  "username": "QBOEKARUAOE",
+  "timestamp":  "2015-03-09 03:14:07”    
 }
 ```
 

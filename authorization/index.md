@@ -41,8 +41,8 @@ for an out-of-the-box solution.
 No matter how an app registers with ah EHR, at registration time **every SMART app must**:
 
 * Be hosted at a published, TLS-protected URL
-* Register one or more fixed, fully-specified launch URL with the EHR
-* Register a fixed, fully-specified `redirect_uri` with the EHR
+* Register a fixed, fully-specified launch URL with the EHR
+* Register one or more fixed, fully-specified `redirect_uri` values with the EHR
 
 ## SMART authorization & FHIR access: overview
 

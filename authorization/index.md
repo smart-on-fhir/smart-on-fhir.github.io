@@ -172,6 +172,33 @@ conformance statement.
 <br><br>
 
 ## SMART authorization and resource retrieval
+
+#### First, a word about app protection...
+The app is responsible for protecting itself from potential misbehaving or
+malicious values passed to its redirect URL (e.g., values injected with
+executable code, such as SQL) and for protecting authorization codes, access
+tokens, and refresh tokens from unauthorized access and use.  The app
+developer must be aware of potential threats, such as malicious apps running
+on the same platform, counterfeit authorization servers, and counterfeit
+resource servers, and implement countermeasures to help protect both the
+app itself and any sensitive information it may hold.
+
+* Apps MUST assure that sensitive information (authentication secrets,
+authorization codes, tokens) is transmitted ONLY to authenticated servers,
+over TLS-secured channels.
+* Apps MUST generate an unpredictable `state` parameter for each user
+session.  An app MUST validate the `state` value for any request sent to its
+redirect URL; include `state` with all authorization requests; and validate
+the `state` value included in access and refresh tokens it receives.
+* An app should NEVER treat any inputs it receives as executable code.
+* An app MUST NOT forward values passed back to its redirect URL to any
+other arbitrary or user-provided URL (a practice known as an “open
+redirector”).
+* An app should NEVER store bearer tokens in cookies that are transmitted
+in the clear.
+* Apps should persist tokens and other sensitive data in app-specific
+storage locations only, not in system-wide-discoverable locations.
+
 #### 1. App asks for authorization
 
 At launch time, the app constructs a request for authorization by adding the
@@ -294,86 +321,9 @@ Location: https://ehr/authorize?
 ```
 
 <br><br>
-## SMART authorization and resource retrieval
 
-#### First, a word about app protection...
-The app is responsible for protecting itself from potential misbehaving or
-malicious values passed to its redirect URL (e.g., values injected with
-executable code, such as SQL) and for protecting authorization codes, access
-tokens, and refresh tokens from unauthorized access and use.  The app
-developer must be aware of potential threats, such as malicious apps running
-on the same platform, counterfeit authorization servers, and counterfeit
-resource servers, and implement countermeasures to help protect both the
-app itself and any sensitive information it may hold.
 
-* Apps MUST assure that sensitive information (authentication secrets,
-authorization codes, tokens) is transmitted ONLY to authenticated servers,
-over TLS-secured channels.
-* Apps MUST generate an unpredictable `state` parameter for each user
-session.  An app MUST validate the `state` value for any request sent to its
-redirect URL; include `state` with all authorization requests; and validate
-the `state` value included in access and refresh tokens it receives.
-* An app should NEVER treat any inputs it receives as executable code.
-* An app MUST NOT forward values passed back to its redirect URL to any
-other arbitrary or user-provided URL (a practice known as an “open
-redirector”).
-* An app should NEVER store bearer tokens in cookies that are transmitted
-in the clear.
-* Apps should persist tokens and other sensitive data in app-specific
-storage locations only, not in system-wide-discoverable locations.
-
-#### 1. App asks for authorization
-The authorization decision is up to the EHR system and the end-user. Based on
-any available information including local policies and perhaps direct end-user
-input, a decision is made to grant or deny access. This decision is
-communicated to the app when the EHR redirects the browser to the app's
-<code>redirect_uri</code>, with the following URL parameters:
-
-<table class="table">
-  <thead>
-    <th colspan="3">Parameters</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>code</code></td>
-      <td><span class="label label-success">required</span></td>
-
-      <td>
-
-WARNING:  The app is responsible for protecting itself from potential
-misbehaving or malicious values passed to its redirect URL (e.g., values
-injected with executable code, such as SQL) and for protecting
-authorization codes, access tokens, and refresh tokens from unauthorized
-access and use.  An app should never treat any inputs it receives as
-executable code.  An app MUST NOT forward values passed back to its redirect
-URL to any other arbitrary or user-provided URL (a practice known as an
-“open redirector”).
-
-      </td>
-    </tr>
-    <tr>
-      <td><code>state</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>The exact value received from the client.</td>
-    </tr>
-  </tbody>
-</table>
-
-#### *For example*
-
-Based on the `client_id`, current EHR user, configured policy, and perhaps
-direct user input, the EHR makes a decision to approve or deny access.  This
-decision is communicated to the app by redirection to the app's registered
-`redirect_uri`:
-
-```
-Location: https://app/after-auth?
-  code=123abc&
-  state=98wrghuwuogerg97
-```
-
-<br><br>
-#### 4. App exchanges authorization code for access token
+#### 3. App exchanges authorization code for access token
 
 After obtaining an authorization code, the app trades the code for an access
 token via HTTP `POST` to the EHR's token URL, with content-type

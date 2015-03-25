@@ -258,13 +258,13 @@ cross-site request forgery or session fixation attacks.
     </tr>
      <tr>
       <td><code>aud</code></td>
-      <td><span class="label label-info">recommended</span></td>
+      <td><span class="label label-success">required</span></td>
       <td>
 
 URL of the EHR resource server from which the app wishes to retrieve a FHIR
-resource.  This parameter SHOULD be used to prevent presenting a bearer token
-to a counterfeit resource server (which then could use it to retrieve the
-authorized resource from the authentic resource server).
+resource.  This parameter prevents leaking a genuine bearer token to a counterfeit
+resource server. (Note: in the case of a <span class="label label-primary">standalone launch</span>
+flow, this `aud` value is the same as the launch's `iss` value.)
 
       </td>
     </tr>

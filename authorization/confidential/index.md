@@ -439,7 +439,10 @@ FHIR API call to the EHR's FHIR endpoint. The request includes an
 You can use the `expires_in` field from the authorization response (see <a
 href="#step-4">step 4</a>) to determine when your access token will expire.
 After an access token expires, it may be possible to request an updated token
-without user intervention, if the EHR supplied a `refresh_token` in the
+without user intervention, if you asked for a refresh token via the
+`offline_access` scope (see <a
+href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR
+Access Scopes</a> for details) and the EHR supplied a `refresh_token` in the
 authorization response.  To obtain a new access token, the app issues an HTTP
 `POST` to the EHR authorization server's token URL, with content-type
 `application/x-www-form-urlencoded`, including an Authorization header for HTTP

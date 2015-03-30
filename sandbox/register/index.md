@@ -58,15 +58,20 @@ ways to do this that we offer.
         }
         
         var call_params = {
-            "client_name": $('#input_client_name').val(),
-            "initiate_login_uri": [$('#input_launch_uri').val()],
-            "redirect_uris": [$('#input_redirect_uri').val()],
-            "logo_uri": $('#input_logo_uri').val(),
-            "contacts": [$('#input_contact').val()],
-            "scope": $('#input_scopes').text().replace(/\s+/g, " "),
-            "grant_types": ["authorization_code"],
-            "token_endpoint_auth_method": client_type
+            client_name: $('#input_client_name').val(),
+            initiate_login_uri: [$('#input_launch_uri').val()],
+            redirect_uris: [$('#input_redirect_uri').val()],
+            logo_uri: $('#input_logo_uri').val(),
+            contacts: [$('#input_contact').val()],
+            scope: $('#input_scopes').text().replace(/\s+/g, " "),
+            grant_types: ["authorization_code"],
+            token_endpoint_auth_method: client_type
         };
+        
+        if ($("input[name=input_refresh_token]:checked").val() === "enabled") {
+            call_params.scope += " offline_access";
+            call_params.grant_types.push("refresh_token");
+        }
         
         $.ajax({
             url: 'https://authorize.smarthealthit.org/register',
@@ -78,20 +83,16 @@ ways to do this that we offer.
             var canonical = function(scopes){
               JSON.stringify(scopes.split(/\s+/).sort())
             };
-            var scopes_match = (canonical(r.scope) === canonical(call_params.scope));
-            var clients_match = (call_params.client_name === r.client_name);
-            var auth_methods_match = (call_params.token_endpoint_auth_method === r.token_endpoint_auth_method);
-            if (scopes_match && clients_match && auth_methods_match) {
-                $('#client_id').text(r.client_id);
-                if (r.client_secret) {
-                    $('#client_secret').text(r.client_secret);
-                    $('#client_secret_div').show();
-                }
-                $('#registration_access_token').text(r.registration_access_token);
-                $('#reg-form').fadeOut(400, function() {
-                    $('#reg-result').fadeIn();
-                });
+            
+            $('#client_id').text(r.client_id);
+            if (r.client_secret) {
+                $('#client_secret').text(r.client_secret);
+                $('#client_secret_div').show();
             }
+            $('#registration_access_token').text(r.registration_access_token);
+            $('#reg-form').fadeOut(400, function() {
+                $('#reg-result').fadeIn();
+            });
         });
     }
 </script>
@@ -143,6 +144,23 @@ ways to do this that we offer.
           <label>
             <input name="input_client_type" type='radio' value='confidential'>
             confidential (apps that have server-side logic <a href='http://docs.smarthealthit.org/authorization/confidential/'>[details]</a>)
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Refresh token</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input name="input_refresh_token" value='enabled' type="radio">
+            enabled (requests "refresh_token" grant type and "offline_access" scope)
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input name="input_refresh_token" type='radio' checked='checked'  value='disabled'>
+            disabled (recommended for most apps)
           </label>
         </div>
       </div>

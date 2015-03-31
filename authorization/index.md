@@ -445,26 +445,6 @@ claims:
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
     </tr>
     <tr>
-      <td><code>host</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>URL of the server that issued the token.</td>
-    </tr>
-    <tr>
-      <td><code>client_id</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>Client ID of the client to whom the token was issued.  Required for confidential clients.</td>
-    </tr>
-    <tr>
-      <td><code>username</code></td>
-      <td><span class="label label-success">optional</span></td>
-      <td>ID of the end-user that authorized the client, or the client ID of a client acting on its own behalf (such as for bulk transfer).</td>
-    </tr>
-    <tr>
-      <td><code>timestamp</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>Time when token was issued.</td>
-    </tr>
-    <tr>
       <td><code>intent</code></td>
       <td><span class="label label-info">optional</span></td>
       <td>A string value describing the intent of the application launch. Launch intent values are agreed upon in advance by both the SMART host and client.</td>
@@ -537,10 +517,6 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
   "intent": "client-ui-name",
   "patient":  "123",
   "encounter": "456"
-  "host": "https://hospital.org/EHR_authsvr/endpoint", 
-  "client_id":  "123abcf8",
-  "username": "QBOEKARUAOE",
-  "timestamp":  "2015-03-09 03:14:07”    
 }
 ```
 

@@ -452,16 +452,6 @@ keys:
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
     </tr>
     <tr>
-      <td><code>intent</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>A string value describing the intent of the application launch. Launch intent values are agreed upon in advance by both the SMART host and client.</td>
-    </tr>
-    <tr>
-      <td><code>smart_style_url</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>A URL where the host's style parameters can be retrieved (for apps that support <a href="../scopes-and-launch-context#styling">styling</a>).</td>
-    </tr>
-    <tr>
       <td><code>patient</code>, etc.</td>
       <td><span class="label label-info">optional</span></td>
       <td>

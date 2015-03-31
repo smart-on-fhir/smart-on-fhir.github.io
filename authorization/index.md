@@ -611,37 +611,6 @@ The response is a JSON object containing a new access token, with the following 
       <td>The refresh token issued by the authorization server. If present, the app should discard any previosu <code>refresh_token</code> associated with this launch, replacing it with this new value.</td>
     </tr>
     <tr>
-      <td><code>host</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>URL of the server that issued the token.</td>
-    </tr>
-    <tr>
-      <td><code>client_id</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>Identifier of the client to whom the token was issued.</td>
-    </tr>
-    <tr>
-      <td><code>username</code></td>
-      <td><span class="label label-success">optional</span></td>
-      <td>ID of the end-user that authorized the client, or the client ID of a client acting on its own behalf (such as for bulk transfer).
-      </td>
-    </tr>
-    <tr>
-      <td><code>timestamp</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>Time when token was issued.</td>
-    </tr>
-    <tr>
-      <td><code>intent</code></td>
-      <td><span class="label label-success">optional</span></td>
-      <td>A string value describing the intent of the application launch. Launch intent values are agreed upon in advance by both the SMART host and client.</td>
-    </tr>
-    <tr>
-      <td><code>smart_style_url</code></td>
-      <td><span class="label label-success">optional</span></td>
-      <td>A URL where the host's style parameters can be retrieved (for apps that support styling).</td>
-    </tr>
-    <tr>
       <td><code>patient, etc.</code></td>
       <td><span class="label label-success">optional</span></td>
       <td>When an app is launched with patient context, these parameters communicate the context values. For example, a parameter like patient=123 would indicate the FHIR resource https://[fhir-base]/Patient/123. Other context parameters may also be available. For full details see SMART launch context parameters.</td>
@@ -673,13 +642,8 @@ refresh_token=a47txjiipgxkvohibvsm
   "token_type": "bearer",
   "expires_in": "3600",
   "scope": "patient/Observation.read patient/Patient.read",
-  "intent": "client-ui-name",
   "patient":  "123",
   "encounter": "456",
-  "host": “https://hospital.org/EHR_authsvr/endpoint”, 
-  "client_id":  "123abcf8",
-  "username": "QBOEKARUAOE",
-  "timestamp":  "2015-03-09 03:14:07”,
   "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"     
 }
 ```

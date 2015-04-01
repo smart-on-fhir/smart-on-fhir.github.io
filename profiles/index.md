@@ -304,7 +304,7 @@ a valid UCUM unit in `code`.
 
 ##### Example: pCO2 in blood [https://fhir-open-api.smarthealthit.org/Observation/1690-lab](https://fhir-open-api.smarthealthit.org/Observation/1690-lab?_format=json)
 
-## Non-quantitative labs (LOINC scale = `Ord`, `Nom`, or `Nar)
+## Non-quantitative labs (LOINC scale = `Ord`, `Nom`, or `Nar`)
 
 Lab tests that do not produce quantitative values include a `valueString`
 element containing the non-quantitative value. **TODO**: describe separate

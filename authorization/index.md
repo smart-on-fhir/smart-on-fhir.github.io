@@ -84,8 +84,6 @@ If a refresh token is returned along with the access token, the app may
 use this to request a new access token, with the same scope, once
 the access token expires.
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBsZWZ0IG9mIEFwcDogVXNlciBoYXMgbGF1bmNoZWQgYXBwXG5mcm9tIGFuIEVIUlxub3Igc3RhbmRhbG9uZSBmbG93CgBEBXJpZ2gAQApSZXF1ZXN0IGF1dGhvcml6YXRpb24KQXBwLT4-RUhSIEF1dGggU2VydmVyOiAgUmVkaXJlY3QgdG8gABkFUzogAB4Fb3JpemUAUQ8ALhEAIAkgQXBwXG4obWF5IGluY2x1ZGUgZW5kLXVzZXIAew4pAIEfFCBPbiBhcHByb3ZhbAoAgRUPLT4-AB4GAIEeDGFwcDpyAIEzB191cmw_Y29kZT0xMjMmLi4uAE0VRXhjaGFuZ2UgY29kZSBmb3IgYWNjZXNzIHRva2VuCgCCGgYAgg0SUE9TVCAvAB8FAFsJAIFxJGVudGljYXRlIGFwcACCJSBDcmVhdGUAgQMGOlxue1xuAIEVBl8AgRYFPXNlY3JldC0AgSMFLXh5eiZcbnBhdGllbnQ9NDU2JlxuZXhwaXJlc19pbjogMzYwMFxuLi4uXG59AII4EgCEZQVbAIFtDCByZXNwb25zZV0AhDcUQQCCHQYAaAcgZGF0YSB2aWEgRkhJUiBBUEkAgiwKUmVzb3VyY2UAhFAJR0VUIC9maGlyL1AAgScGLzQ1NlxuAIRSCACFEAU6IEJlYXJlciAAgVMQAIRkEwBQEVJldHVybgCBBQZyAHYIAIQVBgCEPgUAgQMPAIF2B3sAIwhUeXBlOiAiAIEWByIsICJiaXJ0aERhdGUiOi4uLn0KCgoKCgoAAQU&s=default"/>
-
 ## SMART "launch sequence"
 *Note that the launch sequence happens before the sequence shown in the diagram above commences.*
 #### EHR launch sequence
@@ -198,6 +196,10 @@ redirector”).
 in the clear.
 * Apps should persist tokens and other sensitive data in app-specific
 storage locations only, not in system-wide-discoverable locations.
+
+#### *SMART authorization sequence* 
+
+<img class="sequence-diagram-raw"  src=http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSByaWdodCBvZiBBcHA6IFJlcXVlc3QgYXV0aG9yaXphdGlvbgpBcHAgLT4-IEVIUiBBdXRoeiBTZXJ2ZXI6IFJlZGlyZWN0IHRvIHtlaHI6ADEIZV91cml9P3Jlc3BvbnNlX3R5cGU9Y29kZSYuLi4KAGwOAEUSQQA-CCBBcHBcbihtYXkgaW5jbHVkZSByAIEcB2ZvciBlbmQtdXNlcgCBIg4pCk5vdGUgAEUcT24gYXBwcm92YWwKAIFGECAtPj4AggYHAIFSC2FwcDpyAIFnBwCBVgZjb2RlPWFiYwCBPxMAgkcFRXhjaGFuZ2UgY29kZQCBKgVhY2Nlc3MgdG9rZQCCUAUtPgCCQBJQT1NUIC8AHgUAXAYxMjMmc2VjcmV0PTM4MjloajU3JnN0YXRlAIIhJWVudGljYXRlIGFwcACCEQYAglwbQ3JlYXRlAIEaBjpcbiB7XG4AgS0GXwCBLgU9AIEBBi0AgTsFLXh5eiZcbmlkAAgUdzNrJlxucGF0aWVudD00NTYmXG5leHBpcmVzX2luOiAzNjAwJlxucmVmcmVzaAAtFXBxIFxuLi4uXG59Cn0AgxAUAIUrBVsAgkcMIACEZghd&s=default/>
 
 #### 1. App asks for authorization
 

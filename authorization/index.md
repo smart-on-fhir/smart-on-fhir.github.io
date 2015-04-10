@@ -199,7 +199,7 @@ storage locations only, not in system-wide-discoverable locations.
 
 #### *SMART authorization sequence* 
 
-<img class="sequence-diagram-raw"  src=http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSByaWdodCBvZiBBcHA6IFJlcXVlc3QgYXV0aG9yaXphdGlvbgpBcHAgLT4-IEVIUiBBdXRoeiBTZXJ2ZXI6IFJlZGlyZWN0IHRvIHtlaHI6ADEIZV91cml9P3Jlc3BvbnNlX3R5cGU9Y29kZSYuLi4KAGwOAEUSQQA-CCBBcHBcbihtYXkgaW5jbHVkZSByAIEcB2ZvciBlbmQtdXNlcgCBIg4pCk5vdGUgAEUcT24gYXBwcm92YWwKAIFGECAtPj4AggYHAIFSC2FwcDpyAIFnBwCBVgZjb2RlPWFiYwCBPxMAgkcFRXhjaGFuZ2UgY29kZQCBKgVhY2Nlc3MgdG9rZQCCUAUtPgCCQBJQT1NUIC8AHgUAXAYxMjMmc2VjcmV0PTM4MjloajU3JnN0YXRlAIIhJWVudGljYXRlIGFwcACCEQYAglwbQ3JlYXRlAIEaBjpcbiB7XG4AgS0GXwCBLgU9AIEBBi0AgTsFLXh5eiZcbmlkAAgUdzNrJlxucGF0aWVudD00NTYmXG5leHBpcmVzX2luOiAzNjAwJlxucmVmcmVzaAAtFXBxIFxuLi4uXG59Cn0AgxAUAIUrBVsAgkcMIACEZghd&s=default/>
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSByaWdodCBvZiBBcHA6IFJlcXVlc3QgYXV0aG9yaXphdGlvbgpBcHAgLT4-IEVIUiBBdXRoeiBTZXJ2ZXI6IFJlZGlyZWN0IHRvIHtlaHI6ADEIZV91cml9P3Jlc3BvbnNlX3R5cGU9Y29kZSYuLi4KAGwOAEUSQQA-CCBBcHBcbihtYXkgaW5jbHVkZSByAIEcB2ZvciBlbmQtdXNlcgCBIg4pCk5vdGUgAEUcT24gYXBwcm92YWwKAIFGECAtPj4AggYHAIFSC2FwcDpyAIFnBwCBVgZjb2RlPWFiYwCBPxMAgkcFRXhjaGFuZ2UgY29kZQCBKgVhY2Nlc3MgdG9rZQCCUAUtPgCCQBJQT1NUIC8AHgUAXAYxMjMmc2VjcmV0PTM4MjloajU3JnN0YXRlAIIhJWVudGljYXRlIGFwcACCEQYAglwbQ3JlYXRlAIEaBjpcbiB7XG4AgS0GXwCBLgU9AIEBBi0AgTsFLXh5eiZcbmlkAAgUdzNrJlxucGF0aWVudD00NTYmXG5leHBpcmVzX2luOiAzNjAwJlxucmVmcmVzaAAtFXBxIFxuLi4uXG59Cn0AgxAUAIUrBVsAgkcMIACEZghd&s=default/">
 
 #### 1. App asks for authorization
 
@@ -232,8 +232,9 @@ URL using the "application/x-www-form-urlencoded" format:
       <td><span class="label label-success">required</span></td>
       <td>
 
-Must describe the access that the app needs, including clincal data scopes like
-<code>patient/*.read</code> and either:
+Must describe the access that the app needs, including clinical data scopes like
+<code>patient/*.read</code>, openid and profile (if app needs authenticated 
+patient identity) and either:
 
 <ul>
 <li> a launch ID in
@@ -319,7 +320,7 @@ Location: https://ehr/authorize?
             client_id=app-client-id&
             redirect_uri=https%3A%2F%2Fapp%2Fafter-auth&
             scope=launch:xyz123+patient%2FObservation.read+patient%2FPatient.read&
-            state=98wrghuwuogerg97
+            openid&profile&state=98wrghuwuogerg97
 ```
 
 <br><br>
@@ -477,6 +478,16 @@ context parameters</a>.
 
       </td>
     </tr>
+    <tr>
+      <td><code>ID_token</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>Authenticated patient identity and profile, if requested.</td>
+    </tr>
+    <tr>
+      <td><code>refresh_token</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>Credential used to request new access token after token expires.</td>
+      </tr>
   </tbody>
 </table>
 

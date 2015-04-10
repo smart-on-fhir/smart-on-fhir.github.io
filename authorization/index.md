@@ -56,22 +56,6 @@ been registered with the EHR authorization server.
 If the app is a standalone app that launches from outside an EHR session,
 the app will acquire context from the EHR AS during the authorization process.
 
-In SMART's <span class="label label-primary">EHR launch</span> flow, a user has
-established an EHR session, and then decides to launch an app. This could be a
-single-patient app (which runs in the context of a patient record), or a
-user-level app (like an appointment manager or a population dashboard). The EHR
-initiates a "launch sequence" in which a new browser instance (or `iframe`) is
-created, pointing to the app's registered launch URL and passing some context.
-At this point, the app enters a standard OAuth2 authorization flow using an
-Authorization Code Grant. Once the app is authorized, it knows about the
-current EHR session and can access clinical data through the FHIR API.
-
-Alternatively, in SMART's <span class="label label-primary">standalone
-launch</span> flow, a user selects an app from outside of the EHR, for example
-by tapping an app icon on a mobile phone home screen. This app declares its
-context requirements to the EHR's authorization server, which allows the EHR to
-gather launch context during the authorization process.
-
 Once the app is launched, it requests authorization to access a FHIR resource
 by redirecting its authorization request to the EHR’s authorization server.
 Based on pre-defined rules and possibly end-user authorization, the EHR
@@ -89,9 +73,16 @@ the access token expires.
 *Note that the launch sequence happens before the sequence shown in the diagram above commences.*
 #### EHR launch sequence
 
-Based on a clinical user's EHR session context, the EHR initiates a launch
-sequence by opening a new browser widget, window, or `iframe` on the app's
-launch URL. The following parameters are included:
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=CkVIUiBTZXNzaW9uIC0-PiBBcHA6IFJlZGlyZWN0IHRvIHthcHA6bGF1bmNoX3VyaX0_AAYGPTEyMwpBcHAgLT4gRUhSIEZISVIgU2VydmVyOiBHRVQgL21ldGFkYXRhAF4FABQLIC0AXwdbQ29uZm9ybWFuY2Ugc3RhdGVtZW50IGluY2x1ZGluZyBPQXV0aCAyLjAgZW5kcG9pbnQgVVJMc10AcQcAcwZBdXRoegBxCQCBLQ1laHI6YXV0aG9yaXplAIE3BnNjb3BlPQCBSQY6MTIzJgBzBT1hYmMmLi4uCg&s=default"/>
+
+In SMART's <span class="label label-primary">EHR launch</span> flow (shown above), 
+a user has established an EHR session, and then decides to launch an app. This 
+could be a single-patient app (which runs in the context of a patient record), or 
+a user-level app (like an appointment manager or a population dashboard). The EHR
+initiates a "launch sequence" by opening a new browser instance (or `iframe`) 
+pointing to the app's registered launch URL and passing some context.
+
+The following parameters are included:
 
 <table class="table">
   <thead>
@@ -122,11 +113,6 @@ time by creating a <code>launch:[id]</code> scope (like <code>launch:123</code>)
   </tbody>
 </table>
 
-To complete the following steps, the app discovers the server's OAuth
-`authorize` and `token` endpoint URLs by <a
-href="{{site.baseurl}}authorization/conformance-statement"> examining the EHR's
-conformance statement</a>.
-
 
 #### *For example*
 A launch might cause the browser to redirect to:
@@ -139,34 +125,45 @@ On receiving the launch notification, the app would query the issuer's
     GET https://ehr/fhir/metadata
     Accept: application/json
 
-The metadata response contains (among other details) the EHR's authorization
-URL for use below. For details about how the EHR publishes the relevant OAuth
-URLs, <a href="{{site.baseurl}}authorization/conformance-statement">see
-here</a>.  Later, when the app prepares a list of access scopes to request from
+The metadata response contains (among other details) the EHR's 
+<a href="{{site.baseurl}}authorization/conformance-statement">
+conformance statement</a> identifying the OAuth `authorize` and `token`
+endpoint URLs for use in requesting authorization to access FHIR 
+resources. 
+
+Later, when the app prepares a list of access scopes to request from
 the EHR authorization server, it will bind to the existing EHR context by
 including the launch notification in the scope.
 
 #### Standalone launch sequence
 
-If the app is a standalone app that launches from outside the EHR, it will
-launch from its registered URL without a launch id.  Such an app will declare
-its launch context requirements by adding specific scopes to the authorization
-request.  The EHR’s "authorize" endpoint will acquire the context the app needs
-and making it available.
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=CgpBcHAgLT4gRUhSIEZISVIgU2VydmVyOiBHRVQgL21ldGFkYXRhCgAQDyAtPiBBcHA6IFtDb25mb3JtYW5jZSBzdGF0ZW1lbnQgaW5jbHVkaW5nIE9BdXRoIDIuMCBlbmRwb2ludCBVUkxzXQBxBwBzBkF1dGh6AHEJUmVkaXJlY3QgdG8ge2VocjphdXRob3JpemVfdXJpfT9zY29wZT1sYXVuY2gvcGF0aWVudCYAdwU9YWJjJi4uLgo&s=default"/>
 
-For example:
+Alternatively, in SMART's <span class="label label-primary">standalone
+launch</span> flow (shown above), a user selects an app from outside the EHR, 
+for example by tapping an app icon on a mobile phone home screen. This app 
+will launch from its registered URL without a launch id.   
 
-If the app needs patient context, the EHR AS may provide the end-user with a
-patient selection widget.  For full details, see SMART launch context
-parameters (/authorization/scopes-and-launch-context).
+In order to obtain launch context and request authorization to access FHIR 
+resources, the app discovers the EHR authorization server's OAuth
+`authorize` and `token` endpoint URLs by querying the FHIR endpoint
+for the <a
+href="{{site.baseurl}}authorization/conformance-statement"> 
+EHR's conformance statement</a>.  
+
+The app then can declare its launch context requirements
+by adding specific scopes to the request it sends to the EHR's authorization
+server.  The `authorize` endpoint 
+will acquire the context the app needs and make it available.
+
+#### *For example:*
+
+If the app needs patient context, the EHR's authorization server 
+may provide the end-user with a
+patient selection widget.  For full details, see <a href="{{site.baseur1}}authorization/scopes-and-launch-context">SMART launch context parameters</a>.
 
 *	launch/patient - to indicate that the app needs to know a patient ID
 *	launch/encounter - to indicate the app needs an encounter
-
-To complete the authorization and retrieval steps below, the app discovers the
-server's OAuth authorize and token endpoint URLs by examining the EHR's
-conformance statement.
-
 
 <br><br>
 

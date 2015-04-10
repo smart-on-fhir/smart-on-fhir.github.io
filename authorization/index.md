@@ -510,24 +510,29 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
 }
 ```
 
-At this point, **the launch flow is complete**. Follow steps below to work with
-data and refresh access tokens.
+At this point, **the authorization flow is complete**. Follow steps below to work with
+data and refresh access tokens, as shown in the following sequence diagram.
+
+<img class="sequence-diagram-raw"
+src=http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSByaWdodCBvZiBBcHA6IEFjY2VzcyBwYXRpZW50IGRhdGEgCkFwcC0-PkVIUiBGSElSIFNlcnZlcjogUmVkaXJlY3QgdG8ge2VocjpmaGlyX3VyaX0_YQBCBV90b2tlbj1zZWNyZXQtY29kZS14eXoKAGkOAEQTdHVybgBlBnJlc291cmNlIHRvIGFwcAoAdQ8tPgCBMAV7AB8IVHlwZTogIlAAgTgGIiwgImJpcnRoRGF0ZSI6Li4ufQB2BmxlZgCBYREAgSYFIGV4cGlyZXMAgRQPAIIVBVJlcXVlc3QAIgdyZWZyZXNoAIIQC0F1dGh6AIITCQCCCxJhdXRoegCCGAYANgcAghEOAIInBS13cHEmAIIqBj0zODI5NTcAghsTAFwOQXV0aGVudGljYXRlIGFwcCAKTgATH0NyZWF0ZSBuZXcAgXAGOlxuIHtcbgCDIBQAgQ8GeHl6JlxuSUQAgR4GAIEiDzNrJlxuAIQpBz00NTYmXG4Agj8HX2luOiAzNjAwXG4AgVMfXG4uLi5cbn0KfQoAg14FAIJADACDXQdbAIRNBgCCdglzcG9uc2VdCgoKCgoKAAEFCg&s=default/>
+
+
 
 <br><br>
 #### 4. App accesses clinical data via FHIR API
 
 With a valid access token, the app can access protected EHR data by issuing a
-FHIR API call to the EHR's FHIR endpoint. The request includes an
-`Authorization` header that presents the `access_token` as "Bearer" token:
+FHIR API call to the FHIR endpoint on the EHR's resource server. The request includes an
+`Authorization` header that presents the `access_token` as a "Bearer" token:
 
-{% raw %}
+```
     Authorization: Bearer {{access_token}}
-{% endraw %}
+```
 
-(Note that in a real request, {%raw%}`{{access_token}}`{%endraw%} is replaced
+(Note that in a real request, `{{access_token}}`is replaced
 with the actual token value.)
 
-#### For example
+#### *For example*
 With this response, the app knows which patient is in-context, and has an
 OAuth2 bearer-type access token that can be used to fetch clinical data:
 
@@ -540,8 +545,20 @@ Authorization: Bearer i8hweunweunweofiwweoijewiwe
   "birthTime": ...
 }
 ```
+The EHR FHIR resource server validates the access token and ensures that it has 
+not expired and that its scope covers the requested FHIR resource.  The 
+resource server also validates that the URL given for the `aud` parameter is its 
+own FHIR endpoint.  The method used by the EHR to validate the access token is 
+beyond the scope of this specification but generally involves an interaction or 
+coordination between the EHR’s resource server and the authorization server.
 
+On occasion, an app may receive a FHIR resource that contains a “reference” to 
+a resource hosted on a different resource server.  The app SHOULD NOT blindly 
+follow such references and send along its access_token, as the token may be 
+subject to potential theft.   The app SHOULD either ignore the reference, or 
+initiate a new request for access to that resource.  
 <br><br>
+
 #### 5. (Later...) App uses a refresh token to obtain a new access token
 
 You can use the `expires_in` field from the authorization response (see <a

@@ -233,13 +233,14 @@ URL using the "application/x-www-form-urlencoded" format:
       <td>
 
 Must describe the access that the app needs, including clinical data scopes like
-<code>patient/*.read</code>, openid and profile (if app needs authenticated 
-patient identity) and either:
+<code>patient/*.read</code>, <code>openid</code> and <code>profile</code> (if app 
+needs authenticated patient identity) and either:
 
 <ul>
 <li> a launch ID in
 the form <code>launch:{id}</code> to bind to the current EHR context.</li>
-<li> a set of launch context requirements in the form <code>launch/patient</code> the EHR to establish context on your behalf.</a>
+<li> a set of launch context requirements in the form <code>launch/patient</code> 
+the EHR to establish context on your behalf.</a>
 </ul>
 
 See <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR Access

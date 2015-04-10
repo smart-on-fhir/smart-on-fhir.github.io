@@ -45,16 +45,21 @@ No matter how an app registers with an EHR's authorization service, at registrat
 
 ## SMART authorization & FHIR access: overview
 
-An app (confidential or public) can launch from within an existing EHR session
-("EHR launch"), or as a standalone app.  If the app launches from an existing
-EHR session, an opaque handle to the EHR context is passed along to the app as
-part of the launch URL.  The app later will include this context handle as a
-scope parameter when it requests authorization to access resources.   Note that
-the complete URLs of all apps approved for use by users of this EHR will have
-been registered with the EHR authorization server.
+An app (confidential or public) can launch from within an existing EHR session,
+which is known as an EHR launch.  Alternatively, it can launch as a standalone
+app.
 
-If the app is a standalone app that launches from outside an EHR session,
-the app will acquire context from the EHR AS during the authorization process.
+In an <span class="label label-primary">EHR launch</span>, an opaque handle to
+the EHR context is passed along to the app as part of the launch URL.  The app
+later will include this context handle as a scope parameter when it requests
+authorization to access resources.  Note that the complete URLs of all apps
+approved for use by users of this EHR will have been registered with the EHR
+authorization server.
+
+Alternatively, in a <span class="label label-primary">standalone launch</span>,
+when the app launches from outside an EHR session, the app can request context
+from the EHR authorization server during the authorization process described
+below.
 
 Once the app is launched, it requests authorization to access a FHIR resource
 by redirecting its authorization request to the EHR’s authorization server.
@@ -68,8 +73,10 @@ use this to request a new access token, with the same scope, once
 the access token expires.
 
 ## SMART "launch sequence"
-*Note that the launch sequence happens before the sequence shown in the diagram above commences.*
-#### EHR launch sequence
+
+The two alternative launch sequences are described below.
+
+### EHR launch sequence
 
 <img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=RUhSIFNlc3Npb24gLT4-IEFwcDogUmVkaXJlY3QgdG8gaHR0cHM6Ly97YXBwIGxhdW5jaF91cml9P1xuAAgGPTEyMyZcbmlzcz0AIwlmaGlyIGJhc2UgdXJsfQpBcHAgLT4gRUhSIEZISVIgU2VydmVyOiBHRVQgL21ldGFkYXRhCgAQDyAtAIEHB1tDb25mb3JtYW5jZSBzdGF0ZW1lbnQgaW5jbHVkaW5nIE9BdXRoIDIuMCBlbmRwb2ludCBVUkxzXQBxBwBzBkF1dGh6AHEJAIFNFWVociBhdXRob3JpegCBNAY_c2NvcGU9AIFxBjoxMjMmAHsFPWFiYyYuLi4K&s=default"/>
 
@@ -133,7 +140,7 @@ Later, when the app prepares a list of access scopes to request from
 the EHR authorization server, it will bind to the existing EHR context by
 including the launch notification in the scope.
 
-#### Standalone launch sequence
+### Standalone launch sequence
 
 <img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=CkFwcCAtPiBFSFIgRkhJUiBTZXJ2ZXI6IEdFVCAvbWV0YWRhdGEKABAPIC0-IEFwcDogW0NvbmZvcm1hbmNlIHN0YXRlbWVudCBpbmNsdWRpbmcgT0F1dGggMi4wIGVuZHBvaW50IFVSTHNdAHEHAHMGQXV0aHoAcQlSZWRpcmVjdCB0byBodHRwczovL3tlaHIgYXV0aG9yaXplIHVybH0_c2NvcGU9bGF1bmNoOjEyMyYAewU9YWJjJi4uLgo&s=default"/>
 

@@ -174,28 +174,36 @@ conformance statement.
 ## SMART authorization and resource retrieval
 
 #### First, a word about app protection...
+
 The app is responsible for protecting itself from potential misbehaving or
 malicious values passed to its redirect URL (e.g., values injected with
 executable code, such as SQL) and for protecting authorization codes, access
 tokens, and refresh tokens from unauthorized access and use.  The app
 developer must be aware of potential threats, such as malicious apps running
 on the same platform, counterfeit authorization servers, and counterfeit
-resource servers, and implement countermeasures to help protect both the
-app itself and any sensitive information it may hold.
+resource servers, and implement countermeasures to help protect both the app
+itself and any sensitive information it may hold. For background, see the
+[OAuth 2.0 Thread Model and Security
+Considerations](https://tools.ietf.org/html/rfc6819).
 
 * Apps MUST assure that sensitive information (authentication secrets,
 authorization codes, tokens) is transmitted ONLY to authenticated servers,
 over TLS-secured channels.
+
 * Apps MUST generate an unpredictable `state` parameter for each user
 session.  An app MUST validate the `state` value for any request sent to its
 redirect URL; include `state` with all authorization requests; and validate
-the `state` value included in access and refresh tokens it receives.
+the `state` value included in access tokens it receives.
+
 * An app should NEVER treat any inputs it receives as executable code.
+
 * An app MUST NOT forward values passed back to its redirect URL to any
 other arbitrary or user-provided URL (a practice known as an “open
 redirector”).
+
 * An app should NEVER store bearer tokens in cookies that are transmitted
 in the clear.
+
 * Apps should persist tokens and other sensitive data in app-specific
 storage locations only, not in system-wide-discoverable locations.
 
@@ -381,15 +389,15 @@ Location: https://app/after-auth?
 
 <br><br>
 
-
 #### 3. App exchanges authorization code for access token
 
 After obtaining an authorization code, the app trades the code for an access
-token via HTTP `POST` to the EHR's token URL, with content-type
-`application/x-www-form-urlencoded`.
+token via HTTP `POST` to the EHR authorization server's token endpoint URL, 
+using content-type `application/x-www-form-urlencoded`.
 
-For <span class="label label-primary">public apps</span>, no authentication is
-required at this step. For <span class="label label-primary">confidential
+For <span class="label label-primary">public apps</span>, authentication is
+not possible, since the app cannot be trusted to protect a secret.  For 
+<span class="label label-primary">confidential
 apps</span>, an `Authorization` header using HTTP Basic authentication is
 required, where the username is the app's `client_id` and the password is the
 app's `client_secret` (see [example](./basic-auth-example)).
@@ -423,8 +431,8 @@ app's `client_secret` (see [example](./basic-auth-example)).
   </tbody>
 </table>
 
-The response is a JSON object containing the access token, with the following
-keys:
+The response is a JSON Web Token (JWT) bearer token, with the following
+claims:
 
 <table class="table">
   <thead>
@@ -478,12 +486,29 @@ context parameters</a>.
   </tbody>
 </table>
 
+The EHR authorization server decides what `expires_in` value to assign to an 
+access token and whether to issue a refresh token along with the access token.   
+If the app receives a refresh token along with the access token, it can 
+exchange this refresh token for a new access token when the current access 
+token expires (see step 5 below).  A refresh token should be bound to the 
+same `client_id` and should contain the same set of claims as the access 
+token with which it is associated. 
+
+Apps SHOULD store tokens in app-specific storage locations only, not in 
+system-wide-discoverable locations.  Access tokens SHOULD have a valid 
+lifetime no greater than one hour, and refresh tokens (if issued) SHOULD 
+have a valid lifetime no greater than twenty-four hours.  Confidential 
+clients may be issued longer-lived tokens than public clients.  
+
+Depending upon applicable policy, access tokens and refresh tokens 
+MAY be signed by the EHR authorization server using JSON Web Signature 
+(JWS).  
 
 
 #### *For example*
 <a id="step-4"></a>
 Given an authorization code, the app trades it for an access token via HTTP
-POST.
+`POST`.
 
 ##### Request for
 ```

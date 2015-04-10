@@ -460,16 +460,6 @@ claims:
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
     </tr>
     <tr>
-      <td><code>intent</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>A string value describing the intent of the application launch. Launch intent values are agreed upon in advance by both the SMART host and client.</td>
-    </tr>
-    <tr>
-      <td><code>smart_style_url</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>A URL where the host's style parameters can be retrieved (for apps that support <a href="../scopes-and-launch-context#styling">styling</a>).</td>
-    </tr>
-    <tr>
       <td><code>patient</code>, etc.</td>
       <td><span class="label label-info">optional</span></td>
       <td>
@@ -588,16 +578,16 @@ initiate a new request for access to that resource.
 
 #### 5. (Later...) App uses a refresh token to obtain a new access token
 
-You can use the `expires_in` field from the authorization response (see <a
-href="#step-4">step 4</a>) to determine when your access token will expire.
-After an access token expires, it may be possible to request an updated token
-without user intervention, if the EHR supplied a `refresh_token` in the
-authorization response.  To obtain a new access token, the app issues an HTTP
-`POST` to the EHR authorization server's token URL, with content-type
-`application/x-www-form-urlencoded`
+The app can use the `expires_in` field from the authorization response 
+(see <a href="#step-3">step 3</a>) to determine when an access token the 
+app holds will expire.  After an access token expires, it may be possible 
+to request an updated token without user intervention, if the EHR has 
+supplied a `refresh_token` in the authorization response.  To obtain a 
+new access token, the app issues an HTTP `POST` to the EHR authorization 
+server's token URL, with content-type `application/x-www-form-urlencoded`
 
-For <span class="label label-primary">public apps</span>, no authentication is
-required at this step. For <span class="label label-primary">confidential
+For <span class="label label-primary">public apps</span>, authentication is
+not possible. For <span class="label label-primary">confidential
 apps</span>, an `Authorization` header using HTTP Basic authentication is
 required, where the username is the app's `client_id` and the password is the
 app's `client_secret` (see [example](./basic-auth-example)).
@@ -632,7 +622,7 @@ scopes granted in the original launch.
     </tr>
   </tbody>
 </table>
-The response is a JSON object containing the access token, with the following keys:
+The response is a JSON object containing a new access token, with the following claims:
 
 <table class="table">
   <thead>
@@ -645,6 +635,11 @@ The response is a JSON object containing the access token, with the following ke
       <td>New access token issued by the authorization server.</td>
     </tr>
     <tr>
+      <td><code>token_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Fixed value: bearer</td>
+    </tr>
+    <tr>
       <td><code>expires_in</code></td>
       <td><span class="label label-success">required</span></td>
       <td>The lifetime in seconds of the access token. For example, the value "3600" denotes that the access token will expire in one hour from the time the response was generated.</td>
@@ -652,12 +647,17 @@ The response is a JSON object containing the access token, with the following ke
     <tr>
       <td><code>scope</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
+      <td>Scope of access authorized. Note that this will be the same as the scope of the original access token, and it can be different from the scopes requested by the app.</td>
     </tr>
     <tr>
       <td><code>refresh_token</code></td>
       <td><span class="label label-info">optional</span></td>
       <td>The refresh token issued by the authorization server. If present, the app should discard any previosu <code>refresh_token</code> associated with this launch, replacing it with this new value.</td>
+    </tr>
+    <tr>
+      <td><code>patient, etc.</code></td>
+      <td><span class="label label-success">optional</span></td>
+      <td>When an app is launched with patient context, these parameters communicate the context values. For example, a parameter like patient=123 would indicate the FHIR resource https://[fhir-base]/Patient/123. Other context parameters may also be available. For full details see SMART launch context parameters.</td>
     </tr>
   </tbody>
 </table>
@@ -685,6 +685,9 @@ refresh_token=a47txjiipgxkvohibvsm
   "access_token": "m7rt6i7s9nuxkjvi8vsx",
   "token_type": "bearer",
   "expires_in": "3600",
-  "scope": "patient/Observation.read patient/Patient.read"
+  "scope": "patient/Observation.read patient/Patient.read",
+  "patient":  "123",
+  "encounter": "456",
+  "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"     
 }
 ```

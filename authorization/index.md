@@ -207,6 +207,7 @@ in the clear.
 * Apps should persist tokens and other sensitive data in app-specific
 storage locations only, not in system-wide-discoverable locations.
 
+<a id="step-1"></a>
 #### 1. App asks for authorization
 
 At launch time, the app constructs a request for authorization by adding the
@@ -331,6 +332,7 @@ Location: https://ehr/authorize?
 <br><br>
 
 
+<a id="step-2"></a>
 #### 2. EHR evaluates authorization request, asking for end-user input
 
 The authorization decision is up to the EHR authorization server,
@@ -389,18 +391,19 @@ Location: https://app/after-auth?
 
 <br><br>
 
+<a id="step-3"></a>
 #### 3. App exchanges authorization code for access token
 
 After obtaining an authorization code, the app trades the code for an access
-token via HTTP `POST` to the EHR authorization server's token endpoint URL, 
+token via HTTP `POST` to the EHR authorization server's token endpoint URL,
 using content-type `application/x-www-form-urlencoded`.
 
-For <span class="label label-primary">public apps</span>, authentication is
-not possible, since the app cannot be trusted to protect a secret.  For 
-<span class="label label-primary">confidential
-apps</span>, an `Authorization` header using HTTP Basic authentication is
-required, where the username is the app's `client_id` and the password is the
-app's `client_secret` (see [example](./basic-auth-example)).
+For <span class="label label-primary">public apps</span>, authentication is not
+possible (and thus not required), since the app cannot be trusted to protect a
+secret.  For <span class="label label-primary">confidential apps</span>, an
+`Authorization` header using HTTP Basic authentication is required, where the
+username is the app's `client_id` and the password is the app's `client_secret`
+(see [example](./basic-auth-example)).
 
 
 <table class="table">
@@ -476,23 +479,23 @@ context parameters</a>.
   </tbody>
 </table>
 
-The EHR authorization server decides what `expires_in` value to assign to an 
-access token and whether to issue a refresh token along with the access token.   
-If the app receives a refresh token along with the access token, it can 
-exchange this refresh token for a new access token when the current access 
-token expires (see step 5 below).  A refresh token should be bound to the 
-same `client_id` and should contain the same set of claims as the access 
-token with which it is associated. 
+The EHR authorization server decides what `expires_in` value to assign to an
+access token and whether to issue a refresh token along with the access token.
+If the app receives a refresh token along with the access token, it can
+exchange this refresh token for a new access token when the current access
+token expires (see step 5 below).  A refresh token should be bound to the
+same `client_id` and should contain the same set of claims as the access
+token with which it is associated.
 
-Apps SHOULD store tokens in app-specific storage locations only, not in 
-system-wide-discoverable locations.  Access tokens SHOULD have a valid 
-lifetime no greater than one hour, and refresh tokens (if issued) SHOULD 
-have a valid lifetime no greater than twenty-four hours.  Confidential 
-clients may be issued longer-lived tokens than public clients.  
+Apps SHOULD store tokens in app-specific storage locations only, not in
+system-wide-discoverable locations.  Access tokens SHOULD have a valid
+lifetime no greater than one hour, and refresh tokens (if issued) SHOULD
+have a valid lifetime no greater than twenty-four hours.  Confidential
+clients may be issued longer-lived tokens than public clients.
 
-Depending upon applicable policy, access tokens and refresh tokens 
-MAY be signed by the EHR authorization server using JSON Web Signature 
-(JWS).  
+Depending upon applicable policy, access tokens and refresh tokens
+MAY be signed by the EHR authorization server using JSON Web Signature
+(JWS).
 
 
 #### *For example*
@@ -564,33 +567,34 @@ Authorization: Bearer i8hweunweunweofiwweoijewiwe
 The EHR's FHIR resource server validates the access token and ensures that it
 has not expired and that its scope covers the requested FHIR resource.  The
 resource server also validates that the `aud` parameter associated with the
-authorization (see step 1 above) matches the resource server's own FHIR
+authorization (see <a href="#step-1">step 1</a> above) matches the resource server's own FHIR
 endpoint.  The method used by the EHR to validate the access token is beyond
 the scope of this specification but generally involves an interaction or
 coordination between the EHR’s resource server and the authorization server.
 
-On occasion, an app may receive a FHIR resource that contains a “reference” to 
-a resource hosted on a different resource server.  The app SHOULD NOT blindly 
-follow such references and send along its access_token, as the token may be 
-subject to potential theft.   The app SHOULD either ignore the reference, or 
-initiate a new request for access to that resource.  
+On occasion, an app may receive a FHIR resource that contains a “reference” to
+a resource hosted on a different resource server.  The app SHOULD NOT blindly
+follow such references and send along its access_token, as the token may be
+subject to potential theft.   The app SHOULD either ignore the reference, or
+initiate a new request for access to that resource.
 <br><br>
 
 #### 5. (Later...) App uses a refresh token to obtain a new access token
 
-The app can use the `expires_in` field from the authorization response 
-(see <a href="#step-3">step 3</a>) to determine when an access token the 
-app holds will expire.  After an access token expires, it may be possible 
-to request an updated token without user intervention, if the EHR has 
-supplied a `refresh_token` in the authorization response.  To obtain a 
-new access token, the app issues an HTTP `POST` to the EHR authorization 
-server's token URL, with content-type `application/x-www-form-urlencoded`
+The app can use the `expires_in` field from the authorization response (see <a
+href="#step-3">step 3</a>) to determine when its access token will expire.
+After an access token expires, it may be possible to request an updated token
+without user intervention, if the EHR supplied a `refresh_token` in the
+authorization response.  To obtain a new access token, the app issues an HTTP
+`POST` to the EHR authorization server's token URL, with content-type
+`application/x-www-form-urlencoded`
 
-For <span class="label label-primary">public apps</span>, authentication is
-not possible. For <span class="label label-primary">confidential
-apps</span>, an `Authorization` header using HTTP Basic authentication is
-required, where the username is the app's `client_id` and the password is the
-app's `client_secret` (see [example](./basic-auth-example)).
+For <span class="label label-primary">public apps</span>, authentication is not
+possible (and thus not required). For <span class="label
+label-primary">confidential apps</span>, an `Authorization` header using HTTP
+Basic authentication is required, where the username is the app's `client_id`
+and the password is the app's `client_secret` (see
+[example](./basic-auth-example)).
 
 The following request parameters are defined:
 
@@ -686,8 +690,6 @@ refresh_token=a47txjiipgxkvohibvsm
   "token_type": "bearer",
   "expires_in": "3600",
   "scope": "patient/Observation.read patient/Patient.read",
-  "patient":  "123",
-  "encounter": "456",
-  "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"     
+  "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"
 }
 ```

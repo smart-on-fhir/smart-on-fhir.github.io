@@ -67,8 +67,6 @@ If a refresh token is returned along with the access token, the app may
 use this to request a new access token, with the same scope, once
 the access token expires.
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBvdmVyIEFwcDogVXNlciBoYXMgbGF1bmNoZWQgYXBwXG5mcm9tIGFuIEVIUlxub3Igc3RhbmRhbG9uZSBmbG93CgA3D1JlcXVlc3QgYXV0aG9yaXphdGlvbgpBcHAtPj5FSFIgQXV0aCBTZXJ2ZXI6ICBSZWRpcmVjdCBodHRwczovL3tlaHIAMwllIHVybH0_Li4uAFsLADQRQQAlCUFwcFxuKE1heSBpbmNsdWRlIGVuZC11c2UASQoAgQoFXG5hbmQABRcpAE8cIE9uIGFwcHJvdmFsCgCBPw8tPj4AgkIFAIFBE2FwcCByAIFjB191cml9P2NvZGU9MTIzJgCBTg4AOwZFeGNoYW5nZSBjb2RlIGZvciBhY2Nlc3MgdG9rZW4KAIJHBgCCOhJQT1NUAII-CgAnBQCCOwVcbmdyYW50X3R5cGU9AIMKDV9jb2RlJgCBBAgAgkQgZW50aWNhdGUAhBEGKElmIGNvbmZpZGVudGlhbCBjbGllbnQAgiIdSXNzdWUgbmV3AIFEBiB3aXRoIGNvbnRleHQ6XG57XG4iAIFkBl8AgWUFIjogInNlY3JldC0AgXUFLXh5eiIsXG4iZXhwaXJlc19pbiI6IDM2MDAsXG4icGF0aWVudCI6ICI0NTYiLFxuLi4uXG59AIMWEgCFaQVbAIJIDCByZXNwb25zZV0AhT8QQQCCdAYAVgcgZGF0YSB2aWEgRkhJUiBBUEkAgwMKUmVzb3VyY2UAhVQJR0UAgwQLZmhpciBiYXMAhU0GL1AAgScGLzQ1NlxuAIU5CACGJgU6IEJlYXJlciAAgWoQAIV0DwBeEVZhbGlkAIMaBXV0aHoAglsHYW5kXG5yZXR1cm4AgS0GcgCBHgh0byBhcHAAhUAFAIErDwCCGgd7IgAkCFR5cGUiOiAiAIEuByIsICJiaXJ0aERhdGUiOi4uLn0KCgoKCgoAAQU&s=default"/>
-
 ## SMART "launch sequence"
 *Note that the launch sequence happens before the sequence shown in the diagram above commences.*
 #### EHR launch sequence
@@ -203,6 +201,10 @@ in the clear.
 * Apps should persist tokens and other sensitive data in app-specific
 storage locations only, not in system-wide-discoverable locations.
 
+#### *SMART authorization sequence* 
+
+<img class="sequence-diagram-raw" src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBvdmVyIEFwcDogUmVxdWVzdCBhdXRob3JpemF0aW9uCkFwcC0-PkVIUiBBdXRoIFNlcnZlcjogIFJlZGlyZWN0IGh0dHBzOi8ve2VocgAzCWUgdXJsfT8uLi4KAFwKADQRQQAlCUFwcFxuKE1heSBpbmNsdWRlIGVuZC11c2UASQoAgQoFXG5hbmQABRcpAE8cIE9uIGFwcHJvdmFsCgCBPw8tPj4AgXwFAIFBE2FwcCByAIFjB191cml9P2NvZGU9MTIzJgCBTg4AOwZFeGNoYW5nZSBjb2RlIGZvciBhY2Nlc3MgdG9rZW4KAIJHBgCCOhJQT1NUAII-CgAnBQCCOwVcbmdyYW50X3R5cGU9AIMKDV9jb2RlJgCBBAgAgkQgZW50aWNhdGUgYQCCYgVJZiBjb25maWRlbnRpYWwgY2xpZW50AIIiHUlzc3VlIG5ldwCBRAYgd2l0aCBjb250ZXh0Olxue1xuIgCBZAZfAIFlBSI6ICJzZWNyZXQtAIF1BS14eXoiLFxuImV4cGlyZXNfaW4iOiAzNjAwLFxuInBhdGllbnQiOiAiNDU2Iixcbi4uLlxufQCDFhIAhSMFWwCCSAwgcmVzcG9uc2VdCgoKCg&s=">
+
 <a id="step-1"></a>
 #### 1. App asks for authorization
 
@@ -235,13 +237,15 @@ URL using the "application/x-www-form-urlencoded" format:
       <td><span class="label label-success">required</span></td>
       <td>
 
-Must describe the access that the app needs, including clincal data scopes like
-<code>patient/*.read</code> and either:
+Must describe the access that the app needs, including clinical data scopes like
+<code>patient/*.read</code>, <code>openid</code> and <code>profile</code> (if app 
+needs authenticated patient identity) and either:
 
 <ul>
 <li> a launch ID in
 the form <code>launch:{id}</code> to bind to the current EHR context.</li>
-<li> a set of launch context requirements in the form <code>launch/patient</code> the EHR to establish context on your behalf.</a>
+<li> a set of launch context requirements in the form <code>launch/patient</code> 
+the EHR to establish context on your behalf.</a>
 </ul>
 
 See <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR Access
@@ -322,7 +326,7 @@ Location: https://ehr/authorize?
             client_id=app-client-id&
             redirect_uri=https%3A%2F%2Fapp%2Fafter-auth&
             scope=launch:xyz123+patient%2FObservation.read+patient%2FPatient.read&
-            state=98wrghuwuogerg97
+            openid&profile&state=98wrghuwuogerg97
 ```
 
 <br><br>
@@ -472,6 +476,16 @@ context parameters</a>.
 
       </td>
     </tr>
+    <tr>
+      <td><code>ID_token</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>Authenticated patient identity and profile, if requested.</td>
+    </tr>
+    <tr>
+      <td><code>refresh_token</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>Credential used to request new access token after token expires.</td>
+      </tr>
   </tbody>
 </table>
 
@@ -563,7 +577,7 @@ Authorization: Bearer i8hweunweunweofiwweoijewiwe
 The EHR's FHIR resource server validates the access token and ensures that it
 has not expired and that its scope covers the requested FHIR resource.  The
 resource server also validates that the `aud` parameter associated with the
-authorization (see <a href="#step-1">step 1</a> above) matches the resource server's own FHIR
+authorization (see <a href="#step-1">above</a>) matches the resource server's own FHIR
 endpoint.  The method used by the EHR to validate the access token is beyond
 the scope of this specification but generally involves an interaction or
 coordination between the EHR’s resource server and the authorization server.

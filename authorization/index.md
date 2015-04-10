@@ -514,7 +514,7 @@ At this point, **the authorization flow is complete**. Follow steps below to wor
 data and refresh access tokens, as shown in the following sequence diagram.
 
 <img class="sequence-diagram-raw"
-src=http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSByaWdodCBvZiBBcHA6IEFjY2VzcyBwYXRpZW50IGRhdGEgCkFwcC0-PkVIUiBGSElSIFNlcnZlcjogUmVkaXJlY3QgdG8ge2VocjpmaGlyX3VyaX0_YQBCBV90b2tlbj1zZWNyZXQtY29kZS14eXoKAGkOAEQTdHVybgBlBnJlc291cmNlIHRvIGFwcAoAdQ8tPgCBMAV7AB8IVHlwZTogIlAAgTgGIiwgImJpcnRoRGF0ZSI6Li4ufQB2BmxlZgCBYREAgSYFIGV4cGlyZXMAgRQPAIIVBVJlcXVlc3QAIgdyZWZyZXNoAIIQC0F1dGh6AIITCQCCCxJhdXRoegCCGAYANgcAghEOAIInBS13cHEmAIIqBj0zODI5NTcAghsTAFwOQXV0aGVudGljYXRlIGFwcCAKTgATH0NyZWF0ZSBuZXcAgXAGOlxuIHtcbgCDIBQAgQ8GeHl6JlxuSUQAgR4GAIEiDzNrJlxuAIQpBz00NTYmXG4Agj8HX2luOiAzNjAwXG4AgVMfXG4uLi5cbn0KfQoAg14FAIJADACDXQdbAIRNBgCCdglzcG9uc2VdCgoKCgoKAAEFCg&s=default/>
+src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBvdmVyIEFwcDogQWNjZXNzIHBhdGllbnQgZGF0YSAKQXBwLT5FSFIgRkhJUiBTZXJ2ZXI6IEdFVCBodHRwczovL3tmaGlyIGJhc2UgdXJsfS9QADoGLzEyMwoAWAoAMhFSZXR1cm4AUQZyZXNvdXJjZSB0byBhcHAKAGEPLT4AgRsFeyIAIAhUeXBlIjogIgBkByIsICJiaXJ0aERhdGUiOi4uLn0AbwsAgVAMdG9rZW4gZXhwaXJlcy4uLgAXEC4uLiBzbyByZXF1ZXN0IGEgbmV3AC8GAIF_CkF1dGh6AIIBCSBQT1MAggELAFsGdXJsfVxuZ3JhbnRfdHlwZT1yZWZyZXNoXwB7BSZcbgADDT1hYmMAghsSAFkOQXV0aGVudGljYXRlIGFwcFxuKGlmIGNvbmZpZGVudGlhbCBjbGllbnQpCk4ALBtJc3N1ZQCCAAY6XG4ge1xuImEAg3EFAIEUBiI6ICJzZWNyZXQtAIIlBS14eXoiLFxuIgCCKwdfaW4iOiAzNjAwLFxuIgCBSA0iPSJuZXh0LQCBYwctMTIzIlxuLi4uXG59Cn0KAINOBQCCLgwAg00HWwB5BgCDEgdyZXNwb25zZV0KCgoKCgoAAQUK&s=">
 
 
 
@@ -525,11 +525,11 @@ With a valid access token, the app can access protected EHR data by issuing a
 FHIR API call to the FHIR endpoint on the EHR's resource server. The request includes an
 `Authorization` header that presents the `access_token` as a "Bearer" token:
 
-```
+{% raw %}
     Authorization: Bearer {{access_token}}
-```
+{% endraw %}
 
-(Note that in a real request, `{{access_token}}`is replaced
+(Note that in a real request, {%raw}`{{access_token}}`{%endraw%}is replaced
 with the actual token value.)
 
 #### *For example*
@@ -545,11 +545,13 @@ Authorization: Bearer i8hweunweunweofiwweoijewiwe
   "birthTime": ...
 }
 ```
-The EHR FHIR resource server validates the access token and ensures that it has 
-not expired and that its scope covers the requested FHIR resource.  The 
-resource server also validates that the URL given for the `aud` parameter is its 
-own FHIR endpoint.  The method used by the EHR to validate the access token is 
-beyond the scope of this specification but generally involves an interaction or 
+
+The EHR's FHIR resource server validates the access token and ensures that it
+has not expired and that its scope covers the requested FHIR resource.  The
+resource server also validates that the `aud` parameter associated with the
+authorization (see step 1 above) matches the resource server's own FHIR
+endpoint.  The method used by the EHR to validate the access token is beyond
+the scope of this specification but generally involves an interaction or
 coordination between the EHR’s resource server and the authorization server.
 
 On occasion, an app may receive a FHIR resource that contains a “reference” to 

@@ -462,7 +462,7 @@ claims:
     <tr>
       <td><code>expires_in</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>The lifetime in seconds of the access token. For example, the value "3600" denotes that the access token will expire in one hour from the time the response was generated.</td>
+      <td>The lifetime in seconds of the access token. For example, the value 3600 denotes that the access token will expire in one hour from the time the response was generated.</td>
     </tr>
     <tr>
       <td><code>scope</code></td>
@@ -537,7 +537,7 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
 {
   "access_token": "i8hweunweunweofiwweoijewiwe",
   "token_type": "bearer",
-  "expires_in": "3600",
+  "expires_in": 3600,
   "scope": "patient/Observation.read patient/Patient.read",
   "intent": "client-ui-name",
   "patient":  "123",
@@ -665,7 +665,7 @@ The response is a JSON object containing a new access token, with the following 
     <tr>
       <td><code>expires_in</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>The lifetime in seconds of the access token. For example, the value "3600" denotes that the access token will expire in one hour from the time the response was generated.</td>
+      <td>The lifetime in seconds of the access token. For example, the value 3600 denotes that the access token will expire in one hour from the time the response was generated.</td>
     </tr>
     <tr>
       <td><code>scope</code></td>
@@ -707,7 +707,7 @@ refresh_token=a47txjiipgxkvohibvsm
 {
   "access_token": "m7rt6i7s9nuxkjvi8vsx",
   "token_type": "bearer",
-  "expires_in": "3600",
+  "expires_in": 3600,
   "scope": "patient/Observation.read patient/Patient.read",
   "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"
 }

@@ -78,7 +78,7 @@ The two alternative launch sequences are described below.
 
 ### EHR launch sequence
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=RUhSIFNlc3Npb24gLT4-IEFwcDogUmVkaXJlY3QgdG8gaHR0cHM6Ly97YXBwIGxhdW5jaF91cml9P1xuAAgGPTEyMyZcbmlzcz0AIwlmaGlyIGJhc2UgdXJsfQpBcHAgLT4gRUhSIEZISVIgU2VydmVyOiBHRVQgL21ldGFkYXRhCgAQDyAtAIEHB1tDb25mb3JtYW5jZSBzdGF0ZW1lbnQgaW5jbHVkaW5nIE9BdXRoIDIuMCBlbmRwb2ludCBVUkxzXQBxBwBzBkF1dGh6AHEJAIFNFWVociBhdXRob3JpegCBNAY_c2NvcGU9AIFxBjoxMjMmAHsFPWFiYyYuLi4K&s=default"/>
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=RUhSIFNlc3Npb24gLT4-IEFwcDogUmVkaXJlY3QgdG8gaHR0cHM6Ly97YXBwIGxhdW5jaF91cml9P1xuAAgGPTEyMyZcbmlzcz0AIwlmaGlyIGJhc2UgdXJsfQpBcHAgLT4gRUhSIEZISVIgU2VydmVyOiBHRVQAVgoAJg4vbWV0YWRhdGEKACcPIC0AgR4HW0NvbmZvcm1hbmNlIHN0YXRlbWVudCBpbmNsdWRpbmcgT0F1dGggMi4wIGVuZHBvaW50IFVSTHNdAIEIBwCBCgZBdXRoegCBCAkAgWQVZWhyIGF1dGhvcml6AIFLBj9zY29wZT0AgggGOjEyMyYAewU9YWJjJi4uLgo&s=default"/>
 
 In SMART's <span class="label label-primary">EHR launch</span> flow (shown above), 
 a user has established an EHR session, and then decides to launch an app. This 
@@ -142,7 +142,7 @@ including the launch notification in the scope.
 
 ### Standalone launch sequence
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=CkFwcCAtPiBFSFIgRkhJUiBTZXJ2ZXI6IEdFVCAvbWV0YWRhdGEKABAPIC0-IEFwcDogW0NvbmZvcm1hbmNlIHN0YXRlbWVudCBpbmNsdWRpbmcgT0F1dGggMi4wIGVuZHBvaW50IFVSTHNdAHEHAHMGQXV0aHoAcQlSZWRpcmVjdCB0byBodHRwczovL3tlaHIgYXV0aG9yaXplIHVybH0_c2NvcGU9bGF1bmNoOjEyMyYAewU9YWJjJi4uLgo&s=default"/>
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=QXBwIC0-IEVIUiBGSElSIFNlcnZlcjogR0VUIGh0dHBzOi8ve2ZoaXIgYmFzZSB1cmx9L21ldGFkYXRhCgAnDyAtPiBBcHA6IFtDb25mb3JtYW5jZSBzdGF0ZW1lbnQgaW5jbHVkaW5nIE9BdXRoIDIuMCBlbmRwb2ludCBVUkxzXQoAgQkGAIEKBkF1dGh6AIEICVJlZGlyZWN0IHRvAIEPCmVociBhdXRob3JpegCBFwY_c2NvcGU9bGF1bmNoOjEyMyYAewU9YWJjJi4uLgo&s=default"/>
 
 Alternatively, in SMART's <span class="label label-primary">standalone
 launch</span> flow (shown above), a user selects an app from outside the EHR, 

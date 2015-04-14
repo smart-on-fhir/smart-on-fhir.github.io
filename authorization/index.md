@@ -20,14 +20,14 @@ or attacker. So security for these apps can't depend on secrets embedded at
 install-time. Instead, security comes from being hosted at a trusted URL.
 
 #### Use the <span class="label label-primary">confidential app</span> profile when all of the following apply:
+* App runs on a trusted server
 * App has server-side business logic (e.g. using PHP, Python, Ruby, .NET, etc.)
 * App is *able to protect* a `client_secret`
 
 
 #### Use the <span class="label label-primary">public app</span> profile when all of the following apply:
 
-* App runs while the user is signed into the EHR
-* App runs entirely on an end-user's device (e.g. HTML5/JS in-browser; native iOS or Windows)
+* App runs on an end-user's device (e.g. HTML5/JS in-browser; native iOS, Windows, or Android)
 * App is *unable to protect* a `client_secret`
 
 ## Registering a SMART App with an EHR

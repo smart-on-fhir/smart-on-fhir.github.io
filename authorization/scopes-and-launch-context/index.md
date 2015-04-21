@@ -25,6 +25,7 @@ Scope              | Grants
 `openid` `profile` | Permission to retrieve information about the current logged-in user
 `launch`           | Permission to obtain launch context when app is launched from an EHR
 `launch/patient`   | When launching outside the EHR, ask for a patient to be selected at launch time
+`offline_access`   | Request a `refresh_token` that can be used after the access token rexpires
 
 
 ## Scopes for requesting clinical data
@@ -223,6 +224,14 @@ This token must be [validated according to the OIDC specification](http://openid
 To learn more about the user, the app should treat the "profile" claim as the URL of
 a FHIR resource representing the current user. This will be a resource of type
 `Patient`, `Practitioner`, or `RelatedPerson`.
+
+
+## Scope for requesting a refresh token
+
+To request a `refresh_token` that can be used to obtain a new access token
+after the current access token expires, add the scope `offline_access` to the
+requested scopes at authorization time.
+
 
 ## Steps for using an ID token
 

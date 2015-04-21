@@ -603,7 +603,10 @@ initiate a new request for access to that resource.
 The app can use the `expires_in` field from the authorization response (see <a
 href="#step-3">step 3</a>) to determine when its access token will expire.
 After an access token expires, it may be possible to request an updated token
-without user intervention, if the EHR supplied a `refresh_token` in the
+without user intervention, if the app asked for a refresh token via the
+`offline_access` scope (see <a
+href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR
+Access Scopes</a> for details) and the EHR supplied a `refresh_token` in the
 authorization response.  To obtain a new access token, the app issues an HTTP
 `POST` to the EHR authorization server's token URL, with content-type
 `application/x-www-form-urlencoded`

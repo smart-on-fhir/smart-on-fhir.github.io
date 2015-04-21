@@ -208,9 +208,8 @@ Each
 must have:
 
  * `1` patient in `MedicationPrescription.patient`
- * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationPrescription.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.coding.system`
+ * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationPrescription.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.code.coding.system`
  * `1` status of `active` in `MedicationPrescription.status`
- * `1` patient in `MedicationPrescription.patient`
  * `1` object in `MedicationPrescription.dosageInstruction.timingSchedule` with `1` date in `event.start` and `0 or 1` date in `event.end` and `0 or 1` objects in `repeat` (with `1` value in `repeat.frequency`, `1` value in `repeat.units`, and `1` value in `repeat.duration`)
  * `0 or 1` code in `MedicationPrescription.dosageInstruction.doseQuantity` with system of `http://unitsofmeasure.org`
  * `0 or 1` objects in `MedicationPrescription.dispense` with `1` value in `numberOfRepeatsAllowed`, `1` code with system of `http://unitsofmeasure.org` in `quantity`, and `0 or 1` codes with system of `http://unitsofmeasure.org` in `expectedSupplyDuration` 

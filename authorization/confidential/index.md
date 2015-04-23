@@ -53,7 +53,7 @@ So the browser redirects to:
 On receiving the launch notification, App uses AJAX to query the issuer's
 `/metadata` endpoint:
 
-    GET https://ehr/fhir/metadata
+    GET https://ehr/metadata
     Accept: application/json
 
 The metadata response contains (among other details) the EHR's authorization
@@ -124,7 +124,7 @@ the username is the app's `client_id` and the password is the app's
 POST /token HTTP/1.1
 Host: ehr
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
-Content-Type: application/x-www-form-urlencoded/token?
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&
 code=123abc&

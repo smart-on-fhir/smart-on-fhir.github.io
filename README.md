@@ -14,21 +14,17 @@ This is the SMART technical documentation, hosted at
 Installing Jekyll and Friends
 -----------------------------
 
-First, you'll need the [Jekyll](https://github.com/mojombo/jekyll)
-static site generator installed. The full installation instructions are
-[here](https://github.com/mojombo/jekyll/wiki/install), but you probaly
-can just do:
+The SMART technical documentation is built using
+[Ruby](https://www.ruby-lang.org/) tools. Using [Bundler](http://bundler.io/),
+you can install all of the required dependencies to generate and run the
+documentation locally by running the following command from the
+`smart-on-fhir.github.io/` directory:
 
-    $ gem install jekyll
+    $ bundle install
 
-There are two other libraries to install to generate these documents:
-
-1. `redcarpet`: our preferred Ruby Markdown processor.
-
-    $ gem install redcarpet
-
-2. `Pygments`: the Python-based syntax highligher, this installation
-   instructions for which are at the bottom of the Jekyll page above.
+This will install [Jekyll](https://github.com/mojombo/jekyll), a static site
+generator and [redcarpet](https://github.com/vmg/redcarpet), a Ruby Markdown
+processor.
 
 Once the required software is installed, generating the static site (in
 the `_site` directory) is simply running

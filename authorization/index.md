@@ -267,7 +267,7 @@ Scopes</a> details.
 
 An opaque value used by the client to maintain state between the request and
 callback. The authorization server includes this value when redirecting the
-user-agent back to the client. The parameter SHOULD be used for preventing
+user-agent back to the client. The parameter MUST be used for preventing
 cross-site request forgery or session fixation attacks.
 
       </td>

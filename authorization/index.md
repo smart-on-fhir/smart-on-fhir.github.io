@@ -6,29 +6,51 @@ title: SMART on FHIR Authorization
 # Authorization Guide
 
 SMART on FHIR provides reliable, secure authorization for a variety of app
-architectures with a consistent, easy-to-implement set of building blocks.
-Because different app architectures bring different security considerations to
-the table, we've organized authorization profiles by one key question:
+architectures through the use of the OAuth 2.0 standard.   
+
+## Profile audience and scope
+This profile is intended to be used by developers of apps that need to 
+access FHIR resources by requesting access tokens from OAuth 2.0 compliant 
+authorization servers.
+
+OAuth 2.0 authorization servers are configured to mediate access based on
+a set of rules configured to enforce institutional policy, which may 
+include requesting end-user authorization.  This profile 
+does not dictate the institutional policies that are implemented in the 
+authorization server.
+
+The profile defines a method through which an app requests 
+authorization to access a FHIR resource, and then uses that authorization 
+to retrieve the resource.  Other HIPAA-mandated security mechanisms, 
+such as end-user authentication, session time-out, security auditing, 
+and accounting of disclosures, are outside the scope of this profile.
 
 ## Support for "public" and "confidential" apps
 
-Pure client-side apps (for example, HTML5/JS browser-based apps, iOS mobile
+Within this profile we differentiate between two types of 
+apps based upon whether the execution environment within which the app runs 
+enables the app to protect secrets.   Pure client-side apps 
+(for example, HTML5/JS browser-based apps, iOS mobile
 apps, or Windows desktop apps) can provide adequate security -- but they can't
 "keep a secret" in the OAuth2 sense. That is to say, any "secret" key, code, or
 string that's embedded in the app can potentially be extracted by an end-user
 or attacker. So security for these apps can't depend on secrets embedded at
-install-time. Instead, security comes from being hosted at a trusted URL.
+install-time. Security assurance comes from being hosted within a trusted 
+server environment.
 
-#### Use the <span class="label label-primary">confidential app</span> profile when all of the following apply:
+#### Use the <span class="label label-primary">confidential app</span> 
+profile when all of the following apply:
 * App runs on a trusted server
 * App has server-side business logic (e.g. using PHP, Python, Ruby, .NET, etc.)
 * App is *able to protect* a `client_secret`
 
 
-#### Use the <span class="label label-primary">public app</span> profile when all of the following apply:
+#### Use the <span class="label label-primary">public app</span> profile 
+when all of the following apply:
 
 * App runs on an end-user's device (e.g. HTML5/JS in-browser; native iOS, Windows, or Android)
 * App is *unable to protect* a `client_secret`
+
 
 ## Registering a SMART App with an EHR
 

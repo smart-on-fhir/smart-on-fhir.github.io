@@ -244,3 +244,9 @@ requested scopes at authorization time.
 ## Worked examples
 
 For worked examples (in Python), see [this ipython notebook](http://nbviewer.ipython.org/url/docs.smarthealthit.org/authorization/smart-on-fhir-jwt-examples.ipynb).
+
+## Appendix: URI representation of scopes
+
+In some circumstances - for example, exchanging what scopes users are allowed to have, or sharing what they did choose), the scopes must be represented as URIs. When this is done, the standard URI is to prefix the SMART scopes with  http://smarthealthit.org/fhir/scopes/, so that a scope would be `http://smarthealthit.org/fhir/scopes/patient/*.read`. 
+
+openID scopes have a URI prefix of http://openid.net/specs/openid-connect-core-1_0#

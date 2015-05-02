@@ -71,7 +71,7 @@ one-time-use JSON Web Token that will be used to authenticate the service to
 the EHR's authorization server. The authentication JWT is constructed with the
 following claims, and then signed with the backend service's private RSA key
 (RSA SHA-256 signature). For a practical reference on JWT, as well as debugging
-tools and client libraries, see https://jwt.io.
+tools and client libraries, see http://jwt.io.
 
 <table class="table">
   <thead>
@@ -173,7 +173,7 @@ The access token response is a JSON object, with the following properties:
 Assume that a "bilirubin result monitoring" service has registered with
 the EHR's authorization server, establishing the following
 
- * JWT "issuer" URL: `https://bili-monitoring-service.com/`
+ * JWT "issuer" URL: `https://bili-monitoring-service.example.com/`
  * OAuth2 `client_id`: `bili_monitor`
  * RSA [public key](example-rsa-key.pub)
 
@@ -188,9 +188,9 @@ this, the service must first generate a one-time-use authentication JWT with the
 
 ```
 {
-  "iss": "https://bili-monitoring-service.com/",
+  "iss": "https://bili-monitoring-service.example.com/",
   "sub": "bili_monitor",
-  "aud": "https://authorize.smartplatforms.org/token",
+  "aud": "https://authorize.smarthealthit.org/token",
   "exp": 1422568860,
   "jti": "random-non-reusable-jwt-id-123"
 }

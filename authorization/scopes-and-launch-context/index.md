@@ -86,7 +86,8 @@ on the details of how your app is launched.
 Apps that launch from the EHR will be passed an explicit URL parameter called
 `launch`, whose value must be turned into an OAuth scope to bind the app's
 authorization request to the current EHR session.  If an app receives the URL
-parameter `launch=abc123`, then it requests the scope `launch:abc123`. That's all.
+parameter `launch=abc123`, then it requests the scope `launch` and provides an
+additional URL parameter of `launch=abc123` That's all.
 
 ### Standalone apps
 

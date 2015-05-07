@@ -100,7 +100,7 @@ The two alternative launch sequences are described below.
 
 ### EHR launch sequence
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=RUhSIFNlc3Npb24gLT4-IEFwcDogUmVkaXJlY3QgdG8gaHR0cHM6Ly97YXBwIGxhdW5jaF91cml9P1xuAAgGPTEyMyZcbmlzcz0AIwlmaGlyIGJhc2UgdXJsfQpBcHAgLT4gRUhSIEZISVIgU2VydmVyOiBHRVQAVgoAJg4vbWV0YWRhdGEKACcPIC0AgR4HW0NvbmZvcm1hbmNlIHN0YXRlbWVudCBpbmNsdWRpbmcgT0F1dGggMi4wIGVuZHBvaW50IFVSTHNdAIEIBwCBCgZBdXRoegCBCAkAgWQVZWhyIGF1dGhvcml6AIFLBj9zY29wZT0AgggGOjEyMyYAewU9YWJjJi4uLgo&s=default"/>
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=RUhSIFNlc3Npb24gLT4-IEFwcDogUmVkaXJlY3QgdG8gaHR0cHM6Ly97YXBwIGxhdW5jaF91cml9P1xuAAgGPTEyMyZcbmlzcz0AIwlmaGlyIGJhc2UgdXJsfQpBcHAgLT4gRUhSIEZISVIgU2VydmVyOiBHRVQAVgoAJg4vbWV0YWRhdGEKACcPIC0AgR4HW0NvbmZvcm1hbmNlIHN0YXRlbWVudCBpbmNsdWRpbmcgT0F1dGggMi4wIGVuZHBvaW50IFVSTHNdAIEIBwCBCgZBdXRoegCBCAkAgWQVZWhyIGF1dGhvcml6AIFLBj9zY29wZT0AgggGJgB3BT1hYmMmAIIGCy4uLgo&s=default"/>
 
 In SMART's <span class="label label-primary">EHR launch</span> flow (shown above), 
 a user has established an EHR session, and then decides to launch an app. This 
@@ -133,7 +133,7 @@ additional details about the EHR, including its authorization URL.
 
       Opaque identifier for this specific launch, and any EHR context associated
 with it. This parameter must be communicated back to the EHR  at authorization
-time by creating a <code>launch:[id]</code> scope (like <code>launch:123</code>).
+time by passing along a <code>launch=123</code> parameter (see below).
 
       </td>
     </tr>
@@ -164,7 +164,7 @@ including the launch notification in the scope.
 
 ### Standalone launch sequence
 
-<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=QXBwIC0-IEVIUiBGSElSIFNlcnZlcjogR0VUIGh0dHBzOi8ve2ZoaXIgYmFzZSB1cmx9L21ldGFkYXRhCgAnDyAtPiBBcHA6IFtDb25mb3JtYW5jZSBzdGF0ZW1lbnQgaW5jbHVkaW5nIE9BdXRoIDIuMCBlbmRwb2ludCBVUkxzXQoAgQkGAIEKBkF1dGh6AIEICVJlZGlyZWN0IHRvAIEPCmVociBhdXRob3JpegCBFwY_c2NvcGU9bGF1bmNoOjEyMyYAewU9YWJjJi4uLgo&s=default"/>
+<img class="sequence-diagram-raw"  src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=QXBwIC0-IEVIUiBGSElSIFNlcnZlcjogR0VUIGh0dHBzOi8ve2ZoaXIgYmFzZSB1cmx9L21ldGFkYXRhCgAnDyAtPiBBcHA6IFtDb25mb3JtYW5jZSBzdGF0ZW1lbnQgaW5jbHVkaW5nIE9BdXRoIDIuMCBlbmRwb2ludCBVUkxzXQoAgQkGAIEKBkF1dGh6AIEICVJlZGlyZWN0IHRvAIEPCmVociBhdXRob3JpegCBFwY_c2NvcGU9bGF1bmNoJgB3BT1hYmMmAAsGPTEyMyYuLi4K&s=default"/>
 
 Alternatively, in SMART's <span class="label label-primary">standalone
 launch</span> flow (shown above), a user selects an app from outside the EHR, 
@@ -262,6 +262,11 @@ URL using the "application/x-www-form-urlencoded" format:
       <td>Must match one of the client's pre-registered redirect URIs.</td>
     </tr>
     <tr>
+      <td><code>launch</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>When using the <span class="label label-primary">EHR launch</span>flow, this must match the launch value received from the EHR.</td>
+    </tr>
+    <tr>
       <td><code>scope</code></td>
       <td><span class="label label-success">required</span></td>
       <td>
@@ -271,10 +276,8 @@ Must describe the access that the app needs, including clinical data scopes like
 needs authenticated patient identity) and either:
 
 <ul>
-<li> a launch ID in
-the form <code>launch:{id}</code> to bind to the current EHR context.</li>
-<li> a set of launch context requirements in the form <code>launch/patient</code> 
-the EHR to establish context on your behalf.</a>
+<li> a <code>launch</code> value indicating that the app wants to receive already-established launch context details from the EHR </li>
+<li> a set of launch context requirements in the form <code>launch/patient</code>, which asks the EHR to establish context on your behalf.</a>
 </ul>
 
 See <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR Access
@@ -331,8 +334,9 @@ patient, and also wants information about the current logged-in user, the app  c
 * `patient/Observation.read`
 * `openid profile`
 
-If the app was launched from an EHR, the app adds a `launch:xyz123` scope, binding to the
-existing EHR context of this launch notification.
+If the app was launched from an EHR, the app adds a `launch` scope and a
+`launch={launch id}` URL parameter, echoing the value it received from the EHR
+to bind to the EHR context of this launch notification.
 
 *Apps using the <span class="label label-primary">standalone launch</span> flow
 won't have a `launch` id at this point.  These apps can declare launch context
@@ -354,8 +358,9 @@ Location: https://ehr/authorize?
             response_type=code&
             client_id=app-client-id&
             redirect_uri=https%3A%2F%2Fapp%2Fafter-auth&
-            scope=launch:xyz123+patient%2FObservation.read+patient%2FPatient.read&
-            openid&profile&state=98wrghuwuogerg97
+            launch=xyz123&
+            scope=launch+patient%2FObservation.read+patient%2FPatient.read+openid+profile&
+            state=98wrghuwuogerg97
 ```
 
 <br><br>

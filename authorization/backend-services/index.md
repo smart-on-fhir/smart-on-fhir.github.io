@@ -89,7 +89,7 @@ tools and client libraries, see http://jwt.io.
       <td>The service's <code>client_id</code>, as determined during registration with the EHR's authorization server</td>
     </tr>
     <tr>
-      <td><code>au</code></td>
+      <td><code>aud</code></td>
       <td><span class="label label-success">required</span></td>
       <td>The EHR authorization server's "token URL" (the same URL to which this authentication JWT will be posted -- see below)</td>
     </tr>

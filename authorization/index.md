@@ -280,8 +280,9 @@ needs authenticated patient identity) and either:
 <li> a set of launch context requirements in the form <code>launch/patient</code>, which asks the EHR to establish context on your behalf.</a>
 </ul>
 
+An app MAY request that a refresh token be included along with the access token by including a scope value of <code>online_access</code> to request a refresh token that will expire when the end-user no longer is online, or <code>offline_access</code> for a refresh token that will not expire when the end-user no longer is online.
 See <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR Access
-Scopes</a> details.
+Scopes</a> for details.
 
       </td>
     </tr>
@@ -317,8 +318,19 @@ with at least 128 bits of entropy. The app MUST validate the value
 of the state parameter upon return to the redirect URL and MUST ensure
 that the state value is securely tied to the user’s current session
 (e.g., by relating the state value to a session identifier issued
-by the app). The app SHOULD limit the grants, scope, and period of
-time requested to the minimum necessary.
+by the app). The app SHOULD limit the grants and scope requested to 
+the minimum necessary.  In particular, apps should request refresh 
+tokens only when the app needs multiple accesses to FHIR resources 
+and only for the period of active usage needed (i.e., `online_access` 
+or `offline_access`).  
+
+Note that the scope that an app requests may be different from the 
+scope specified in the access token issued by the EHR authorization 
+server.  This may be because the EHR authorization server needs to 
+enforce a particular organizational access policy (e.g., minimum necessary) or 
+because the app has requested a scope that is narrower than the FHIR 
+resource definition.  In any case, the authorization server is the 
+ultimate arbiter responsible for enforcing organizational policy.   
 
 If the app needs to authenticate the identity of the end-user, it should
 include two OpenID Connect scopes:  `openid` and `profile`.   When these scopes
@@ -532,9 +544,13 @@ same `client_id` and should contain the same set of claims as the access
 token with which it is associated.
 
 Apps SHOULD store tokens in app-specific storage locations only, not in
-system-wide-discoverable locations.  Access tokens SHOULD have a valid
-lifetime no greater than one hour, and refresh tokens (if issued) SHOULD
-have a valid lifetime no greater than twenty-four hours.  Confidential
+system-wide-discoverable locations.  Although token lifetimes are assigned 
+in accordance with policies defined and enforced by the EHR authorization 
+server, in general, access tokens SHOULD have a valid lifetime no greater 
+than five minutes, and refresh tokens (if issued) SHOULD
+have a valid lifetime no greater than the length of the end-user’s session, 
+for `online_access` refresh tokens, and two weeks or explicit revocation 
+for `offline_access` refresh tokens.  Confidential
 clients may be issued longer-lived tokens than public clients.
 
 Depending upon applicable policy, access tokens and refresh tokens

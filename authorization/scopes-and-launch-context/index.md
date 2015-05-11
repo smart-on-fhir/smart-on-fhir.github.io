@@ -25,7 +25,7 @@ Scope              | Grants
 `openid` `profile` | Permission to retrieve information about the current logged-in user
 `launch`           | Permission to obtain launch context when app is launched from an EHR
 `launch/patient`   | When launching outside the EHR, ask for a patient to be selected at launch time
-`offline_access`   | Request a `refresh_token` that can be used after the access token rexpires
+`online_access`   | Request a `refresh_token` that can be used to obtain a new access token to replace an expired one, and that will be usable for as long as the end-user remains online.
 
 
 ## Scopes for requesting clinical data
@@ -228,8 +228,12 @@ a FHIR resource representing the current user. This will be a resource of type
 ## Scope for requesting a refresh token
 
 To request a `refresh_token` that can be used to obtain a new access token
-after the current access token expires, add the scope `offline_access` to the
-requested scopes at authorization time.
+after the current access token expires, add one of the following scopes:
+
+Scope              | Grants
+-------------------|-------
+`online_access`    | Request a `refresh_token` that can be used to obtain a new access token to replace an expired one, and that will be usable for as long as the end-user remains online.
+`offline_access`   | Request a `refresh_token` that can be used to obtain a new access token to replace an expired token, and that will remain usable for as long as the authorization server and end-user will allow, regardless of whether the end-user is online. 
 
 ## Steps for using an ID token
 

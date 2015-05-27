@@ -535,23 +535,28 @@ context parameters</a>.
   </tbody>
 </table>
 
-The EHR authorization server decides what `expires_in` value to assign to an
+The EHR authorization server, in accordance with organizational policy, 
+decides what `expires_in` value to assign to an
 access token and whether to issue a refresh token along with the access token.
 If the app receives a refresh token along with the access token, it can
 exchange this refresh token for a new access token when the current access
 token expires (see step 5 below).  A refresh token should be bound to the
 same `client_id` and should contain the same set of claims as the access
-token with which it is associated.
+token with which it is associated.  Apps SHOULD store tokens in 
+app-specific storage locations only, not in system-wide-discoverable 
+locations.  
 
-Apps SHOULD store tokens in app-specific storage locations only, not in
-system-wide-discoverable locations.  Although token lifetimes are assigned 
-in accordance with policies defined and enforced by the EHR authorization 
-server, in general, access tokens SHOULD have a valid lifetime no greater 
-than five minutes, and refresh tokens (if issued) SHOULD
-have a valid lifetime no greater than the length of the end-user’s session, 
-for `online_access` refresh tokens, and two weeks or explicit revocation 
-for `offline_access` refresh tokens.  Confidential
-clients may be issued longer-lived tokens than public clients.
+The individual organization is responsible for defining the policy rules 
+an EHR server enforces.  In general, a reasonable policy for access tokens 
+is to assign a lifetime of no greater than five minutes.  A reasonable 
+policy for refresh tokens (if issued) is to assign `online_access` tokens
+a lifetime no greater than the length of the end-user’s session, and to
+assign `offline_access` refresh tokens a time limit of two weeks.  
+Some apps may require on-going `offline_access`, and if allowed by  
+organizational policy and approved by the end-user, may be issued 
+an offline_access refresh token for an indefinite period of time, or 
+until the token is explicitly revoked. An organization may want to allow 
+confidential clients to be issued longer-lived tokens than public clients.
 
 Depending upon applicable policy, access tokens and refresh tokens
 MAY be signed by the EHR authorization server using JSON Web Signature

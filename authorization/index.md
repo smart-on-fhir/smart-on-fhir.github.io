@@ -187,7 +187,7 @@ will acquire the context the app needs and make it available.
 
 If the app needs patient context, the EHR's authorization server 
 may provide the end-user with a
-patient selection widget.  For full details, see <a href="{{site.baseur1}}authorization/scopes-and-launch-context">SMART launch context parameters</a>.
+patient selection widget.  For full details, see <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch context parameters</a>.
 
 *	launch/patient - to indicate that the app needs to know a patient ID
 *	launch/encounter - to indicate the app needs an encounter

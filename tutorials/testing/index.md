@@ -28,7 +28,7 @@ load your app.
 ### Sample Test App
 
 To get you started, here is the scaffolding of a simple SMART-on-FHIR app that you can use
-for testing this mechanism. Note that you can't use teh "rawgithub" domain in production, 
+for testing this mechanism. Note that you can't use the "rawgithub" domain in production, 
 but it can be handy for testing.
 
 launch.html

@@ -102,6 +102,9 @@ See the source, or click "preview" to see the app in action!
   src="http://embed.plnkr.co/goszYR/get-data.js"
   width="100%" height="500px"></iframe>
 
-You can also play with the [example on JSFiddle](https://jsfiddle.net/pv31bL0z/)
+<iframe 
+    style="border: 1px solid black"
+    width="100%" height="500px"
+    src="//jsfiddle.net/pv31bL0z/embedded/"></iframe>
 
 For more details, see our JS client [API docs](../api)

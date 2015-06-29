@@ -6,7 +6,10 @@ title: SMART on FHIR Authorization
 # Authorization Guide
 
 SMART on FHIR provides reliable, secure authorization for a variety of app
-architectures through the use of the OAuth 2.0 standard.   
+architectures through the use of the OAuth 2.0 standard.  This Authorization
+Guide supports the [four uses cases](http://argonautwiki.hl7.org/images/4/4c/Argonaut_UseCasesV1.pdf) 
+defined for Phase 1 of the [Argonaut
+Project](http://argonautwiki.hl7.org/index.php?title=Main_Page).  
 
 ## Profile audience and scope
 This profile is intended to be used by developers of apps that need to 

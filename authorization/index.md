@@ -505,7 +505,7 @@ claims:
       <td>
 
 When an app is launched with patient context, these parameters communicate the
-context values. For example, a parameter like <code>patient=123</code> would
+context values. For example, a parameter like <code>"patient": "123"</code> would
 indicate the FHIR resource <code>https://[fhir-base]/Patient/123</code>. Other
 context parameters may also be available. For full details see <a
 href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch
@@ -713,7 +713,7 @@ The response is a JSON object containing a new access token, with the following 
     <tr>
       <td><code>patient, etc.</code></td>
       <td><span class="label label-success">optional</span></td>
-      <td>When an app is launched with patient context, these parameters communicate the context values. For example, a parameter like patient=123 would indicate the FHIR resource https://[fhir-base]/Patient/123. Other context parameters may also be available. For full details see SMART launch context parameters.</td>
+      <td>When an app is launched with patient context, these parameters communicate the context values. For example, a parameter like <code>"patient": "123"</code> would indicate the FHIR resource https://[fhir-base]/Patient/123. Other context parameters may also be available. For full details see SMART launch context parameters.</td>
     </tr>
   </tbody>
 </table>

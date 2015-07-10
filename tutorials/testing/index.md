@@ -23,7 +23,7 @@ you can [sign into our sandbox](https://fhir.smarthealthit.org) and launch the "
 load your app.
 
 <sup>*</sup> You can use any web server you like. For prototyping, we're partial to [`http-server`](https://github.com/nodeapps/http-server) which you can launch via
-`http-server -p 8080 /path/to/fhir-app/..`.
+`http-server -p 8000 /path/to/fhir-app/..`.
 
 ### Sample Test App
 

@@ -52,6 +52,7 @@ ways to do this that we offer.
         if (! validateForm ()) return;
     
         var client_type = "none";
+        var registration_endpoint;
         
         if ($("input[name=input_client_type]:checked").val() === "confidential") {
             client_type = "client_secret_basic";
@@ -73,8 +74,14 @@ ways to do this that we offer.
             call_params.grant_types.push("refresh_token");
         }
         
+        if ($("input[name=input_smart_version]:checked").val() === "dstu1") {
+            registration_endpoint = 'https://authorize.smarthealthit.org/register';
+        } else {
+            registration_endpoint = 'https://authorize-dstu2.smarthealthit.org/register';
+        }
+
         $.ajax({
-            url: 'https://authorize.smarthealthit.org/register',
+            url: registration_endpoint,
             type: 'POST',
             data: JSON.stringify(call_params),
             contentType:"application/json",
@@ -161,6 +168,23 @@ ways to do this that we offer.
           <label>
             <input name="input_refresh_token" type='radio' checked='checked'  value='disabled'>
             disabled (recommended for most apps)
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Target environment</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input name="input_smart_version" checked='checked' value='dstu1' type="radio">
+            DSTU1 (fhir.smarthealthit.org)
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input name="input_smart_version" type='radio' value='dstu2'>
+            DSTU2 (fhir-dstu2.smarthealthit.org)
           </label>
         </div>
       </div>

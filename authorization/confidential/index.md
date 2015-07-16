@@ -169,7 +169,7 @@ access token programatically, without user interaction:
 POST /token HTTP/1.1
 Host: ehr
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
-Content-Type: application/x-www-form-urlencoded/token?
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&
 refresh_token=a47txjiipgxkvohibvsm

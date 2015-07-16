@@ -124,7 +124,7 @@ the username is the app's `client_id` and the password is the app's
 POST /token HTTP/1.1
 Host: ehr
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
-Content-Type: application/x-www-form-urlencoded/token?
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&
 code=123abc&

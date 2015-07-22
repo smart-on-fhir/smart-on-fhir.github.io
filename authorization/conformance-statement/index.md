@@ -35,6 +35,7 @@ Identifies the OAuth2 "token" endpoint for the server.
     </tr>
     <tr>
       <td><code>http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris#register</code></td>
+      <td><code>valueUri</code></td>
       <td><span class="label label-default">optional</span></td>
       <td>
 Identifies the OAuth2 dynamic registration endpoint for the server, if supported.

@@ -12,26 +12,29 @@ These extensions are:
 <table class="table">
   <thead>
     <th>Extension URI</th>
+    <th>Data type</th>
     <th>Required?</th>
     <th>Description</th>
   </thead>
   <tbody>
     <tr>
-      <td><code>http://fhir-registry.smarthealthit.org/Profile/oauth-uris#authorize</code></td>
+      <td><code>http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris#authorize</code></td>
+      <td><code>valueUri</code></td>
       <td><span class="label label-success">required</span></td>
       <td>
 Identifies the OAuth2 "authorize" endpoint for the server.
       </td>
     </tr>
     <tr>
-      <td><code>http://fhir-registry.smarthealthit.org/Profile/oauth-uris#token</code></td>
+      <td><code>http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris#token</code></td>
+      <td><code>valueUri</code></td>
       <td><span class="label label-success">required</span></td>
       <td>
 Identifies the OAuth2 "token" endpoint for the server.
       </td>
     </tr>
     <tr>
-      <td><code>http://fhir-registry.smarthealthit.org/Profile/oauth-uris#register</code></td>
+      <td><code>http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris#register</code></td>
       <td><span class="label label-default">optional</span></td>
       <td>
 Identifies the OAuth2 dynamic registration endpoint for the server, if supported.

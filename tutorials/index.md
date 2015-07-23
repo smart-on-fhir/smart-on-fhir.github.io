@@ -28,6 +28,10 @@ This tutorial will demonstrate the basic implementation steps to perform SMART o
 
 This is a getting-started guide for Health IT systems looking to support pluggable apps using SMART on FHIR. We'll take you through the process of allowing your users to launch a single app: the open-source SMART Growth Charts app. 
 
+## To Do
 
+### REST tutorial
+### Standalone app tutorial
+### Getting the user identity tutorial
 
 

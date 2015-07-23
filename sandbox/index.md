@@ -5,7 +5,7 @@ title: SMART on FHIR Sandbox
 
 # Sandbox - Overview
 
-The public demo sandbox for SMART on FHIR is useful to demonstrate
+The [public demo sandbox](http://fhir.smarthealthit.org) for SMART on FHIR is useful to demonstrate
 the platform in action and to test apps against patient data
 in development or as a showcase. The main components of the sandbox
 are:

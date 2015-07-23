@@ -99,7 +99,12 @@ See the source, or click "preview" to see the app in action!
 
 <iframe
   style="border: 1px solid black"
-  src="http://embed.plnkr.co/nN4yMXzK5aYxdyZFJHii/get-data.js"
+  src="http://embed.plnkr.co/goszYR/get-data.js"
   width="100%" height="500px"></iframe>
+
+<iframe 
+    style="border: 1px solid black"
+    width="100%" height="500px"
+    src="//jsfiddle.net/pv31bL0z/embedded/"></iframe>
 
 For more details, see our JS client [API docs](../api)

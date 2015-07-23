@@ -77,7 +77,7 @@ Sulfamethoxazole
 allergy is captured using the ingredient code for Sulfamethoxazole
 ([rxnorm:10180](http://schemes.caregraf.info/rxnorm#!10180)).
 
-`Substance.type.coding.system`: `http://rxnav.nlm.nih.gov/REST/rxcui`
+`Substance.type.coding.system`: `http://www.nlm.nih.gov/research/umls/rxnorm`
 ##### Example: cipro [https://fhir-open-api.smarthealthit.org/Substance/rxnorm-203563](https://fhir-open-api.smarthealthit.org/Substance/rxnorm-203563?_format=json)
 
 ### Allergy to a drug class
@@ -207,10 +207,9 @@ Each
 [MedicationPrescription](http://www.hl7.org/implement/standards/fhir/medicationprescription.html#MedicationPrescription)
 must have:
 
- * `1` patient in `MedicationPrescription.subject`
- * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationPrescription.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.coding.system`
- * `1` status of `active` in `MedicationPrescription.status`
  * `1` patient in `MedicationPrescription.patient`
+ * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationPrescription.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.code.coding.system`
+ * `1` status of `active` in `MedicationPrescription.status`
  * `1` object in `MedicationPrescription.dosageInstruction.timingSchedule` with `1` date in `event.start` and `0 or 1` date in `event.end` and `0 or 1` objects in `repeat` (with `1` value in `repeat.frequency`, `1` value in `repeat.units`, and `1` value in `repeat.duration`)
  * `0 or 1` code in `MedicationPrescription.dosageInstruction.doseQuantity` with system of `http://unitsofmeasure.org`
  * `0 or 1` objects in `MedicationPrescription.dispense` with `1` value in `numberOfRepeatsAllowed`, `1` code with system of `http://unitsofmeasure.org` in `quantity`, and `0 or 1` codes with system of `http://unitsofmeasure.org` in `expectedSupplyDuration` 
@@ -223,7 +222,6 @@ Each
 [MedicationDispense](http://www.hl7.org/implement/standards/fhir/medicationdispense.html#MedicationDispense)
 must have:
 
- * `1` patient in `MedicationDispense.subject`
  * `1` patient in `MedicationDispense.patient`
  * `1` reference to `MedicationPrescription` in `MedicationDispense.authorizingPrescription`
  * `1` object in `MedicationDispense.dispense` with `1` extension of `http://fhir-registry.smarthealthit.org/Profile/dispense#days-supply` of type `valueQuantity` with system of `http://unitsofmeasure.org` with units of `days` and code of `d`
@@ -234,10 +232,82 @@ must have:
 
 ##### Example: [https://fhir-open-api.smarthealthit.org/MedicationDispense/1229](https://fhir-open-api.smarthealthit.org/MedicationDispense/1229?_format=json)
 
-# TODO: work in progress.
 
-```
 # Vital Signs
-### Blood Pressure
-# Lab result
-```
+
+A set of Vital Signs is represented usng FHIR Observation resources. Each
+[Observation](http://www.hl7.org/implement/standards/fhir/Observation.html#Observation)
+must have:
+
+ * `1` patient in `Observation.patient`
+ * `1` LOINC-coded Vital Sign (see below) in `Observation.name`
+ * `1` indicator of `ok` (fixed value) in `Observation.reliability`
+ * `1` status indicator (see [FHIR definitions](http://hl7.org/implement/standards/fhir/observation-status.html)) in `Observation.status`
+ * `1` quantity with system `http://unitsofmeasure.org` and a UCUM-coded value (see below) in `Observation.valueQuantity`
+ * `1` date indicating when the value was measured, in `Observation.appliesDateTime`
+
+
+## LOINC codes for vital signs
+
+Top-level vital sign codes are all LOINC codes with `system` of `http://loinc.org`:
+
+|Vital Sign|LOINC Code|Units|
+|----------|----------|-----|
+|Height|8302-2|`cm`, `m`,`[in_us]`, `[in_i]`|
+|Weight|3141-9|`kg`, `g`, `lb_av`, `[oz_av]`|
+|Heart rate|8867-4|`{beats}/min`|
+|Respiratory rate|9279-1|`{breaths}/min`|
+|Temperature|8310-5|`Cel`, `[degF]`|
+|Body Mass Index|39156-5|`kg/m2`|
+|Oxygen saturation|2710-2|`%{HemoglobinSaturation}`|
+|Head circumference|8287-5|`cm`, `m`, `[in_us]`, `[in_i]`|
+|Blood pressure (systolic and diastolic -- grouping structure)|55284-4|N/A|
+|Systolic blood pressure|8480-6|`mm[Hg]`|
+|Diastolic blood pressure|8462-4|`mm[Hg]`|
+
+## Grouping blood pressures
+
+The representation of a blood pressure measurement makes systolic/diastolic
+pairings explicit by using a "grouping observation" with LOINC code 55284-4
+(see above). The grouping observation has no value itself, but refers to two
+individual observations for systolic and diastolic values.  The grouping
+observation refers to its two individual components using
+`Observation.related`, where `type` is `has-component` and `target` is a
+resource reference to a systolic or diastolic blood pressure obsevation. 
+
+##### Example: blood pressure [https://fhir-open-api.smarthealthit.org/Observation/691-bp](https://fhir-open-api.smarthealthit.org/Observation/691-bp?_format=json)
+
+## Grouping other vital signs
+
+Any time a set of vital signs is measured together, as a set, it can be
+explicitly grouped using a "grouping" observation with LOINC code 8716-3. 
+
+# Lab Results
+
+An individual lab result is represented with the FHIR
+[Observation](http://www.hl7.org/implement/standards/fhir/Observation.html#Observation)
+resource. Each result must have:
+
+ * `1` patient in `Observation.patient`
+ * `1` LOINC code in `Observation.name` with system of `http://loinc.org`
+ * `1` indicator of `ok` (fixed value) in `Observation.reliability`
+ * `1` status indicator (see [FHIR definitions](http://hl7.org/implement/standards/fhir/observation-status.html)) in `Observation.status`
+ * `1` date indicating when the sample was taken (or other "physiologically relevant" time), in `Observation.appliesDateTime`
+ * `1` value (details depend on whether the lab test is quantitative -- see below)
+
+## Quantitative labs (LOINC scale = `Qn`)
+
+Lab tests that produce quantitative values include an
+`Observation.valueQuantity` element with system `http://unitsofmeasure.org` and
+a valid UCUM unit in `code`.
+
+##### Example: pCO2 in blood [https://fhir-open-api.smarthealthit.org/Observation/1690-lab](https://fhir-open-api.smarthealthit.org/Observation/1690-lab?_format=json)
+
+## Non-quantitative labs (LOINC scale = `Ord`, `Nom`, or `Nar`)
+
+Lab tests that do not produce quantitative values include a `valueString`
+element containing the non-quantitative value. **TODO**: describe separate
+treatment for narrative (with `valueString`) vs. ordinal (with
+`valueCodeableConcept`).
+
+##### Example: urine appearance [https://fhir-open-api.smarthealthit.org/Observation/1098-lab](https://fhir-open-api.smarthealthit.org/Observation/1098-lab?_format=json)

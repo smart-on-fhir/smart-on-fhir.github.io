@@ -284,8 +284,9 @@ needs authenticated patient identity) and either:
 <li> a set of launch context requirements in the form <code>launch/patient</code>, which asks the EHR to establish context on your behalf.</a>
 </ul>
 
+An app MAY request that a refresh token be included along with the access token by including a scope value of <code>online_access</code> to request a refresh token that will expire when the end-user no longer is online, or <code>offline_access</code> for a refresh token that will not expire when the end-user no longer is online.
 See <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR Access
-Scopes</a> details.
+Scopes</a> for details.
 
       </td>
     </tr>
@@ -321,8 +322,19 @@ with at least 128 bits of entropy. The app MUST validate the value
 of the state parameter upon return to the redirect URL and MUST ensure
 that the state value is securely tied to the user’s current session
 (e.g., by relating the state value to a session identifier issued
-by the app). The app SHOULD limit the grants, scope, and period of
-time requested to the minimum necessary.
+by the app). The app SHOULD limit the grants and scope requested to 
+the minimum necessary.  In particular, apps should request refresh 
+tokens only when the app needs multiple accesses to FHIR resources 
+and only for the period of active usage needed (i.e., `online_access` 
+or `offline_access`).  
+
+Note that the scope that an app requests may be different from the 
+scope specified in the access token issued by the EHR authorization 
+server.  This may be because the EHR authorization server needs to 
+enforce a particular organizational access policy (e.g., minimum necessary) or 
+because the app has requested a scope that is narrower than the FHIR 
+resource definition.  In any case, the authorization server is the 
+ultimate arbiter responsible for enforcing organizational policy.   
 
 If the app needs to authenticate the identity of the end-user, it should
 include two OpenID Connect scopes:  `openid` and `profile`.   When these scopes
@@ -527,19 +539,28 @@ context parameters</a>.
   </tbody>
 </table>
 
-The EHR authorization server decides what `expires_in` value to assign to an
+The EHR authorization server, in accordance with organizational policy, 
+decides what `expires_in` value to assign to an
 access token and whether to issue a refresh token along with the access token.
 If the app receives a refresh token along with the access token, it can
 exchange this refresh token for a new access token when the current access
 token expires (see step 5 below).  A refresh token should be bound to the
 same `client_id` and should contain the same set of claims as the access
-token with which it is associated.
+token with which it is associated.  Apps SHOULD store tokens in 
+app-specific storage locations only, not in system-wide-discoverable 
+locations.  
 
-Apps SHOULD store tokens in app-specific storage locations only, not in
-system-wide-discoverable locations.  Access tokens SHOULD have a valid
-lifetime no greater than one hour, and refresh tokens (if issued) SHOULD
-have a valid lifetime no greater than twenty-four hours.  Confidential
-clients may be issued longer-lived tokens than public clients.
+The individual organization is responsible for defining the policy rules 
+an EHR server enforces.  In general, a reasonable policy for access tokens 
+is to assign a lifetime of no greater than five minutes.  A reasonable 
+policy for refresh tokens (if issued) is to assign `online_access` tokens
+a lifetime no greater than the length of the end-user’s session, and to
+assign `offline_access` refresh tokens a time limit of two weeks.  
+Some apps may require on-going `offline_access`, and if allowed by  
+organizational policy and approved by the end-user, may be issued 
+an offline_access refresh token for an indefinite period of time, or 
+until the token is explicitly revoked. An organization may want to allow 
+confidential clients to be issued longer-lived tokens than public clients.
 
 Depending upon applicable policy, access tokens and refresh tokens
 MAY be signed by the EHR authorization server using JSON Web Signature

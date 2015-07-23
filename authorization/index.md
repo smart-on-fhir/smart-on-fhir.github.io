@@ -43,6 +43,7 @@ server environment.
 
 #### Use the <span class="label label-primary">confidential app</span>  profile
 when all of the following apply:
+
 * App runs on a trusted server
 * App has server-side business logic (e.g. using PHP, Python, Ruby, .NET, etc.)
 * App is *able to protect* a `client_secret`

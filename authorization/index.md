@@ -364,7 +364,8 @@ Location: https://ehr/authorize?
             redirect_uri=https%3A%2F%2Fapp%2Fafter-auth&
             launch=xyz123&
             scope=launch+patient%2FObservation.read+patient%2FPatient.read+openid+profile&
-            state=98wrghuwuogerg97
+            state=98wrghuwuogerg97&
+            aud=https://ehr/fhir
 ```
 
 <br><br>

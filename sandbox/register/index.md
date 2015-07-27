@@ -8,7 +8,7 @@ title: "SMART on FHIR Sandbox: How To Use"
 ## Overview
 
 In order to run your app against the SMART public sandbox, you will first need to register
-your app with out authorization service (i.e. create a new client). There are three
+your app with our authorization service (i.e. create a new client). There are three
 ways to do this that we offer.
 
  * The easiest way to register your app is by using our *Quick Registration Form* below. The form

@@ -177,6 +177,10 @@ grant_type=refresh_token&
 refresh_token=a47txjiipgxkvohibvsm
 ```
 
+*Note:* The Mitre OIDC authorization server used in the SMART on FHIR refrence implementation
+stack requires a valid `client_id` parameter to be included in the token request, although it's
+not a mandatory part of the standard.
+
 ##### Response
 
 ```

@@ -54,7 +54,7 @@ You can make calls like:
 * `read`: fetch a single resource, given its id
 * `search`: search for resources that match a set of criteria
 
-In general, you can make API calls thare are scoped to the current patient by
+In general, you can make API calls that are scoped to the current patient by
 using `smart.context.patient`, as follows:
 
 ```
@@ -107,4 +107,4 @@ See the source, or click "preview" to see the app in action!
     width="100%" height="500px"
     src="//jsfiddle.net/pv31bL0z/embedded/"></iframe>
 
-For more details, see our JS client [API docs](../api)
+For more details, see our [JS client docs](../../clients/javascript)

@@ -107,4 +107,4 @@ See the source, or click "preview" to see the app in action!
     width="100%" height="500px"
     src="//jsfiddle.net/pv31bL0z/embedded/"></iframe>
 
-For more details, see our JS client [API docs](../api)
+For more details, see our [JS client docs](../../clients/javascript)

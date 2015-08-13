@@ -534,7 +534,11 @@ If the app receives a refresh token along with the access token, it can
 exchange this refresh token for a new access token when the current access
 token expires (see step 5 below).  A refresh token should be bound to the
 same `client_id` and should contain the same set of claims as the access
-token with which it is associated.
+token with which it is associated.  The authorization server's response MUST 
+include the HTTP "Cache-Control" response header field with a value 
+of "no-store," as well as the "Pragma" response header field with a 
+value of "no-cache." 
+
 
 Apps SHOULD store tokens in app-specific storage locations only, not in
 system-wide-discoverable locations.  Access tokens SHOULD have a valid

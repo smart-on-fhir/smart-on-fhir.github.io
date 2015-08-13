@@ -1,3 +1,8 @@
+---
+layout: main
+title: "SMART on FHIR: Specification"
+---
+
 SMART on FHIR
 ---------------------------------------------------
 

@@ -87,8 +87,8 @@ following types of resources:
 
 To orchestrate this interaction, SMART on FHIR defines a set of authorization profiles and extensions for the OAuth 2.0 
 Authorization Framework ([IETF RFC 6749][2]).
-
-**QUESTION**:
+<a id="q-issue-75"/></a>
+**QUESTION**:  [GH Issue #75](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/75)
 >	SMART currently also conveys style information for optimizing the user interface.  Should this be handled as a 
 >	separate, optional extension specification?
 
@@ -151,8 +151,9 @@ SMART on FHIR describes the following types of workflows:
 *	SMART Application Launch Flow
 
 	Used by a SMART application to request context and authorization from an EHR to access resources.
+<a id="q-issue-72"/></a>
+**QUESTION**:  [GH Issue #72](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/72)
 
-**QUESTION**:
 >	Should this specification touch on versioning for future versions?
 
 
@@ -508,8 +509,8 @@ SMART applications utilize the bearer token from the token response as described
 [2.1.6 Resource Server Request](#2.1.6) to access resources.
 
 ##<a id="3"></a>3. Scopes##
-
-**QUESTION**:  
+<a id="q-issue-71"/></a>
+**QUESTION**:  [GH Issue #71](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/71)
 >	If an app has to re-request access to a resource whose authorization was originally obtained via a 
 >	launch, how does it request that?  Currently, scopes only define single-resource access via launch scopes, or access
 >	to the entire set available to the user.
@@ -556,7 +557,8 @@ The resource type of a resource scope must conform with a valid resource type as
 resources available to the end user for the given resource context.
 
 ####<a id="3.1.3"></a>3.1.3 Modification Rights####
-**QUESTION**: 
+<a id="q-issue-73"/></a>
+**QUESTION**:  [GH Issue #73](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/73)
 >	Do any of these scopes allow for whole system interactions?
 
 Three modifications rights are defined:
@@ -604,14 +606,15 @@ The following scopes are defined for requesting identity information:
 	for more information.
 
 ###<a id="3.3"></a>3.3 Scopes for Launch Information###
-
-**QUESTION**: 
+<a id="q-issue-74"/></a>
+**QUESTION**:  [GH Issue #74](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/74)
 >	Are there situations where the scope "launch" would be denied and the workflow would be expected to
 >	continue uninterrupted?  We've found a lot of people forget the "launch" scope when making the request, which leads
 >	to confusion, as they get a token back without any of their launch information.  It seems like simply having the
 >	extension should be sufficient.
-	
-**QUESTION**:
+
+<a id="q-issue-75"/></a>
+**QUESTION**:  [GH Issue #75](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/75)
 >	Should the additional optional bits about intent and styling be included as a core part of the specification, or
 >	be handled as an optional extension specification?  If those bits will change frequently, it may make sense to
 >	keep them separate.
@@ -674,7 +677,8 @@ __NOTE__: The openid and profile scopes are defined by the OpenID Connect specif
 prefix.  
 
 ##<a id="4"></a>4. User Identity##
-**QUESTION**:  
+<a id="q-issue-76"/></a>
+**QUESTION**:  [GH Issue #76](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/76)
 >	Are we requiring EHRs to be identity providers, thus requiring them to implement section
 >	"15.1.  Mandatory to Implement Features for All OpenID Providers" for OpenID Connect?  This adds quite a bit to
 >	the EHR's requirements, and will require running EHRs through the OpenID Connect conformance features.  This also
@@ -686,7 +690,9 @@ token.  SMART applications __MAY__ request such identity information by requesti
 authorization request.  Authorization servers __MUST__ provide an id_token as part of the access token response
 if the SMART application has been authorized to obtain the information.  
 
-**QUESTION**:  
+<a id="q-issue-77"/></a>
+
+**QUESTION**:  [GH Issue #77](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/77)
 >	In certain workflows, the authorization server will need to request the user to authenticate.  Since
 >	the mechanism used by providers and patients will likely be different, how do we disambiguate the nature of the access
 >	for the authorization server to appropriately send them to the right place to log in?  Since services for patients
@@ -694,7 +700,8 @@ if the SMART application has been authorized to obtain the information.
 >	as different FHIR base URLs? 
 
 ###<a id="4.1"></a>4.1 OpenID Connect Identifier Permanency###
-**QUESTION**:  
+<a id="q-issue-78"/></a>
+**QUESTION**:  [GH Issue #78](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/78)
 >	Exactly what happens in a scenario where a website needs to change its issuer value?  Perhaps an 
 >	organization is re-named.  What about the permanency of identifiers?  Should an opaque identifier be used for
 >	individuals, in the event that other identifying information changes in the underlying implementation?  Should this
@@ -771,7 +778,8 @@ Non-normative conformance example as JSON:
 ```
 
 ##<a id="6"></a>6. Client Authentication##
-**QUESTION**
+<a id="q-issue-79"/></a>
+**QUESTION**:  [GH Issue #79](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/79)
 >	When should client authentication be a required element?  There should be a specific threat that needs to
 >	be addressed, rather than simply "be capable of protecting a secret" -- otherwise, folks might choose to not use
 >	client authentication when it really should be doing so.  The below is my recommendation.  In addition, this
@@ -805,11 +813,14 @@ the resulting access token to the requested scopes, or provide an error if the S
 sufficient privileges to request the given scopes.
 
 ##<a id="7"></a>7. Registration##
-**QUESTION**
+<a id="q-issue-80"/></a>
+**QUESTION**:  [GH Issue #80](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/80)
 >	Are these restricted to purely web schemes, or are native application redirects allowed?  That particular detail 
 >	imparts some requirements on an authorization server.
 
-**QUESTION**
+<a id="q-issue-81"/></a>
+**QUESTION**:  [GH Issue #81](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/81)
+
 >	HEART is proceeding with the use of JWK URIs for keys for client authentication -- I'm pretty much in agreement
 >	with that approach; can we list that as a registration requirement for client apps that need authN?	 
 
@@ -822,7 +833,8 @@ supply the following information when registering with an EHR:
 
 
 ##<a id="8"></a>8. Exception Conditions##
-**QUESTION**
+<a id="q-issue-82"/></a>
+**QUESTION**:  [GH Issue #82](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/82)
 >	I added the following as the question was repeatedly raised as to whose responsibility it was to react to and fix
 >	problems that occur with security.  I'm interested in feedback on this proposal.  
 
@@ -869,8 +881,8 @@ specific action after an error to assist users in recovering from transient erro
 *	All use of TLS __MUST__ incorporate best current practices for transport layer security described in [RFC 7525][23].
 	EHRs and SMART applications __SHOULD__ continue to incorporate updates to current practices and __SHOULD__ 
 	document their policies for staying current.
-
-**QUESTION**
+<a id="q-issue-83"/></a>
+**QUESTION**:  [GH Issue #83](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/83)
 >	Should we have a global revocation mechanism for client credential keys?  I suggest a JWK endpoint, allowing
 >	clients to rotate keys, and more critically, allowing them to revoke keys.  Such documents could self-describe
 >	their caching requirements via standard HTTP semantics.

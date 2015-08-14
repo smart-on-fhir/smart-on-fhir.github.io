@@ -151,6 +151,7 @@ SMART on FHIR describes the following types of workflows:
 *	SMART Application Launch Flow
 
 	Used by a SMART application to request context and authorization from an EHR to access resources.
+
 <a id="q-issue-72"/></a>
 **QUESTION**:  [GH Issue #72](https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues/72)
 

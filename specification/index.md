@@ -317,6 +317,12 @@ that the state value is securely tied to the user’s current session
 (e.g., by relating the state value to a session identifier issued
 by the application). 
 
+If the app needs to authenticate the identity of the end-user, it should
+include two OpenID Connect scopes:  `openid` and `profile`.   When these scopes
+are requested, and the request is granted, the app will receive an id_token
+along with the access token.  For full details, see [SMART launch context
+parameters](./scopes-and-launch-context).
+
 SMART applications that are written natively for a platform __SHOULD__ utilize the operating system's default browser 
 when performing the authorization request such that the authorization server may comply with any security controls that 
 have been imparted upon it.  Such controls may include:

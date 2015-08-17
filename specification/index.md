@@ -231,8 +231,9 @@ the SMART application is already known.  Examples of such scenarios include:
 ###<a id="2.1.2"/></a>2.1.2 Authorization Request###
 
 SMART applications __SHALL__ utilize an [authorization code grant][4] to request authorization to FHIR
-resources.  A SMART application __SHOULD__ request scopes needed to access the resource (per the [scopes](#3)
-section) for maximum interoperability.  The application __MAY__ choose to omit the redirect URI, as SMART 
+resources.  A SMART application __SHOULD__ limit the grants, scope (per the [scopes](#3)
+section), and period of time requested to the
+minimum necessary.  The application __MAY__ choose to omit the redirect URI, as SMART 
 registration is limited to a single redirect URI for SMART applications.
 
 In addition, SMART applications __MUST__ send the "state" parameter, as detailed in the 

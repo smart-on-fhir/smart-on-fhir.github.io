@@ -954,11 +954,14 @@ Launch intents are defined in section [2.2.6.1 Launch Intent](#2.2.6.1).
 
 * Josh Mandel
 	* Boston Children's Hospital and Harvard Medical School
-	* email: jmandel@gmail.com
+	* email: joshua.mandel@childrens.harvard.edu
 
 * Matt Randall
 	* Cerner Corporation
 	* email: mrandall@cerner.com
+
+* Dixie Baker
+	* Martin, Blanck & Associates
 
 [1]: http://www.hl7.org/implement/standards/fhir/ "FHIR Specification Home Page"
 [2]: http://tools.ietf.org/html/rfc6749 "The OAuth 2.0 Authorization Framework"

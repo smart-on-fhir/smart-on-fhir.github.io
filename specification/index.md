@@ -306,9 +306,16 @@ flow, this <code>aud</code> value is the same as the launch's <code>iss</code> v
 </table>
 
 	
-A SMART application __MUST__ limit the grants, scope (per the [scopes](#3)
+A SMART application __SHOULD__ limit the grants, scope (per the [scopes](#3)
 section), and period of time requested to the
-minimum necessary.  
+minimum necessary.   
+
+The application MUST use an unpredictable value for the state parameter
+with at least 128 bits of entropy. The application MUST validate the value
+of the state parameter upon return to the redirect URL and MUST ensure
+that the state value is securely tied to the user’s current session
+(e.g., by relating the state value to a session identifier issued
+by the application). 
 
 SMART applications that are written natively for a platform __SHOULD__ utilize the operating system's default browser 
 when performing the authorization request such that the authorization server may comply with any security controls that 

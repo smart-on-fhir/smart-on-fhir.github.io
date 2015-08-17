@@ -96,12 +96,11 @@ Authorization Framework ([IETF RFC 6749][2]).
 SMART on FHIR utilizes the four [roles defined by OAuth 2.0][3] of "resource owner", "resource server", "client", and
 "authorization server".  One additional role is defined:
 
-*	electronic health record (EHR)
+*	electronic health record (EHR) system
 	
-	Computer software designed to store and process information about a person's health
-	information, such as medications, allergies, medical history, etc.  The EHR acts as a resource
-	server by providing FHIR services, is responsible for authenticating end users, and is 
-	responsible for providing an 	authorization server. 
+	Any computer system that holds and controls individually identifiable health information. 
+        Each EHR system has the capability to mediate app requests for access and to authorize 
+        access to FHIR resources.
 	
 ##<a id="1.2"/></a>1.2 Terminology##
 The following terms are used within this specification:
@@ -110,13 +109,27 @@ The following terms are used within this specification:
 
 	Synonymous with "client" or "SMART application", a piece computer software designed to utilize 
 	FHIR services in order	to orchestrate a desired activity for the user.
+	
+*	mobile application
+	
+	An application that is hosted in environments that are incapable of providing assured protection 
+	of secrets. This includes applications that are downloaded and installed on mobile devices 
+	(e.g., iOS, Android) as well as rich web applications implemented within browsers. Mobile 
+	applications essentially are applications hosted in any environment that lacks hardware 
+	protections for isolating critical and sensitive code.
 
-*	healthcare institution
+*	web application
+	
+	An application that is hosted on a trusted web server and that is accessed through a user’s 
+	web browser. A web application may be launched from a portal or EHR, or may be accessed directly 
+	through its URL. A web application is capable of protecting a secret assigned to it to for 
+	use in authenticating its own identity.
 
-	An organization that operates an electronic health record for use in providing health care to
-	a population of users and is responsible for policy decisions regarding the use of the record.
-	The healthcare institution has ultimate ownership of the information in the EHR, but in 
-	certain cases may delegate the role of resource ownership to end users.
+
+*	provider organization 
+
+	An organization that holds individually identifiable health information and that is responsible 
+	for policy decisions regarding the use of those resources.  
 	
 *	patient
 

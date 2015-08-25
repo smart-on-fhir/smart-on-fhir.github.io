@@ -516,7 +516,7 @@ context parameters</a>.
       </td>
     </tr>
     <tr>
-      <td><code>ID_token</code></td>
+      <td><code>id_token</code></td>
       <td><span class="label label-info">optional</span></td>
       <td>Authenticated patient identity and profile, if requested.</td>
     </tr>

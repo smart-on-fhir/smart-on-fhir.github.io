@@ -197,6 +197,7 @@ launch/patient
 launch/encounter
 patient/*.read
 user/*.*
+user/*.read
 openid
 profile</pre></span>
         </div>

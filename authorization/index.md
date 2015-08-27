@@ -561,7 +561,7 @@ Given an authorization code, the app trades it for an access token via HTTP
 POST /token HTTP/1.1
 Host: ehr
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
-Content-Type: application/x-www-form-urlencoded/token?
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&
 code=123abc&
@@ -734,7 +734,7 @@ access token programatically, without user interaction:
 POST /token HTTP/1.1
 Host: ehr
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
-Content-Type: application/x-www-form-urlencoded/token?
+Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&
 refresh_token=a47txjiipgxkvohibvsm

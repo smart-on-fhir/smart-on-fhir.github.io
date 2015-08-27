@@ -251,9 +251,11 @@ registration is limited to a single redirect URI for SMART applications.
 In addition, SMART applications __MUST__ send the "state" parameter, as detailed in the 
 [OAuth 2.0 Security Considerations][5].
 
-SMART applications that are written natively for a platform __SHOULD__ utilize the operating system's default browser 
-when performing the authorization request such that the authorization server may comply with any security controls that 
-have been imparted upon it.  Such controls may include:
+SMART applications that are written natively for a platform __SHOULD__ utilize the operating system's default browser, configured in accordance with institutional policy, 
+when performing the authorization request.  This precaution counters the risk described in section 6.1 of
+[OAuth 2.0 for Native Apps Draft] (https://tools.ietf.org/html/draft-wdenniss-oauth-native-apps-00) and 
+enables the authorization server to exercise security controls necessary to comply with institutional 
+policy.  Such controls may include:
 
 *	Support for single sign-on.
 *	Support for anti-phishing controls implemented via persistent browser state or browser plug-ins.

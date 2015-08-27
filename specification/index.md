@@ -244,12 +244,97 @@ the SMART application is already known.  Examples of such scenarios include:
 ###<a id="2.1.2"/></a>2.1.2 Authorization Request###
 
 SMART applications __SHALL__ utilize an [authorization code grant][4] to request authorization to FHIR
-resources.  A SMART application __SHOULD__ request scopes needed to access the resource (per the [scopes](#3)
-section) for maximum interoperability.  The application __MAY__ choose to omit the redirect URI, as SMART 
-registration is limited to a single redirect URI for SMART applications.
+resources.  The request for authorization will include the following parameters: 
 
-In addition, SMART applications __MUST__ send the "state" parameter, as detailed in the 
+<table class="table">
+  <thead>
+    <th colspan="3">Parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>response_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Fixed value: <code>code</code>. </td>
+    </tr>
+    <tr>
+      <td><code>client_id</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The client's identifier. </td>
+    </tr>
+    <tr>
+      <td><code>redirect_uri</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Must match one of the client's pre-registered redirect URIs.</td>
+    </tr>
+    <tr>
+      <td><code>launch</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>When using the <span class="label label-primary">EHR launch</span>flow, this must match the launch value received from the EHR.</td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+
+Must describe the access that the app needs, including clinical data scopes like
+<code>patient/*.read</code>, <code>openid</code> and <code>profile</code> (if app 
+needs authenticated patient identity) and either:
+
+<ul>
+<li> a <code>launch</code> value indicating that the app wants to receive already-established launch context details from the EHR </li>
+<li> a set of launch context requirements in the form <code>launch/patient</code>, which asks the EHR to establish context on your behalf.</a>
+</ul>
+
+See <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR Access
+Scopes</a> details.
+
+      </td>
+    </tr>
+    <tr>
+      <td><code>state</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+
+An opaque value used by the client to maintain state between the request and
+callback. The authorization server includes this value when redirecting the
+user-agent back to the client. The parameter MUST be used for preventing
+cross-site request forgery or session fixation attacks, as detailed in the 
 [OAuth 2.0 Security Considerations][5].
+
+      </td>
+    </tr>
+     <tr>
+      <td><code>aud</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+
+URL of the EHR resource server from which the app wishes to retrieve FHIR data.
+This parameter prevents leaking a genuine bearer token to a counterfeit
+resource server. (Note: in the case of an <span class="label label-primary">EHR launch</span>
+flow, this <code>aud</code> value is the same as the launch's <code>iss</code> value.)
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+	
+A SMART application __SHOULD__ limit the grants, scope (per the [scopes](#3)
+section), and period of time requested to the
+minimum necessary.   
+
+The application MUST use an unpredictable value for the state parameter
+with at least 128 bits of entropy. The application MUST validate the value
+of the state parameter upon return to the redirect URL and MUST ensure
+that the state value is securely tied to the user’s current session
+(e.g., by relating the state value to a session identifier issued
+by the application). 
+
+If the app needs to authenticate the identity of the end-user, it should
+include two OpenID Connect scopes:  `openid` and `profile`.   When these scopes
+are requested, and the request is granted, the app will receive an id_token
+along with the access token.  For full details, see [SMART launch context
+parameters](./scopes-and-launch-context).
 
 SMART applications that are written natively for a platform __SHOULD__ utilize the operating system's default browser 
 when performing the authorization request such that the authorization server may comply with any security controls that 

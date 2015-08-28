@@ -648,7 +648,7 @@ launch/encounter             | Requests the EHR provide context regarding an enc
 launch/location              | Requests the EHR provide context regarding a location.
 
 An EHR __MAY__ support additional custom launch scopes.  When doing so, the scope name must conform to the syntax
-defined in appendix [A.2. Launch Scope Syntax](#A.2).
+defined in appendix [A.2. Launch Scope Syntax](#A.2.).
 	
 ###<a id="3.4"></a>3.4 Scopes for Longevity###
 SMART on FHIR provides a mechanism for a client application to request a longevity for the access that is being

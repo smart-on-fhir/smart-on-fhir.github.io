@@ -53,7 +53,7 @@ So the browser redirects to:
 On receiving the launch notification, App uses AJAX to query the issuer's
 `/metadata` endpoint:
 
-    GET https://ehr/fhir/metadata
+    GET https://ehr/metadata
     Accept: application/json
 
 The metadata response contains (among other details) the EHR's authorization

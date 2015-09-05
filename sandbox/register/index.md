@@ -177,13 +177,13 @@ ways to do this that we offer.
       <div class="col-lg-10">
         <div class="radio">
           <label>
-            <input name="input_smart_version" checked='checked' value='dstu1' type="radio">
+            <input name="input_smart_version" value='dstu1' type="radio">
             DSTU1 (fhir.smarthealthit.org)
           </label>
         </div>
         <div class="radio">
           <label>
-            <input name="input_smart_version" type='radio' value='dstu2'>
+            <input name="input_smart_version"  checked='checked' type='radio' value='dstu2'>
             DSTU2 (fhir-dstu2.smarthealthit.org)
           </label>
         </div>
@@ -227,7 +227,7 @@ This is a more advanced alternative to using the *Quick Registration Form*.
 
 ### Step 1
 
-Log into the OpenID Connect Server at [https://authorize.smarthealthit.org](https://authorize.smarthealthit.org)
+Log into the OpenID Connect Server at [https://authorize-dstu2.smarthealthit.org](https://authorize-dstu2.smarthealthit.org)
 and click on `Register a new client` in `Self-service client registration`.
 
 <div style='text-align: center'>
@@ -305,7 +305,7 @@ server, you may use a REST call like this:
 POST /register HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Host: authorize.smarthealthit.org
+Host: authorize-dstu2.smarthealthit.org
 
 {
    "client_name": "Cool SMART App",

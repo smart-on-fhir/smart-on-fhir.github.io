@@ -100,30 +100,31 @@
 
 
     <!-- Docs page layout -->
+    <div id="master">
+      <div class="container bs-docs-container">
 
-    <div class="container bs-docs-container">
+        <div class="row">
+          <div class="col-md-9 page-content" role="main">
+            {{ content }}
+          </div>
 
-      <div class="row">
-        <div class="col-md-9 page-content" role="main">
-          {{ content }}
+
+          <div class="col-md-3 page-content" role="main">
+            <div class="alert alert-danger alert-dismissable">
+             <strong>Caution!</strong> SMART on FHIR is pre-release:  high energy,
+             unstable API, evolving docs.  If you spot problems,
+             please <a class="alert-link"
+               href="https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues">file
+               an issue</a>. 
+             
+             Or better yet, you can <a class="alert-link edit-in-github" 
+               href="">edit
+               this page</a>.
+
+            </div> 
+          </div>
+
         </div>
-
-
-        <div class="col-md-3 page-content" role="main">
-          <div class="alert alert-danger alert-dismissable">
-           <strong>Caution!</strong> SMART on FHIR is pre-release:  high energy,
-           unstable API, evolving docs.  If you spot problems,
-           please <a class="alert-link"
-             href="https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues">file
-             an issue</a>. 
-           
-           Or better yet, you can <a class="alert-link edit-in-github" 
-             href="">edit
-             this page</a>.
-
-          </div> 
-        </div>
-
       </div>
     </div>
     <script>
@@ -133,11 +134,6 @@
     <script src="{{site.baseurl}}assets/js/bootstrap3.min.js"></script>
     <script src="{{site.baseurl}}assets/js/site.js"></script>
     <footer class="text-center">
-    <div class="footer-above">
-      <div class="container">
-      </div>
-    </div>
-    <div class="footer-below">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -145,7 +141,6 @@
           </div>
         </div>
       </div>
-    </div>
     </footer>
     {% if site.env == "dev" %}
     <script src="//localhost:35729/livereload.js"></script>

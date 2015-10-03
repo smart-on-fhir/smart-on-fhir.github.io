@@ -14,4 +14,4 @@ redcarpet:
     - fenced_code
 
 baseurl: /
-github_branch: argonaut-dev
+github_branch: edge

@@ -25,6 +25,7 @@ Scope              | Grants
 `openid` `profile` | Permission to retrieve information about the current logged-in user
 `launch`           | Permission to obtain launch context when app is launched from an EHR
 `launch/patient`   | When launching outside the EHR, ask for a patient to be selected at launch time
+`offline_access`   | Request a `refresh_token` that can be used after the access token rexpires
 `online_access`   | Request a `refresh_token` that can be used to obtain a new access token to replace an expired one, and that will be usable for as long as the end-user remains online.
 
 
@@ -86,7 +87,8 @@ on the details of how your app is launched.
 Apps that launch from the EHR will be passed an explicit URL parameter called
 `launch`, whose value must be turned into an OAuth scope to bind the app's
 authorization request to the current EHR session.  If an app receives the URL
-parameter `launch=abc123`, then it requests the scope `launch:abc123`. That's all.
+parameter `launch=abc123`, then it requests the scope `launch` and provides an
+additional URL parameter of `launch=abc123` That's all.
 
 ### Standalone apps
 
@@ -225,6 +227,8 @@ To learn more about the user, the app should treat the "profile" claim as the UR
 a FHIR resource representing the current user. This will be a resource of type
 `Patient`, `Practitioner`, or `RelatedPerson`.
 
+## Scopes for requesting a refresh token
+
 ## Scope for requesting a refresh token
 
 To request a `refresh_token` that can be used to obtain a new access token
@@ -246,3 +250,9 @@ Scope              | Grants
 ## Worked examples
 
 For worked examples (in Python), see [this ipython notebook](http://nbviewer.ipython.org/url/docs.smarthealthit.org/authorization/smart-on-fhir-jwt-examples.ipynb).
+
+## Appendix: URI representation of scopes
+
+In some circumstances - for example, exchanging what scopes users are allowed to have, or sharing what they did choose), the scopes must be represented as URIs. When this is done, the standard URI is to prefix the SMART scopes with  http://smarthealthit.org/fhir/scopes/, so that a scope would be `http://smarthealthit.org/fhir/scopes/patient/*.read`. 
+
+openID scopes have a URI prefix of http://openid.net/specs/openid-connect-core-1_0#

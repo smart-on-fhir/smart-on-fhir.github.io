@@ -5,36 +5,30 @@ title: "SMART on FHIR Authorization: Conformance statement"
 
 # Publishing OAuth2 URLs
 
-To support automated discovery of OAuth2 endpoints, a SMART on FHIR EHR publishes a set of OAuth2 endpoint URLs inside its conformance statement using a pair of extensions on the `Conformance.rest.security` element.
-
-These extensions are:
+To support automated discovery of OAuth2 endpoints, a SMART on FHIR EHR publishes a set of OAuth2 endpoint URLs inside its conformance statement a "complex extension" (that is, an extension with multiple components inside) on the `Conformance.rest.security` element. The top-level extension uses the URL `http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris`, with the following internal components:
 
 <table class="table">
   <thead>
-    <th>Extension URI</th>
+    <th>Component</th>
     <th>Required?</th>
     <th>Description</th>
   </thead>
   <tbody>
     <tr>
-      <td><code>http://fhir-registry.smarthealthit.org/Profile/oauth-uris#authorize</code></td>
+      <td><code>authorize</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>
-Identifies the OAuth2 "authorize" endpoint for the server.
+      <td><code>valueUri</code> indicating the OAuth2 "authorize" endpoint for this FHIR server.
       </td>
     </tr>
     <tr>
-      <td><code>http://fhir-registry.smarthealthit.org/Profile/oauth-uris#token</code></td>
+      <td><code>token</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>
-Identifies the OAuth2 "token" endpoint for the server.
-      </td>
+      <td><code>valueUri</code> indicating the OAuth2 "token" endpoint for this FHIR server.</td>
     </tr>
     <tr>
-      <td><code>http://fhir-registry.smarthealthit.org/Profile/oauth-uris#register</code></td>
+      <td><code>register</code></td>
       <td><span class="label label-default">optional</span></td>
-      <td>
-Identifies the OAuth2 dynamic registration endpoint for the server, if supported.
+      <td><code>valueUri</code> indicating the OAuth2 dynamic registration endpoint for this FHIR server, if supported.
       </td>
     </tr>
   </tbody>
@@ -47,19 +41,19 @@ Identifies the OAuth2 dynamic registration endpoint for the server, if supported
 {
   "resourceType": "Conformance", 
 ...
-  "rest": {
+  "rest": [{
    ...
       "security": {
-        "extension": [
-          {
-            "url": "http://fhir-registry.smarthealthit.org/Profile/oauth-uris#authorize",
-            "valueUri": "{OAuth2 'authorize' URL for your OAuth2-protected server}"
-          },
-          {
-            "url": "http://fhir-registry.smarthealthit.org/Profile/oauth-uris#token",
-            "valueUri": "{OAuth2 'token' URL for your OAuth2-protected server}"
-          }
-        ],
+        "extension": [{
+          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris",
+          "extension": [{
+            "url": "token",
+            "valueUri": "https://my-server.org/token"
+          },{
+            "url": "authorize",
+            "valueUri": "https://my-server.org/authorize"
+          }]
+        }],
       ...
 ```
 

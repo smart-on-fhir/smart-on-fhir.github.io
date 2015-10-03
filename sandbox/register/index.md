@@ -75,7 +75,7 @@ ways to do this that we offer.
         }
         
         if ($("input[name=input_smart_version]:checked").val() === "dstu1") {
-            registration_endpoint = 'https://authorize.smarthealthit.org/register';
+            registration_endpoint = 'https://authorize-dstu1.smarthealthit.org/register';
         } else {
             registration_endpoint = 'https://authorize-dstu2.smarthealthit.org/register';
         }
@@ -178,7 +178,7 @@ ways to do this that we offer.
         <div class="radio">
           <label>
             <input name="input_smart_version" value='dstu1' type="radio">
-            DSTU1 (fhir.smarthealthit.org)
+            DSTU1 (fhir-dstu1.smarthealthit.org)
           </label>
         </div>
         <div class="radio">

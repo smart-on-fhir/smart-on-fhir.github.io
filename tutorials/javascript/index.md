@@ -44,8 +44,8 @@ var smart = FHIR.client({
 This object will be your touchpoint for making FHIR API calls. Your client
 will have some context built in, including:
 
-* `smart.context.patient`
-* `smart.context.practitioner`
+* `smart.patient`
+* `smart.user`
 
 ### 3. Use your client instance to execute FHIR API calls
 
@@ -55,43 +55,37 @@ You can make calls like:
 * `search`: search for resources that match a set of criteria
 
 In general, you can make API calls that are scoped to the current patient by
-using `smart.context.patient`, as follows:
+using `smart.patient`, as follows:
 
 ```
 // Search for the current patient's conditions
-smart.context.patient.Condition.search();
+smart.patient.api.search({type: 'Condition'});
 
 // Search for the current patient's prescriptions
-smart.context.patient.MedicationPrescription.search();
+smart.patient.api.search({type: 'MedicationOrder'});
 ```
 
 If you're writing a population-level app, you can query across patient records
 by using `smart.api`, as follows:
 
 ```
-// Search for the all conditions added today
-var todaysDiagnoses = smart.api.Condition.where.dateAsserted("2014-05-01").search();
+// Search for conditions added today
+var todaysDiagnoses = smart.patient.api.search({type: 'Condition', query: {dateRecorded: '2014-05-01'}});
 
 // Search for all statins prescribed today
-var statinRxs = smart.api.MedicationPrescription.where
-  .datewritten("2014-05-01")
-  .medication(smart.api.Medication.where
-    .name("statin")
-  ).search();
+var statinRxs = smart.patient.api.search({type: 'MedicationOrder', query: {dateWritten: '2014-05-01', name: 'statin'}});
 ```
 
 These functions return `$.Deferred` objects, which you can work with simply by
 calling their `done` method:
 
 ```
-statinRxs.done(function(prescriptions, cursor){
-  console.log(prescriptions[0]);
+statinRxs.done(function(prescriptions){
+  console.log(prescriptions);
 });
 ```
 
-In the `done` callback, you'll get an array of search results, and potentially
-a paging cursor that you can use to fetch the next page of results. To use the
-cursor, just call `cursor.next()`, which gives you a new `Deferred` result set.
+In the `done` callback, you'll get a data structure containing search results.
 
 Here's a complete example of the steps above:
 

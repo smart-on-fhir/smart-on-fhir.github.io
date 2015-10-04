@@ -66,7 +66,7 @@ launch.html
         Loading...
         <script>
         // Change this to the ID of the client that you registered with the SMART on FHIR authorization server.
-        var clientId = "16cbfe7c-6c56-4876-944f-534f9306bf8b";
+        var clientId = "my_web_app";
         
         // These parameters will be received at launch time in the URL
         var serviceUri = getUrlParameter("iss");
@@ -78,7 +78,7 @@ launch.html
         //      2. permission to launch the app in the specific context
         var scope = [
                 "patient/*.read",
-                "launch:" + launchContextId
+                "launch"
             ].join(" ");
             
         // Generate a unique session key string (here we just generate a random number
@@ -99,12 +99,15 @@ launch.html
 
             var authUri,
                 tokenUri;
+            
+            var smartExtension = r.rest[0].security.extension.filter(function (e) {
+               return (e.url === "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris");
+            });
 
-            // get the two authorization service endpoint URLs
-            jQuery.each(r.rest[0].security.extension, function(responseNum, arg){
-              if (arg.url === "http://fhir-registry.smarthealthit.org/Profile/oauth-uris#authorize") {
+            smartExtension[0].extension.forEach(function(arg, index, array){
+              if (arg.url === "authorize") {
                 authUri = arg.valueUri;
-              } else if (arg.url === "http://fhir-registry.smarthealthit.org/Profile/oauth-uris#token") {
+              } else if (arg.url === "token") {
                 tokenUri = arg.valueUri;
               }
             });
@@ -124,6 +127,8 @@ launch.html
                 "client_id=" + encodeURIComponent(clientId) + "&" +
                 "scope=" + encodeURIComponent(scope) + "&" +
                 "redirect_uri=" + encodeURIComponent(redirectUri) + "&" +
+                "aud=" + encodeURIComponent(serviceUri) + "&" +
+                "launch=" + launchContextId + "&" +
                 "state=" + state;
          }, "json");
         

@@ -67,7 +67,7 @@ index.html
         "use strict";
 
         FHIR.oauth2.ready(function(smart){
-          var patient = smart.context.patient;
+          var patient = smart.patient;
 
           patient.read().then(function(pt) {
 
@@ -77,16 +77,16 @@ index.html
 
             document.getElementById('name').innerHTML = name;
 
-            patient.MedicationPrescription
-            .search()
+            patient.api
+            .search({type: "MedicationOrder"})
             .then(function(prescriptions) {
 
               var med_list = document.getElementById('med_list');
 
-              prescriptions.forEach(function(prescription){
-                var meds = prescription.contained;
+              prescriptions.data.entry.forEach(function(prescription){
+                var meds = prescription.resource.medicationCodeableConcept.coding;
                 meds.forEach(function(med){
-                  med_list.innerHTML += "<li> " + med.name + "</li>";
+                  med_list.innerHTML += "<li> " + med.display + "</li>";
                 });
               });
 

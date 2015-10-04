@@ -66,7 +66,7 @@ launch.html
         Loading...
         <script>
         // Change this to the ID of the client that you registered with the SMART on FHIR authorization server.
-        var clientId = "my_web_app";
+        var clientId = "16cbfe7c-6c56-4876-944f-534f9306bf8b";
         
         // These parameters will be received at launch time in the URL
         var serviceUri = getUrlParameter("iss");

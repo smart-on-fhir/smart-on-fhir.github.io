@@ -105,6 +105,6 @@ See the source, or click "preview" to see the app in action!
 <iframe 
     style="border: 1px solid black"
     width="100%" height="500px"
-    src="//jsfiddle.net/pv31bL0z/52/embedded/"></iframe>
+    src="//jsfiddle.net/62j7trsn/embedded/"></iframe>
 
 For more details, see our [JS client docs](../../clients/javascript)

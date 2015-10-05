@@ -48,7 +48,7 @@ the patient in context
 
 ## Supported API operations
 
-All operations supported by `fhir.js` are supported. These include:
+All operations available in `fhir.js` are supported. These include:
 
 * `read`  Read the current state of a given resource
 * `search` Obtain a resource bundle matching specific search criteria

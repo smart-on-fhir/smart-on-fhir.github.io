@@ -9,11 +9,46 @@ title: SMART on FHIR -- Clients -- JavaScript
 
 Please see [https://github.com/smart-on-fhir/client-js](https://github.com/smart-on-fhir/client-js)
 
-## Supported API operations
+## Initializing the client
+
+Before you are able to run any operations against the FHIR API
+using the JS client, you will need to initialize it first. The following
+code snippet illustrates the basic boilerplate code that you can
+use for this purspose:
+
+```
+FHIR.oauth2.ready(function(smart){
+    // now do something cool
+});
+```
+
+## Obtaining the context
+
+Once the client is initialized, you can obtain the context in which it was
+launched (the user who authorized the client and, if applicable, the patient
+that has been selected) by using the following methods:
+
+* `smart.user.read()`
+* `smart.patient.read()`
+
+Both of these return a jQery Deferred object which you can register a success
+callback to process the returned FHIR resource.
+
+## Embedded FHIR client library
 
 The SMART JS client uses the open-source [fhir.js](https://github.com/FHIR/fhir.js) for
-interfacing with SMART API servers. All operations supported by `fhir.js` are
-supported. These include:
+interfacing with SMART API servers. Upon successfully initializing and negotiating the
+SMART authorization sequence, the client will expose one or two instances of the `fhir.js`
+client as applicable via the following handles (assuming that you use the name variable 
+name `smart` for your SMART on FHIR client in scope):
+
+* `smart.api` Non-context aware API for executing operations on all authorized resources
+* `smart.patient.api` Context aware API which automatically applies its operations to
+the patient in context
+
+## Supported API operations
+
+All operations supported by `fhir.js` are supported. These include:
 
 * `read`  Read the current state of a given resource
 * `search` Obtain a resource bundle matching specific search criteria
@@ -75,3 +110,9 @@ smart.api.search({type: "Patient", query: {given: ["John", "Bob"], family: "Smit
 
 Please see the [fhir.js documentation](https://github.com/FHIR/fhir.js) for further
 examples.
+
+## Further Reading
+
+To learn more about the SMART on FHIR JS client, please visit our 
+[tutorials page]({{site.baseurl}}tutorials/)
+

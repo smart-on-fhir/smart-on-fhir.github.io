@@ -8,8 +8,8 @@ title: "SMART on FHIR Authorization: Best Practices"
 This page is designed to catalog best practices in developing secure SMART on
 FHIR EHR implementations. As such, these considerations don't directly affect
 interoperability; rather, they describe pracical implications of security
-decisions. This page is a work in progress; we ancicipate describing details
-such as the entropy required in genearting access tokens.
+decisions. This page is a work in progress; we anticipate describing details
+such as the entropy required in generating access tokens.
 
 ## Please contribute suggestions!
 

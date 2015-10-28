@@ -435,7 +435,8 @@ Location: https://app/after-auth?
 
 After obtaining an authorization code, the app trades the code for an access
 token via HTTP `POST` to the EHR authorization server's token endpoint URL,
-using content-type `application/x-www-form-urlencoded`.
+using content-type `application/x-www-form-urlencoded`, as described in 
+section 4.1.3 of RFC6749](https://tools.ietf.org/html/rfc6749#page-29). 
 
 For <span class="label label-primary">public apps</span>, authentication is not
 possible (and thus not required), since the app cannot be trusted to protect a
@@ -458,7 +459,7 @@ username is the app's `client_id` and the password is the app's `client_secret`
     <tr>
       <td><code>code</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>Code that an app can exchange for an access token</td>
+      <td>Code that the app received from the authorization server</td>
     </tr>
     <tr>
       <td><code>redirect_uri</code></td>
@@ -473,72 +474,29 @@ username is the app's `client_id` and the password is the app's `client_secret`
   </tbody>
 </table>
 
-The response is a JSON Web Token (JWT) bearer token, with the following
-claims:
+The EHR-B authorization server SHALL return either an access token as defined 
+in [RFC6749](https://tools.ietf.org/html/rfc6749) and 
+[RFC6750](http://tools.ietf.org/html/rfc6750), or a message indicating that 
+the authorization request has been denied.  The access token (a string of 
+characters) is essentially a private message that the authorization server 
+passes to the FHIR Resource Server, telling the FHIR server that the 
+"message bearer" has been authorized to access the specified resources.  
+Defining the format and content of the access token is left up to the 
+organization that issues the access token and holds the requested resource.      
 
-<table class="table">
-  <thead>
-    <th colspan="3">JSON Object property name</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>access_token</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>The access token issued by the authorization server.</td>
-    </tr>
-    <tr>
-      <td><code>token_type</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>Fixed value: <code>bearer</code>.</td>
-    </tr>
-    <tr>
-      <td><code>expires_in</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>The lifetime in seconds of the access token. For example, the value 3600 denotes that the access token will expire in one hour from the time the response was generated.</td>
-    </tr>
-    <tr>
-      <td><code>scope</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
-    </tr>
-    <tr>
-      <td><code>patient</code>, etc.</td>
-      <td><span class="label label-info">optional</span></td>
-      <td>
-
-When an app is launched with patient context, these parameters communicate the
-context values. For example, a parameter like <code>"patient": "123"</code> would
-indicate the FHIR resource <code>https://[fhir-base]/Patient/123</code>. Other
-context parameters may also be available. For full details see <a
-href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART launch
-context parameters</a>.
-
-      </td>
-    </tr>
-    <tr>
-      <td><code>id_token</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>Authenticated patient identity and profile, if requested.</td>
-    </tr>
-    <tr>
-      <td><code>refresh_token</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>Credential used to request new access token after token expires.</td>
-      </tr>
-  </tbody>
-</table>
-
-The EHR authorization server decides what `expires_in` value to assign to an
-access token and whether to issue a refresh token along with the access token.
-If the app receives a refresh token along with the access token, it can
-exchange this refresh token for a new access token when the current access
-token expires (see step 5 below).  A refresh token should be bound to the
-same `client_id` and should contain the same set of claims as the access
-token with which it is associated.  The authorization server's response MUST 
+The authorization server's response MUST 
 include the HTTP "Cache-Control" response header field with a value 
 of "no-store," as well as the "Pragma" response header field with a 
 value of "no-cache." 
 
+The EHR authorization server decides what `expires_in` value to assign to an
+access token and whether to issue a refresh token, as defined in section 1.5
+of [RFC6749](https://tools.ietf.org/html/rfc6749#page-10), along with the 
+access token.  If the app receives a refresh token along with the access 
+token, it can exchange this refresh token for a new access token when the 
+current access token expires (see step 5 below).  A refresh token should 
+be bound to the same `client_id` and should contain the same set of claims 
+as the access token with which it is associated.  
 
 Apps SHOULD store tokens in app-specific storage locations only, not in
 system-wide-discoverable locations.  Access tokens SHOULD have a valid
@@ -546,9 +504,15 @@ lifetime no greater than one hour, and refresh tokens (if issued) SHOULD
 have a valid lifetime no greater than twenty-four hours.  Confidential
 clients may be issued longer-lived tokens than public clients.
 
-Depending upon applicable policy, access tokens and refresh tokens
-MAY be signed by the EHR authorization server using JSON Web Signature
-(JWS).
+A large range of threats to bearer tokens can be mitigated by digitally 
+signing the token as specified in [RFC7515](https://tools.ietf.org/html/rfc7515) 
+or by using a Message Authentication Code (MAC) instead.  Alternatively, 
+a bearer token can contain a reference to authorization information, 
+rather than encoding the information directly into the token itself.  
+To be effective, such references must be infeasible for an attacker to 
+guess.  Using a reference may require an extra interaction between the 
+resource server and the authorization server; the mechanics of such an 
+interaction are not defined by this specification. 
 
 
 #### *For example*

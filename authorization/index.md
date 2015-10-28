@@ -474,17 +474,54 @@ username is the app's `client_id` and the password is the app's `client_secret`
   </tbody>
 </table>
 
-The EHR-B authorization server SHALL return either an access token as defined 
-in [RFC6749](https://tools.ietf.org/html/rfc6749) and 
-[RFC6750](http://tools.ietf.org/html/rfc6750), or a message indicating that 
-the authorization request has been denied.  The access token (a string of 
-characters) is essentially a private message that the authorization server 
+The EHR-B authorization server SHALL return a JSON structure that includes an access token
+or a message indicating that the authorization request has been denied. The JSON structure
+includes the following parameters:
+
+<table class="table">
+  <thead>
+    <th colspan="3">Parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>access_token</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The access token issued by the authorization server</td>
+    </tr>
+    <tr>
+      <td><code>token_type</code></td>
+      <td><span class="label label-info">required</span></td>
+      <td>Fixed value:  bearer</td>
+    </tr>
+    <tr>
+      <td><code>expires_in</code></td>
+      <td><span class="label label-info">recommended</span></td>
+      <td>Lifetime in seconds of the access token, after which the token SHALL NOT be accepted by the resource server</td>
+    </tr>
+    <tr>
+      <td><code>refresh_token</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>Token that can be used to obtain a new access token, using the same authorization grants</td>
+    </tr>
+     <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>If identical to the scope requested by the client; otherwise, REQUIRED.  The scope authorized by the access token. </td>
+    </tr>
+  </tbody>
+</table>
+
+The parameters are included in the entity-body of the HTTP response, as 
+described in section 5.1 of [RFC6749](https://tools.ietf.org/html/rfc6749). 
+
+The access token is a string of characters as defined in 
+[RFC6749](https://tools.ietf.org/html/rfc6749) and 
+[RFC6750](http://tools.ietf.org/html/rfc6750).  The token is essentially 
+a private message that the authorization server 
 passes to the FHIR Resource Server, telling the FHIR server that the 
 "message bearer" has been authorized to access the specified resources.  
 Defining the format and content of the access token is left up to the 
-organization that issues the access token and holds the requested resource.      
-
-The authorization server's response MUST 
+organization that issues the access token and holds the requested resource. The authorization server's response MUST 
 include the HTTP "Cache-Control" response header field with a value 
 of "no-store," as well as the "Pragma" response header field with a 
 value of "no-cache." 

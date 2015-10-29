@@ -490,8 +490,8 @@ includes the following parameters:
     </tr>
     <tr>
       <td><code>token_type</code></td>
-      <td><span class="label label-info">required</span></td>
-      <td>Fixed value:  bearer</td>
+      <td><span class="label label-success">required</span></td>
+      <td>Fixed value: <code>Bearer</code></td>
     </tr>
     <tr>
       <td><code>expires_in</code></td>
@@ -500,7 +500,7 @@ includes the following parameters:
     </tr>
      <tr>
       <td><code>scope</code></td>
-      <td><span class="label label-info">required</span></td>
+      <td><span class="label label-success">required</span></td>
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
     </tr>
     <tr>

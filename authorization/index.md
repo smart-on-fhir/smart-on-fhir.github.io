@@ -602,7 +602,7 @@ FHIR API call to the FHIR endpoint on the EHR's resource server. The request inc
     Authorization: Bearer {{access_token}}
 {% endraw %}
 
-(Note that in a real request, {%raw}`{{access_token}}`{%endraw%}is replaced
+(Note that in a real request, {% raw %}`{{access_token}}`{% endraw %}is replaced
 with the actual token value.)
 
 #### *For example*

@@ -474,7 +474,7 @@ username is the app's `client_id` and the password is the app's `client_secret`
   </tbody>
 </table>
 
-The EHR-B authorization server SHALL return a JSON structure that includes an access token
+The EHR authorization server SHALL return a JSON structure that includes an access token
 or a message indicating that the authorization request has been denied. The JSON structure
 includes the following parameters:
 
@@ -498,18 +498,29 @@ includes the following parameters:
       <td><span class="label label-info">recommended</span></td>
       <td>Lifetime in seconds of the access token, after which the token SHALL NOT be accepted by the resource server</td>
     </tr>
-    <tr>
-      <td><code>refresh_token</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>Token that can be used to obtain a new access token, using the same authorization grants</td>
-    </tr>
      <tr>
       <td><code>scope</code></td>
+      <td><span class="label label-info">required</span></td>
+      <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
+    </tr>
+    <tr>
+      <td><code>id_token</code></td>
       <td><span class="label label-info">optional</span></td>
-      <td>If identical to the scope requested by the client; otherwise, REQUIRED.  The scope authorized by the access token. </td>
+      <td>Authenticated patient identity and profile, if requested</td>
+    </tr>
+      <tr>
+      <td><code>refresh_token</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>Token that can be used to obtain a new access token, using the same or a subset of the original authorization grants</td>
     </tr>
   </tbody>
 </table>
+
+In addition, if the app was launched from within a patient context, 
+parameters to communicate the context values MAY BE included. For example, 
+a parameter like `"patient": "123"` would indicate the FHIR resource 
+https://[fhir-base]/Patient/123. Other context parameters may also 
+be available. For full details see [SMART launch context parameters](http://docs.smarthealthit.org/authorization/scopes-and-launch-context/). 
 
 The parameters are included in the entity-body of the HTTP response, as 
 described in section 5.1 of [RFC6749](https://tools.ietf.org/html/rfc6749). 
@@ -521,7 +532,9 @@ a private message that the authorization server
 passes to the FHIR Resource Server, telling the FHIR server that the 
 "message bearer" has been authorized to access the specified resources.  
 Defining the format and content of the access token is left up to the 
-organization that issues the access token and holds the requested resource. The authorization server's response MUST 
+organization that issues the access token and holds the requested resource. 
+
+The authorization server's response MUST 
 include the HTTP "Cache-Control" response header field with a value 
 of "no-store," as well as the "Pragma" response header field with a 
 value of "no-cache." 
@@ -531,9 +544,9 @@ access token and whether to issue a refresh token, as defined in section 1.5
 of [RFC6749](https://tools.ietf.org/html/rfc6749#page-10), along with the 
 access token.  If the app receives a refresh token along with the access 
 token, it can exchange this refresh token for a new access token when the 
-current access token expires (see step 5 below).  A refresh token should 
-be bound to the same `client_id` and should contain the same set of claims 
-as the access token with which it is associated.  
+current access token expires (see step 5 below).  A refresh token MUST 
+BE bound to the same `client_id` and MUST contain the same, or a subset of, 
+the set of claims authorized for the access token with which it is associated.  
 
 Apps SHOULD store tokens in app-specific storage locations only, not in
 system-wide-discoverable locations.  Access tokens SHOULD have a valid

@@ -469,7 +469,7 @@ username is the app's `client_id` and the password is the app's `client_secret`
     <tr>
       <td><code>client_id</code></td>
       <td><span class="label label-info">optional</span></td>
-      <td>If present, must match the client_id found in the Authorization header.</td>
+      <td>Required for public apps. If present, must match the client_id found in the Authorization header.</td>
     </tr>
   </tbody>
 </table>

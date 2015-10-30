@@ -14,4 +14,4 @@ redcarpet:
     - fenced_code
 
 baseurl: /
-github_branch: edge
+github_branch: master

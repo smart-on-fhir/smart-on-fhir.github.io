@@ -730,13 +730,14 @@ The response is a JSON object containing a new access token, with the following 
       <td><span class="label label-info">optional</span></td>
       <td>The refresh token issued by the authorization server. If present, the app should discard any previosu <code>refresh_token</code> associated with this launch, replacing it with this new value.</td>
     </tr>
-    <tr>
-      <td><code>patient, etc.</code></td>
-      <td><span class="label label-success">optional</span></td>
-      <td>When an app is launched with patient context, these parameters communicate the context values. For example, a parameter like <code>"patient": "123"</code> would indicate the FHIR resource https://[fhir-base]/Patient/123. Other context parameters may also be available. For full details see SMART launch context parameters.</td>
-    </tr>
   </tbody>
 </table>
+
+In addition, if the app was launched from within a patient context, 
+parameters to communicate the context values MAY BE included. For example, 
+a parameter like `"patient": "123"` would indicate the FHIR resource 
+https://[fhir-base]/Patient/123. Other context parameters may also 
+be available. For full details see [SMART launch context parameters](http://docs.smarthealthit.org/authorization/scopes-and-launch-context/). 
 
 #### *For example*
 If the EHR supports refresh tokens, an app may be able to replace an expired

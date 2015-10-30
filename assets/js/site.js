@@ -20,7 +20,7 @@ $(".edit-in-github").each(function(i,d){
     rel += "md";
   }
   var branch = "/" + (github_branch || master);
-  if (rel.match(/fhir-docs.smarthealthit.org/)){
+  if (window.location.host.match(/^fhir-docs/)){
     branch = "";
   }
   $(d).attr("href", "https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit"+ branch + rel);

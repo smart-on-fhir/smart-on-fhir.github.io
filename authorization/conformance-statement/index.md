@@ -5,7 +5,15 @@ title: "SMART on FHIR Authorization: Conformance statement"
 
 # Publishing OAuth2 URLs
 
-To support automated discovery of OAuth2 endpoints, a SMART on FHIR EHR publishes a set of OAuth2 endpoint URLs inside its conformance statement a "complex extension" (that is, an extension with multiple components inside) on the `Conformance.rest.security` element. The top-level extension uses the URL `http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris`, with the following internal components:
+If a server requires SMART on FHIR authorization for access, its conformance
+statement must support automated dicovery of OAuth2 endpoints by including a
+"complex" extension (that is, an extension with multiple components inside) on
+the `Conformance.rest.security` element. Any time a client sees this extension,
+it must be prepared to authorize using SMART's OAuth2-basead protocol.
+
+[The top-level extension uses the URL
+`http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris`, with
+the following internal components:
 
 <table class="table">
   <thead>

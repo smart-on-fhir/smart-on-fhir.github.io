@@ -468,8 +468,8 @@ username is the app's `client_id` and the password is the app's `client_secret`
     </tr>
     <tr>
       <td><code>client_id</code></td>
-      <td><span class="label label-info">optional</span></td>
-      <td>Required for <span class="label label-primary">public apps</span>. If present, must match the <code>client_id</code> found in the Authorization header.</td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>Required for <span class="label label-primary">public apps</span>. Omit for <span class="label label-primary">confidential apps</span>.</td>
     </tr>
   </tbody>
 </table>
@@ -498,10 +498,15 @@ includes the following parameters:
       <td><span class="label label-info">recommended</span></td>
       <td>Lifetime in seconds of the access token, after which the token SHALL NOT be accepted by the resource server</td>
     </tr>
-     <tr>
+    <tr>
       <td><code>scope</code></td>
       <td><span class="label label-success">required</span></td>
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
+    </tr>
+     <tr>
+      <td><code>state</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The exact value received from the client in the authorization request</td>
     </tr>
     <tr>
       <td><code>id_token</code></td>
@@ -589,6 +594,7 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
   "token_type": "bearer",
   "expires_in": 3600,
   "scope": "patient/Observation.read patient/Patient.read",
+  "state": "98wrghuwuogerg97",
   "intent": "client-ui-name",
   "patient":  "123",
   "encounter": "456"

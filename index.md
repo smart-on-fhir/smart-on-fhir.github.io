@@ -15,21 +15,18 @@ Easy-to-use, resource-oriented REST API for structured clinical data. Grab a
 resource with:
 
 ```
-$ curl https://fhir-open-api-dstu2.smarthealthit.org/Patient/1032702 -H 'Accept: application/json'
+$ curl https://fhir-open-api-dstu2.smarthealthit.org/Patient/1551992 -H 'Accept: application/json'
 {
   "resourceType": "Patient",
-  "identifier": [{
-      "use": "usual",
-      "label": "SMART Hospital MRN",
-      "system": "http://smart-hospital/mrn",
-      "value": "1032702"
-    }],
+  "active": true,
   "name": [{
       "use": "official",
-      "family": [ "Shaw" ],
-      "given": [ "Amy", "V." ]
-    }], 
-   ...
+      "family": ["Coleman"],
+      "given": ["Lisa","P."]
+  }],
+  "gender": "female",
+  "birthDate": "1948-04-14",
+  ...
 }
 ```
 

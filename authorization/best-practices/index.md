@@ -5,7 +5,7 @@ title: "SMART on FHIR Authorization: Best Practices"
 
 # Best Practices in Authorization for SMART on FHIR EHRs
 
-This page is catalogs best practices in developing secure SMART on
+This page catalog best practices in developing secure SMART on
 FHIR EHR implementations. As such, these considerations don't directly affect
 interoperability; rather, they describe pracical implications of security
 decisions. This page is a work in progress; we anticipate describing details
@@ -31,9 +31,7 @@ be used.  At this time, this version is [RFC5246](
 https://tools.ietf.org/html/rfc5246), The Transport Layer Security (TLS)
 Protocol, Version 1.2.  The server involved in the exchange MUST authenticate
 its own identity to the client and set up the secure channel.  Depending upon
-organization policy, authentication of the client may also be required (but
-note that requiring client authentication via mutual TLS may limit
-interoperability of the client across server environments).
+organizational policy, authentication of the client may also be required.  
 
 ## 2. Best Practices for Authorization Servers
 
@@ -56,9 +54,6 @@ Credentials Grants model (section 4.4 of RFC6749) may be used.  In such case,
 the use of signed JSON Web Tokens for transmitting the authorization request
 and authentication information, as described in [RFC7523](
 https://tools.ietf.org/html/rfc7523) is recommended.
-
-**Question:** is 2.1.2 detailed enough for us to include here? Is it
-effectively hinting at our draft cross-organizational auth spec?
 
 2.1.3 To discourage online guessing of authorization codes, authorization
 servers should limit the number of times, within an established time period, a
@@ -141,8 +136,8 @@ exploit the victim’s authorizations to perform actions on the target site.  Fo
 example, a CSRF attack against a client’s redirection URI might cause the
 client to mistakenly obtain an access token using an attacker-supplied
 authorization code. [RFC6749]( https://tools.ietf.org/html/rfc6749) requires
-that clients implement CSRF protection for its redirection URI.  To accomplish
-this, the [SMART on FHIR Authorization Guide](
+that clients implement CSRF protection for its redirection URI.  To fulfill
+this requirement, the [SMART on FHIR Authorization Guide](
 http://docs.smarthealthit.org/authorization/) requires that each app generate
 an unpredictable (at least 128 bits of entropy) `state` parameter for each user
 session, and that the app validate the `state` value for any request sent to
@@ -171,7 +166,7 @@ resource server prior to returning an authorization code to the requester.
 sensitive information.  While most tokens are effective for only a limited
 period of time, other tokens remain on a device for a longer period of time.
 To avoid misuse of the access privileges these tokens represent, it is
-important for users to lock decice screens, shut down browsers, or power down
+important for users to lock device screens, shut down browsers, or power down
 devices when not in use.
 
 ### 4.2 Cross-Site Request Forgery (CSRF) Protection

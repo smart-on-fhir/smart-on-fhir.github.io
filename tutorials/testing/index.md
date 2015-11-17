@@ -38,24 +38,6 @@ launch.html
 <html>
   <head>
     <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script>
-    <script>
-      FHIR.oauth2.authorize({
-        "client_id": "my_web_app",
-        "scope":  "patient/*.read"
-      });
-    </script>
-  </head>
-  Loading...
-</html>
-```
-
-index.html
-
-```
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script>
   </head>
   <body>
     <h1>Medications for <span id="name"></span></h1>
@@ -82,6 +64,10 @@ index.html
             .then(function(prescriptions) {
 
               var med_list = document.getElementById('med_list');
+              if (!prescriptions.data.entry) {
+                med_list.innerHTML = "No medications.";
+                return;
+              }
 
               prescriptions.data.entry.forEach(function(prescription){
                 var meds = prescription.resource.medicationCodeableConcept.coding;

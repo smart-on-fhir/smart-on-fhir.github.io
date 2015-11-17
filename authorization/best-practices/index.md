@@ -32,6 +32,12 @@ https://tools.ietf.org/html/rfc5246), The Transport Layer Security (TLS)
 Protocol, Version 1.2.  The server involved in the exchange MUST authenticate
 its own identity to the client and set up the secure channel.  Depending upon
 organizational policy, authentication of the client may also be required.  
+Although mutual TLS is an option, it may not be the most practical solution, 
+given the lack of client libraries and the fact that a load balancer 
+placed in front of a resource server (a common practice) will terminate 
+the TLS link.  
+[OAuth 2.0 Security: Going Beyond Bearer Tokens]( http://tools.ietf.org/html/draft-tschofenig-oauth-security-01) 
+suggests that in such cases, application-level encryption may be the best approach. 
 
 ## 2. Best Practices for Authorization Servers
 

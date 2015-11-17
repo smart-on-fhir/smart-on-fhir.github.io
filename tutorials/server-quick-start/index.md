@@ -38,7 +38,7 @@ authorization required).
 
 You'll expose a "launch" button that users can click from within an existing EHR session.  When a user clicks this button, you'll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:
 
-[https://fhir.smarthealthit.org/apps/growth-chart/launch.html?](https://fhir.smarthealthit.org/apps/growth-chart/launch.html?fhirServiceUrl=https://fhir-open-api.smarthealthit.org&patientId=1482713)
+[https://fhir.smarthealthit.org/apps/growth-chart/launch.html?](https://fhir.smarthealthit.org/apps/growth-chart/launch.html?fhirServiceUrl=https://fhir-open-api-dstu2.smarthealthit.org&patientId=1482713)
 
  * `fhirServiceUrl={FHIR base URL of your unprotected server}`
  * `patientId={patient ID from the current user session}`
@@ -78,250 +78,185 @@ When the SMART Growth Charts, it will fetch:
 
 ### 1. Patient demographics
 ```
-curl 'https://fhir-open-api.smarthealthit.org/Patient/1482713' -H 'Accept: application/json'
+curl 'https://fhir-open-api-dstu2.smarthealthit.org/Patient/1482713' -H 'Accept: application/json'
 ```
 
 ### 2. All Weight, Height, Head Circumference, and BMI Observations
 Note LOINC Codes: `3141-9`, `8302-2`, `8287-5`, `39156-5`
 
 ```
-curl 'https://fhir-open-api.smarthealthit.org/Observation?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_count=50' -H 'Accept: application/json' 
+curl 'https://fhir-open-api-dstu2.smarthealthit.org/Observation?subject%3APatient=1482713&code=3141-9%2C8302-2%2C8287-5%2C39156-5&_count=50' -H 'Accept: application/json' 
 ```
 
 ## Sample patient demographics
 
 ```
-{
-  "resourceType": "Patient",
-  "text": {
-    "status": "generated",
-    "div": "<div>\n        \n            <p>Susan Clark</p>\n      \n          </div>"
-  },
-  "identifier": [
-    {
-      "use": "usual",
-      "label": "SMART Hospiptal MRN",
-      "system": "urn:oid:0.1.2.3.4.5.6.7",
-      "value": "1482713"
-    }
-  ],
-  "name": [
-    {
-      "use": "official",
-      "family": [
-        "Clark"
-      ],
-      "given": [
-        "Susan",
-        "A."
-      ]
-    }
-  ],
-  "telecom": [
-    {
-      "system": "phone",
-      "value": "800-576-9327",
-      "use": "home"
-    },
-    {
-      "system": "email",
-      "value": "susan.clark@example.com"
-    }
-  ],
-  "gender": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/v3/AdministrativeGender",
-        "code": "F",
-        "display": "Female"
-      }
-    ]
-  },
-  "birthDate": "2000-12-27",
-  "address": [
-    {
-      "use": "home",
-      "line": [
-        "52 Highland St"
-      ],
-      "city": "Tulsa",
-      "state": "OK",
-      "zip": "74116",
-      "country": "USA"
-    }
-  ],
-  "active": true
-}
+
 ```
 
 
 ## Sample vitals (height, weight, BMI)
-```
-{
-  "resourceType": "Encounter",
-  "text": {
-    "status": "generated",
-    "div": "<div>2003-11-28: ambulatory encounter</div>"
-  },
-  "status": "finished",
-  "class": "ambulatory",
-  "subject": {
-    "reference": "Patient/1482713"
-  },
-  "period": {
-    "start": "2003-11-28",
-    "end": "2003-11-28"
-  }
-}
-```
+
 
 ```
 {
-  "resourceType": "Bundle",
-  "title": "FHIR Atom Feed",
-  "id": "https://fhir-open-api.smarthealthit.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_format=json",
-  "link": [
-    {
-      "rel": "self",
-      "href": "https://fhir-open-api.smarthealthit.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_format=json"
-    },
-    {
-      "rel": "next",
-      "href": "https://fhir-open-api.smarthealthit.org/Observation/_search?subject%3APatient=1482713&name=3141-9%2C8302-2%2C8287-5%2C39156-5&_format=json&_count=50&_skip=50"
-    }
-  ],
-  "totalResults": 69,
-  "updated": "2015-01-17T19:52:49.977-00:00",
-  "author": [
-    {
-      "name": "groovy.config.atom.author-name",
-      "uri": "groovy.config.atom.author-uri"
-    }
-  ],
-  "entry": [
-    {
-      "title": "Observation/428-height",
-      "id": "https://fhir-open-api.smarthealthit.org/Observation/428-height",
-      "updated": "2015-01-17T19:52:49.977-00:00",
-      "content": {
-        "resourceType": "Observation",
-        "extension": [
-          {
-            "url": "http://fhir-registry.smarthealthit.org/Profile/vital-signs#encounter",
-            "valueResource": {
-              "reference": "Encounter/428"
+   "total" : 3,
+   "resourceType" : "Bundle",
+   "type" : "searchset",
+   "entry" : [
+      {
+         "search" : {
+            "mode" : "match"
+         },
+         "resource" : {
+            "resourceType" : "Observation",
+            "effectiveDateTime" : "2003-11-28",
+            "id" : "428-height",
+            "text" : {
+               "status" : "generated",
+               "div" : "<div>2003-11-28: height = 115.316 cm</div>"
+            },
+            "meta" : {
+               "versionId" : "19628",
+               "lastUpdated" : "2015-09-30T14:31:29.576+00:00"
+            },
+            "code" : {
+               "text" : "height",
+               "coding" : [
+                  {
+                     "system" : "http://loinc.org",
+                     "code" : "8302-2",
+                     "display" : "height"
+                  }
+               ]
+            },
+            "encounter" : {
+               "reference" : "Encounter/428"
+            },
+            "subject" : {
+               "reference" : "Patient/1482713"
+            },
+            "status" : "final",
+            "valueQuantity" : {
+               "unit" : "cm",
+               "system" : "http://unitsofmeasure.org",
+               "value" : 115.316,
+               "code" : "cm"
             }
-          }
-        ],
-        "text": {
-          "status": "generated",
-          "div": "<div>2003-11-28: height = 115.316 cm</div>"
-        },
-        "name": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8302-2",
-              "display": "height"
+         },
+         "fullUrl" : "https://fhir-open-api-dstu2.smarthealthit.org/Observation/428-height"
+      },
+      {
+         "search" : {
+            "mode" : "match"
+         },
+         "resource" : {
+            "code" : {
+               "text" : "weight",
+               "coding" : [
+                  {
+                     "code" : "3141-9",
+                     "system" : "http://loinc.org",
+                     "display" : "weight"
+                  }
+               ]
+            },
+            "meta" : {
+               "lastUpdated" : "2015-09-30T14:31:29.645+00:00",
+               "versionId" : "19676"
+            },
+            "valueQuantity" : {
+               "system" : "http://unitsofmeasure.org",
+               "unit" : "kg",
+               "value" : 18.55193,
+               "code" : "kg"
+            },
+            "status" : "final",
+            "subject" : {
+               "reference" : "Patient/1482713"
+            },
+            "encounter" : {
+               "reference" : "Encounter/428"
+            },
+            "id" : "428-weight",
+            "effectiveDateTime" : "2003-11-28",
+            "resourceType" : "Observation",
+            "text" : {
+               "status" : "generated",
+               "div" : "<div>2003-11-28: weight = 18.55193 kg</div>"
             }
-          ]
-        },
-        "valueQuantity": {
-          "value": 115.316,
-          "units": "cm",
-          "system": "http://unitsofmeasure.org",
-          "code": "cm"
-        },
-        "appliesDateTime": "2003-11-28",
-        "status": "final",
-        "reliability": "ok",
-        "subject": {
-          "reference": "Patient/1482713"
-        }
+         },
+         "fullUrl" : "https://fhir-open-api-dstu2.smarthealthit.org/Observation/428-weight"
+      },
+      {
+         "fullUrl" : "https://fhir-open-api-dstu2.smarthealthit.org/Observation/428-bmi",
+         "search" : {
+            "mode" : "match"
+         },
+         "resource" : {
+            "subject" : {
+               "reference" : "Patient/1482713"
+            },
+            "status" : "final",
+            "valueQuantity" : {
+               "value" : 13.9,
+               "code" : "kg/m2",
+               "unit" : "kg/m2",
+               "system" : "http://unitsofmeasure.org"
+            },
+            "encounter" : {
+               "reference" : "Encounter/428"
+            },
+            "meta" : {
+               "lastUpdated" : "2015-09-30T14:31:29.663+00:00",
+               "versionId" : "19688"
+            },
+            "code" : {
+               "text" : "bmi",
+               "coding" : [
+                  {
+                     "code" : "39156-5",
+                     "system" : "http://loinc.org",
+                     "display" : "bmi"
+                  }
+               ]
+            },
+            "text" : {
+               "div" : "<div>2003-11-28: bmi = 13.9 kg/m2</div>",
+               "status" : "generated"
+            },
+            "effectiveDateTime" : "2003-11-28",
+            "id" : "428-bmi",
+            "resourceType" : "Observation"
+         }
       }
-    },
-    {
-      "title": "Observation/428-weight",
-      "id": "https://fhir-open-api.smarthealthit.org/Observation/428-weight",
-      "updated": "2015-01-17T19:52:49.977-00:00",
-      "content": {
-        "resourceType": "Observation",
-        "extension": [
-          {
-            "url": "http://fhir-registry.smarthealthit.org/Profile/vital-signs#encounter",
-            "valueResource": {
-              "reference": "Encounter/428"
-            }
-          }
-        ],
-        "text": {
-          "status": "generated",
-          "div": "<div>2003-11-28: weight = 18.55193 kg</div>"
-        },
-        "name": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "3141-9",
-              "display": "weight"
-            }
-          ]
-        },
-        "valueQuantity": {
-          "value": 18.55193,
-          "units": "kg",
-          "system": "http://unitsofmeasure.org",
-          "code": "kg"
-        },
-        "appliesDateTime": "2003-11-28",
-        "status": "final",
-        "reliability": "ok",
-        "subject": {
-          "reference": "Patient/1482713"
-        }
-      }
-    },
-    {
-      "title": "Observation/428-bmi",
-      "id": "https://fhir-open-api.smarthealthit.org/Observation/428-bmi",
-      "updated": "2015-01-17T19:52:49.977-00:00",
-      "content": {
-        "resourceType": "Observation",
-        "extension": [
-          {
-            "url": "http://fhir-registry.smarthealthit.org/Profile/vital-signs#encounter",
-            "valueResource": {
-              "reference": "Encounter/428"
-            }
-          }
-        ],
-        "text": {
-          "status": "generated",
-          "div": "<div>2003-11-28: bmi = 13.9 kg/m2</div>"
-        },
-        "name": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "39156-5",
-              "display": "bmi"
-            }
-          ]
-        },
-        "valueQuantity": {
-          "value": 13.9,
-          "units": "kg/m2",
-          "system": "http://unitsofmeasure.org",
-          "code": "kg/m2"
-        },
-        "appliesDateTime": "2003-11-28",
-        "status": "final",
-        "reliability": "ok",
-        "subject": {
-          "reference": "Patient/1482713"
-        }
-      }
-    }
-  ]
+   ]
 }
+```
+
+## Sample Encoutner (note: app can work without encounter details)
+
+```
+{
+   "resourceType" : "Encounter",
+   "class" : "ambulatory",
+   "status" : "finished",
+   "text" : {
+      "div" : "<div>2003-11-28: ambulatory encounter</div>",
+      "status" : "generated"
+   },
+   "id" : "428",
+   "meta" : {
+      "lastUpdated" : "2015-09-30T14:31:27.908+00:00",
+      "versionId" : "18639"
+   },
+   "period" : {
+      "end" : "2003-11-28",
+      "start" : "2003-11-28"
+   },
+   "patient" : {
+      "reference" : "Patient/1482713"
+   }
+}
+
 ```

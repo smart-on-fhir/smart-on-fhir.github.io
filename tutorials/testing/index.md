@@ -32,6 +32,23 @@ for testing this mechanism. Note that you can't use the "rawgithub" domain in pr
 but it can be handy for testing.
 
 launch.html
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script>
+    <script>
+      FHIR.oauth2.authorize({
+        "client_id": "my_web_app",
+        "scope":  "patient/*.read"
+      });
+    </script>
+  </head>
+  Loading...
+</html>
+```
+
+index.html
 
 ```
 <!DOCTYPE html>

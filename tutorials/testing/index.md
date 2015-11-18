@@ -32,6 +32,7 @@ for testing this mechanism. Note that you can't use the "rawgithub" domain in pr
 but it can be handy for testing.
 
 launch.html
+
 ```
 <!DOCTYPE html>
 <html>

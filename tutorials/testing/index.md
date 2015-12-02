@@ -65,6 +65,16 @@ index.html
     <script type="text/javascript">
       (function () {
         "use strict";
+        
+        function getName (medication) {
+            if (medication.text) {
+                return medication.text;
+            } else if (medication.coding && medication.coding[0].display) {
+                return medication.coding[0].display;
+            } else {
+                return "Unnamed Medication(TM)";
+            }
+        }
 
         FHIR.oauth2.ready(function(smart){
           var patient = smart.patient;
@@ -82,16 +92,15 @@ index.html
             .then(function(prescriptions) {
 
               var med_list = document.getElementById('med_list');
+
               if (!prescriptions.data.entry) {
                 med_list.innerHTML = "No medications.";
                 return;
               }
 
               prescriptions.data.entry.forEach(function(prescription){
-                var meds = prescription.resource.medicationCodeableConcept.coding;
-                meds.forEach(function(med){
-                  med_list.innerHTML += "<li> " + med.display + "</li>";
-                });
+                var med = prescription.resource.medicationCodeableConcept;
+                med_list.innerHTML += "<li> " + getName(med) + "</li>";
               });
 
             });

@@ -162,6 +162,18 @@ server from which the app wishes to retrieve FHIR data.  Authorization servers
 must validate that the `aud` parameter is the URL of a known and trusted
 resource server prior to returning an authorization code to the requester.
 
+2.5.2 [RFC6750](https://tools.ietf.org/html/rfc6750) describes this threat more
+broadly as "token redirect" -- when "an attacker uses a token generated for 
+consumption by one resource server to gain access to a different resource
+server that mistakenly believes the token to be for it."  To deal with token 
+redirect, it is important for the authorization server to identify the 
+intended recipient (or recipients) of the access token, typically a single 
+RS (or a list of RSs), in the token.  This may be done through 
+use of the `aud` parameter or by some other means devised by the authorization
+server, in coordination with its RSs.  Then, upon receipt of an access token, 
+the RS needs to check to assure that the access token it has received is 
+intended to be used by that RS.  
+
 ## 3.0 Best Practices for FHIR Resource Servers
 
 ## 4.0 Best Practices for End Users

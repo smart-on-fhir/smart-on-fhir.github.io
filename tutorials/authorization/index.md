@@ -182,24 +182,21 @@ index.html
         var serviceUri = params.serviceUri;
         var redirectUri = params.redirectUri;
         
-        
+        // Prep the token exchange call parameters
         var data = {
             code: code,
             grant_type: 'authorization_code',
             redirect_uri: redirectUri
         };
         var options;
-        
         if (!secret) {
             data['client_id'] = clientId;
         }
-    
         options = {
-            url: tokenUri
+            url: tokenUri,
             type: 'POST',
             data: data
         };
-    
         if (secret) {
             options['headers'] = {'Authorization': 'Basic ' + btoa(clientId + ':' + secret)};
         }

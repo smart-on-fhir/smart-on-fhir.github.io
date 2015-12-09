@@ -259,6 +259,18 @@ box like this:
 Finally press the `Custom App` button to launch your app and watch it
 request authorization and print the patient's name.
 
+## Acting as a confidential client
+
+The demo app above is also capable of acting as a confidential client. In reality,
+as an HTML5 app, it has no way of keeping a secret and therefore does not meet the
+criteria for a confidential client. Nevertheless, we feel that it is educational to
+use it as a pseudo-confidential client to learn about the behavior this class of clients.
+
+To turn the app into a confidential app, first register a confidential client (with
+a secret) with the authorization server. Next, set the `clintId` and `secret` in
+your `launch.html` to match the client. Finally, launch the app to see it behave 
+as if it were confidential.
+
 ## Next steps
 
 The sample app that we looked at provides a simple scaffolding for developing a SMART on FHIR

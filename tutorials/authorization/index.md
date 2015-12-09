@@ -20,7 +20,7 @@ to learn about the JS client)
 ## Registering A Client
 
 To run this sample app against [our public sandbox server](https://fhir.smarthealthit.org), first you will need 
-to decide two endpoint URLs for your app which will handle the launch and redirect requests. For this tutorial
+to select two endpoint URLs for your app which will handle the launch and redirect requests. For this tutorial
 we decided to use `http://localhost:4000/simple-auth/launch.html` as our launch endpoint and 
 `http://localhost:4000/simple-auth/index.html` as our redirect URL. You should configure a web server
 to handle these URLs (or the ones that you pick) by serving the two sample pages below. For prototyping, we're partial to [`http-server`](https://github.com/nodeapps/http-server) which you can launch via
@@ -67,6 +67,12 @@ launch.html
         <script>
         // Change this to the ID of the client that you registered with the SMART on FHIR authorization server.
         var clientId = "16cbfe7c-6c56-4876-944f-534f9306bf8b";
+        
+        // For demonstration purposes, if you registered a confidential client
+        // you can enter its secret here. The demo app will pretend it's a confidential
+        // app (in reality it cannot be confidential, since it cannot keep secrets in the
+        // browser)
+        var secret = null;    // set me, if confidential
         
         // These parameters will be received at launch time in the URL
         var serviceUri = getUrlParameter("iss");
@@ -115,6 +121,7 @@ launch.html
             // retain a couple parameters in the session for later use
             sessionStorage[state] = JSON.stringify({
                 clientId: clientId,
+                secret: secret,
                 serviceUri: serviceUri,
                 redirectUri: redirectUri,
                 tokenUri: tokenUri
@@ -171,40 +178,56 @@ index.html
         var params = JSON.parse(sessionStorage[state]);  // load app session
         var tokenUri = params.tokenUri;
         var clientId = params.clientId;
+        var secret = params.secret;
         var serviceUri = params.serviceUri;
         var redirectUri = params.redirectUri;
         
+        
+        var data = {
+            code: code,
+            grant_type: 'authorization_code',
+            redirect_uri: redirectUri
+        };
+        var options;
+        
+        if (!secret) {
+            data['client_id'] = clientId;
+        }
+    
+        options = {
+            url: tokenUri
+            type: 'POST',
+            data: data
+        };
+    
+        if (secret) {
+            options['headers'] = {'Authorization': 'Basic ' + btoa(clientId + ':' + secret)};
+        }
+        
         // obtain authorization token from the authorization service using the authorization code
-        $.post(tokenUri,
-                {
-                  code: code,
-                  grant_type: 'authorization_code',
-                  redirect_uri: redirectUri,
-                  client_id: clientId
-                },
-                function(res){
-                    // should get back the access token and the patient ID
-                    var accessToken = res.access_token;
-                    var patientId = res.patient;
+        $.ajax(options).done(function(res){
+            // should get back the access token and the patient ID
+            var accessToken = res.access_token;
+            var patientId = res.patient;
                     
-                    // and now we can use these to construct standard FHIR
-                    // REST calls to obtain patient resources with the
-                    // SMART on FHIR-specific authorization header...
-                    // Let's, for example, grab the patient resource and
-                    // print the patient name on the screen
-                    var url = serviceUri + "/Patient/" + patientId;
-                    $.ajax({
-                        url: url,
-                        type: "GET",
-                        dataType: "json",
-                        beforeSend: function (xhr) {
-                            xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
-                        },
-                    }).done(function(pt){
-                        var name = pt.name[0].given.join(" ") +" "+ pt.name[0].family.join(" ");
-                        document.body.innerHTML += "<h3>Patient: " + name + "</h3>";
-                    });
-                },"json");
+            // and now we can use these to construct standard FHIR
+            // REST calls to obtain patient resources with the
+            // SMART on FHIR-specific authorization header...
+            // Let's, for example, grab the patient resource and
+            // print the patient name on the screen
+            var url = serviceUri + "/Patient/" + patientId;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "json",
+                headers: {
+                    "Authorization": "Bearer " + accessToken
+                },
+            }).done(function(pt){
+                var name = pt.name[0].given.join(" ") +" "+ pt.name[0].family.join(" ");
+                document.body.innerHTML += "<h3>Patient: " + name + "</h3>";
+            });
+        });
         
         // Convenience function for parsing of URL parameters
         // based on http://www.jquerybyexample.net/2012/06/get-url-parameters-using-jquery.html

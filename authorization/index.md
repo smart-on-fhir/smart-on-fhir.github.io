@@ -1,9 +1,9 @@
 ---
 layout: main
-title: SMART on FHIR Authorization
+title: SMART App Authorization Guide
 ---
 
-# Authorization Guide
+# SMART App Authorization Guide
 
 SMART on FHIR provides reliable, secure authorization for a variety of app
 architectures through the use of the OAuth 2.0 standard.  This Authorization

@@ -210,7 +210,7 @@ developer must be aware of potential threats, such as malicious apps running
 on the same platform, counterfeit authorization servers, and counterfeit
 resource servers, and implement countermeasures to help protect both the app
 itself and any sensitive information it may hold. For background, see the
-[OAuth 2.0 Thread Model and Security
+[OAuth 2.0 Threat Model and Security
 Considerations](https://tools.ietf.org/html/rfc6819).
 
 * Apps MUST assure that sensitive information (authentication secrets,

@@ -14,7 +14,7 @@ implementation steps of this mechanism is useful if you are planning on developi
 your own SMART on FHIR client or would simply like to gain insight into the SMART on FHIR
 authorization protocol. If you would rather start with writing SMART on FHIR apps
 as quickly as possible, you can use our Java Script client which handles the
-authorization process for you (see [`this tutorial`]({{site.baseurl}}clients/javascript/tutorial/)
+authorization process for you (see [`this tutorial`]({{site.baseurl}}tutorials/javascript)
 to learn about the JS client)
 
 ## Registering A Client

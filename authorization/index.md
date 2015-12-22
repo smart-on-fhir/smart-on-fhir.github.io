@@ -654,6 +654,7 @@ subject to potential theft.   The app SHOULD either ignore the reference, or
 initiate a new request for access to that resource.
 <br><br>
 
+<a id="step-5"></a>
 #### 5. (Later...) App uses a refresh token to obtain a new access token
 
 The app can use the `expires_in` field from the authorization response (see <a

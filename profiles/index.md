@@ -197,7 +197,6 @@ must have:
  * `1` code value of `72166-2` and system of `http://loinc.org` in `Observation.name`
  * `1` code with system `http://snomed.info/sct` in `Observation.valueCodeableConcept`
  * `1` status of `final` in `Observation.status`
- * `1` value of `ok` in `Observation.reliability`
 
 ##### Example: former smoker [https://fhir-open-api.smarthealthit.org/Observation/6-smokingstatus](https://fhir-open-api.smarthealthit.org/Observation/6-smokingstatus?_format=json)
 

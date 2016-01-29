@@ -12,7 +12,7 @@ a single app: the open-source SMART Growth Charts app.
 To get Growth Charts running inside your EHR, you'll implement a basic SMART on FHIR server that can:
 
 1. Expose clinical data using FHIR `Patient` and `Observation` resources
-2. Protect your clinical data via the [SMART on FHIR Authorization protocols](http://docs.smarthealthit.org/authorization/) (based on OAuth2).
+2. Protect your clinical data via the [SMART on FHIR App Authorization protocol](http://docs.smarthealthit.org/authorization/) (based on OAuth2).
 3. Allow a user to launch Growth Charts by clicking a "launch" button
 
 To get up and running as easily as possible, this quick-start guide helps you

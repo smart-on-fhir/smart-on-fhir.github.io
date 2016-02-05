@@ -23,7 +23,7 @@ available *for download* (not live hosting) in GitHub at
 You'll want to download and host this file alongside your app. Unless you're
 just prototyping -- in which case you can use this [rawgithub
 link](https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js)
-in your script tag's `src`. (Be sure never to use "rawgithub" in a deployment scenrio, though!)
+in your script tag's `src`. (Be sure never to use "rawgithub" in a deployment scenario, though!)
 
 Including this script will create a global `FHIR` object for you to work with.
 

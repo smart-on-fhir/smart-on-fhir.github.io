@@ -40,7 +40,7 @@ patient-specific and user-level access.
 Patient-specific scopes allow access to specific data about a single patient.
 (You'll notice that we don't need to say *which* patient here: clinical data
 scopes are all about "what" and not "who." We'll deal with "who" below!)
-Patient-specific scopes take the form: `patient/:resourceType.(read|write)`.
+Patient-specific scopes take the form: `patient/:resourceType.(read|write|*)`.
 
 Let's look at a few examples:
 
@@ -55,7 +55,7 @@ Read all available data about a patient| `patient/*.read`||
 
 User-level scopes allow access to specific data that a user can access. Note
 that this isn't just data *about* the user; it's data *available to* that user.
-User-level scopes take the form: `user/:resourceType.(read|write)`.
+User-level scopes take the form: `user/:resourceType.(read|write|*)`.
 
 Let's look at a few examples:
 

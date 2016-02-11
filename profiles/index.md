@@ -181,9 +181,9 @@ Each
 [FamilyHistory](http://www.hl7.org/implement/standards/fhir/familyhistory.html#FamilyHistory)
 must have:
 
- * `1` patient in `FamilyHitory.subject`
+ * `1` patient in `FamilyHistory.subject`
  * `up to 1` height measurement as an `valueQuantity` extension of url `http://fhir-registry.smarthealthit.org/Profile/family-history#height` with units of `centimeters` and system of `http://unitsofmeasure.org`
- * `1` relationship to patient in `FamilyHitory.reation.relationship` with system `http://hl7.org/fhir/v3/RoleCode`
+ * `1` relationship to patient in `FamilyHistory.reation.relationship` with system `http://hl7.org/fhir/v3/RoleCode`
 
 ##### Example: [https://fhir-open-api.smarthealthit.org/FamilyHistory/8](https://fhir-open-api.smarthealthit.org/FamilyHistory/8?_format=json)
 

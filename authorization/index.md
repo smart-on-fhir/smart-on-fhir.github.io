@@ -469,7 +469,7 @@ username is the app's `client_id` and the password is the app's `client_secret`
     <tr>
       <td><code>client_id</code></td>
       <td><span class="label label-warning">conditional</span></td>
-      <td>Required for <span class="label label-primary">public apps</span>. Omit for <span class="label label-primary">confidential apps</span>.</td>
+      <td>Required for <span class="label label-primary">confidential apps</span>. Omit for <span class="label label-primary">public apps</span>.</td>
     </tr>
   </tbody>
 </table>

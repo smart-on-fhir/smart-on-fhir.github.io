@@ -438,7 +438,7 @@ token via HTTP `POST` to the EHR authorization server's token endpoint URL,
 using content-type `application/x-www-form-urlencoded`, as described in 
 section 4.1.3 of RFC6749](https://tools.ietf.org/html/rfc6749#page-29). 
 
-For <span class="label label-primary">public apps</span>, authentication is not
+For <span class="label label-primary">public apps</span>, validation of client_id and client_secret is not
 possible (and thus not required), since the app cannot be trusted to protect a
 secret.  For <span class="label label-primary">confidential apps</span>, an
 `Authorization` header using HTTP Basic authentication is required, where the

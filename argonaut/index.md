@@ -27,4 +27,5 @@ For full details about the Argonaut Project's security work, please see:
  * Specification: [SMART on FHIR Auth Specification](http://fhir-docs.smarthealthit.org/argonaut-dev/authorization)
  * Discussion forum: [SMART on FHIR Google Group](https://groups.google.com/forum/#!forum/smart-on-fhir)
  * Use Cases and Slides: [Argonaut Auth Folder on Google Drive](https://drive.google.com/folderview?id=0BzDLBlJ9IyUCZ0lOY3dPTWE0TDA&usp=sharing)
+ * Sprint Definitions [Argonaut Implementation Program](https://github.com/argonautproject/implementation-program/wiki)
 

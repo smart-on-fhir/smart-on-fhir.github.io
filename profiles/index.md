@@ -12,11 +12,22 @@ specification leaves many of these decisions open to downstream implementers,
 to ensure that FHIR can work with a variety of use cases. But for a viable app
 platform, we need more.
 
-Below, we'll define the data elements and coding systems that are considered
-essential for a SMART on FHIR implementation. Eventually we'd like to document
+# Working with the community
+
+As much as possible we want to avoid inventing these "ground rules" ourselves.
+Our aim is to work with the broader community, including the [Argonaut Project](http://argonautwiki.hl7.org/index.php?title=Main_Page) and the
+[Data Access Framework](http://hl7.org/fhir/daf/daf.html) to converge
+on a set of profiles that are specific and broadly applicable.
+
+
+In the meantime, we still have a few constraints of our own that we describe below.
+These define the data elements and coding systems that are considered
+essential for a SMART on FHIR implementation. (Eventually we'd like to document
 these decisions using FHIR's built-in "profiling" mechanism, but for now we
 host the following human-readable explanations, along with sample data to
-demonstrate what we mean.
+demonstrate what we mean.)
+
+*Note that these profiles need to be updated to FHIR DSTU2*
 
 ## Why do we need profiles?
 

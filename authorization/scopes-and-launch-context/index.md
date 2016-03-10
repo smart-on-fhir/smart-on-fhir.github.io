@@ -229,8 +229,6 @@ a FHIR resource representing the current user. This will be a resource of type
 
 ## Scopes for requesting a refresh token
 
-## Scope for requesting a refresh token
-
 To request a `refresh_token` that can be used to obtain a new access token
 after the current access token expires, add one of the following scopes:
 

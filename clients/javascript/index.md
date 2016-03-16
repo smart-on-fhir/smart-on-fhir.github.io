@@ -64,7 +64,7 @@ Instance-level operations in FHIR work with a single resource instance at a
 time. Two key operations are `read` and `vread`:
 
   * `smart.api.read({type: resourceType, id: resourceId})`  Read the current state of a given resource
-  * `smart.api.vread({type: resourceType, id: resourceId, versionId: versionId})`  Read a sepcific version of a given resource
+  * `smart.api.vread({type: resourceType, id: resourceId, versionId: versionId})`  Read a specific version of a given resource
 
 Just change `resourceType` to the name of a FHIR resource from [this complete
 list](http://www.hl7.org/implement/standards/fhir/resourcelist.html).

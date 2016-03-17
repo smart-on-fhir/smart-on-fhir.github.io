@@ -186,17 +186,17 @@ must have:
 
 ##### Example: mastectomy [https://fhir-open-api.smarthealthit.org/Procedure/5](https://fhir-open-api.smarthealthit.org/Procedure/5?_format=json)
 
-# Family History
+# Family Member History
 
 Each
-[FamilyHistory](http://www.hl7.org/implement/standards/fhir/familyhistory.html#FamilyHistory)
+[FamilyMemberHistory](http://www.hl7.org/fhir/familymemberhistory.html#FamilyMemberHistory)
 must have:
 
- * `1` patient in `FamilyHistory.subject`
+ * `1` patient in `FamilyMemberHistory.patient`
  * `up to 1` height measurement as an `valueQuantity` extension of url `http://fhir-registry.smarthealthit.org/Profile/family-history#height` with units of `centimeters` and system of `http://unitsofmeasure.org`
- * `1` relationship to patient in `FamilyHistory.reation.relationship` with system `http://hl7.org/fhir/v3/RoleCode`
+ * `1` relationship to patient in `FamilyMemberHistory.reation.relationship` with system `http://hl7.org/fhir/v3/RoleCode`
 
-##### Example: [https://fhir-open-api.smarthealthit.org/FamilyHistory/8](https://fhir-open-api.smarthealthit.org/FamilyHistory/8?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/FamilyHistory/8](https://fhir-open-api.smarthealthit.org/FamilyMemberHistory/8?_format=json)
 
 # Smoking Status
 

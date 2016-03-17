@@ -205,26 +205,25 @@ Each Smoking Status
 must have:
 
  * `1` patient in `Observation.subject`
- * `1` code value of `72166-2` and system of `http://loinc.org` in `Observation.name`
+ * `1` code value of `72166-2` and system of `http://loinc.org` in `Observation.code`
  * `1` code with system `http://snomed.info/sct` in `Observation.valueCodeableConcept`
  * `1` status of `final` in `Observation.status`
 
 ##### Example: former smoker [https://fhir-open-api.smarthealthit.org/Observation/6-smokingstatus](https://fhir-open-api.smarthealthit.org/Observation/6-smokingstatus?_format=json)
 
-# Medication Prescription
+# Medication Order (Prescription)
 
 Each 
-[MedicationPrescription](http://www.hl7.org/implement/standards/fhir/medicationprescription.html#MedicationPrescription)
+[MedicationOrder](http://www.hl7.org/implement/standards/fhir/medicationorder.html#MedicationOrder)
 must have:
 
- * `1` patient in `MedicationPrescription.patient`
- * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationPrescription.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.code.coding.system`
- * `1` status of `active` in `MedicationPrescription.status`
- * `1` object in `MedicationPrescription.dosageInstruction.timingSchedule` with `1` date in `event.start` and `0 or 1` date in `event.end` and `0 or 1` objects in `repeat` (with `1` value in `repeat.frequency`, `1` value in `repeat.units`, and `1` value in `repeat.duration`)
- * `0 or 1` code in `MedicationPrescription.dosageInstruction.doseQuantity` with system of `http://unitsofmeasure.org`
- * `0 or 1` objects in `MedicationPrescription.dispense` with `1` value in `numberOfRepeatsAllowed`, `1` code with system of `http://unitsofmeasure.org` in `quantity`, and `0 or 1` codes with system of `http://unitsofmeasure.org` in `expectedSupplyDuration` 
+ * `1` patient in `MedicationOrder.patient`
+ * `1` medicationCodeableConcept or [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationOrder.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.code.coding.system`
+ * `1` object in `MedicationOrder.dosageInstruction.timingSchedule` with `1` date in `event.start` and `0 or 1` date in `event.end` and `0 or 1` objects in `repeat` (with `1` value in `repeat.frequency`, `1` value in `repeat.units`, and `1` value in `repeat.duration`)
+ * `0 or 1` code in `MedicationOrder.dosageInstruction.doseQuantity` with system of `http://unitsofmeasure.org`
+ * `0 or 1` objects in `MedicationOrder.dispense` with `1` value in `numberOfRepeatsAllowed`, `1` code with system of `http://unitsofmeasure.org` in `quantity`, and `0 or 1` codes with system of `http://unitsofmeasure.org` in `expectedSupplyDuration` 
 
-##### Example: [https://fhir-open-api.smarthealthit.org/MedicationPrescription/102](https://fhir-open-api.smarthealthit.org/MedicationPrescription/102?_format=json)
+##### Example: [https://fhir-open-api.smarthealthit.org/MedicationOrder/102](https://fhir-open-api.smarthealthit.org/MedicationOrder/102?_format=json)
 
 # Medication Dispense
 
@@ -234,8 +233,8 @@ must have:
 
  * `1` patient in `MedicationDispense.patient`
  * `1` reference to `MedicationPrescription` in `MedicationDispense.authorizingPrescription`
- * `1` object in `MedicationDispense.dispense` with `1` extension of `http://fhir-registry.smarthealthit.org/Profile/dispense#days-supply` of type `valueQuantity` with system of `http://unitsofmeasure.org` with units of `days` and code of `d`
- * `1` [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationDispense.dispense.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.coding.system`
+ * `1` object in `MedicationDispense.daysSupply` with an integer number of days
+ * `1` medicationCodeableConcept [Medication] (http://www.hl7.org/implement/standards/fhir/medication.html#Medication) object in `MedicationDispense.dispense.medication` with system `http://www.nlm.nih.gov/research/umls/rxnorm` in `Medication.coding.system`
  * `1` status of `completed` in `MedicationDispense.dispense.status`
  * `1` quantity with system `http://unitsofmeasure.org` and code of `{tablets}` and units of `tablets` in `MedicationDispense.dispense.quantity`
  * `1` date in `MedicationDispense.dispense.whenHandedOver`
@@ -249,12 +248,11 @@ A set of Vital Signs is represented usng FHIR Observation resources. Each
 [Observation](http://www.hl7.org/implement/standards/fhir/Observation.html#Observation)
 must have:
 
- * `1` patient in `Observation.patient`
- * `1` LOINC-coded Vital Sign (see below) in `Observation.name`
- * `1` indicator of `ok` (fixed value) in `Observation.reliability`
+ * `1` patient in `Observation.subject`
+ * `1` LOINC-coded Vital Sign (see below) in `Observation.code`
  * `1` status indicator (see [FHIR definitions](http://hl7.org/implement/standards/fhir/observation-status.html)) in `Observation.status`
  * `1` quantity with system `http://unitsofmeasure.org` and a UCUM-coded value (see below) in `Observation.valueQuantity`
- * `1` date indicating when the value was measured, in `Observation.appliesDateTime`
+ * `1` date indicating when the value was measured, in `Observation.effectiveDateTime`
 
 
 ## LOINC codes for vital signs
@@ -280,10 +278,7 @@ Top-level vital sign codes are all LOINC codes with `system` of `http://loinc.or
 The representation of a blood pressure measurement makes systolic/diastolic
 pairings explicit by using a "grouping observation" with LOINC code 55284-4
 (see above). The grouping observation has no value itself, but refers to two
-individual observations for systolic and diastolic values.  The grouping
-observation refers to its two individual components using
-`Observation.related`, where `type` is `has-component` and `target` is a
-resource reference to a systolic or diastolic blood pressure obsevation. 
+individual `component`s for systolic and diastolic values. 
 
 ##### Example: blood pressure [https://fhir-open-api.smarthealthit.org/Observation/691-bp](https://fhir-open-api.smarthealthit.org/Observation/691-bp?_format=json)
 
@@ -298,9 +293,8 @@ An individual lab result is represented with the FHIR
 [Observation](http://www.hl7.org/implement/standards/fhir/Observation.html#Observation)
 resource. Each result must have:
 
- * `1` patient in `Observation.patient`
+ * `1` Patient in `Observation.subject`
  * `1` LOINC code in `Observation.name` with system of `http://loinc.org`
- * `1` indicator of `ok` (fixed value) in `Observation.reliability`
  * `1` status indicator (see [FHIR definitions](http://hl7.org/implement/standards/fhir/observation-status.html)) in `Observation.status`
  * `1` date indicating when the sample was taken (or other "physiologically relevant" time), in `Observation.appliesDateTime`
  * `1` value (details depend on whether the lab test is quantitative -- see below)

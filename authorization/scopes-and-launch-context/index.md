@@ -92,7 +92,7 @@ Granted Scope | Notes
 `patient/AllergyIntolerance.read` | The client was granted just patient-level read access to allergies.
 `patient/AllergyIntolerance.write` | The client was granted just patient-level write access to allergies.
 `patient/*.read` | The client was granted read access to all data on the patient.
-`patient/*.*` | The client was granted it's requested scopes as well as read/write access to all other data on the patient.
+`patient/*.*` | The client was granted its requested scopes as well as read/write access to all other data on the patient.
 `patient/Observation.read` | The client was granted an entirely different scope: patient-level read access to the patient's observations. While this behavior is unlikely for a production quality authorization server, this scenario is technically possible.
 _none_ | The authoriztion server chose to not grant any of the requested scopes.
 

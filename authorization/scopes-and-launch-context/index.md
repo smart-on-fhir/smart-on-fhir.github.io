@@ -35,6 +35,17 @@ SMART on FHIR defines OAuth2 access scopes that correspond directly to FHIR
 resource types. We define **read** and **write** permissions for
 patient-specific and user-level access.
 
+### Clinical Scope Syntax
+
+Expressed in [EBNF notation](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form), the clinical scope syntax is:
+
+`clinical-scope ::= ( 'patient' | 'user' ) '/' ( fhir-resource | '*' ) '.' ( 'read' | 'write' | '*' )`
+
+[//]: # (Diagram generated from http://www.bottlecaps.de/rr/ui)
+<div style='text-align: left'>
+  <img src="{{site.baseurl}}assets/img/clinical-scope-syntax-diagram.png" alt="Clinical scope syntax diagram" />
+</div>
+
 ### Patient-specific scopes
 
 Patient-specific scopes allow access to specific data about a single patient.
@@ -47,7 +58,7 @@ Let's look at a few examples:
 Goal | Scope | Notes
 -----|-------|-----
 Read all observations about a patient | `patient/Observation.read` |
-Read demographs about a patient | `patient/Patient.read` | Note the difference in capitalization between "patient" the permission type and "Patient" the resource.
+Read demographics about a patient | `patient/Patient.read` | Note the difference in capitalization between "patient" the permission type and "Patient" the resource.
 Add new blood pressure readings for a patient| `patient/Observation.write`| Note that the permission is broader than our goal: with this scope, an app can add not only blood pressures, but other observations as well. Note also that write access does not imply read access.
 Read all available data about a patient| `patient/*.read`||
 
@@ -65,6 +76,27 @@ Read a feed of all new lab observations across a patient population: | `user/Obs
 Manage all appointments to which the authorizing user has access | `user/Appointment.read` `user/Appointment.write` | Note that `read` and `write` both need to be supplied. (Write access does not imply read access.)
 Manage all resources on behalf of the authorizing user| `user/*.read` `user/*.write `| Note that the permission is broader than our goal: with this scope, an app can add not only blood pressures, but other observations as well.
 Select a patient| `user/Patient.read` | Allows the client app to select a patient
+
+### Wildcard scopes
+
+As noted previously, clients can request clinical scopes that contain a wildcard (`*`) for both the FHIR resource as well as the requested permission for the given resource. As with any requested scope, the scopes ultimately granted by the authorization server may differ from the scopes requested by the client! When dealing with wildcard clinical scope requests, this is often true.
+
+As a best practice, clients should examine the granted scopes by the authorization server and respond accordingly. Failure to do so may lead to situations in which the client attempts to access FHIR resources they were not granted access only to receieve an authorization failure by the FHIR server.
+
+For example, imagine a client with the goal of obtaining read and write access to a patient's allergies and as such, requests the clinical scope of `patient/AllergyIntolerance.*`. The authorization server may respond in a variety of ways with respect to the scopes that are ultimately granted. The following table outlines several, but not an exhaustive list of scenarios for this example:
+
+Granted Scope | Notes
+--------------|---------------
+`patient/AllergyIntolerance.*` | The client was granted exactly what it requested: patient-level read and write access to allergies via the same requested wildcard scope.
+`patient/AllergyIntolerance.read`<br />`patient/AllergyIntolerance.write` | The client was granted exactly what it requested: patient-level read and write access to allergies. However, note that this was communicated via two explicit scopes rather than a single wildcard scope.
+`patient/AllergyIntolerance.read` | The client was granted just patient-level read access to allergies.
+`patient/AllergyIntolerance.write` | The client was granted just patient-level write access to allergies.
+`patient/*.read` | The client was granted read access to all data on the patient.
+`patient/*.*` | The client was granted it's requested scopes as well as read/write access to all other data on the patient.
+`patient/Observation.read` | The client was granted an entirely different scope: patient-level read access to the patient's observations. While this behavior is unlikely for a production quality authorization server, this scenario is technically possible.
+_none_ | The authoriztion server chose to not grant any of the requested scopes.
+
+As a best practice, clients are encouraged to request only the scopes and permissions they need to function and avoid the use of wildcard scopes purely for the sake of convenience. For instance, if your allergy management app requires patient-level read and write access to allergies, requesting the `patient/AllergyIntolerance.*` scope is acceptable. However, if your app only requires access to read allergies, requesting a scope of `patient/AllergyIntolerance.read` would be more appropriate.
 
 ## Scopes for requesting context data
 

@@ -59,55 +59,52 @@ index.html
   </head>
   <body>
     <h1>Medications for <span id="name"></span></h1>
-
     <ul id="med_list"></ul>
-
     <script type="text/javascript">
-      (function () {
-        "use strict";
-        
-        function getName (medication) {
-            if (medication.text) {
-                return medication.text;
-            } else if (medication.coding && medication.coding[0].display) {
-                return medication.coding[0].display;
+        function getPatientName (pt) {
+            if (pt.name) {
+                var names = pt.name.map(function(name) {
+                    return name.given.join(" ") + " " + name.family.join(" ");
+                });
+                return names.join(" / ")
             } else {
-                return "Unnamed Medication(TM)";
+                return "anonymous";
             }
         }
 
-        FHIR.oauth2.ready(function(smart){
-          var patient = smart.patient;
-
-          patient.read().then(function(pt) {
-
-            var name =
-                pt.name[0].given.join(" ") + " " +  
-                pt.name[0].family.join(" ");
-
-            document.getElementById('name').innerHTML = name;
-
-            patient.api
-            .search({type: "MedicationOrder"})
-            .then(function(prescriptions) {
-
-              var med_list = document.getElementById('med_list');
-
-              if (!prescriptions.data.entry) {
-                med_list.innerHTML = "No medications.";
-                return;
-              }
-
-              prescriptions.data.entry.forEach(function(prescription){
-                var med = prescription.resource.medicationCodeableConcept;
-                med_list.innerHTML += "<li> " + getName(med) + "</li>";
-              });
-
+        function getMedicationName (medCodings) {
+            var coding = medCodings.find(function(c){
+                return c.system == "http://www.nlm.nih.gov/research/umls/rxnorm";
             });
-          });
-        });
 
-      }());
+            return coding && coding.display || "Unnamed Medication(TM)"
+        }
+
+        function displayPatient (pt) {
+            document.getElementById('name').innerHTML = getPatientName(pt);
+        }
+
+        var med_list = document.getElementById('med_list');
+
+        function displayMedication (medCodings) {
+            med_list.innerHTML += "<li> " + getMedicationName(medCodings) + "</li>";
+        }                
+
+        FHIR.oauth2.ready(function(smart){
+            smart.patient.read().then(function(pt) {
+                displayPatient (pt);
+            });
+            smart.patient.api.fetchAllWithReferences({type: "MedicationOrder"}).then(function(results, resolvedReferences) {
+               results.forEach(function(prescription){
+                    if (prescription.medicationCodeableConcept) {
+                        displayMedication(prescription.medicationCodeableConcept.coding);
+                    } else if (prescription.medicationReference) {
+                        var med = resolvedReferences[prescription.medicationReference];
+                        displayMedication(med && med.code.coding || []);
+                    }
+               });
+            });
+        });
     </script>
   </body>
 </html>

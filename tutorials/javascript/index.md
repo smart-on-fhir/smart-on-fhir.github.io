@@ -99,6 +99,6 @@ See the source, or click "preview" to see the app in action!
 <iframe 
     style="border: 1px solid black"
     width="100%" height="500px"
-    src="//jsfiddle.net/rc9jygga/embedded/"></iframe>
+    src="//jsfiddle.net/o5v9botm/embedded/"></iframe>
 
 For more details, see our [JS client docs](../../clients/javascript)

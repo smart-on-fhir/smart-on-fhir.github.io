@@ -148,9 +148,9 @@ launch.html
             for (var i = 0; i < sURLVariables.length; i++) 
             {
                 var sParameterName = sURLVariables[i].split('=');
-                if (sParameterName[0] == sParam) 
-                {
-                    return decodeURIComponent(sParameterName[1]);
+                if (sParameterName[0] == sParam) {
+                    var res = sParameterName[1].replace(/\+/g, '%20');
+                    return decodeURIComponent(res);
                 }
             }
         }
@@ -235,9 +235,9 @@ index.html
             for (var i = 0; i < sURLVariables.length; i++) 
             {
                 var sParameterName = sURLVariables[i].split('=');
-                if (sParameterName[0] == sParam) 
-                {
-                    return decodeURIComponent(sParameterName[1]);
+                if (sParameterName[0] == sParam) {
+                    var res = sParameterName[1].replace(/\+/g, '%20');
+                    return decodeURIComponent(res);
                 }
             }
         }

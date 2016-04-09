@@ -94,12 +94,12 @@ index.html
             smart.patient.read().then(function(pt) {
                 displayPatient (pt);
             });
-            smart.patient.api.fetchAllWithReferences({type: "MedicationOrder"},["MedicationOrder.medicationReference"]).then(function(results, resolvedReferences) {
+            smart.patient.api.fetchAllWithReferences({type: "MedicationOrder"},["MedicationOrder.medicationReference"]).then(function(results, refs) {
                results.forEach(function(prescription){
                     if (prescription.medicationCodeableConcept) {
                         displayMedication(prescription.medicationCodeableConcept.coding);
                     } else if (prescription.medicationReference) {
-                        var med = resolvedReferences[prescription.medicationReference.reference];
+                        var med = refs(prescription, prescription.medicationReference);
                         displayMedication(med && med.code.coding || []);
                     }
                });

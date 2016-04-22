@@ -300,7 +300,7 @@ curl 'https://fhir-open-api-dstu2.smarthealthit.org/Observation?subject%3APatien
 }
 ```
 
-## Sample Encoutner (note: app can work without encounter details)
+## Sample Encounter (note: app can work without encounter details)
 
 ```
 {

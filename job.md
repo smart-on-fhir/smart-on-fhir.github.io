@@ -27,4 +27,4 @@ Please submit a cover letter describing your background, a resume and a code sam
 - you're familiar with both statically and dynamically typed languages
 - you can share a link to your work on GitHub
 
-Send information to: smart.dev.job@gmail.com
+To apply, send your information to: smart.dev.job@gmail.com

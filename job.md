@@ -1,5 +1,5 @@
 ---
-layout: main
+layout: nosidebar
 title: SMART on FHIR Senior Developer Position
 ---
 

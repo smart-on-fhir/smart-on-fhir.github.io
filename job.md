@@ -4,6 +4,7 @@ title: SMART on FHIR Senior Developer Position
 ---
 
 # SMART on FHIR Senior Developer Position
+
 ### Work full time on open source!
 
 The Boston Children’s Hospital Computational Health Informatics Program (http://www.chip.org), a Harvard Medical School affiliate, is seeking an experienced full stack web developer to join the SMART Health IT team (http://smarthealthit.org).  

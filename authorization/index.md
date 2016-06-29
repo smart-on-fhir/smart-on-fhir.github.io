@@ -503,11 +503,6 @@ includes the following parameters:
       <td><span class="label label-success">required</span></td>
       <td>Scope of access authorized. Note that this can be different from the scopes requested by the app.</td>
     </tr>
-     <tr>
-      <td><code>state</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>The exact value received from the client in the authorization request</td>
-    </tr>
     <tr>
       <td><code>id_token</code></td>
       <td><span class="label label-info">optional</span></td>

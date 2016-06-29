@@ -239,6 +239,7 @@ storage locations only, not in system-wide-discoverable locations.
 <img class="sequence-diagram-raw" src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBsZWZ0IG9mIEFwcDogUmVxdWVzdCBhdXRob3JpemF0aW9uCkFwcCAtPj4gRUhSIEF1dGh6IFNlcnZlcjogUmVkaXJlY3QgaHR0cHM6Ly97ZWhyADUJZV91cmx9Py4uLgoAZgVvdmVyADITQQAnCCBBcHBcbihtYXkgaW5jbHVkZSBlbmQtdXNlAE4GZW50aWMAgQ4FXG5hbmQADw4AgSYJKQpOb3RlIABWGE9uIGFwcHJvdmFsCgCBQRAgLT4-AIIBBwCBSBBhcHAgcgCBZwdfdXJpfT9jb2RlPTEyMyYAgVcJAII-DUV4Y2hhbmdlIGNvZGUgZm9yIGFjY2VzcyB0b2tlbjtcbmlmIGNvbmZpZGVudGlhbCBjbGllbnQsAIFyCXNlY3JldApBcHAtPgCCaBJQT1NUAIJsCgBPBSB1cmx9XG5ncmFudF90eXBlPQCDOg1fY29kZSYAgSQSAIJ7GwCCagdlIGEAgxQFAIEcFgCCaQcAg0YXSXNzdWUgbmV3AIFyBiB3aXRoIGNvbnRleHQ6XG4ge1xuIgCCEwZfAIIUBSI6IgCBcwYtAIIjBS14eXoiLFxuImV4cGlyZXMtaW4iOjM2MDAsXG4icGF0aWVudCI6IjQ1NiIsXG4uLi5cbn0Ag0MUAIVZBVsAgnYMIHJlc3BvbnNlXQ&s=default&h=NA3OIkJNCqFraI5a">
 
 <a id="step-1"></a>
+
 #### 1. App asks for authorization
 
 At launch time, the app constructs a request for authorization by adding the
@@ -281,7 +282,7 @@ needs authenticated patient identity) and either:
 
 <ul>
 <li> a <code>launch</code> value indicating that the app wants to receive already-established launch context details from the EHR </li>
-<li> a set of launch context requirements in the form <code>launch/patient</code>, which asks the EHR to establish context on your behalf.</a>
+<li> a set of launch context requirements in the form <code>launch/patient</code>, which asks the EHR to establish context on your behalf.</li>
 </ul>
 
 See <a href="{{site.baseurl}}authorization/scopes-and-launch-context">SMART on FHIR Access
@@ -357,6 +358,7 @@ context parameters</a>.*
 The app then redirects the browser to the EHR's **authorization URL** as
 determined above:
 
+
 ```
 Location: https://ehr/authorize?
             response_type=code&
@@ -368,10 +370,10 @@ Location: https://ehr/authorize?
             aud=https://ehr/fhir
 ```
 
-<br><br>
 
 
 <a id="step-2"></a>
+
 #### 2. EHR evaluates authorization request, asking for end-user input
 
 The authorization decision is up to the EHR authorization server,
@@ -431,6 +433,7 @@ Location: https://app/after-auth?
 <br><br>
 
 <a id="step-3"></a>
+
 #### 3. App exchanges authorization code for access token
 
 After obtaining an authorization code, the app trades the code for an access
@@ -567,10 +570,12 @@ interaction are not defined by this specification.
 
 #### *For example*
 <a id="step-4"></a>
+
 Given an authorization code, the app trades it for an access token via HTTP
 `POST`.
 
 ##### Request for
+
 ```
 POST /token HTTP/1.1
 Host: ehr
@@ -583,6 +588,7 @@ redirect_uri=https%3A%2F%2Fapp%2Fafter-auth
 ```
 
 ##### Response
+
 ```
 {
   "access_token": "i8hweunweunweofiwweoijewiwe",
@@ -607,6 +613,7 @@ src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBvdmVyIEFwcDogQWN
 
 
 <br><br>
+
 #### 4. App accesses clinical data via FHIR API
 
 With a valid access token, the app can access protected EHR data by issuing a

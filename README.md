@@ -44,7 +44,7 @@ Just install nodejs and grunt, and then run:
 
 ```
 npm install
-grunt
+npm run-script watch
 ```
 
 And then open a browser to http://localhost:4000

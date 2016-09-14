@@ -52,7 +52,7 @@ work client-side.
 Profiles improve the situation by giving you a reliable set of agreed-upon
 guarantees that go above and beyond FHIR's base specification.
 
-# Patient Demographcs
+# Patient Demographics
 
 Each
 [Patient](http://www.hl7.org/implement/standards/fhir/patient.html#Patient)

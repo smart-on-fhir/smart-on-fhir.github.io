@@ -31,7 +31,7 @@ that has been selected) by using the following methods:
 * `smart.user.read()`
 * `smart.patient.read()`
 
-Both of these return a jQery Deferred object which you can register a success
+Both of these return a jQuery Deferred object which you can register a success
 callback to process the returned FHIR resource.
 
 ## Embedded FHIR client library

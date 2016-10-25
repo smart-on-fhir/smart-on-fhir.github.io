@@ -39,6 +39,11 @@ the following internal components:
       <td><code>valueUri</code> indicating the OAuth2 dynamic registration endpoint for this FHIR server, if supported.
       </td>
     </tr>
+    <tr>
+      <td><code>manage</code></td>
+      <td><span class="label label-default">optional</span></td>
+      <td><code>valueUri</code> indicating the user-facing authorization management workflow entry point for this FHIR server.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -71,6 +76,9 @@ the following internal components:
           },{
             "url": "authorize",
             "valueUri": "https://my-server.org/authorize"
+          },{
+            "url": "manage",
+            "valueUri": "https://my-server.org/authorizations/manage"
           }]
         }],
       ...

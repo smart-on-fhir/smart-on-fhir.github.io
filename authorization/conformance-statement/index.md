@@ -42,7 +42,7 @@ the following internal components:
     <tr>
       <td><code>manage</code></td>
       <td><span class="label label-default">optional</span></td>
-      <td><code>valueUri</code> indicating the user-facing authorization management workflow entry point for this FHIR server.</td>
+      <td><code>valueUri</code> indicating the user-facing authorization management workflow entry point for this FHIR server. Overview in [this presentation](https://drive.google.com/file/d/0BylO-n0_de7gOWxiYkhra2dQRXM/view)</td>
     </tr>
   </tbody>
 </table>

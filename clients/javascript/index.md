@@ -14,7 +14,7 @@ Please see [https://github.com/smart-on-fhir/client-js](https://github.com/smart
 Before you are able to run any operations against the FHIR API
 using the JS client, you will need to initialize it first. The following
 code snippet illustrates the basic boilerplate code that you can
-use for this purspose:
+use for this purpose:
 
 ```
 FHIR.oauth2.ready(function(smart){
@@ -31,7 +31,7 @@ that has been selected) by using the following methods:
 * `smart.user.read()`
 * `smart.patient.read()`
 
-Both of these return a jQery Deferred object which you can register a success
+Both of these return a jQuery Deferred object which you can register a success
 callback to process the returned FHIR resource.
 
 ## Embedded FHIR client library

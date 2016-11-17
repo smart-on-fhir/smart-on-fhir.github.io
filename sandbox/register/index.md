@@ -139,18 +139,18 @@ ways to do this that we offer.
         </div>
     </div>
     <div class="form-group">
-      <label class="col-lg-2 control-label">Client type</label>
+      <label class="col-lg-2 control-label">Client type  <a href='http://docs.smarthealthit.org/authorization/authorization/#support-for-public-and-confidential-apps'>details</a>)</label>
       <div class="col-lg-10">
         <div class="radio">
           <label>
             <input name="input_client_type" value='public' checked='checked' type="radio">
-            public (apps that don't use server-side logic <a href='http://docs.smarthealthit.org/authorization/public/'>details</a>)
+            public (apps that don't use server-side logic)
           </label>
         </div>
         <div class="radio">
           <label>
             <input name="input_client_type" type='radio' value='confidential'>
-            confidential (apps that have server-side logic <a href='http://docs.smarthealthit.org/authorization/confidential/'>details</a>)
+            confidential (apps that have server-side logic)
           </label>
         </div>
       </div>

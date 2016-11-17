@@ -139,7 +139,7 @@ ways to do this that we offer.
         </div>
     </div>
     <div class="form-group">
-      <label class="col-lg-2 control-label">Client type  <a href='http://docs.smarthealthit.org/authorization/authorization/#support-for-public-and-confidential-apps'>details</a>)</label>
+      <label class="col-lg-2 control-label">Client type  (<a href='/authorization#support-for-public-and-confidential-apps'>details</a>)</label>
       <div class="col-lg-10">
         <div class="radio">
           <label>

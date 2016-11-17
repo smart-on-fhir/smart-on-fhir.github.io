@@ -25,6 +25,8 @@ just prototyping -- in which case you can use this [rawgithub
 link](https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js)
 in your script tag's `src`. (Be sure never to use "rawgithub" in a deployment scenario, though!)
 
+Note: if prototyping in [JsFiddle](https://jsfiddle.net), then you will need to use the [CDN hosted](https://cdn.rawgit.com/smart-on-fhir/client-js/v0.1.8/dist/fhir-client.js) version.
+
 Including this script will create a global `FHIR` object for you to work with.
 
 ### 2. Create or obtain an instance of `FHIR.client`
@@ -36,7 +38,7 @@ create a client via:
 
 ```
 var smart = FHIR.client({
-  serviceUrl: 'https://fhir-open-api.smarthealthit.org',
+  serviceUrl: 'https://fhir-open-api-dstu2.smarthealthit.org',
   patientId: '1137192'
 });
 ```
@@ -70,10 +72,10 @@ by using `smart.api`, as follows:
 
 ```
 // Search for conditions added today
-var todaysDiagnoses = smart.patient.api.search({type: 'Condition', query: {dateRecorded: '2014-05-01'}});
+var todaysDiagnoses = smart.api.search({type: 'Condition', query: {dateRecorded: '2014-05-01'}});
 
 // Search for all statins prescribed today
-var statinRxs = smart.patient.api.search({type: 'MedicationOrder', query: {dateWritten: '2014-05-01', name: 'statin'}});
+var statinRxs = smart.api.search({type: 'MedicationOrder', query: {dateWritten: '2014-05-01', name: 'statin'}});
 ```
 
 These functions return `$.Deferred` objects, which you can work with simply by

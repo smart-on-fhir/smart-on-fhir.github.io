@@ -144,13 +144,13 @@ ways to do this that we offer.
         <div class="radio">
           <label>
             <input name="input_client_type" value='public' checked='checked' type="radio">
-            public (apps that don't use server-side logic <a href='http://docs.smarthealthit.org/authorization/public/'>[details]</a>)
+            public (apps that don't use server-side logic <a href='http://docs.smarthealthit.org/authorization/public/'>details</a>)
           </label>
         </div>
         <div class="radio">
           <label>
             <input name="input_client_type" type='radio' value='confidential'>
-            confidential (apps that have server-side logic <a href='http://docs.smarthealthit.org/authorization/confidential/'>[details]</a>)
+            confidential (apps that have server-side logic <a href='http://docs.smarthealthit.org/authorization/confidential/'>details</a>)
           </label>
         </div>
       </div>

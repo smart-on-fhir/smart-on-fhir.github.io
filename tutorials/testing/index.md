@@ -12,20 +12,35 @@ app against our public apps container.
 
 ## General steps
 
-To test your app against [our public sandbox server](https://fhir.smarthealthit.org), first set up a local web server<sup>*</sup>
-and then navigate to your FHIR app and its launch page at the following URLs:
+The steps required to test your app against [our public sandbox server](https://fhir.smarthealthit.org), use the following steps.
+
+### Setup your local web server
+
+FHIR Apps need a registered manifest on the server in order to be launchable (from the patient context). So to quickly test against our server and launch your local app, you need to make sure your app serves the following pages:
 
 * [http://localhost:8000/fhir-app/](http://localhost:8000/fhir-app/)
 * [http://localhost:8000/fhir-app/launch.html](http://localhost:8000/fhir-app/launch.html)
 
-Also, make sure that your `client_id` in `launch.html` is set to `my_web_app`. At this point
-you can [sign into our sandbox](https://fhir.smarthealthit.org) and launch the "My Web App" special application which will
-load your app.
-
-<sup>*</sup> You can use any web server you like. For prototyping, we're partial to [`http-server`](https://github.com/nodeapps/http-server) which you can launch via
+You can use any web server you like. For prototyping, we're partial to [`http-server`](https://github.com/nodeapps/http-server) which you can launch via
 `http-server -p 8000 /path/to/fhir-app/..`.
 
-### Sample Test App
+If you are using [Rails](http://rubyonrails.org/), you can quickly test the code below by doing the following
+
+    mkdir public/fhir-app
+
+Copy the code below into public/fhir-app as index.html and layout.html
+
+Launch rails on port 8000 
+
+    rails s -p 8000
+
+### Sign into sanbox, select a patient, and launch My Web App
+
+* [sign into our sandbox](https://fhir.smarthealthit.org)
+* select a patient
+* launch the "My Web App" special application which will load your app.
+
+## Sample Test App Source Code
 
 To get you started, here is the scaffolding of a simple SMART-on-FHIR app that you can use
 for testing this mechanism. Note that you can't use the "rawgithub" domain in production, 

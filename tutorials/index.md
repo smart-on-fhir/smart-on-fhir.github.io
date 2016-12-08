@@ -15,7 +15,7 @@ the JavaScript client.
 
 ### [Building a REST App]({{site.baseurl}}tutorials/rest/)
 
-### [Testing Your SMART App Against The Public Sandbox] ({{site.baseurl}}tutorials/testing/)
+### [Testing Your SMART App Against The Public Sandbox]({{site.baseurl}}tutorials/testing/)
 
 This tutorial will walk you through the steps for testing your SMART app 
 against our public apps container from your local machine.

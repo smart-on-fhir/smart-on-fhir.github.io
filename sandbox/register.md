@@ -1,4 +1,10 @@
+---
+layout: main
+title: Registered Apps 
+---
+
 #Sandbox Registered Apps 
+
 
 
 ##Introduction

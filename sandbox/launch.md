@@ -22,6 +22,7 @@ A scenario is used to simulate a real-world actor in an app launch. First, selec
 ### Step 2: (Optional) Select the patient in the EHR/PHR context
 
 If your real-world scenario is expecting a patient to be in the context of the EHR, or expecting a family member to be in context of the PHR, then select the patient you want to use. Otherwise, select none.  
+
 * If you select a patient, then your launch context will include the patient in context.  
 * If you select none, then your launch context will not have a patient in context, for example, a doctor checking their messages.
   

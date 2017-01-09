@@ -14,6 +14,7 @@ A sandbox launch scenario is used to simulate a clinical use case or situation.�
 
 ### Step 1: Select who is the [Persona](http://docs.smarthealthit.org/sandbox/persona.html) (user) in the scenario
 A scenario is used to simulate a real-world actor in an app launch. First, select the Persona.  
+
 * If you select a practitioner Persona, then you are creating a scenario in which a practitioner is going to open an app and perform a function.
 * If you select a patient Persona, then you are creating a scenario in which a patient is going into a PHR or patient portal to perform a function.
   

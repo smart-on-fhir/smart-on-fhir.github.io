@@ -13,8 +13,8 @@ A sandbox persona is a user used for authenticating when launching an app. A Per
 ### Step 1: Select who the Persona (patient or practitioner) will be
 
 A Persona is used to simulate a real-world actor in an app launch. First, select either patient or practitioner.  
-* If you select a practitioner, then you are creating a Persona which is tied to a practitioner to later be used to open an app and perform a function.
-* If you select a patient, then you are creating a Persona which is tied to a patient to later be used to log into a PHR or patient portal to perform a function.
+- If you select a practitioner, then you are creating a Persona which is tied to a practitioner to later be used to open an app and perform a function.
+- If you select a patient, then you are creating a Persona which is tied to a patient to later be used to log into a PHR or patient portal to perform a function.
 
 ### Step 2: Enter a user id and password for the Persona
 

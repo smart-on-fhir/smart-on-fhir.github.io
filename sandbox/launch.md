@@ -9,7 +9,7 @@ title: Launch Scenarios
 
 ## Introduction
 
-A sandbox launch scenario is used to simulate a clinical use case or situation. A sandbox launch scenario is used to execute a particular launch flow described in the SMART on FHIR specification. 
+A sandbox launch scenario is used to simulate a clinical use case or situation, by executing a particular launch flow described in the SMART on FHIR specification. You will need to create a Persona, or user profile, before you can launch the app as the selected user (patient or practitioner). 
 
 
 ### Step 1: Select who is the [Persona](http://docs.smarthealthit.org/sandbox/persona.html) (user) in the scenario

@@ -7,7 +7,7 @@ title: SMART on FHIR -- Tutorials -- Testing
 
 ## Overview
 
-This tutorial will walk you through the steps for testing your SMART on mFHIR
+This tutorial will walk you through the steps for testing your SMART on FHIR
 app against our public apps container.
 
 ## General steps

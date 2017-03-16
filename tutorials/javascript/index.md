@@ -1,6 +1,6 @@
 ---
 layout: main
-title: SMART on FHIR -- Tutorials -- JavaScript
+title: SMART -- Tutorials -- JavaScript
 ---
 
 # Tutorial - Building a JavaScript App
@@ -38,8 +38,8 @@ create a client via:
 
 ```
 var smart = FHIR.client({
-  serviceUrl: 'https://fhir-open-api-dstu2.smarthealthit.org',
-  patientId: '1137192'
+  serviceUrl: 'https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/data',
+  patientId: 'SMART-1137192'
 });
 ```
 
@@ -91,16 +91,9 @@ In the `done` callback, you'll get a data structure containing search results.
 
 Here's a complete example of the steps above:
 
-See the source, or click "preview" to see the app in action!
-
 <iframe
   style="border: 1px solid black"
-  src="http://embed.plnkr.co/2trWrdsk4mFWyIlWhK5N/get-data.js"
+  src="http://embed.plnkr.co/DapXQaTONYSRSyylHdpu/get-data.js"
   width="100%" height="500px"></iframe>
-
-<iframe 
-    style="border: 1px solid black"
-    width="100%" height="500px"
-    src="//jsfiddle.net/atd0tebj/embedded/"></iframe>
 
 For more details, see our [JS client docs](../../clients/javascript)

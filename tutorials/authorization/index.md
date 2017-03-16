@@ -19,7 +19,7 @@ to learn about the JS client)
 
 ## Registering A Client
 
-To run this sample app against [our public sandbox server](https://fhir.smarthealthit.org), first you will need 
+To run this sample app against [our public sandbox server](https://sandbox.smarthealthit.org), first you will need 
 to select two endpoint URLs for your app which will handle the launch and redirect requests. For this tutorial
 we decided to use `http://localhost:4000/simple-auth/launch.html` as our launch endpoint and 
 `http://localhost:4000/simple-auth/index.html` as our redirect URL. You should configure a web server
@@ -27,28 +27,11 @@ to handle these URLs (or the ones that you pick) by serving the two sample pages
 `http-server -p 4000 /path/to/simple-auth/..`.
 
 Now that you have established the client endpoints for your app, it's time to register your very own
-client with the SMART on FHIR authorization server (in this case it is at `https://authorize.smarthealthit.org/`).
-There are a couple different approaches to register a new dynamic client with the server outlined
-in the [`How to Register a New App`](http://docs.smarthealthit.org/sandbox/register/) tutorial. We chose
-to use the "Client Quick Registration" form available there. (Use your favorite image URL for the logo URL)
-
-<div style='text-align: center'>
-  <img src="{{site.baseurl}}assets/img/regexample1.png" />
-</div>
-
-If everything is in order, the authorization server will respond with a Client ID and
-a Registration Access Token like this:
-
-<div style='text-align: center'>
-  <img src="{{site.baseurl}}assets/img/regexample2.png" />
-</div>
-
-You should record these, since you can later use them to update your client via the [`authorization server UI`](https://authorize.smarthealthit.org/). At very minimum, you will need the Client ID, which
-you should configure within your sample app in the next step.
+client with the[sandbox server](https://sandbox.smarthealthit.org). If everything is in order, the  server will respond with a Client ID. You should record this, since you will need it to configure your sample app in the next step.
 
 ## Sample App
 
-Now that you have successfully registered your client and obtained a Client ID from the authorization
+Now that you have successfully registered your client and obtained a Client ID from the sandbox
 server, try this sample app, which implements all the basic steps necessary to obtain an authorization
 token from the authorization service and then request patient data from the SMART on FHIR API server.
 Don't forget to change the Client ID inside the `launch.html` script with the one for your client.
@@ -248,16 +231,7 @@ index.html
 
 ## Launching the Sample App
 
-To launch the sample app, first log into [`FHIR Starter`](http://fhir.smarthealthit.org) and 
-select a sample patient. Next, enter your `Client ID` and `Launch URL` in the Custom App
-box like this:
-
-<div style='text-align: center'>
-  <img src="{{site.baseurl}}assets/img/regexample3.png" />
-</div>
-
-Finally press the `Custom App` button to launch your app and watch it
-request authorization and print the patient's name.
+Log in to the [sandbox server](https://sandbox.smarthealthit.org), launch your app and watch it request authorization and print the patient's name.
 
 ## Acting as a confidential client
 
@@ -266,10 +240,7 @@ as an HTML5 app, it has no way of keeping a secret and therefore does not meet t
 criteria for a confidential client. Nevertheless, we feel that it is educational to
 use it as a pseudo-confidential client to learn about the behavior this class of clients.
 
-To turn the app into a confidential app, first register a confidential client (with
-a secret) with the authorization server. Next, set the `clintId` and `secret` in
-your `launch.html` to match the client. Finally, launch the app to see it behave 
-as if it were confidential.
+To turn the app into a confidential app, register a new app on the sandbox server and choose the app type of "confidential client". Next, set the `clientId` and `secret` in your `launch.html` to match the client. Finally, launch the app to see it behave as if it were confidential.
 
 ## Next steps
 

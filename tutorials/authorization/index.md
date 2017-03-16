@@ -27,7 +27,7 @@ to handle these URLs (or the ones that you pick) by serving the two sample pages
 `http-server -p 4000 /path/to/simple-auth/..`.
 
 Now that you have established the client endpoints for your app, it's time to register your very own
-client with the[sandbox server](https://sandbox.smarthealthit.org). If everything is in order, the  server will respond with a Client ID. You should record this, since you will need it to configure your sample app in the next step.
+client with the [sandbox server](https://sandbox.smarthealthit.org). If everything is in order, the  server will respond with a Client ID. You should record this, since you will need it to configure your sample app in the next step.
 
 ## Sample App
 

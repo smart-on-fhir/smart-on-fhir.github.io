@@ -19,4 +19,4 @@ If you're an advanced user, you can set up a local copy of the sandbox on your c
 
 ## Open Source
 
-The SMART Sandbox is an open source project based on the excellent [HAPI FHIR Server](http://hapifhir.io/), work done by the [Health Platform Services Consortium](https://healthservices.atlassian.net/wiki/display/HSPC/HSPC+Sandbox), and development by [iSalus Solutions](https://www.isalussolutions.com/) that was directed and funded by the SMART Health IT Project. The source code is available at https://bitbucket.org/hspconsortium/.
+The SMART Sandbox is an open source project based on the excellent [HAPI FHIR Server](http://hapifhir.io/), work done by the [Health Platform Services Consortium](https://healthservices.atlassian.net/wiki/display/HSPC/HSPC+Sandbox), and development by [iSalus Solutions](https://www.isalussolutions.com/) that was directed and funded by the SMART Health IT Project. The source code is available at [https://bitbucket.org/hspconsortium/](https://bitbucket.org/hspconsortium/).

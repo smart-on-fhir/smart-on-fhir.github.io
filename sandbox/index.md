@@ -1,23 +1,22 @@
 ---
 layout: main
-title: SMART on FHIR Sandbox
+title: SMART Sandbox
 ---
 
-# Sandbox - Overview
+# SMART Sandbox
 
-The [public demo sandbox](http://fhir.smarthealthit.org) for SMART on FHIR is useful to demonstrate
-the platform in action and to test apps against patient data
-in development or as a showcase. The main components of the sandbox
-are:
+The SMART Health IT Sandbox is a virtual testing environment that mimics a live EHR production environment, but is populated with sample data. Use it to test and demonstrate apps for practitioners and patients that use the SMART on FHIR platform to access clinical data.
 
-* [Sample Apps Server](https://fhir.smarthealthit.org)
-* [API Server](https://fhir-api.smarthealthit.org)
-* [Authorization Server](https://authorize.smarthealthit.org)
+The Sandbox is provided by the SMART Health IT project as a free service to the healthcare app development community and is for testing purposes only. Do not store any information that contains personal health information or any other confidential information. This system should not be used in the provision of clinical care.
 
-The best place to start if you are new to SMART on FHIR is by visiting
-the [Sample Apps Server](https://fhir.smarthealthit.org), but before you
-do this, you should [create an account]({{site.baseurl}}sandbox/account)
-for yourself on the system.
+## Online Sandbox
 
-If our public sandbox does not meet your needs, you can always
-[build your own sandbox]({{site.baseurl}}sandbox/install) with our code stack.
+You can access the sandbox at https://sandbox.smarthealthit.org to register and launch SMART apps. If you've registered on the previous version of our sandbox, you'll need to create a new account. The sandbox's open DSTU2 FHIR server is accessible directly at https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/open and the secure endpoint for launching a standalone app that's been registered is at https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/data. Note that the data in the online sandbox is reset on a nightly basis. An STU-3 version of the sandbox will be launching later this year.
+
+## Self-Hosted Sandbox
+
+If you're an advanced user, you can set up a local copy of the sandbox on your computer, a local server, or a cloud server by following the instructions at https://github.com/smart-on-fhir/installer. 
+
+## Open Source
+
+The SMART Sandbox is an open source project based on the excellent [HAPI FHIR Server]( http://hapifhir.io/), work done by the [Health Platform Services Consortium]( https://healthservices.atlassian.net/wiki/display/HSPC/HSPC+Sandbox), and development by [iSalus Solutions]( https://www.isalussolutions.com/) that was directed and funded by the SMART Health IT Project. The source code is available at https://bitbucket.org/hspconsortium/.

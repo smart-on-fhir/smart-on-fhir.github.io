@@ -12,7 +12,7 @@ app against our public apps container.
 
 ## General steps
 
-The steps required to test your app against [our public sandbox server](https://fhir.smarthealthit.org), use the following steps.
+To test your app against [our public sandbox server](https://sandbox.smarthealthit.org), use the following steps.
 
 ### Setup your local web server
 
@@ -34,11 +34,10 @@ Launch rails on port 8000
 
     rails s -p 8000
 
-### Sign into sanbox, select a patient, and launch My Web App
+### Sign into sandbox, register and launch your app
 
-* [sign into our sandbox](https://fhir.smarthealthit.org)
-* select a patient
-* launch the "My Web App" special application which will load your app.
+* [sign into our sandbox](https://sandbox.smarthealthit.org)
+* register and launch your app
 
 ## Sample Test App Source Code
 

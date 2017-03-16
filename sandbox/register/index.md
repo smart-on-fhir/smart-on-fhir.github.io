@@ -3,6 +3,10 @@ layout: main
 title: "SMART on FHIR Sandbox: How To Use"
 ---
 
+<div class="alert alert-warning">
+## Note: This page refers to a previous version of the SMART Sandbox. For current documentation, please visit  <a href="{{site.baseurl}}sandbox">{{site.baseurl}}sandbox</a>.
+</div>
+
 # Sandbox - Registering a New App
 
 ## Overview

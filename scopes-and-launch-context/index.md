@@ -204,7 +204,7 @@ host. The meaning of intents must be negotiated between the app and the host.
 SMART apps can check for the existence of this launch context parameter and
 download the JSON file referenced by the URL value, if provided.
 
-The URL should serve a "SMART Style" JSON object with one or more of the following properties:
+The URL should serve a "SMART Style" JSON object with one or more of the following *experimental* properties:
 
 ```
 {

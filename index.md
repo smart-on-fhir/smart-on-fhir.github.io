@@ -144,6 +144,9 @@ time by passing along a <code>launch=123</code> parameter (see below).
   </tbody>
 </table>
 
+Parameters
+`iss`|required|Identifies the EHR's FHIR endpoint, which the app can use to obtain additional details about the EHR, including its authorization URL.
+`launch`|required|Opaque identifier for this specific launch, and any EHR context associated with it. This parameter must be communicated back to the EHR  at authorization time by passing along a `launch=123` parameter (see below).
 
 #### *For example*
 A launch might cause the browser to redirect to:

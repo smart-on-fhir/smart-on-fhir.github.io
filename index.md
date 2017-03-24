@@ -115,35 +115,6 @@ pointing to the app's registered launch URL and passing some context.
 
 The following parameters are included:
 
-<table class="table">
-  <thead>
-    <th colspan="3">Parameters</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>iss</code></td>
-      <td><span class="label label-success">required</span></td>
-      <td>
-
-Identifies the EHR's FHIR endpoint, which the app can use to obtain
-additional details about the EHR, including its authorization URL.
-
-      </td>
-    </tr>
-    <tr>
-      <td>`launch`</td>
-      <td><span class="label label-success">required</span></td>
-      <td>
-
-      Opaque identifier for this specific launch, and any EHR context associated
-with it. This parameter must be communicated back to the EHR  at authorization
-time by passing along a <code>launch=123</code> parameter (see below).
-
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 |Parameters|optionality|description|
 |----------|-----------|-----------------------------------------------
 |`iss`|required|Identifies the EHR's FHIR endpoint, which the app can use to obtain additional details about the EHR, including its authorization URL.|

@@ -137,7 +137,7 @@ scopes:
 #### Requesting context with scopes
 
 Requested Scope | Meaning
-------|---------|-------------------
+------|----------------------------
 `launch/patient` | Need patient context at launch time (FHIR Patient resource)
 `launch/encounter` | Need encounter context at launch time (FHIR Encounter resource)
 (Others)| This list can be extended by any SMART EHR if additional context is required.

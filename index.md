@@ -131,7 +131,7 @@ additional details about the EHR, including its authorization URL.
       </td>
     </tr>
     <tr>
-      <td><code>launch</code></td>
+      <td>`launch`</td>
       <td><span class="label label-success">required</span></td>
       <td>
 

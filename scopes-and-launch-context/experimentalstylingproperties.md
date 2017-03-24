@@ -1,6 +1,6 @@
 ---
 layout: main
-title: "SMART on FHIR Authorization: Scopes and Launch Context"
+title: "SMART on FHIR Authorization: Styling: Experimental styling properties"
 ---
 
 # SMART App styling properties

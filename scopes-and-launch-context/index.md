@@ -174,7 +174,7 @@ Launch context parameter | Example value | Meaning
 #### Notes on launch context parameters
 
 <h5 id="launch-intent"><b>App Launch Intent</b> (optional)</h5>
-`intent` : Some SMART apps might offer more than one context or user interface
+`intent`: Some SMART apps might offer more than one context or user interface
 that can be accessed during the SMART launch. The optional `intent` parameter
 in the launch context provides a mechanism for the SMART host to communicate to
 the client app which specific context should be displayed as the outcome of the

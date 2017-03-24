@@ -11,7 +11,7 @@ Guide supports the [four uses cases](http://argonautwiki.hl7.org/images/4/4c/Arg
 defined for Phase 1 of the [Argonaut
 Project](http://argonautwiki.hl7.org/index.php?title=Main_Page).  
 
-## Profile audience and scope (#profile-audience-and-scope)
+## Profile audience and scope
 This profile is intended to be used by developers of apps that need to 
 access FHIR resources by requesting access tokens from OAuth 2.0 compliant 
 authorization servers.

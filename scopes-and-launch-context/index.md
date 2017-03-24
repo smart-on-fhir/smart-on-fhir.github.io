@@ -174,6 +174,7 @@ Launch context parameter | Example value | Meaning
 #### Notes on launch context parameters
 
 <h5 id="launch-intent"><b>App Launch Intent</b> (optional)</h5>
+
 `intent`: Some SMART apps might offer more than one context or user interface
 that can be accessed during the SMART launch. The optional `intent` parameter
 in the launch context provides a mechanism for the SMART host to communicate to
@@ -204,7 +205,7 @@ host. The meaning of intents must be negotiated between the app and the host.
 SMART apps can check for the existence of this launch context parameter and
 download the JSON file referenced by the URL value, if provided.
 
-The URL should serve a "SMART Style" JSON object with one or more of the following *experimental* properties:
+The URL should serve a "SMART Style" JSON object with properties describing the look and feel of the SMART host. Currently, [these property names](experimentalstylingproperties.md) are experimental.
 
 ```
 {

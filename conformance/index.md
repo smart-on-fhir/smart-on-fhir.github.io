@@ -10,7 +10,7 @@ known as the **Core SMART on FHIR Support** that includes support for
  * basic launch context (patient, encoutner, banner, style)
  * permission for single-patient and user-level apps
  
-## Publishing capabilties
+## Publishing a set of Capabilities
 
 A SMART on FHIR server can convey its capabilities to app develoeprs by listing
 a set of the capabilities described below. This can be published out of band,

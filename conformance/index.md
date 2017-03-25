@@ -18,43 +18,7 @@ or it can be conveyed as part of a server's FHIR `CapabilityStatement` using
 an extension on `CapabilityStatement.rest.security`. For example, a server
 can pulbish its support for Core SMART on FHIR Support by including:
 
-        "extension": [{
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "launch-ehr"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "launch-standalone"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "client-public"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "client-confidential-symmetric"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "sso-openid-connect"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "context-patient"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "context-encounter"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "context-banner"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "context-style"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "permission-offline"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "permission-patient"
-         }, {
-          "url": "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities",
-          "valueCode": "permission-user"
-         }]
+[Core Capabilities](./core-set.md)
 
 ## Specific Capabilities (by category)
 

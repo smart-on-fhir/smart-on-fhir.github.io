@@ -43,7 +43,7 @@ can pulbish its support for Core SMART on FHIR Support by including: [Core Capab
 
 ### Permissions
 
-`permission-offline`: support for refresh tokens (requested by `offline_access` scope)
-`permission-patient`: support for patient-level scopes (e.g. `patient/Observation.read`)
+`permission-offline`: support for refresh tokens (requested by `offline_access` scope)  
+`permission-patient`: support for patient-level scopes (e.g. `patient/Observation.read`)  
 `permission-user`: support for user-level scopes (e.g. `user/Appointment.read`)
 

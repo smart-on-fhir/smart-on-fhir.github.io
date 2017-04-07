@@ -19,8 +19,7 @@ Over 1 Million Encounters
 
 Over 15,000 Patient Allergies
 
-As well as: Immunizations, Family History, Lab Orders, Procedures, Problem Lists, 
-Surgeries, and much more.
+As well as: Immunizations, Family History, Lab Orders, Procedures, Problem Lists, Surgeries, and much more.
 ```
 
 <h3> How can I access the data? </h3>

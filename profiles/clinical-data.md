@@ -10,17 +10,11 @@ a leading healthcare organization. Qualified third-party developers looking to t
 
 <h3> Overview </h3>
 
-```
-Data was collected between 1996 - 2016
-
-Over 1 Million Medication Orders
-
-Over 1 Million Encounters
-
-Over 15,000 Patient Allergies
-
-As well as: Immunizations, Family History, Lab Orders, Procedures, Problem Lists, Surgeries, and much more.
-```
+- Data was collected between 1996 - 2016
+- Over 1 Million Medication Orders
+- Over 1 Million Encounters
+- Over 15,000 Patient Allergies
+- As well as: Immunizations, Family History, Lab Orders, Procedures, Problem Lists, Surgeries, and more.
 
 <h3> How can I access the data? </h3>
 

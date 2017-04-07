@@ -1,6 +1,6 @@
 ---
 layout: main
-title: SMART on FHIR
+title: Clinical Data
 ---
 
 # De-Identified Longitudinal Clinical Data Available

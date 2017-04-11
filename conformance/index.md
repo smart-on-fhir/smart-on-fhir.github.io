@@ -8,7 +8,7 @@ known as the **Core SMART on FHIR Support** that includes support for
  * both client types (Public + Confidential with symmetric client secret authentication)
  * single sign-on (OpenID Connect)
  * basic launch context (patient, encounter, banner, style)
- * permission for single-patient and user-level apps
+ * permission for single-patient apps, user-level apps, and refresh tokens
  
 ## Publishing a set of Capabilities
 

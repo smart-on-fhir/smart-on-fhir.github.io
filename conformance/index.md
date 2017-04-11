@@ -37,7 +37,7 @@ can pulbish its support for Core SMART on FHIR Support by including: [Core Capab
 ### Launch Context
 
 `context-patient`: support for patient-level launch context (requested by `launch/patient` scope, conveyed via `patient` token parameter)  
-`context-encoutner`: support for encoutner-level launch context (requested by `launch/encounter` scope, conveyed via `encounter` token parameter)  
+`context-encounter`: support for encounter-level launch context (requested by `launch/encounter` scope, conveyed via `encounter` token parameter)  
 `context-banner`: support for "need patient banner" launch context (conveyed via `need_patient_banner` token parameter)  
 `context-style`: support for "SMART style URL" launch context (conveyed via `smart_style_url` token parameter)  
 

@@ -29,6 +29,6 @@ on your behalf. Once an agreement is in place, we will share the data via secure
 * **Insurance Requirement:** At least $5,000,000 coverage for claims arising out of wrongful release of personal information in any form that is in the care, custody and control of Data User.
 
 
-**If you'd like to obtain access to these data, and think you may qualify, please fill out the [request form](https://smarthealthit.org/de-identified-sample-data/) on our website. 
-We will be in touch shortly after receiving your request!**
+**If you'd like to obtain access to these data, and think you may qualify, please fill out the [request form](https://smarthealthit.org/de-identified-sample-data/) on our website.** 
+
 

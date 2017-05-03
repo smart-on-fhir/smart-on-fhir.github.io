@@ -1,6 +1,6 @@
 
-SMART Technical Documentation
-=============================
+# SMART Technical Documentation
+
 
 This is the SMART technical documentation, hosted at
 <http://docs.smarthealthit.org>
@@ -11,8 +11,8 @@ This is the SMART technical documentation, hosted at
   request!
 
 
-Installing Jekyll and Friends
------------------------------
+## Installation
+### Jekyll and friends. (mandatory)
 
 The SMART technical documentation is built using
 [Ruby](https://www.ruby-lang.org/) tools. Using [Bundler](http://bundler.io/),
@@ -34,7 +34,7 @@ the `_site` directory) is simply running
 on the commandline.
 
 
----
+### Node and npm (optional)
 
 If you prefer, you can serve the project with Node.js and grunt, which enables
 "live reload" behavior. This allows editing side-by-side with the web page; and

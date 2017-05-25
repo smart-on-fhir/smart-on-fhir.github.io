@@ -9,7 +9,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 | ---------------------------:|--------------:| ------------:| --------------------:|
 | Core SMART Patients         |smart-*        |    -5-2017   |14,548                |
 |  Synthea Synthetic Patients |smart-syn-*    | syn-5-2017   |                      |
-| PRO Patients                |smart-pro-*    | pro-5-2017   |995                   |
+| PRO Patients                |smart-pro-*    | pro-5-2017   |986                   |
 
 
 
@@ -52,7 +52,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   
       | Resource               | Count | 
       | ----------------------:|------:|   
-      |Encounter               |300    |
+      |Encounter               |300    |
       |Patient                 |100    |
       |Procedure               |100    |
       |Questionnaire           |6      |

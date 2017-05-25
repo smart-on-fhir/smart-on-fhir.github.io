@@ -16,7 +16,7 @@ title: PRO Full Data Documentation
     * Provider Commissioner, which shows the number of modelled records, the average pre- and post-operative questionnaires scores and average health gain, the adjusted post-operative score and health gain, as well as the aggregate number of patients who have improved, unchanged or worsened for each procedure and measure;
     * **Record-level data for each procedure, which includes one row for each patient questionnaire record successfully linked to a record of inpatient hospital activity in the Hospital Episode Statistics data warehouse.**
 
-2.	On the [PROMs Homepage}(http://content.digital.nhs.uk/proms), download “PROMs Data Dictionary” on right column under “Guidance” 
+2.	On the [PROMs Homepage](http://content.digital.nhs.uk/proms), download “PROMs Data Dictionary” on right column under “Guidance” 
 
 
 

@@ -47,11 +47,11 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   * The [Sample Patients that SMART generated](https://github.com/smart-on-fhir/sample-patients-prom) contain a mixture of real and synthetic data elements, based on the data available in the [PROMs csv data package](http://content.digital.nhs.uk/catalogue/PUB23908). For more information about the source of the data contained within the PRO patient resources, please see the full [SMART PRO Sample Patient documentation.](https://github.com/smart-on-fhir/smart-on-fhir.github.io/blob/master/profiles/PRO-full.md) 
   
   * May 2017 Release:
-    * Tag: -5-2017
+    * Tag: pro-5-2017
     * Resources:
   
       | Resource               | Count | 
-      |-----------------------:|------:|   
+      | ----------------------:|------:|   
       |Encounter               |300    |
       |Patient                 |100    |
       |Procedure               |100    |

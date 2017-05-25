@@ -51,7 +51,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
     * Resources:
   
       | Resource               | Count | 
-      | ----------------------:|------:|   
+      |-----------------------:|------:|   
       |Encounter               |300    |
       |Patient                 |100    |
       |Procedure               |100    |

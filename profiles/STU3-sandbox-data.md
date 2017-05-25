@@ -22,7 +22,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   * The SMART Team generated 1000 Synthetic sample patients in FHIR STU3 format using the [MITRE Synthea tool](https://github.com/synthetichealth/synthea/wiki). 
   * Resource Types:
  
-* **Patient Reported Outcome(PRO)Patients**
+* **Patient Reported Outcome(PRO) Patients**
   * The SMART Team generated 100 Sample patients using PRO data available online from the UK National Health Service. The data measures health gain in patients undergoing hip replacement, knee replacement, varicose vein and groin hernia surgery in England, based on responses to questionnaires before and after surgery.
   * The [Sample Patients that SMART generated](https://github.com/smart-on-fhir/sample-patients-prom) contain a mixture of real and synthetic data elements, based on the data available in the [PROMs csv data package](http://content.digital.nhs.uk/catalogue/PUB23908). For more information about the source of the data contained within the PRO patient resources, please see the full [SMART PRO Sample Patient documentation.](https://github.com/smart-on-fhir/smart-on-fhir.github.io/blob/master/profiles/PRO-full.md)  
   * Resource Types: Patient, Procedure, Encounter, Questionnaire, Questionnaire Response

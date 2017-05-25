@@ -7,6 +7,8 @@ title: PRO Full Data Documentation
 **April 2015 to March 2016**    
 **Data Publication date: November 10, 2016**
 
+The PROMs Record-level data csv files include one row for each patient questionnaire record. To create useful sample patients, we supplemented the raw data with synthetic information. We used the provided patient age range and the known data collection period (April 2015 – March 2016) to randomly generate a date of birth and procedure date for each sample patient. We used the provided data dictionary to determine gender, and used the list of eligible OPCS4.5 procedure codes to map to the appropriate SNOMED code for each procedure type. The FHIR Data Development section below goes into more detail about real and synthetic data elements. 
+
 ## Accessing the Data and Resources
 
 1. [Download CSV Data Pack](http://content.digital.nhs.uk/catalogue/PUB22172) under “Resources”
@@ -60,8 +62,6 @@ title: PRO Full Data Documentation
 ### FHIR Data Development
 
 We chose an initial subset of 25 records from each of the 4 PROMs record-level data packages for each procedure. The 100 patient records cover a range of symptom severities, patient age, self-reported comorbidities, and surgical sites. 
-
-To create useful sample patients, we supplemented the raw data with synthetic information. We used the provided patient age range and the known data collection period (April 2015 – March 2016) to randomly generate a date of birth and procedure date for each sample patient. We used the provided data dictionary to determine gender, and used the list of eligible OPCS4.5 procedure codes to map to an appropriate SNOMED procedure code for all patients. 
 
 
 **Real Data Elements:**

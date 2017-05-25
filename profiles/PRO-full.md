@@ -1,6 +1,6 @@
 ---
 layout: main
-title: PROMs Full Data Documentation
+title: PRO Full Data Documentation
 ---
 
 # Provisional Quarterly Patient Reported Outcome Measures (PROMs) in England 

@@ -50,17 +50,17 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 | Resource            | Count | 
 | :-------------------|:------| 
 |AllergyIntolerance   | 580   |    
-|CarePlan             | 3086 |
-|Condition            | 6249 | 
-|Diagnostic Report    | 4173 |
-|Encounter            | 18048 |
-|Immunization         |  13070   |
-|Medication           | 4013  | 
-|MedicationRequest    |  5076 |
-|Observation          | 66916 |
-|Organization         | 1245| 
-|Patient              |  1390   |
-|Procedure            |  9062   |
+|CarePlan             | 3,086 |
+|Condition            | 6,249 | 
+|Diagnostic Report    | 4,173 |
+|Encounter            | 18,048 |
+|Immunization         |  13,070   |
+|Medication           | 4,013  | 
+|MedicationRequest    |  5,076 |
+|Observation          | 66,916 |
+|Organization         | 1,245| 
+|Patient              |  1,390   |
+|Procedure            |  9,062   |
  
 * **Patient Reported Outcome (PRO) Data**
   * The SMART Team generated 100 Sample patients using PRO data available online from the UK National Health Service. The data measures health gain in patients undergoing hip replacement, knee replacement, varicose vein and groin hernia surgery in England, based on responses to questionnaires before and after surgery.
@@ -71,7 +71,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
     * Resources:
 
 | Resource|Count | 
-| ----:|---:|   
+| :----|:---|   
 |Encounter|300  |
 |Patient|100  |
 |Procedure |100  |

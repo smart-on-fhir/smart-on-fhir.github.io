@@ -6,11 +6,11 @@ title: STU3 Sandbox Data
 The following datasets are available in the SMART STU3 Sandbox (link) for App testing and development.
 
 
-| Dataset                        |  Tag            | Number of Resources  |
-| :------------------------------| :---------------| :--------------------|
-| Core SMART Patients            | smart-5-2017    |14,548                |
-| Synthea Synthetic Patients     | synthea-5-2017  |                      |
-| Patient Reported Outcome Data  | pro-5-2017      |986                   |
+| Dataset|Tag|Number of Patients|Number of Resources|
+| :-------------|:--------|:-------|:--------|
+| Core SMART Patients |smart-5-2017 |67  |14,548 |
+| Synthea Synthetic Patients | synthea-5-2017 |1,390 | 134,788   |
+| Patient Reported Outcome Data | pro-5-2017 |100 |986 |
 
 
 

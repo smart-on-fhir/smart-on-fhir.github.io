@@ -54,7 +54,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 |Condition            | 6,249 | 
 |Diagnostic Report    | 4,173 |
 |Encounter            | 18,048 |
-| Goal      | 1880
+| Goal      | 1,880
 |Immunization         |  13,070|
 |Medication           | 4,013  | 
 |MedicationRequest    |  5,076 |

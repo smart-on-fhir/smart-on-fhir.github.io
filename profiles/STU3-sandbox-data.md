@@ -46,6 +46,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
     * Tag: synthea-5-2017
     * [Dataset population Statistics](http://docs.smarthealthit.org/profiles/synthea-stats)
     * Resources:
+    
 | Resource            | Count | 
 | :-------------------|:------| 
 |AllergyIntolerance   | 580   |    
@@ -68,6 +69,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   * May 2017 Release:
     * Tag: pro-5-2017
     * Resources:
+
 | Resource|Count | 
 | ----:|---:|   
 |Encounter|300  |

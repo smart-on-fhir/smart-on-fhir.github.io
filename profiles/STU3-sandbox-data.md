@@ -23,7 +23,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
     * Resources:
       
 | Resource            | Count | 
-|: -------------------|:------| 
+|:--------------------|:------| 
 |AllergyIntolerance   |63     |    
 |Binary               |8      | 
 |Condition            |561    | 

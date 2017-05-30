@@ -5,11 +5,20 @@ title: STU3 Sandbox Data
 
 The following datasets are available in the SMART STU3 Sandbox (link) for App testing and development.
 
-| Dataset                     |  Tag            | Number of Resources  |
-| ---------------------------:| ---------------:| --------------------:|
-| Core SMART Patients         | -5-2017         |14,548                |
-| Synthea Synthetic Patients  | synthea-5-2017  |                      |
-| PRO Patients                | pro-5-2017      |986                   |
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
+
+
+
+
+
+| Dataset                        |  Tag            | Number of Resources  |
+| :------------------------------| :---------------| :--------------------|
+| Core SMART Patients            | smart-5-2017    |14,548                |
+| Synthea Synthetic Patients     | synthea-5-2017  |                      |
+| Patient Reported Outcome Data  | pro-5-2017      |986                   |
 
 
 
@@ -18,7 +27,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   * Improvements on the DSTU2 resources: Minor data cleanup, and addition of 7 practitioner resources.  
   
   * May 2017 Release:
-    * Tag: -5-2017
+    * Tag: smart-5-2017
     * Resources:
       
       | Resource            | Count | 
@@ -43,8 +52,9 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   
  * May 2017 Release:
     * Tag: synthea-5-2017
+    * [Dataset population Statistics] 
     * Resources:
-    * Additional dataset statistics
+   
  
 * **Patient Reported Outcome(PRO) Patients**
   * The SMART Team generated 100 Sample patients using PRO data available online from the UK National Health Service. The data measures health gain in patients undergoing hip replacement, knee replacement, varicose vein and groin hernia surgery in England, based on responses to questionnaires before and after surgery.

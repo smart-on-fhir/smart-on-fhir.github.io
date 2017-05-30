@@ -5,14 +5,6 @@ title: STU3 Sandbox Data
 
 The following datasets are available in the SMART STU3 Sandbox (link) for App testing and development.
 
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
-
-
-
 
 | Dataset                        |  Tag            | Number of Resources  |
 | :------------------------------| :---------------| :--------------------|
@@ -30,21 +22,21 @@ Markdown | Less | Pretty
     * Tag: smart-5-2017
     * Resources:
       
-      | Resource            | Count | 
-      | -------------------:|------:| 
-      |AllergyIntolerance   |63     |    
-      |Binary               |8      | 
-      |Condition            |561    | 
-      |DocumentReference    |4      |
-      |Encounter            |1,029  |
-      |FamilyMemberHistory  |16     |
-      |Immunization         |28     |
-      |MedicationDispense   |1,107  |
-      |MedicationRequest    |363    |
-      |Observation          |11,272 |
-      |Patient              |67     |
-      |Practitioner         |7      |
-      |Procedure            |23     |
+| Resource            | Count | 
+|: -------------------|:------| 
+|AllergyIntolerance   |63     |    
+|Binary               |8      | 
+|Condition            |561    | 
+|DocumentReference    |4      |
+|Encounter            |1,029  |
+|FamilyMemberHistory  |16     |
+|Immunization         |28     |
+|MedicationDispense   |1,107  |
+|MedicationRequest    |363    |
+|Observation          |11,272 |
+|Patient              |67     |
+|Practitioner         |7      |
+|Procedure            |23     |
 
 
 * **Synthea Synthetic Patients**

@@ -20,7 +20,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   
   * May 2017 Release:
     * Tag: smart-5-2017
-    * Resources:
+  
       
 | Resource            | Count | 
 | :-------------------|:------| 
@@ -68,7 +68,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   
   * May 2017 Release:
     * Tag: pro-5-2017
-    * Resources:
+ 
 
 | Resource|Count | 
 | :----|:---|   

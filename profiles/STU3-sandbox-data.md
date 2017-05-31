@@ -9,7 +9,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 | Dataset|Tag|Number of Patients|Number of Resources|
 | :-------------|:--------|:-------|:--------|
 | Core SMART Patients |smart-5-2017 |67  |14,548 |
-| Synthea Synthetic Patients | synthea-5-2017 |1,390 | 134,788   |
+| Synthea Synthetic Patients | synthea-5-2017 |1,406 | 131,314   |
 | Patient Reported Outcome Data | pro-5-2017 |100 |986 |
 
 
@@ -49,19 +49,19 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
     
 | Resource            | Count | 
 | :-------------------|:------| 
-|AllergyIntolerance   | 580   |    
-|CarePlan             | 3,086 |
-|Condition            | 6,249 | 
-|Diagnostic Report    | 4,173 |
-|Encounter            | 18,048 |
-| Goal      | 1,880
-|Immunization         |  13,070|
-|Medication           | 4,013  | 
-|MedicationRequest    |  5,076 |
-|Observation          | 66,916 |
-|Organization         | 1,245 | 
-|Patient              |  1,390   |
-|Procedure            |  9,062   |
+|AllergyIntolerance   |   |    
+|CarePlan             |  |
+|Condition            | | 
+|Diagnostic Report    |  |
+|Encounter            |  |
+| Goal      | 
+|Immunization         |  |
+|Medication           |   | 
+|MedicationRequest    |   |
+|Observation          |  |
+|Organization         | | 
+|Patient              |    |
+|Procedure            |   |
  
 * **Patient Reported Outcome (PRO) Data**
   * The SMART Team generated 100 Sample patients using PRO data available online from the UK National Health Service. The data measures health gain in patients undergoing hip replacement, knee replacement, varicose vein and groin hernia surgery in England, based on responses to questionnaires before and after surgery.

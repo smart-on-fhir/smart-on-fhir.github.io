@@ -130,8 +130,11 @@ footer a {
 }
 
 .before-table + table.table > tbody > tr > td,
-.before-table + table.table > thead:first-child > tr:first-child > th {
+.before-table + table.table > tbody > tr > th,
+.before-table + table.table > thead:first-child > tr:first-child > th,
+.before-table + table.table > thead:first-child > tr:first-child > td {
     border: 1px solid #ddd;
+    border-bottom-width: 2px;
 }
 
 .before-table + table.table > tbody > tr:nth-of-type(odd) {

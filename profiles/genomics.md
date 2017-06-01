@@ -16,9 +16,7 @@ The VCF files provide complete genetic data for professional detail validation. 
 
 ## FHIR Data Development
 
-Our team developed an open source VCF to FHIR [converter tool](https://github.com/xliu3/deprecated-fhir-converter) to convert and upload the genomic data to a [public server.](http://genomics-advisor.smartplatforms.org:7080/)
-
-We created Patient and Sequence resources in FHIR STU3 Format, using both real and synthetic information.
+We created Patient and Sequence resources in FHIR STU3 Format, using both real and synthetic information, and developed an open source VCF to FHIR [converter tool](https://github.com/xliu3/deprecated-fhir-converter) to convert and upload the genomic data to a [public server.](http://genomics-advisor.smartplatforms.org:7080/)
 
 All data in the Sequence resources comes directly from the source VCF files. In order to create sample patients that are meaningful to the App developer community, we randomly generated information to create the associated Patient resources.  
 

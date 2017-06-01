@@ -22,6 +22,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   * May 2017 Release:
     * Tag: smart-5-2017
   
+  
 <div class="before-table"></div>
 
 | Resource            | Count | 
@@ -42,12 +43,14 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 |**Total** | **14,548** |
 
 
+
 * **Synthea Synthetic Patients**
   * The SMART Team generated 1390 Synthetic sample patients in FHIR STU3 format using the [MITRE Synthea tool](https://synthetichealth.github.io/synthea/). For each synthetic patient, Synthea data contains a complete medical history, including medications, allergies, medical encounters, and social determinants of health. 
   
  * May 2017 Release:
     * Tag: synthea-5-2017
     * [Dataset population Statistics](http://docs.smarthealthit.org/profiles/synthea-stats)
+ 
  
  
 <div class="before-table"></div>
@@ -69,12 +72,15 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 |Procedure            | 8,405  |
 |**Total**          | **131,314** |
  
+ 
+ 
 * **Patient Reported Outcome (PRO) Data**
   * The SMART Team generated 100 Sample patients using PRO data available online from the UK National Health Service. The data measures health gain in patients undergoing hip replacement, knee replacement, varicose vein and groin hernia surgery in England, based on responses to questionnaires before and after surgery.
   * The [Sample Patients that SMART generated](https://github.com/smart-on-fhir/sample-patients-prom) contain a mixture of real and synthetic data elements, based on the data available in the [PROMs csv data package](http://content.digital.nhs.uk/catalogue/PUB23908). For more information about the source of the data contained within the PRO patient resources, please see the full [SMART PRO Sample Patient documentation.](http://docs.smarthealthit.org/profiles/PRO-full) 
   
   * May 2017 Release:
     * Tag: pro-5-2017
+ 
  
 
 <div class="before-table"></div>
@@ -88,3 +94,4 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 |QuestionnaireResponse   |450  |
 |ValueSet |30  |
 |**Total** | **986** | 
+

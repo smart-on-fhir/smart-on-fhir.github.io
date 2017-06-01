@@ -134,6 +134,10 @@ footer a {
 .before-table + table.table > thead:first-child > tr:first-child > th,
 .before-table + table.table > thead:first-child > tr:first-child > td {
     border: 1px solid #ddd;
+}
+
+.before-table + table.table > thead:first-child > tr:first-child > th,
+.before-table + table.table > thead:first-child > tr:first-child > td {
     border-bottom-width: 2px;
 }
 

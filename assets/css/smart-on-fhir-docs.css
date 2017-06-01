@@ -128,3 +128,12 @@ footer .footer-col {
 footer a {
   color: white;
 }
+
+.before-table + table > tbody > tr td,
+.before-table + table > thead > tr th {
+    border: 1px solid #ddd;
+}
+
+.before-table + table > tbody > tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}

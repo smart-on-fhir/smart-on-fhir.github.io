@@ -5,6 +5,8 @@ title: Synthea Dataset Statistics
 
 ## SMART May 2017 Synthea Dataset Statistics 
 
+<div class="before-table"></div>
+
 | Population |  Count   | 
 | :-------|:-------|
 | Population Count  | 1406  |
@@ -12,12 +14,14 @@ title: Synthea Dataset Statistics
 |  Living Adults  | 728  |
 |  Deceased   | 406   |
   
+<div class="before-table"></div>
 
 | Gender  |  Count   | 
 | :------| :------|
 | Male | 700   |
 | Female   | 706  |
 
+<div class="before-table"></div>
 
 Age | Count
 :----| :----
@@ -33,6 +37,7 @@ Age | Count
  85-94 | 18
 
 
+<div class="before-table"></div>
 
 Race | All    | Living Adults 
 :-----| :-----| :-----
@@ -40,6 +45,8 @@ Black | 123 | 70
 White | 1032 | 536
 Hispanic| 156 | 74
 Asian | 95 | 48
+
+<div class="before-table"></div>
 
 Ethnicity |Count 
 :------| :----

@@ -21,7 +21,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   * May 2017 Release:
     * Tag: smart-5-2017
   
-      
+<div class="table-wrapper">
 | Resource            | Count | 
 | :-------------------|:------| 
 |AllergyIntolerance   |63     |    
@@ -38,7 +38,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
 |Practitioner         |7      |
 |Procedure            |23     |
 |**Total** | **14,548** |
-
+</div>
 
 * **Synthea Synthetic Patients**
   * The SMART Team generated 1390 Synthetic sample patients in FHIR STU3 format using the [MITRE Synthea tool](https://synthetichealth.github.io/synthea/). For each synthetic patient, Synthea data contains a complete medical history, including medications, allergies, medical encounters, and social determinants of health. 

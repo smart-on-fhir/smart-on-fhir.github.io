@@ -5,6 +5,7 @@ title: STU3 Sandbox Data
 
 The following datasets are available in the SMART STU3 Sandbox (link) for App testing and development.
 
+<div class="before-table"></div>
 
 | Dataset|Tag|Number of Patients|Number of Resources|
 | :-------------|:--------|:-------|:--------|
@@ -48,7 +49,9 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
     * Tag: synthea-5-2017
     * [Dataset population Statistics](http://docs.smarthealthit.org/profiles/synthea-stats)
  
-    
+ 
+<div class="before-table"></div>
+
 | Resource            | Count | 
 | :-------------------|:------| 
 |AllergyIntolerance   | 557  |    
@@ -73,6 +76,8 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
   * May 2017 Release:
     * Tag: pro-5-2017
  
+
+<div class="before-table"></div>
 
 | Resource|Count | 
 | :----|:---|   

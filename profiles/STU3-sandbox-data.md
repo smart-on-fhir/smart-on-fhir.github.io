@@ -22,6 +22,7 @@ The following datasets are available in the SMART STU3 Sandbox (link) for App te
     * Tag: smart-5-2017
   
 <div class="before-table"></div>
+
 | Resource            | Count | 
 | :-------------------|:------| 
 |AllergyIntolerance   |63     |    

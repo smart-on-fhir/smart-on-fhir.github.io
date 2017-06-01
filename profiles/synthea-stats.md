@@ -13,13 +13,17 @@ title: Synthea Dataset Statistics
 |  Living    | 1000   |
 |  Living Adults  | 728  |
 |  Deceased   | 406   |
-  
+
+___
+
 <div class="before-table"></div>
 
 | Gender  |  Count   | 
 | :------| :------|
 | Male | 700   |
 | Female   | 706  |
+
+___
 
 <div class="before-table"></div>
 
@@ -36,6 +40,7 @@ Age | Count
  75-84 | 84
  85-94 | 18
 
+___
 
 <div class="before-table"></div>
 
@@ -45,6 +50,8 @@ Black | 123 | 70
 White | 1032 | 536
 Hispanic| 156 | 74
 Asian | 95 | 48
+
+___
 
 <div class="before-table"></div>
 

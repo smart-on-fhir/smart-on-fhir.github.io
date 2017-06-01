@@ -129,6 +129,9 @@ footer a {
   color: white;
 }
 
+.before-table + table.table {
+  margin: 30px auto;
+}
 .before-table + table.table > tbody > tr > td,
 .before-table + table.table > tbody > tr > th,
 .before-table + table.table > thead:first-child > tr:first-child > th,

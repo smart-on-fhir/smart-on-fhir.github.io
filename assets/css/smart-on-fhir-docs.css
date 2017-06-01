@@ -129,11 +129,12 @@ footer a {
   color: white;
 }
 
-.before-table + table > tbody > tr > td,
-.before-table + table > thead > tr > th {
+.before-table + table.table > tbody > tr > td,
+.before-table + table.table > thead:first-child > tr:first-child > th {
     border: 1px solid #ddd;
 }
 
-.before-table + table > tbody > tr:nth-of-type(odd) {
+.before-table + table.table > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9;
 }
+

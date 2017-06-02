@@ -81,7 +81,7 @@ title: STU3 Sandbox Data
   * The SMART Team generated 100 Sample patients using PRO data available online from the UK National Health Service. The data measures health gain in patients undergoing hip replacement, knee replacement, varicose vein and groin hernia surgery in England, based on responses to questionnaires before and after surgery.
   * The Sample Patients that SMART generated [(code)](https://github.com/smart-on-fhir/sample-patients-prom) contain a mixture of real and synthetic data elements, based on the data available in the [PROMs csv data package](http://content.digital.nhs.uk/catalogue/PUB23908).
   * All QuestionnaireResponse resources contain real pre and post-operative patient survey data. 
-  * For more information about the source of the data contained within the PRO data resources, please see the full [SMART PRO Sample Patient documentation.](http://docs.smarthealthit.org/profiles/PRO-full) 
+  * For more information about the source of the data contained within the PRO resources, please see the full [SMART PRO Sample Patient documentation.](http://docs.smarthealthit.org/profiles/PRO-full) 
   
   * May 2017 Release:
     * Tag: pro-5-2017

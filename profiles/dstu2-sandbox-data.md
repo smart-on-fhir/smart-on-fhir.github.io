@@ -4,7 +4,7 @@ title: DSTU2 Sandbox Data
 ---
 
 ### The following data are available in the [SMART DSTU2 Sandbox](https://sandbox.smarthealthit.org/smartdstu2) for App testing and development.
-**[About the SMART Sandbox](http://docs.smarthealthit.org/sandbox/)**
+[About the SMART Sandbox](http://docs.smarthealthit.org/sandbox/)
 
  ---
 * Core SMART Patients 

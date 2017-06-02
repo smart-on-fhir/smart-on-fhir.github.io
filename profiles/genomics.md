@@ -49,6 +49,10 @@ The gender of the subject was determined by the presence or absence of a Y chrom
 
 ---
 
+[Contact Us](https://projects.iq.harvard.edu/smartgenomics/contact) with questions about FHIR Genomics Data
+
+__
+
 **References:**
 
 1. Alterovitz, Warner, et. al. “SMART on FHIR Genomics: facilitating standardized clinico-genomic apps”, JAMIA, 2016.

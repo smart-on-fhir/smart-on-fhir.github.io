@@ -3,7 +3,7 @@ layout: main
 title: DSTU2 Sandbox Data
 ---
 
-### The following data are available in the [SMART DSTU2 Sandbox](https://sandbox.smarthealthit.org) for App testing and development.
+### The following data are available in the [SMART DSTU2 Sandbox](https://sandbox.smarthealthit.org/smartdstu2) for App testing and development.
 
 ---
  

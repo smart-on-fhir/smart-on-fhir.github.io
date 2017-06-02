@@ -51,7 +51,7 @@ The gender of the subject was determined by the presence or absence of a Y chrom
 
 [Contact Us](https://projects.iq.harvard.edu/smartgenomics/contact) with questions about FHIR Genomics Data
 
-__
+---
 
 **References:**
 

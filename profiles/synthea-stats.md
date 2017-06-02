@@ -5,6 +5,9 @@ title: Synthea Dataset Statistics
 
 ## SMART May 2017 Synthea Dataset Statistics 
 
+---
+
+
 <div class="before-table"></div>
 
 | Population |  Count   | 

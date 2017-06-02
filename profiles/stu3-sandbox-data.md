@@ -3,7 +3,9 @@ layout: main
 title: STU3 Sandbox Data
 ---
 
-The following datasets are available in the [SMART STU3 Sandbox](https://sandbox.smarthealthit.org/smartstu3) for App testing and development.
+### The following datasets are available in the [SMART STU3 Sandbox](https://sandbox.smarthealthit.org/smartstu3) for App testing and development.
+
+
 
 <div class="before-table"></div>
 

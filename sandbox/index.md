@@ -11,7 +11,11 @@ The Sandbox is provided by the SMART Health IT project as a free service to the 
 
 ## Online Sandbox
 
-You can access the sandbox at [https://sandbox.smarthealthit.org](https://sandbox.smarthealthit.org) to register and launch SMART apps. If you've registered on the previous version of our sandbox, you'll need to create a new account. The sandbox's open DSTU2 FHIR server is accessible directly at **https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/open** and the secure endpoint for launching a standalone app that's been registered is at **https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/data**. Note that the data in the online sandbox is reset on a nightly basis. An STU-3 version of the sandbox will be launching later this year.
+You can access the sandbox at [https://sandbox.smarthealthit.org](https://sandbox.smarthealthit.org) to register and launch SMART apps. If you've registered on the previous version of our sandbox, you'll need to create a new account.
+
+The sandbox's open DSTU2 FHIR server is accessible directly at **https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/open** and the secure endpoint for launching a standalone app that's been registered is at **https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/data**. Note that the data in the online sandbox is reset on a nightly basis.
+
+The sandbox's open STU3 FHIR server is accessible directly at **https://sb-fhir-stu3.smarthealthit.org/smartstu3/open** and the secure endpoint for launching a standalone app that's been registered is at **https://sb-fhir-stu3.smarthealthit.org/smartstu3/data**. Note that the data in the online sandbox is reset on a nightly basis.
 
 ## Self-Hosted Sandbox
 

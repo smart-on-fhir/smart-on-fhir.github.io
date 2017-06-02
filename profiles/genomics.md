@@ -44,7 +44,7 @@ Synthetic Data Elements:
  
 The value of the identifier element of each Sequence resource is the UID associated with the VCF file from which the sequence was derived. Each VCF file contains data from one individual subject, therefore any sequence resource with the same identifier value belongs to the same subject. Sequences belonging to the same patient/subject also reference the same FHIR Patient resource. 
 
-The gender of the subject was determined by the presence or absence of a Y chromosome in the genetic data file. First name, last name, and Date of Birth were randomly generated in order to create a patient profile. 
+The gender of the subject was determined by the presence or absence of a Y chromosome in the genetic data file. First name, Last name, and date of birth were randomly generated in order to create a patient profile. 
 
 
 

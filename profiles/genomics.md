@@ -56,8 +56,8 @@ The gender of the subject was determined by the presence or absence of a Y chrom
 **References:**
 
 1. Alterovitz, Warner, et. al. “SMART on FHIR Genomics: facilitating standardized clinico-genomic apps”, JAMIA, 2016.
-https://www.ncbi.nlm.nih.gov/pubmed/26198304
+ https://www.ncbi.nlm.nih.gov/pubmed/26198304
 
 2. Alterovitz, Ullman-Cullere, et. al. “Domain Analysis Model: Clinical Sequencing,” HL7, 2017.
-https://www.hl7.org/documentcenter/public_temp_203DF769-1C23-BA17-0CB7C912B4751FEA/wg/clingenomics/HL7%20DAM%20CGWG%20Clinical%20Sequencing%2009Dec2016%20(Vote%20Candidate).pdf
+ https://www.hl7.org/documentcenter/public_temp_203DF769-1C23-BA17-0CB7C912B4751FEA/wg/clingenomics/HL7%20DAM%20CGWG%20Clinical%20Sequencing%2009Dec2016%20(Vote%20Candidate).pdf
 

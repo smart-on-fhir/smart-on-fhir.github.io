@@ -25,7 +25,7 @@ We created Patient and Sequence resources in FHIR STU3 Format, using both real a
 
 All data in the Sequence resources comes directly from the source VCF files. In order to create sample patients that are meaningful to the App developer community, we randomly generated information to create the associated Patient resources.  
 
-Real Data Elements:
+**Real Data Elements:**
  * All data in the Sequence resource 
    * Genome Build
    * Chromosome number
@@ -37,7 +37,7 @@ Real Data Elements:
 
  * Gender of the patient/subject 
  
-Synthetic Data Elements:
+**Synthetic Data Elements:**
  * First and Last Name
  * Date of Birth 
  * Medical Record Number (MRN)

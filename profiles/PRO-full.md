@@ -4,8 +4,13 @@ title: PRO Full Data Documentation
 ---
 
 # Provisional Quarterly Patient Reported Outcome Measures (PROMs) in England 
+
+---
+
 **April 2015 to March 2016**    
 **Data Publication date: November 10, 2016**
+
+---
 
 The PROMs Record-level data csv files include one row for each patient questionnaire record. To create useful sample patients, we supplemented the raw data with synthetic information. We used the provided patient age range and the known data collection period (April 2015 – March 2016) to randomly generate a date of birth and procedure date for each sample patient. We used the provided data dictionary to determine gender, and used the list of eligible OPCS4.5 procedure codes to map to the appropriate SNOMED code for each procedure type. The FHIR Data Development section below goes into more detail about real and synthetic data elements. 
 

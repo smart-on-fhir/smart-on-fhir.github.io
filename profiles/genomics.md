@@ -4,7 +4,7 @@ title: FHIR Genomics Data
 ---
 
 ## Genetic Data Available 
-There are 457,271 FHIR Sequence resources associated with 10 Sample Patients available to FHIR App Developers on an open [FHIR endpoint](http://genomics-advisor.smartplatforms.org:7080/baseDstu3/).
+There are 457,271 FHIR Sequence resources associated with 10 sample patient resources available to FHIR App Developers on an open [FHIR endpoint](http://genomics-advisor.smartplatforms.org:7080/baseDstu3/).
 
 [Click here](http://genomics-advisor.smartplatforms.org:7080/) to access the data on the server! 
 

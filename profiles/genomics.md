@@ -8,6 +8,22 @@ There are 457,271 FHIR Sequence resources associated with 10 sample patient reso
 
 [Click here](http://genomics-advisor.smartplatforms.org:7080/) to access the data on the server! 
 
+<div class="before-table"></div>
+
+| Patient ID | Number of Sequence Resources |
+| :--------- | :---------- |
+| 4 | 42,800 |
+| 42852 | 44,023 |
+| 86876 | 44,351 | 
+| 131820 | 45,384 | 
+| 177205 | 43,825 |
+| 221031 | 44,806 |
+| 265838 | 44,369 |
+| 310208 | 44,509 | 
+| 354718 | 44,808 |
+| 399527 | 57,804 | 
+
+
 ## Data Sources
 
 The [SMART on FHIR Genomics](https://projects.iq.harvard.edu/smartgenomics/home) Team downloaded genetic data from [OpenSNP](https://opensnp.org/genotypes), an open source website where users share their genetic information, and from the [Harvard Personal Genome Project](http://www.personalgenomes.org/harvard/data) website. All data was downloaded as VCF (Variant Call Format) files from these public data sources.  

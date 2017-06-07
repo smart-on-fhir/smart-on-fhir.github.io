@@ -158,7 +158,7 @@ On receiving the launch notification, the app would query the issuer's
 
 The metadata response contains (among other details) the EHR's 
 <a href="{{site.baseurl}}authorization/conformance-statement">
-conformance statement</a> identifying the OAuth `authorize` and `token`
+capability statement</a> identifying the OAuth `authorize` and `token`
 endpoint URLs for use in requesting authorization to access FHIR 
 resources. 
 
@@ -180,7 +180,7 @@ resources, the app discovers the EHR authorization server's OAuth
 `authorize` and `token` endpoint URLs by querying the FHIR endpoint
 for the <a
 href="{{site.baseurl}}authorization/conformance-statement"> 
-EHR's conformance statement</a>.  
+EHR's capability statement</a>.  
 
 The app then can declare its launch context requirements
 by adding specific scopes to the request it sends to the EHR's authorization

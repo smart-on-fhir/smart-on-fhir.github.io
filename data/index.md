@@ -12,7 +12,7 @@ title: SMART Data
 [FHIR Genomics Data](http://docs.smarthealthit.org/data/genomics)
 
 
-## SMART Sandbox Data
+### SMART Sandbox Data
 
 [DSTU2 Sandbox Data](http://docs.smarthealthit.org/data/dstu2-sandbox-data)
 

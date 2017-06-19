@@ -3,7 +3,7 @@ layout: main
 title: SMART Data
 ---
 
-# SMART Data 
+# Index of SMART Data Sets 
 
 [SMART on FHIR Profiles](http://docs.smarthealthit.org/data/profiles/)
 
@@ -14,9 +14,9 @@ title: SMART Data
 
 ## SMART Sandbox Data
 
-[DSTU2 Data](http://docs.smarthealthit.org/data/dstu2-sandbox-data)
+[DSTU2 Sandbox Data](http://docs.smarthealthit.org/data/dstu2-sandbox-data)
 
-[STU3 Data](http://docs.smarthealthit.org/data/stu3-sandbox-data)
+[STU3 Sandbox Data](http://docs.smarthealthit.org/data/stu3-sandbox-data)
 
 
 

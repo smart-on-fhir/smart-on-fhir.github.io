@@ -5,18 +5,18 @@ title: SMART Data
 
 # SMART Data 
 
-[SMART on FHIR Profiles](http://docs.smarthealthit.org/profiles/)
+[SMART on FHIR Profiles](http://docs.smarthealthit.org/data/profiles/)
 
-[Longitudinal Clinical Data](http://docs.smarthealthit.org/profiles/clinical-data)
+[Longitudinal Clinical Data](http://docs.smarthealthit.org/data/clinical-data)
 
-[FHIR Genomics Data](http://docs.smarthealthit.org/profiles/genomics)
+[FHIR Genomics Data](http://docs.smarthealthit.org/data/genomics)
 
 
 ## SMART Sandbox Data
 
-[DSTU2 Data](http://docs.smarthealthit.org/profiles/dstu2-sandbox-data)
+[DSTU2 Data](http://docs.smarthealthit.org/data/dstu2-sandbox-data)
 
-[STU3 Data](http://docs.smarthealthit.org/profiles/stu3-sandbox-data)
+[STU3 Data](http://docs.smarthealthit.org/data/stu3-sandbox-data)
 
 
 

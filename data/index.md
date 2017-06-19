@@ -12,7 +12,7 @@ title: SMART Data
 
 **[FHIR Genomics Data](http://docs.smarthealthit.org/data/genomics)**
 
-**[Longitudinal Clinical Data](http://docs.smarthealthit.org/data/clinical-data)**
+**[De-Identified Clinical Data](http://docs.smarthealthit.org/data/clinical-data)**
 
 
 

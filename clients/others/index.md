@@ -9,7 +9,7 @@ title: SMART on FHIR -- Clients -- Other
 
 [The HSPC Java Client library](https://healthservices.atlassian.net/wiki/display/HSPC/HSPC+Java+Client+Library) is a Java library that uses the SMART on FHIR specification to integrate a Java app to an EHR.
 
-A Ruby FHIR Client is also available: https://github.com/fhir-crucible/fhir_client
+A Ruby FHIR Client is also available: [https://github.com/fhir-crucible/fhir_client](https://github.com/fhir-crucible/fhir_client)
 
 If you build a FHIR client or know of any other available frameworks, please [contact us](https://smarthealthit.org/an-app-platform-for-healthcare/contact-us/) to add them here!  
 

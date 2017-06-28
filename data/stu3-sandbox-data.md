@@ -24,6 +24,7 @@ title: STU3 Sandbox Data
   <img src="{{site.baseurl}}assets/img/Population_Pyramid_Screenshot.png" alt="Population_Pyramid_Screenshot.png" height="640" width="480"/>
 </div>
 
+---
 
 * **Core SMART Patients** 
   * The 67 STU3 Core SMART Patients were developed using an improved version of the csv data files used to create the DSTU2 Core SMART Patients. The new STU3 SMART Patient Data Generator [(Code)](https://github.com/smart-on-fhir/sample-patients-stu3) created these sample patients from data files containing a mix of de-identified clinical data and synthetic data elements.

@@ -1,12 +1,15 @@
 ---
 layout: main
-title: "SMART on FHIR Authorization: Styling: Experimental styling properties"
+title: "SMART on FHIR: Experimental features"
 ---
 
-# SMART App styling properties
+# Experimental features in SMART
 
-The following properties are considered experimental and are subject to change.
+This page documents features of SMART that aren't quite widely deployed or require a bit more attention to make it into the stable version of the SMART specification. These features are subject to change, but have been implemented by some systems. 
 
+## smart-app-styling-properties
+
+The smart_style_url launch parameter provided alongside the access_token in the authorization flow can contain a url with the following json key/value pairs:
 
 ```
 {

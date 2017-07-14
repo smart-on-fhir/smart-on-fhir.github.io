@@ -207,7 +207,7 @@ host. The meaning of intents must be negotiated between the app and the host.
 SMART apps can check for the existence of this launch context parameter and
 download the JSON file referenced by the URL value, if provided.
 
-The URL should serve a "SMART Style" JSON object with properties describing the look and feel of the SMART host. Currently, [these property names](experimentalstylingproperties.md) are experimental.
+The URL should serve a "SMART Style" JSON object with properties describing the look and feel of the SMART host. Currently, [these property names](../experimental.md#SMART App styling properties) are experimental.
 
 SMART client apps that can adjust their styles should incorporate the 
 [property values](experimentalstylingproperties.md) into their stylesheets, but are not required to do so.

@@ -30,7 +30,7 @@ title: STU3 Sandbox Data
   * The 67 STU3 Core SMART Patients were developed using an improved version of the csv data files used to create the DSTU2 Core SMART Patients. The new STU3 SMART Patient Data Generator [(Code)](https://github.com/smart-on-fhir/sample-patients-stu3) created these sample patients from data files containing a mix of de-identified clinical data and synthetic data elements.
   * Improvements on the DSTU2 resources: Minor data cleanup, and addition of 7 practitioner resources.  
   
-  * May 2017 Release:
+  * July 2017 Release:
     * Tag: smart-7-2017
   
 
@@ -39,7 +39,7 @@ title: STU3 Sandbox Data
 * **Synthea Synthetic Patients**
   * The SMART Team generated 1406 Synthetic sample patients in FHIR STU3 format using the [MITRE Synthea tool](https://synthetichealth.github.io/synthea/). For each synthetic patient, Synthea data contains a complete medical history, including medications, allergies, medical encounters, and social determinants of health. 
   
-  * May 2017 Release:
+  * July 2017 Release:
     * Tag: synthea-7-2017
     * [Dataset population Statistics](http://docs.smarthealthit.org/data/synthea-stats)
  
@@ -52,7 +52,7 @@ title: STU3 Sandbox Data
   * All QuestionnaireResponse resources contain real pre and post-operative patient survey data. 
   * For more information about the source of the data contained within the PRO resources, please see the full [SMART PRO Sample Patient documentation.](http://docs.smarthealthit.org/data/pro-full) 
   
-  * May 2017 Release:
+  * July 2017 Release:
     * Tag: pro-7-2017
  
  

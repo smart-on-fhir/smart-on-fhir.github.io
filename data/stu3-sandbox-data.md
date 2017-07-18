@@ -54,7 +54,7 @@ title: STU3 Sandbox Data
 <div class="before-table"></div>
 
  <div style='text-align: left'>
-  <img src="{{site.baseurl}}assets/img/07-2017 resources.png" alt="07-2017 resources.png" height="480" width="640"/>
+  <img src="{{site.baseurl}}assets/img/07-2017Resources.png" alt="07-2017Resources.png" height="480" width="640"/>
 </div>
  
 

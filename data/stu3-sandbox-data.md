@@ -21,7 +21,7 @@ title: STU3 Sandbox Data
 
 
 <div style='text-align: left'>
-  <img src="{{site.baseurl}}assets/img/Population_Pyramid_Screenshot.png" alt="Population_Pyramid_Screenshot.png" height="720" width="960"/>
+  <img src="{{site.baseurl}}assets/img/07-2017 population pyramid.png" alt="07-2017 population pyramid.png" height="720" width="960"/>
 </div>
 
 ---

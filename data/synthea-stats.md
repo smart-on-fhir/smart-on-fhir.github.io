@@ -3,7 +3,7 @@ layout: main
 title: Synthea Dataset Statistics
 ---
 
-## SMART May 2017 Synthea Dataset Statistics 
+## SMART July 2017 Synthea Dataset Statistics 
 
 ---
 
@@ -12,10 +12,10 @@ title: Synthea Dataset Statistics
 
 | Population |  Count   | 
 | :-------|:-------|
-| Population Count  | 1406  |
+| Population Count  | 1425  |
 |  Living    | 1000   |
-|  Living Adults  | 728  |
-|  Deceased   | 406   |
+|  Living Adults  | 738  |
+|  Deceased   | 425   |
 
 ___
 
@@ -23,8 +23,8 @@ ___
 
 | Gender  |  Count   | 
 | :------| :------|
-| Male | 700   |
-| Female   | 706  |
+| Male | 735   |
+| Female   | 690  |
 
 ___
 
@@ -32,16 +32,16 @@ ___
 
 Age | Count
 :----| :----
- 0-4 | 164
- 5-14 | 158
- 15-24 | 147
- 25-34 |147
- 35-44 | 181
- 45-54 | 195
- 55-64 | 167
- 65-74 |145
- 75-84 | 84
- 85-94 | 18
+ 0-4 | 175
+ 5-14 | 154
+ 15-24 | 154
+ 25-34 |146
+ 35-44 | 194
+ 45-54 | 186
+ 55-64 | 171
+ 65-74 |139
+ 75-84 | 91
+ 85-94 | 15
 
 ___
 
@@ -49,37 +49,12 @@ ___
 
 Race | All    | Living Adults 
 :-----| :-----| :-----
-Black | 123 | 70
-White | 1032 | 536
-Hispanic| 156 | 74
-Asian | 95 | 48
+Black | 118 | 55
+White | 1074 | 570
+Hispanic| 140 | 65
+Asian | 93 | 48
 
-___
 
-<div class="before-table"></div>
-
-Ethnicity |Count 
-:------| :----
-African | 53
-Irish | 287
-French | 82
-Scottish | 21
-Swedish | 17
-Puerto Rican | 108
-Italian | 176
-Dominican | 39
-American | 62
-German | 73
-Russian | 22
-Polish |  54
-Chinese | 63
-English | 140
-French Canadian | 47
-Mexican | 22
-Portuguese | 51
-Asian Indian |  32
-West Indian | 31
-Central American | 26
 
 
 

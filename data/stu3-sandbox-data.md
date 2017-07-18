@@ -21,7 +21,7 @@ title: STU3 Sandbox Data
 
 
 <div style='text-align: left'>
-  <img src="{{site.baseurl}}assets/img/07-2017 population pyramid.png" alt="07-2017 population pyramid.png" height="720" width="960"/>
+  <img src="{{site.baseurl}}assets/img/07-2017 population pyramid.png" alt="07-2017 population pyramid.png" height="480" width="640"/>
 </div>
 
 ---
@@ -32,20 +32,16 @@ title: STU3 Sandbox Data
   
   * July 2017 Release:
     * Tag: smart-7-2017
-  
-
-
-
+    
+    
 * **Synthea Synthetic Patients**
   * The SMART Team generated 1406 Synthetic sample patients in FHIR STU3 format using the [MITRE Synthea tool](https://synthetichealth.github.io/synthea/). For each synthetic patient, Synthea data contains a complete medical history, including medications, allergies, medical encounters, and social determinants of health. 
   
   * July 2017 Release:
     * Tag: synthea-7-2017
     * [Dataset population Statistics](http://docs.smarthealthit.org/data/synthea-stats)
- 
- 
- 
- 
+    
+    
 * **Patient Reported Outcome (PRO) Data**
   * The SMART Team generated 100 Sample patients using PRO data available online from the UK National Health Service. The data measures health gain in patients undergoing hip replacement, knee replacement, varicose vein and groin hernia surgery in England, based on responses to questionnaires before and after surgery.
   * The Sample Patients that SMART generated [(code)](https://github.com/smart-on-fhir/sample-patients-prom) contain a mixture of real and synthetic data elements, based on the data available in the [PROMs csv data package](http://content.digital.nhs.uk/catalogue/PUB23908).
@@ -55,9 +51,10 @@ title: STU3 Sandbox Data
   * July 2017 Release:
     * Tag: pro-7-2017
  
- 
+<div class="before-table"></div>
+
  <div style='text-align: left'>
-  <img src="{{site.baseurl}}assets/img/07-2017 resources.png" alt="07-2017 resources.png" height="720" width="960"/>
+  <img src="{{site.baseurl}}assets/img/07-2017 resources.png" alt="07-2017 resources.png" height="480" width="640"/>
 </div>
  
 

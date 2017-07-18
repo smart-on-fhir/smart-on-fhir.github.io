@@ -14,9 +14,9 @@ title: STU3 Sandbox Data
 
 | Dataset|Tag|Number of Patients|Number of Resources|
 | :-------------|:--------|:-------|:--------|
-| Core SMART Patients |smart-5-2017 |67  |14,548 |
-| Synthea Synthetic Patients | synthea-5-2017 |1,406 | 131,314   |
-| Patient Reported Outcome Data | pro-5-2017 |100 |986 |
+| Core SMART Patients |smart-7-2017 |67  |14,551 |
+| Synthea Synthetic Patients | synthea-7-2017 |1,425 | 138,832   |
+| Patient Reported Outcome Data | pro-7-2017 |100 |986 |
 
 
 
@@ -31,27 +31,8 @@ title: STU3 Sandbox Data
   * Improvements on the DSTU2 resources: Minor data cleanup, and addition of 7 practitioner resources.  
   
   * May 2017 Release:
-    * Tag: smart-5-2017
+    * Tag: smart-7-2017
   
-  
-<div class="before-table"></div>
-
-| Resource            | Count | 
-| :-------------------|:------| 
-|AllergyIntolerance   |63     |    
-|Binary               |8      | 
-|Condition            |561    | 
-|DocumentReference    |4      |
-|Encounter            |1,029  |
-|FamilyMemberHistory  |16     |
-|Immunization         |28     |
-|MedicationDispense   |1,107  |
-|MedicationRequest    |363    |
-|Observation          |11,272 |
-|Patient              |67     |
-|Practitioner         |7      |
-|Procedure            |23     |
-|**Total** | **14,548** |
 
 
 
@@ -59,29 +40,9 @@ title: STU3 Sandbox Data
   * The SMART Team generated 1406 Synthetic sample patients in FHIR STU3 format using the [MITRE Synthea tool](https://synthetichealth.github.io/synthea/). For each synthetic patient, Synthea data contains a complete medical history, including medications, allergies, medical encounters, and social determinants of health. 
   
   * May 2017 Release:
-    * Tag: synthea-5-2017
+    * Tag: synthea-7-2017
     * [Dataset population Statistics](http://docs.smarthealthit.org/data/synthea-stats)
  
- 
- 
-<div class="before-table"></div>
-
-| Resource            | Count | 
-| :-------------------|:------| 
-|AllergyIntolerance   | 557  |    
-|CarePlan             | 3,122 |
-|Condition            | 6,194| 
-|Diagnostic Report    | 4,002 |
-|Encounter            |17,548  |
-| Goal                | 1,860 |
-|Immunization         | 13,110 |
-|Medication           | 3,847  | 
-|MedicationRequest    | 4,685  |
-|Observation          |65,320  |
-|Organization         | 1,258| 
-|Patient              | 1,406   |
-|Procedure            | 8,405  |
-|**Total**          | **131,314** |
  
  
  
@@ -92,18 +53,7 @@ title: STU3 Sandbox Data
   * For more information about the source of the data contained within the PRO resources, please see the full [SMART PRO Sample Patient documentation.](http://docs.smarthealthit.org/data/pro-full) 
   
   * May 2017 Release:
-    * Tag: pro-5-2017
+    * Tag: pro-7-2017
  
  
 
-<div class="before-table"></div>
-
-| Resource|Count | 
-| :----|:---|   
-|Encounter|300  |
-|Patient|100  |
-|Procedure |100  |
-|Questionnaire |6   |
-|QuestionnaireResponse   |450  |
-|ValueSet |30  |
-|**Total** | **986** | 

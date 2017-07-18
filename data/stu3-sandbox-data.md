@@ -56,4 +56,8 @@ title: STU3 Sandbox Data
     * Tag: pro-7-2017
  
  
+ <div style='text-align: left'>
+  <img src="{{site.baseurl}}assets/img/07-2017 resources.png" alt="07-2017 resources.png" height="720" width="960"/>
+</div>
+ 
 

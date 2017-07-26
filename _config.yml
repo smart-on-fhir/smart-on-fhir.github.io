@@ -5,6 +5,6 @@ exclude: [
     "package.json"
 ]
 
-baseurl: "\\/"
+baseurl: "/\b"
 markdown: kramdown
 github_branch: master

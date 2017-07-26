@@ -5,6 +5,6 @@ exclude: [
     "package.json"
 ]
 
-baseurl: "/ "
+baseurl: "http://docs.smarthealthit.org/"
 markdown: kramdown
 github_branch: master

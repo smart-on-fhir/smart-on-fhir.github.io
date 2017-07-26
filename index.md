@@ -57,7 +57,6 @@ without leaving the EHR environment. Of course, native and mobile apps are
 supported too -- so you can choose the level of integration that makes sense
 for you.
 
-test
 
 {% raw %}
 <!--

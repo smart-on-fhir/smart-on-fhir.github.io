@@ -26,3 +26,30 @@ $(".edit-in-github").each(function(i,d){
   $(d).attr("href", "https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit"+ branch + rel);
 
 });
+
+// Open patient pickers
+$(".open-picker").click(function() {
+  var stu  = $(this).attr("data-stu");
+  var tags = $(this).attr("data-tags");
+  var url  = "https://patient-browser.herokuapp.com/#/";
+  var params = [];
+  if (stu) {
+    params.push('config=' + encodeURIComponent(stu));
+  }
+  
+  if (tags) {
+    tags = tags.split(/\s*,\s*/).map(function(tag) {
+      return String(tag || "").trim();
+    }).filter(Boolean);
+    if (tags.length) {
+      params.push('tags=' + encodeURIComponent(tags.join(",")));
+    }
+  }
+  
+  if (params.length) {
+    url += "?" + params.join("&");
+  }
+  
+  window.open(url, "_blank");
+  return false;
+});

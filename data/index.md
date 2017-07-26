@@ -3,8 +3,6 @@ layout: main
 title: SMART Data
 ---
 
-TEST
-
 **[Profiles](http://docs.smarthealthit.org/data/profiles/)**
 
 **[DSTU2 Sandbox Data](http://docs.smarthealthit.org/data/dstu2-sandbox-data)**

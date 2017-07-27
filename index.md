@@ -1,6 +1,6 @@
 ---
-layout: main
 title: SMART App Authorization Guide
+layout: default
 ---
 
 # SMART App Authorization Guide

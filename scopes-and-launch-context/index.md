@@ -1,5 +1,5 @@
 ---
-layout: main
+layout: default
 title: "SMART on FHIR Authorization: Scopes and Launch Context"
 ---
 
@@ -43,7 +43,7 @@ Expressed in [EBNF notation](https://en.wikipedia.org/wiki/Extended_Backus%E2%80
 
 [//]: # (Diagram generated from http://www.bottlecaps.de/rr/ui)
 <div style='text-align: left'>
-  <img src="{{site.baseurl}}assets/img/clinical-scope-syntax-diagram.png" alt="Clinical scope syntax diagram" />
+  <img src="./clinical-scope-syntax-diagram.png" alt="Clinical scope syntax diagram" />
 </div>
 
 ### Patient-specific scopes

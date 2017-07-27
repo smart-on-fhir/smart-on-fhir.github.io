@@ -1,5 +1,5 @@
 ---
-layout: main
+layout: default
 title: "SMART on FHIR Authorization: Capability statement"
 ---
 
@@ -9,9 +9,9 @@ If a server requires SMART on FHIR authorization for access, its metadata must
 support automated dicovery of OAuth2 endpoints by including a "complex"
 extension (that is, an extension with multiple components inside) on the
 `CapabilityStatement.rest.security` element. Any time a client sees this extension, it
-must be prepared to authorize using SMART's OAuth2-basead protocol.
+must be prepared to authorize using SMART's OAuth2-based protocol.
 
-[The top-level extension uses the URL
+The top-level extension uses the URL
 `http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris`, with
 the following internal components:
 
@@ -49,9 +49,9 @@ the following internal components:
 
 # Publishing Additional Conformance Details
 
-A SMART on FHIR server should further describe its conformance with optional
-capabilities in the SMART on FHIR specificaiton by declaring a list of the
-capabilties that it supports. Details are [provided here](../conformance/).
+A SMART on FHIR server should also describe which optional SMART features it
+supports by declaring a list of "capabilties". Details are [provided
+here](../conformance/).
 
 ### Example CapabilityStatement (as JSON)
 

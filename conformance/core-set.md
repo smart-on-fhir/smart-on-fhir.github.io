@@ -1,3 +1,8 @@
+---
+title: SMART App Authorization Guide
+layout: default
+---
+
 # Core Capabilities
 
 To be conformant with SMART on FHIR's Core Capabilities, an EHR must support

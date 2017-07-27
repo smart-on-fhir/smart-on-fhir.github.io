@@ -1,0 +1,10 @@
+title: SMART on FHIR App Launch Framework
+baseurl: "/_site"
+
+markdown: kramdown
+
+tracking_id: #
+
+sass:
+    style: compressed
+    sass_dir: _sass

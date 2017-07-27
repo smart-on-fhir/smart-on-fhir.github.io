@@ -16,7 +16,7 @@ A SMART on FHIR server can convey its capabilities to app developers by listing
 a set of the capabilities described below. This can be published out of band,
 or it can be conveyed as part of a server's FHIR `CapabilityStatement` using 
 an extension on `CapabilityStatement.rest.security`. For example, a server
-can publish its support for Core SMART on FHIR Support by including: [Core Capabilities](./core-set.md)
+can publish its support for Core SMART on FHIR Support by including: [Core Capabilities](./core-set)
 
 ## Specific Capabilities (by category)
 
@@ -36,14 +36,39 @@ can publish its support for Core SMART on FHIR Support by including: [Core Capab
 
 ### Launch Context
 
-`context-patient`: support for patient-level launch context (requested by `launch/patient` scope, conveyed via `patient` token parameter)  
-`context-encounter`: support for encounter-level launch context (requested by `launch/encounter` scope, conveyed via `encounter` token parameter)  
-`context-banner`: support for "need patient banner" launch context (conveyed via `need_patient_banner` token parameter)  
-`context-style`: support for "SMART style URL" launch context (conveyed via `smart_style_url` token parameter)  
+The following capabilities convey that a SMART on FHIR server is capable of provding basic context
+to an app at launch time. These capabilities apply during an EHR Launch or a Standalone Launch:
+
+`context-passthrough-banner`: support for "need patient banner" launch context (conveyed via `need_patient_banner` token parameter)
+`context-passthrough-style`: support for "SMART style URL" launch context (conveyed via `smart_style_url` token parameter)
+
+#### Launch Context for EHR Launch
+
+When a SMART on FHIR server supports the launch of an app from _within_ an
+existing user session ("EHR Launch"), the server has an opportunity to pass
+existing, already-established context (such as the current patient ID) through
+to the launching app. Using the following capabilities, a server declares its
+ability to pass context through to an app at launch time:
+
+`context-ehr-patient`: support for patient-level launch context (requested by `launch/patient` scope, conveyed via `patient` token parameter)
+`context-ehr-encounter`: support for encounter-level launch context (requested by `launch/encounter` scope, conveyed via `encounter` token parameter)
+
+#### Launch Context for Standalone Launch
+
+When a SMART on FHIR server supports the launch of an app from _outside_ an
+existing user session ("Standalone Launch"), the server may be able to
+proactively resolve new context to help establish the details required for an
+app launch. For example, an external app may request that the SMART on FHIR
+server should work with the end-user to establish a patient context before
+completing the launch.
+
+`context-standalone-patient`: support for patient-level launch context (requested by `launch/patient` scope, conveyed via `patient` token parameter)
+`context-standalone-encounter`: support for encounter-level launch context (requested by `launch/encounter` scope, conveyed via `encounter` token parameter)
+
 
 ### Permissions
 
-`permission-offline`: support for refresh tokens (requested by `offline_access` scope)  
-`permission-patient`: support for patient-level scopes (e.g. `patient/Observation.read`)  
+`permission-offline`: support for refresh tokens (requested by `offline_access` scope)
+`permission-patient`: support for patient-level scopes (e.g. `patient/Observation.read`)
 `permission-user`: support for user-level scopes (e.g. `user/Appointment.read`)
 

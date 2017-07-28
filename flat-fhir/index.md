@@ -22,14 +22,14 @@ Two operations are defined: one to kick off a (potentially long-running) job to
 perform the export, and one to check the status of an ongoing export.
 
 
-* `$smart-export`. Parameters include `since`, `dataType`, and `targetLocation`. Returns a job ID.
+* `$smart-export`. Parameters include `since`, `dataType`, and `targetSystem`, and `targetPath`. Returns a job ID.
 
 * `$smart-export-status`: Parameters include `jobId`. Returns a status (`active | canceled | paused | completed`) and a `progress` (percent completion, from 0 to 100).
 
 ### Example queries:
 
 ```
-POST /$smart-export?since=2017-05-01T00:00:00.000Z&dataType=Patient,Observation,DocumentReference
+POST /$smart-export?since=2017-05-01T00:00:00.000Z&dataType=Patient,Observation,DocumentReference&targetSystem=local&targetPath=server3/exports/may-05
 → SMART Export jobId = "abc"
 ```
 

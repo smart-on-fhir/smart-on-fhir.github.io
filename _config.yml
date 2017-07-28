@@ -1,5 +1,5 @@
 title: SMART on FHIR App Launch Framework
-baseurl: "/_site"
+baseurl: "/fhir/smart-app-launch"
 
 markdown: kramdown
 

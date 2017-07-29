@@ -2,6 +2,7 @@ title: SMART App Launch Framework
 baseurl: ""
 
 markdown: kramdown
+publication_version: 0.8.0
 
 sass:
     style: compressed

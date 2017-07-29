@@ -7,4 +7,4 @@ layout: default
 
 | Version  | Changes |
 |----------|---------|
-| 0.8.0<br>(git:&nbsp;[604ce16ccf54](https://github.com/HL7/smart-app-launch/tree/604ce16ccf548e3bca75547c1a13908dd4eef248)) | Content as prepared for September 2017 HL7 Ballot. Includes authorization, scopes and cotext, and conformance declarations. |
+| 0.8.0<br>(git:&nbsp;[a25c17d01ec1](https://github.com/HL7/smart-app-launch/tree/a25c17d01ec1307b64ced538ff0a8b0ab6181fd5)) | Content as prepared for September 2017 HL7 Ballot. Includes authorization, scopes and cotext, and conformance declarations. |

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "SMART on FHIR Authorization: Capability statement"
+title: "SMART App Launch: Capability Statement"
 ---
 
 # Publishing OAuth2 URLs
@@ -58,7 +58,7 @@ here](../conformance/).
 
 ```
 {
-  "resourceType": "CapabilitiyStatement", 
+  "resourceType": "CapabilityStatement", 
 ...
   "rest": [{
    ...

@@ -1,13 +1,13 @@
 ---
-title: SMART App Authorization Guide
+title: SMART App Launch Framework
 layout: default
 ---
 
-# SMART App Authorization Guide
+# SMART App Launch Framework
 
 SMART on FHIR provides reliable, secure authorization for a variety of app
-architectures through the use of the OAuth 2.0 standard.  This Authorization
-Guide supports the [four uses cases](http://argonautwiki.hl7.org/images/4/4c/Argonaut_UseCasesV1.pdf) 
+architectures through the use of the OAuth 2.0 standard.  The Launch Framework
+supports the [four uses cases](http://argonautwiki.hl7.org/images/4/4c/Argonaut_UseCasesV1.pdf) 
 defined for Phase 1 of the [Argonaut
 Project](http://argonautwiki.hl7.org/index.php?title=Main_Page).  
 

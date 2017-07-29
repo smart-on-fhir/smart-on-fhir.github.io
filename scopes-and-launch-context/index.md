@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "SMART on FHIR Authorization: Scopes and Launch Context"
+title: "SMART App Launch: Scopes and Launch Context"
 ---
 
 # Scopes and Launch Context

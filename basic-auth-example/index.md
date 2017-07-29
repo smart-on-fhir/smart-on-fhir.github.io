@@ -1,6 +1,6 @@
 ---
 layout: default
-title: SMART on FHIR Authorization
+title: "SMART App Launch: Basic Auth Example"
 ---
 
 # Worked "Basic Auth" Example

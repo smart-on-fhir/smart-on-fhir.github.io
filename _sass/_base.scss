@@ -174,11 +174,11 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #222;
+  color: $link-color;
   //background-color: transparent;
 }
 a:hover {
-  color: #b1b1b1;
+  color: $link-color;
 }
 
 

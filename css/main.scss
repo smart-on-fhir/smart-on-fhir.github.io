@@ -17,9 +17,11 @@ $font-weight-bold: 600;
 
 $spacing-unit:     30px;
 
-$text-color:       #111;
-$background-color: #fdfdfd;
+$text-color:       #444;
+$background-color: #f9f9f9;
 $brand-color:      #2a7ae2;
+
+$link-color:       #03a9f4;
 
 $grey-color:       #828282;
 $grey-color-light: #b1b1b1;
@@ -58,6 +60,11 @@ $on-laptop:        780px;
   -moz-hyphens: auto;
   hyphens: auto;
 
+}
+
+header a {
+  text-decoration: none;
+  color: $grey-color-dark;
 }
 
 @import

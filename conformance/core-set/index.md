@@ -1,5 +1,5 @@
 ---
-title: SMART App Authorization Guide
+title: "SMART App Launch: Core Capabilities"
 layout: default
 ---
 

@@ -56,8 +56,6 @@ body {
   font-weight:$font-weight-bold;
 }
 .logo a {
-  -webkit-transition:.4s;
-  transition:.4s;
 }
 
 .logo a:hover {
@@ -108,8 +106,6 @@ body {
 
     opacity: 0;
     height: 0;
-    -webkit-transition: all .4s;
-    transition: all .4s;
 
     -webkit-justify-content: center;
     justify-content:center;

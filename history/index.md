@@ -10,7 +10,7 @@ layout: default
 | Date | Version  | Changes |
 |------|----------|---------|
 | 29 July 2017 | [0.8.0](http://hl7.org/fhir/smart-app-launch/index.html) | Current Draft (undergoing Ballot) |
-| Current | (last commit)[http://hl7.github.io/smart-app-launch/] | Current Development build (may be incoherent and change rapidly) |
+| Current | [last commit](http://hl7.github.io/smart-app-launch/) | Current Development build (may be incoherent and change rapidly) |
 
 ## STU1 Sequence
 

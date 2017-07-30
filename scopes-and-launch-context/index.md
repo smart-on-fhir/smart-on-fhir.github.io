@@ -269,11 +269,11 @@ where the issuer is different from the url of the authorization server. The
 `openid` scope causes the `id_token` to be returned and the `profile` scope 
 includes the `fhirUser` claim within the `id_token`'s JWT.
 To learn more about the user, the app should treat the "fhirUser" claim as the URL of
-a FHIR resource representing the current user. This will be a FHIR 
-resource that best represents the current user of type
+a FHIR resource representing the current user. This will be an absolute url to a FHIR 
+resource that best represents the current user, of type
 `Patient`, `Practitioner`, `RelatedPerson` or `Person`. Further, when an 
 app is granted the profile scope, it's `access_token` can be used to access the FHIR resource
-specified in the `fhirUser` claim. 
+specified in the `fhirUser` claim on the same FHIR server. 
 
 The body of the `id_token` should contain:
 

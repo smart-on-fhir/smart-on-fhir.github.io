@@ -35,6 +35,8 @@ SMART on FHIR defines OAuth2 access scopes that correspond directly to FHIR
 resource types. We define **read** and **write** permissions for
 patient-specific and user-level access.
 
+
+
 ### Clinical Scope Syntax
 
 Expressed in [EBNF notation](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form), the clinical scope syntax is:
@@ -258,12 +260,31 @@ by requesting a pair of OpenID Connect scopes: `openid` and  `profile`.
 
 When these scopes are requested (and the request is granted), the app will
 receive an [`id_token`](http://openid.net/specs/openid-connect-core-1_0.html#CodeIDToken)
-that comes alongside the access token.
+that comes alongside the access token. The `id_token` contains, at minimum, the `iss`, 
+`sub`, `aud`, `exp`, `iat` claims (see below).
 
-This token must be [validated according to the OIDC specification](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation).
-To learn more about the user, the app should treat the "profile" claim as the URL of
-a FHIR resource representing the current user. This will be a resource of type
-`Patient`, `Practitioner`, or `RelatedPerson`.
+This token must be [validated according to the OIDC specification](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). 
+In the case where the JWS alg is "none", the app must reject any claims 
+where the issuer is different from the url of the authorization server. The 
+`openid` scope causes the `id_token` to be returned and the `profile` scope 
+includes the `fhirUser` claim within the `id_token`'s JWT.
+To learn more about the user, the app should treat the "fhirUser" claim as the URL of
+a FHIR resource representing the current user. This will be a FHIR 
+resource that best represents the current user of type
+`Patient`, `Practitioner`, `RelatedPerson` or `Person`. Further, when an 
+app is granted the profile scope, it's `access_token` can be used to access the FHIR resource
+specified in the `fhirUser` claim. 
+
+The body of the `id_token` should contain:
+
+Data in the `id_token` JWT body | Example value | Meaning
+------|---------|-------------------
+`iss`|https:// |e URL using the https scheme that contains scheme, host, and optionally, port number and path components and no query or fragment components.
+`sub`|ivetter|Unique identifier for the current user at the Issuer.
+`aud`|app-client-id|The OAuth 2.0 client_id of the app. This could either be a single value or an array containing multiple identifiers.
+`exp`|1311281970|After this expiration time the ID Token should not be used represented as number of seconds (from 1970-01-01T0:0:0Z in UTC). 
+`iat`|1311280970|Time at which the JWT was issued represented as number of seconds (from 1970-01-01T0:0:0Z in UTC). 
+
 
 ## Scopes for requesting a refresh token
 

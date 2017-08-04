@@ -31,7 +31,7 @@ $(".edit-in-github").each(function(i,d){
 $(".open-picker").click(function() {
   var stu  = $(this).attr("data-stu");
   var tags = $(this).attr("data-tags");
-  var url  = "https://patient-browser.herokuapp.com/";
+  var url  = "https://patient-browser.smarthealthit.org/";
 
   if (stu) {
     url += "?config=" + encodeURIComponent(stu);

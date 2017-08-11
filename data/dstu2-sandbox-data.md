@@ -8,10 +8,10 @@ title: DSTU2 Sandbox Data
 
  ---
  
- | Dataset|Tag|Number of Patients|Number of Resources| Browse Data|
-| :-------------|:--------|:-------|:--------|:--------:|
-| Core SMART Patients |smart-8-2017 |67  |14,551 |<button href="#" class="open-picker" data-tags="smart-8-2017" data-stu="dstu2-open-sandbox">Browse</button>|
-| Synthea Synthetic Patients | synthea-8-2017 |1,461 | 138,832   |<button href="#" class="open-picker" data-tags="synthea-8-2017" data-stu="dstu2-open-sandbox">Browse</button>|
+ | Dataset|Tag|Number of Patients| Browse Data|
+| :-------------|:--------|:-------|:--------:|
+| Core SMART Patients |smart-8-2017 |67  |<button href="#" class="open-picker" data-tags="smart-8-2017" data-stu="dstu2-open-sandbox">Browse</button>|
+| Synthea Synthetic Patients | synthea-8-2017 |1,461 |<button href="#" class="open-picker" data-tags="synthea-8-2017" data-stu="dstu2-open-sandbox">Browse</button>|
 
  
 * Core SMART Patients 
@@ -19,4 +19,9 @@ title: DSTU2 Sandbox Data
   
   * Resources include: AllergyIntolerance, Binary, Condition, DocumentReference, Encounter, FamilyMemberHistory, Immunization, MedicationDispense, MedicationRequest, Observation, Patient, and Procedure
 
-  * <a href="#" class="open-picker" data-stu="dstu2-open-sandbox">Browse Data</a>
+* **Synthea Synthetic Patients** 
+  * The SMART Team generated 1461 Synthetic sample patients in FHIR DSTU2 format using the [MITRE Synthea tool](https://synthetichealth.github.io/synthea/). For each synthetic patient, Synthea data contains a complete medical history, including medications, allergies, medical encounters, and social determinants of health. 
+  
+  * August 2017 Release:
+    * Tag: synthea-8-2017
+ 

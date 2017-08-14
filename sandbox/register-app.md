@@ -9,7 +9,7 @@ title: Registered Apps
 
 ## Introduction
 
-The Registered Apps is a listing of all of the SMART on FHIR apps that are registered with your sandbox. These apps may be selected from a catalog of apps or may be registered by a member of your sandbox. Apps from the catalog are hosted by HSPC. Apps you register yourself may be hosted anywhere on the internet, or on your local machine. Launching an app in your sandbox using the SMART of FHIR authorization specification, requires that you register the app with the authorization server.
+The Registered Apps page is a listing of all of the SMART on FHIR apps that are registered in the public SMART sandbox. These apps may be selected from a catalog of apps or may be registered by a sandbox user. Apps you register yourself may be hosted anywhere on the internet, or on your local machine. Launching an app in the sandbox using the SMART on FHIR authorization specification requires that you register the app with the authorization server.
 
 
 ## App Type

@@ -31,3 +31,8 @@ title: DSTU2 Sandbox Data
   * August 2017 Release:
     * Tag: synthea-8-2017
  
+ <div class="before-table"></div>
+
+ <div style='text-align: left'>
+  <img src="{{site.baseurl}}assets/img/DSTU2 resources 8-2017.png" alt="DSTU2 resources 8-2017.png" height="720" width="960"/>
+</div>

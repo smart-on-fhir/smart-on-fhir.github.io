@@ -13,6 +13,12 @@ title: DSTU2 Sandbox Data
 | Core SMART Patients |smart-8-2017 |67  |<button href="#" class="open-picker" data-tags="smart-8-2017" data-stu="dstu2-open-sandbox">Browse</button>|
 | Synthea Synthetic Patients | synthea-8-2017 |1,461 |<button href="#" class="open-picker" data-tags="synthea-8-2017" data-stu="dstu2-open-sandbox">Browse</button>|
 
+
+<div style='text-align: left'>
+  <img src="{{site.baseurl}}assets/img/DSTU2 population pyramid 8-2017.png" alt="DSTU2 population pyramid 8-2017.png" height="720" width="960"/>
+</div>
+
+---
  
 * **Core SMART Patients** 
   * 67 DSTU2 Core SMART Patients were created using the [SMART Patient Data Generator](https://github.com/smart-on-fhir/sample-patients). This tool creates sample patients in DSTU2 format from csv data files. The SMART sample patient records contain a mix of data derived from real de-identified patient records, as well as some synthetic data elements. 

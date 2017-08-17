@@ -3,7 +3,7 @@ layout: main
 title: "Flat FHIR"
 ---
 
-# SMART Operations for Flat File Export (draft)
+# SMART Operations for Flat File Export (draft proposal)
 
 ## Goals
 

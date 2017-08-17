@@ -21,7 +21,7 @@ perform the export, and one to check the status of an ongoing export. Systems ma
 
 ### Authentication:
 
-SMART backend services specification: http://docs.smarthealthit.org/authorization/backend-services/
+SMART [backend services specification](http://docs.smarthealthit.org/authorization/backend-services/)
 
 ### Example queries:
 
@@ -37,5 +37,5 @@ GET /$smart-export-status?jobId=abc
 
 ### Output format:
 
-Exported FHIR resources should be in the form of newline delmited JSON (http://ndjson.org/) and may be split across multiple files created within the export path.
+Exported FHIR resources should be in the form of [newline delmited JSON](http://ndjson.org/) and may be split across multiple files created within the export path.
 

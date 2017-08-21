@@ -34,6 +34,12 @@ title: DSTU2 Sandbox Data
   * August 2017 Release:
     * Tag: synthea-8-2017
  
+ ---
+ 
+ View the SMART FHIR DSTU2 Data Dashboard: [http://docs.smarthealthit.org/fhir-server-dashboard/?file=data-dstu2.json](http://docs.smarthealthit.org/fhir-server-dashboard/?file=data-dstu2.json)
+ 
+ ---
+ 
  <div class="before-table"></div>
 
  <div style='text-align: left'>

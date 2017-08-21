@@ -51,6 +51,11 @@ title: STU3 Sandbox Data
   * July 2017 Release:
     * Tag: pro-7-2017
  
+ ---
+ 
+View the SMART FHIR STU3 Data Dashboard: [http://docs.smarthealthit.org/fhir-server-dashboard/](http://docs.smarthealthit.org/fhir-server-dashboard/)
+ 
+ ---
 <div class="before-table"></div>
 
  <div style='text-align: left'>

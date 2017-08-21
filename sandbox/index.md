@@ -22,6 +22,7 @@ The sandbox's open **STU3 FHIR server** is accessible directly at [https://sb-fh
 The FHIR Server Dashboard is a standalone app that presents a human-readable representation of the data in a FHIR server. It's particularly useful when looking at the sample data on a FHIR sandbox. Built with Node.js, d3, and Plotly, the dashboard consists of intuitive visualizations that enable clinicians and users to quickly comprehend what a FHIR server contains.
 
 SMART DSTU2 Server dashboard: [http://docs.smarthealthit.org/fhir-server-dashboard/?file=data-dstu2.json](http://docs.smarthealthit.org/fhir-server-dashboard/?file=data-dstu2.json) 
+
 SMART STU3 Server dashboard: [http://docs.smarthealthit.org/fhir-server-dashboard/](http://docs.smarthealthit.org/fhir-server-dashboard/)
 
 To target a different server, download the project on [GitHub](https://github.com/smart-on-fhir/fhir-server-dashboard) and follow the instructions in the README file. 

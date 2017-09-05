@@ -19,11 +19,6 @@ title: STU3 Sandbox Data
 | Patient Reported Outcome Data | pro-7-2017 |100 |986 |<button href="#" class="open-picker" data-tags="pro-7-2017" data-stu="stu3-open-sandbox">Browse</button>|
 
 
-
-<div style='text-align: left'>
-  <img src="{{site.baseurl}}assets/img/07-2017 population pyramid.png" alt="07-2017 population pyramid.png" height="720" width="960"/>
-</div>
-
 ---
 
 * **Core SMART Patients** 
@@ -39,7 +34,6 @@ title: STU3 Sandbox Data
   
   * July 2017 Release:
     * Tag: synthea-7-2017
-    * [Dataset population Statistics](http://docs.smarthealthit.org/data/synthea-stats)
     
     
 * **Patient Reported Outcome (PRO) Data**
@@ -56,10 +50,6 @@ title: STU3 Sandbox Data
 View the SMART FHIR STU3 Data Dashboard: [http://docs.smarthealthit.org/fhir-server-dashboard/](http://docs.smarthealthit.org/fhir-server-dashboard/)
  
  ---
-<div class="before-table"></div>
 
- <div style='text-align: left'>
-  <img src="{{site.baseurl}}assets/img/07-2017Resources.png" alt="07-2017Resources.png" height="720" width="960"/>
-</div>
  
 

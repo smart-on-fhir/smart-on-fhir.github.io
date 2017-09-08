@@ -8,7 +8,9 @@ title: SMART on FHIR -- data -- clinical-data
 
 ---
 
-As a service to the SMART community, Boston Children’s Hospital has licensed de-identified longitudinal clinical data for 10,000 patients from [Geisinger](https://www.geisinger.org/), a leading healthcare organization. The data is available for **SMART on FHIR App developers** looking to test their apps with real-world data. Qualified developers can fill out the [request form](https://smarthealthit.org/de-identified-sample-data/) on the SMART Website to request access to the data. 
+As a service to the SMART community, Boston Children’s Hospital has licensed de-identified longitudinal clinical data for 10,000 patients from [Geisinger](https://www.geisinger.org/), a leading healthcare organization. The data is available for **SMART on FHIR App developers** looking to test commercial quality SMART apps with real-world data. 
+
+Qualified developers can fill out the [request form](https://smarthealthit.org/de-identified-sample-data/) on the SMART website to request access to the data. Unfortunately, we are only able to work with a few organizations per year. Data requests will be evaluated based on the current stage and potential impact of the project.
 
 <h3> Overview </h3> 
 

@@ -45,6 +45,9 @@ at registration time **every SMART backend service must**:
 * Register a fixed "issuer URL" with the EHR
 * Register a public RSA key with the EHR (for RSA SHA-256 signatures)
 
+Upon registration, the server assigns a client_id to the client, which 
+the client uses when obtaining an access token.
+
 ## Obtaining an access token
 
 By the time a backend service has been registered with the EHR, the key

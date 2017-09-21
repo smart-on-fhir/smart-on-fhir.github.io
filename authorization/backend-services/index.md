@@ -171,14 +171,24 @@ The access token response is a JSON object, with the following properties:
   </tbody>
 </table>
 
-### Scopes
+## Server Obligations ##
+
+<span class="label label-warning">TODO</span>
+
+Servers SHALL
+* validate the signature on the JWT
+* check that the JWT exp is valid
+* check that this is not a jti value seen before (prevention of replay attacks)
+* ensure that the client_id provided is valid etc 
+
+## Scopes
 
 As there is no user or launch context when performing backed services authorization, 
 the existing Smart on FHIR scopes are not appropriate. Instead, applications use 
 system scopes, which have the format `system/:resourceType.(read|write|*)`. These have
 the same meanings as their matching `user/:resourceType.(read|write|*)` scopes.
 
-#### Worked example
+## Worked example
 
 Assume that a "bilirubin result monitoring" service has registered with
 the EHR's authorization server, establishing the following

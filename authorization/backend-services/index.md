@@ -173,6 +173,8 @@ The access token response is a JSON object, with the following properties:
 
 ## Server Obligations ##
 
+<span class="label label-warning">TODO</span>
+
 Servers SHALL
 * validate the signature on the JWT
 * check that the JWT exp is valid

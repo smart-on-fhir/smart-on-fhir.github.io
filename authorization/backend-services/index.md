@@ -178,10 +178,6 @@ the existing Smart on FHIR scopes are not appropriate. Instead, applications use
 system scopes, which have the format `system/:resourceType.(read|write|*)`. These have
 the same meanings as their matching `user/:resourceType.(read|write|*)` scopes.
 
-Currently only two scopes are required for authorization servers to support: <code>system/*.read</code>
-(which allows the backend app to read all data from the EHR), and <code>system/CommunicationRequest.write</code> 
-(which allows the app to generate alerts for clinical users). 
-
 #### Worked example
 
 Assume that a "bilirubin result monitoring" service has registered with

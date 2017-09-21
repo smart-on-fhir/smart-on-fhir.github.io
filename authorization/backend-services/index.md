@@ -121,7 +121,7 @@ content-type `application/x-www-form-urlencoded` with the following parameters:
     <tr>
       <td><code>scope</code></td>
       <td><span class="label label-success">required</span></td>
-      <td>The scope of access requested. Currently only two scopes are required for authorization servers to support: <code>system/*.read</code> (which allows the backend app to read all data from the EHR), and <code>system/CommunicationRequest.write</code> (which allows the app to generate alerts for clinical users). Additional granular scopes are <a href="{{site.baseurl}}authorization/scopes-and-launch-context">defined here</a>.</td>
+      <td>The scope of access requested. See note about scopes below</td>
     </tr>
     <tr>
       <td><code>grant_type</code></td>
@@ -170,6 +170,17 @@ The access token response is a JSON object, with the following properties:
     </tr>
   </tbody>
 </table>
+
+### Scopes
+
+As there is no user or launch context when performing backed services authorization, 
+the existing Smart on FHIR scopes are not appropriate. Instead, applications use 
+system scopes, which have the format `system/:resourceType.(read|write|*)`. These have
+the same meanings as their matching `user/:resourceType.(read|write|*)` scopes.
+
+Currently only two scopes are required for authorization servers to support: <code>system/*.read</code>
+(which allows the backend app to read all data from the EHR), and <code>system/CommunicationRequest.write</code> 
+(which allows the app to generate alerts for clinical users). 
 
 #### Worked example
 

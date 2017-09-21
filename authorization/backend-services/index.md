@@ -171,7 +171,15 @@ The access token response is a JSON object, with the following properties:
   </tbody>
 </table>
 
-#### Worked example
+## Server Obligations ##
+
+Servers SHALL
+* validate the signature on the JWT
+* check that the JWT exp is valid
+* check that this is not a jti value seen before (prevention of replay attacks)
+* ensure that the client_id provided is valid etc 
+
+## Worked example
 
 Assume that a "bilirubin result monitoring" service has registered with
 the EHR's authorization server, establishing the following

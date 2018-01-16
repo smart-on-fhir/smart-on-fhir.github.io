@@ -60,7 +60,7 @@ fifteen minutes*.
 
 To obtain an access token, the service uses an OAuth 2.0 client credentials
 flow, with a [JWT
-assertion](https://tools.ietf.org/html/draft-ietf-oauth-jwt-bearer-12) as its
+assertion](https://tools.ietf.org/html/rfc7523) as its
 client authenticaiton mechanism. The exchange, depicted below, allows the
 backend service to authenticate to the EHR and request a short-lived
 access token:

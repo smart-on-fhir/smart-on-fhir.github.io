@@ -177,7 +177,8 @@ The access token response is a JSON object, with the following properties:
 
 Servers SHALL
 * validate the signature on the JWT
-* check that the JWT exp is valid
+* check that the JWT `exp` is valid
+* check that the JWT `aud` matches the server's OAuth token URL (the URL to which the token was `POST`ed)
 * check that this is not a jti value seen before (prevention of replay attacks)
 * ensure that the client_id provided is valid etc 
 

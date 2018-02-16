@@ -1,6 +1,6 @@
 ---
 layout: main
-title: SMART Documentation 
+title: SMART Documentation Home
 ---
 
 ### [SMART - Tech Stack for Health Apps](http://docs.smarthealthit.org/)

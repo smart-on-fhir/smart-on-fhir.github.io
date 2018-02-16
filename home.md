@@ -3,7 +3,9 @@ layout: main
 title: SMART Documentation 
 ---
 
-**[Sandbox](http://docs.smarthealthit.org/sandbox/)**
+### [SMART - Tech Stack for Health Apps](http://docs.smarthealthit.org/)
+
+### [Sandbox](http://docs.smarthealthit.org/sandbox/)
 
 ### Data
 **[Profiles](http://docs.smarthealthit.org/data/profiles.html)**
@@ -35,3 +37,14 @@ title: SMART Documentation
 **[Backend Services](http://docs.smarthealthit.org/authorization/backend-services/)**
 
 ### Tutorials
+**[Overview](http://docs.smarthealthit.org/tutorials/)**
+
+**[Building a JavaScript App](http://docs.smarthealthit.org/tutorials/javascript/)**
+
+**[Testing Your App from Localhost](http://docs.smarthealthit.org/tutorials/testing/)**
+
+**[Simple Authorization App](http://docs.smarthealthit.org/tutorials/authorization/)**
+
+**[Cerner Sandbox SMART on FHIR Tutorial](http://engineering.cerner.com/smart-on-fhir-tutorial/)**
+
+**[Building A Server: Quick Start Guide](http://docs.smarthealthit.org/tutorials/server-quick-start/)**

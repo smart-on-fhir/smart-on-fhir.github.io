@@ -48,7 +48,7 @@ You can click the URL above for a live example (running against our open testing
 ## For real: Launch Growth Charts against your OAuth2-protected server
 
 Once you've implemented the [SMART on FHIR Authorization
-protocols](http://docs.smarthealthit.org/authorization/public), you can wire up your "launch" button to launch
+protocols](http://docs.smarthealthit.org/authorization), you can wire up your "launch" button to launch
 the app in production mode (with authorization) by completing the following
 sequence:
 

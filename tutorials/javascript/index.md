@@ -38,8 +38,8 @@ create a client via:
 
 ```
 var smart = FHIR.client({
-  serviceUrl: 'https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/data',
-  patientId: 'SMART-1137192'
+  serviceUrl: 'https://r2.smarthealthit.org',
+  patientId: 'smart-1137192'
 });
 ```
 
@@ -93,7 +93,7 @@ Here's a complete example of the steps above:
 
 <iframe
   style="border: 1px solid black"
-  src="http://embed.plnkr.co/DapXQaTONYSRSyylHdpu/get-data.js"
+  src="https://embed.plnkr.co/lnMOo6nsHVkVeF9gnLka/"
   width="100%" height="500px"></iframe>
 
 For more details, see our [JS client docs](../../clients/javascript)

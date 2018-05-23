@@ -15,7 +15,7 @@ Easy-to-use, resource-oriented REST API for structured clinical data. Grab a
 resource with:
 
 ```
-$ curl https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/open/Patient/SMART-1551992 \
+$ curl https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/open/Patient/smart-1551992 \
        -H 'Accept: application/json'
 {
   "resourceType": "Patient",

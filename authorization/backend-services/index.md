@@ -211,7 +211,7 @@ this, the service must first generate a one-time-use authentication JWT with the
 {
   "iss": "https://bili-monitoring-service.example.com/",
   "sub": "bili_monitor",
-  "aud": "https://authorize.smarthealthit.org/token",
+  "aud": "https://launch.smarthealthit.org/v/r2/auth/token",
   "exp": 1422568860,
   "jti": "random-non-reusable-jwt-id-123"
 }

@@ -14,9 +14,9 @@ title: STU3 Sandbox Data
 
 | Dataset|Tag|Number of Patients|Number of Resources| Browse Data|
 | :-------------|:--------|:-------|:--------|:--------:|
-| Core SMART Patients |smart-7-2017 |67  |14,551 |<button href="#" class="open-picker" data-tags="smart-7-2017" data-stu="stu3-open-sandbox">Browse</button>|
-| Synthea Synthetic Patients | synthea-7-2017 |1,425 | 138,832   |<button href="#" class="open-picker" data-tags="synthea-7-2017" data-stu="stu3-open-sandbox">Browse</button>|
-| Patient Reported Outcome Data | pro-7-2017 |100 |986 |<button href="#" class="open-picker" data-tags="pro-7-2017" data-stu="stu3-open-sandbox">Browse</button>|
+| Core SMART Patients |smart-7-2017 |67  |14,551 |<button href="#" class="open-picker" data-tags="smart-7-2017" data-stu="r3">Browse</button>|
+| Synthea Synthetic Patients | synthea-7-2017 |1,425 | 138,832   |<button href="#" class="open-picker" data-tags="synthea-7-2017" data-stu="r3">Browse</button>|
+| Patient Reported Outcome Data | pro-7-2017 |100 |986 |<button href="#" class="open-picker" data-tags="pro-7-2017" data-stu="r3">Browse</button>|
 
 
 ---

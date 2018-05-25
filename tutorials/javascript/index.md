@@ -36,7 +36,7 @@ be created by `FHIR.oauth2.launch()`. But when you're prototyping, you can just
 create your own. By convention, we call this instance `smart`. So you can
 create a client via:
 
-```
+```js
 var smart = FHIR.client({
   serviceUrl: 'https://r2.smarthealthit.org',
   patientId: 'smart-1137192'
@@ -59,7 +59,7 @@ You can make calls like:
 In general, you can make API calls that are scoped to the current patient by
 using `smart.patient`, as follows:
 
-```
+```js
 // Search for the current patient's conditions
 smart.patient.api.search({type: 'Condition'});
 
@@ -70,7 +70,7 @@ smart.patient.api.search({type: 'MedicationOrder'});
 If you're writing a population-level app, you can query across patient records
 by using `smart.api`, as follows:
 
-```
+```js
 // Search for conditions added today
 var todaysDiagnoses = smart.api.search({type: 'Condition', query: {dateRecorded: '2014-05-01'}});
 
@@ -81,7 +81,7 @@ var statinRxs = smart.api.search({type: 'MedicationOrder', query: {dateWritten: 
 These functions return `$.Deferred` objects, which you can work with simply by
 calling their `done` method:
 
-```
+```js
 statinRxs.done(function(prescriptions){
   console.log(prescriptions);
 });

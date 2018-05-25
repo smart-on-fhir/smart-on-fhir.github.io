@@ -36,10 +36,30 @@ Launch rails on port 8000
 rails s -p 8000
 ```
 
-### Sign into sandbox, register and launch your app
+### Launch and test your app
+The recommended way to launch and test your app is to use http://launch.smarthealthit.org/. Most apps are designed as
+EHR apps so you can just use the default options, paste your launch url in the `App Launch URL` field and click "Launch App!".
 
-* [sign into our sandbox](https://sandbox.smarthealthit.org)
-* register and launch your app
+If you are working on standalone launch-able app, select the "Provider Standalone Launch" or the "Patient Standalone Launch"
+option. Then copy the generated "FHIR Server Url" at the bottom of the page and add it to your launch.html file like so:
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script>
+    <script>
+      FHIR.oauth2.authorize({
+          "client": {
+              "client_id": "my_web_app",
+              "scope":  "patient/*.read launch/patient"
+          },
+          "server": "https://launch.smarthealthit.org/v/r3/sim/eyJoIjoiMSIsImoiOiIxIn0/fhir"
+      });
+    </script>
+  </head>
+    <body>Loading...</body>
+</html>
+```
 
 ## Sample Test App Source Code
 

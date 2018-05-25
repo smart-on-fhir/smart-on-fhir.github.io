@@ -77,20 +77,20 @@ own server's issuer and a launch ID to proceed.)
 When the SMART Growth Charts, it will fetch:
 
 ### 1. Patient demographics
-```
+```sh
 curl 'https://r2.smarthealthit.org/Patient/smart-1482713' -H 'Accept: application/json'
 ```
 
 ### 2. All Weight, Height, Head Circumference, and BMI Observations
 Note LOINC Codes: `3141-9`, `8302-2`, `8287-5`, `39156-5`
 
-```
+```sh
 curl 'https://r2.smarthealthit.org/Observation?subject%3APatient=smart-1482713&code=3141-9%2C8302-2%2C8287-5%2C39156-5&_count=50' -H 'Accept: application/json' 
 ```
 
 ## Sample patient demographics
 
-```
+```json
 {
    "resourceType" : "Patient",
    "id" : "1482713",
@@ -164,7 +164,7 @@ curl 'https://r2.smarthealthit.org/Observation?subject%3APatient=smart-1482713&c
 ## Sample vitals (height, weight, BMI)
 
 
-```
+```json
 {
    "total" : 3,
    "resourceType" : "Bundle",
@@ -302,7 +302,7 @@ curl 'https://r2.smarthealthit.org/Observation?subject%3APatient=smart-1482713&c
 
 ## Sample Encounter (note: app can work without encounter details)
 
-```
+```json
 {
    "resourceType" : "Encounter",
    "class" : "ambulatory",

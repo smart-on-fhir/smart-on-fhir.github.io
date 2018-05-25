@@ -32,8 +32,9 @@ mkdir public/fhir-app
 Copy the code below into public/fhir-app as index.html and layout.html
 
 Launch rails on port 8000 
-
-    rails s -p 8000
+```sh
+rails s -p 8000
+```
 
 ### Sign into sandbox, register and launch your app
 
@@ -66,7 +67,7 @@ launch.html
 
 index.html
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>

@@ -25,8 +25,9 @@ You can use any web server you like. For prototyping, we're partial to [`http-se
 `http-server -p 8000 /path/to/fhir-app/..`.
 
 If you are using [Rails](http://rubyonrails.org/), you can quickly test the code below by doing the following
-
-    mkdir public/fhir-app
+```sh
+mkdir public/fhir-app
+```
 
 Copy the code below into public/fhir-app as index.html and layout.html
 

@@ -47,7 +47,7 @@ but it can be handy for testing.
 
 launch.html
 
-<pre class="prettyprint">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,9 +59,9 @@ launch.html
       });
     </script>
   </head>
-  Loading...
+    <body>Loading...</body>
 </html>
-</pre>
+```
 
 index.html
 

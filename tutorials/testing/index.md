@@ -47,7 +47,7 @@ but it can be handy for testing.
 
 launch.html
 
-```
+<pre class="prettyprint">
 <!DOCTYPE html>
 <html>
   <head>
@@ -61,7 +61,7 @@ launch.html
   </head>
   Loading...
 </html>
-```
+</pre>
 
 index.html
 

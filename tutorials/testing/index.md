@@ -37,7 +37,7 @@ rails s -p 8000
 ```
 
 ### Launch and test your app
-The recommended way to launch and test your app is to use http://launch.smarthealthit.org/. Most apps are designed as
+The recommended way to launch and test your app is to use [SMART Launcher](https://launch.smarthealthit.org/). Most apps are designed as
 EHR apps so you can just use the default options, paste your launch url in the `App Launch URL` field and click "Launch App!".
 
 If you are working on standalone launch-able app, select the "Provider Standalone Launch" or the "Patient Standalone Launch"
@@ -81,7 +81,7 @@ launch.html
       });
     </script>
   </head>
-    <body>Loading...</body>
+  <body>Loading...</body>
 </html>
 ```
 

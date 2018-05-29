@@ -252,10 +252,10 @@ curl 'https://r2.smarthealthit.org/Observation?subject%3APatient=smart-1482713&c
                "div" : "<div>2003-11-28: weight = 18.55193 kg</div>"
             }
          },
-         "fullUrl" : "https://fhir-open-api-dstu2.smarthealthit.org/Observation/428-weight"
+         "fullUrl" : "https://r2.smarthealthit.org/Observation/428-weight"
       },
       {
-         "fullUrl" : "https://fhir-open-api-dstu2.smarthealthit.org/Observation/428-bmi",
+         "fullUrl" : "https://r2.smarthealthit.org/Observation/428-bmi",
          "search" : {
             "mode" : "match"
          },

@@ -2,6 +2,8 @@
 
 ## Additional use case: access "on behalf of"
 
+(See discussion at [https://github.com/smart-on-fhir/fhir-bulk-data-docs/issues/44](https://github.com/smart-on-fhir/fhir-bulk-data-docs/issues/44).)
+
 The primary use case for [Backend Services](https://github.com/smart-on-fhir/fhir-bulk-data-docs/blob/master/authorization.md) is to enable a client to connect to
 a FHIR server and access data "as itself", rather than connecting on behalf of a specific end-user.
 If a client needs to act on behalf of a specific end-user (e.g., it wants to issue requests that are

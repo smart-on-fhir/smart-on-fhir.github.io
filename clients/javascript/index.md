@@ -105,7 +105,7 @@ documentation page. Let's say that we'd like to find all patients that have
 how we can do this using the SMART on FHIR JS client:
 
 ```
-smart.api.search({type: "Patient", query: {given: ["John", "Bob"], family: "Smith"})
+smart.api.search({type: "Patient", query: {given: ["John", "Bob"], family: "Smith"}})
 ```
 
 Please see the [fhir.js documentation](https://github.com/FHIR/fhir.js) for further

@@ -17,6 +17,8 @@ The sandbox's open **DSTU2 FHIR server** is accessible directly at [https://r2.s
 
 The sandbox's open **STU3 FHIR server** is accessible directly at [https://r3.smarthealthit.org/](https://r3.smarthealthit.org). Note that the data in the online sandbox is reset on a nightly basis. [Click Here](http://docs.smarthealthit.org/data/stu3-sandbox-data) for more information about the data available in the STU3 Sandbox.
 
+The sandbox's open **R4 FHIR server** is accessible directly at [https://r4.smarthealthit.org/](https://r4.smarthealthit.org). Note that the data in the online sandbox is reset on a nightly basis. [Click Here](http://docs.smarthealthit.org/data/r4-sandbox-data) for more information about the data available in the R4 Sandbox.
+
 ## Self-Hosted Sandbox
 
-If you're an advanced user, you can set up a local copy of the sandbox on your computer using Docker. The open source code to do this will be released soon.
+If you're an advanced user, you can set up a local copy of the sandbox on your computer using Docker. The open source code to do this is available at https://github.com/smart-on-fhir/smart-dev-sandbox.

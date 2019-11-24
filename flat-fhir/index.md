@@ -3,7 +3,7 @@ layout: main
 title: "FHIR Bulk Data"
 ---
 
-# FHIR Bulk Data Proposal
+# SMART/HL7 Flat FHIR
 
 ## [The Spec on GitHub](https://github.com/smart-on-fhir/fhir-bulk-data-docs)
 

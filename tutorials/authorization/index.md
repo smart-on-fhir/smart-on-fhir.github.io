@@ -66,15 +66,15 @@ launch.html
         //      1. permission to read all of the patient's record
         //      2. permission to launch the app in the specific context
         var scope = [
-                "patient/*.read",
-                "launch"
-            ].join(" ");
+            "patient/*.read",
+            "launch"
+        ].join(" ");
             
         // Generate a unique session key string (here we just generate a random number
         // for simplicity, but this is not 100% collision-proof)
         var state = Math.round(Math.random()*100000000).toString();
         
-        // To keep things flexible, let's construct the launch URL by taking the base of the 
+        // To keep things flexible, let's construct the redirect URL by taking the base of the 
         // current URL and replace "launch.html" with "index.html".
         var launchUri = window.location.protocol + "//" + window.location.host + window.location.pathname;
         var redirectUri = launchUri.replace("launch.html","index.html");
@@ -90,18 +90,18 @@ launch.html
                 tokenUri;
             
             var smartExtension = r.rest[0].security.extension.filter(function (e) {
-               return (e.url === "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris");
+                return (e.url === "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris");
             });
 
-            smartExtension[0].extension.forEach(function(arg, index, array){
-              if (arg.url === "authorize") {
-                authUri = arg.valueUri;
-              } else if (arg.url === "token") {
-                tokenUri = arg.valueUri;
-              }
+            smartExtension[0].extension.forEach(function (arg, index, array) {
+                if (arg.url === "authorize") {
+                    authUri = arg.valueUri;
+                } else if (arg.url === "token") {
+                    tokenUri = arg.valueUri;
+                }
             });
             
-            // retain a couple parameters in the session for later use
+            // retain some parameters in the session for later use
             sessionStorage[state] = JSON.stringify({
                 clientId: clientId,
                 secret: secret,
@@ -110,7 +110,7 @@ launch.html
                 tokenUri: tokenUri
             });
 
-            // finally, redirect the browser to the authorizatin server and pass the needed
+            // finally, redirect the browser to the authorization server and pass the needed
             // parameters for the authorization request in the URL
             window.location.href = authUri + "?" +
                 "response_type=code&" +
@@ -124,12 +124,10 @@ launch.html
         
         // Convenience function for parsing of URL parameters
         // based on http://www.jquerybyexample.net/2012/06/get-url-parameters-using-jquery.html
-        function getUrlParameter(sParam)
-        {
+        function getUrlParameter(sParam) {
             var sPageURL = window.location.search.substring(1);
             var sURLVariables = sPageURL.split('&');
-            for (var i = 0; i < sURLVariables.length; i++) 
-            {
+            for (var i = 0; i < sURLVariables.length; i++) {
                 var sParameterName = sURLVariables[i].split('=');
                 if (sParameterName[0] == sParam) {
                     var res = sParameterName[1].replace(/\+/g, '%20');
@@ -184,8 +182,8 @@ index.html
             options['headers'] = {'Authorization': 'Basic ' + btoa(clientId + ':' + secret)};
         }
         
-        // obtain authorization token from the authorization service using the authorization code
-        $.ajax(options).done(function(res){
+        // obtain an authorization token from the authorization service using the authorization code
+        $.ajax(options).done(function (res) {
             // should get back the access token and the patient ID
             var accessToken = res.access_token;
             var patientId = res.patient;
@@ -203,20 +201,22 @@ index.html
                 headers: {
                     "Authorization": "Bearer " + accessToken
                 },
-            }).done(function(pt){
-                var name = pt.name[0].given.join(" ") +" "+ pt.name[0].family.join(" ");
+            }).done(function (pt) {
+                var name = getName(pt.name[0].given) + " " + getName(pt.name[0].family);
                 document.body.innerHTML += "<h3>Patient: " + name + "</h3>";
             });
         });
         
+        function getName(name) {
+            return Array.isArray(name) ? name.join(" ") : name;
+        }
+
         // Convenience function for parsing of URL parameters
         // based on http://www.jquerybyexample.net/2012/06/get-url-parameters-using-jquery.html
-        function getUrlParameter(sParam)
-        {
+        function getUrlParameter(sParam) {
             var sPageURL = window.location.search.substring(1);
             var sURLVariables = sPageURL.split('&');
-            for (var i = 0; i < sURLVariables.length; i++) 
-            {
+            for (var i = 0; i < sURLVariables.length; i++) {
                 var sParameterName = sURLVariables[i].split('=');
                 if (sParameterName[0] == sParam) {
                     var res = sParameterName[1].replace(/\+/g, '%20');

@@ -10,142 +10,56 @@
       {{page.title}}
     </title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{site.baseurl}}assets/css/bootstrap-cosmo.css" rel="stylesheet">
+    <link href="{{ 'assets/css/bootstrap4.min.css' | absolute_url }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ 'assets//img/favicon.png' | absolute_url }}">
 
-    <!-- Documentation extras -->
-    <link href="{{site.baseurl}}assets/css/smart-on-fhir-docs.css" rel="stylesheet">
-    <link href="{{site.baseurl}}assets/css/syntax.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <style>
+      h2, h3 { margin-top: 40px;}
+      li {margin-bottom: 8px;}
+      ul {margin-top: 8px;}
+    </style>
 
   </head>
-  <body data-spy="scroll" data-target=".page-navbar">
+  <body>
 
     <!-- Docs master nav -->
-    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-      <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="{{site.baseurl}}" class="navbar-brand">SMART on FHIR</a>
-      </div>
-
-      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-
-      <ul class="nav navbar-nav">
-        <li><a href="{{site.baseurl}}sandbox">Sandbox</a></li>
-           <li class="dropdown">
-        <a href="{{site.baseurl}}data" class="dropdown-toggle" data-toggle="dropdown">Data<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-           <li><a href="{{site.baseurl}}data/profiles.html">Profiles</a></li>
-           <li><a href="{{site.baseurl}}data/dstu2-sandbox-data.html">DSTU2 Sandbox Data</a></li>
-           <li><a href="{{site.baseurl}}data/stu3-sandbox-data.html">STU3 Sandbox Data</a></li>
-           <li><a href="{{site.baseurl}}data/genomics.html">FHIR Genomics Data</a></li>
-       
-        </ul>        
-        </li>
-        <li class="dropdown">
-        <a href="{{site.baseurl}}sandbox" class="dropdown-toggle" data-toggle="dropdown">Client libraries<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="{{site.baseurl}}clients/javascript">JavaScript</a></li>
-          <li><a href="{{site.baseurl}}clients/python">Python</a></li>
-          <li><a href="{{site.baseurl}}Swift-SMART/">iOS</a></li>
-          <li><a href="{{site.baseurl}}clients/others">Other Frameworks</a></li>
-        </ul>
-        </li>
-        <li class="dropdown">
-        <a href="{{site.baseurl}}authorization" class="dropdown-toggle" data-toggle="dropdown">Authorization<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="{{site.baseurl}}authorization">SMART App Authorization Guide</a></li>
-          <li><a href="{{site.baseurl}}authorization/scopes-and-launch-context">Scopes and launch context</a></li>
-          <li><a href="{{site.baseurl}}authorization/best-practices">Best practices for EHRs</a></li>
-          <li><a href="{{site.baseurl}}authorization/backend-services">Backend services (draft)</a></li>
-        </ul>
-        </li>
-        <li class="dropdown">
-        <a href="{{site.baseurl}}tutorials" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-           <li><a href="{{site.baseurl}}tutorials">Overview</a></li>
-          <li><a href="{{site.baseurl}}tutorials/javascript">Building a JavaScript app</a></li>
-           <li><a href="{{site.baseurl}}tutorials/testing">Testing your app from localhost</a></li>
-           <li><a href="{{site.baseurl}}tutorials/authorization">Simple Authorization App</a></li>
-          <li><a href="http://engineering.cerner.com/smart-on-fhir-tutorial/">Cerner Sandbox SMART-on-FHIR Tutorial</a></li>
-           <li><a href="{{site.baseurl}}tutorials/server-quick-start">Building a server: quick-start guide</a></li>
-        </ul>
-        </li>
-      </ul>  
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://groups.google.com/forum/#!forum/smart-on-fhir">Google Group</a></li>
-        <li><a href="https://github.com/smart-on-fhir">GitHub</a></li>
-      </ul>
-      </nav>
-    </div>
+    <header style="text-align: center; margin: 40px 0">
+        <img src="{{ 'assets/img/smart-logo.svg' | absolute_url }}" alt="SMART on FHIR Logo" style="max-height: 90px;" />
     </header>
-
 
     <!-- Docs page layout -->
     <div id="master">
-      <div class="container bs-docs-container">
+      <div class="container">
 
         <div class="row">
-          <div class="col-md-9 page-content" role="main">
+          <div class="col-12" role="main">
             {{ content }}
           </div>
-
-          <div class="col-md-3 page-content" role="main">
-            <!--
-            <div class="alert alert-info">
-             We're hiring a senior developer to work full time on the open source SMART on FHIR project. <a class="alert-link"
-               href="/job">Learn More!</a> 
-            </div> 
-            -->
-            <div class="alert alert-info">
-             The SMART on FHIR API is evolving in parallel with the <a class="alert-link"
-               href="http://hl7.org/fhir/timelines.html">FHIR ballot releases</a>.
-             If you spot problems,
-             please <a class="alert-link"
-               href="https://github.com/smart-on-fhir/smart-on-fhir.github.io/issues">file
-               an issue</a>. 
-             
-             Or better yet, you can <a class="alert-link edit-in-github" 
-               href="">edit
-               this page</a>.
-            </div> 
-            
-          </div>
-
         </div>
+     
       </div>
     </div>
     <script>
       window.github_branch = "{{site.github_branch}}";
     </script>
-    <script src="{{site.baseurl}}assets/js/jquery-2.1.0.js"></script>
-    <script src="{{site.baseurl}}assets/js/bootstrap3.min.js"></script>
-    <script src="{{site.baseurl}}assets/js/site.js"></script>
-    <footer class="text-center">
+
+    <footer class="text-center" style="margin: 40px 0;">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12">
-            Version: <a href="{{site.baseurl}}releases/">{{site.github_branch}}</a> - <a href="http://smarthealthit.org">SMART Health IT 2017</a>
+          <div class="col-12">
+            <a href="https://smarthealthit.org">SMART Health IT</a>
+            <span class="text-muted mx-2">|</span>
+            <a href="https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit/master/index.md">Add a link</a> 
           </div>
         </div>
       </div>
     </footer>
-    {% if site.env == "dev" %}
-    <script src="//localhost:35729/livereload.js"></script>
-    {% endif %}
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script>
+       $("a[href='https://web.archive.org/web/*']").attr('href', 'https://web.archive.org/web/*/'+window.location.href);
+    </script>
   </body>
 </html>

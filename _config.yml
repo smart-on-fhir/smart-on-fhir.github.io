@@ -5,7 +5,11 @@ exclude: [
     "package.json"
 ]
 
-baseurl: "https://docs.smarthealthit.org/"
+repository: smart-on-fhir/smart-on-fhir.github.io
+
+
+#baseurl: "https://docs.smarthealthit.org/"
+#baseurl: "http://localhost:4000/"
 markdown: kramdown
 github_branch: master
 highlighter: rouge

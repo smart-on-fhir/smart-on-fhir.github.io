@@ -204,7 +204,7 @@ index.html
                     "Authorization": "Bearer " + accessToken
                 },
             }).done(function(pt){
-                var name = pt.name[0].given.join(" ") +" "+ pt.name[0].family.join(" ");
+                var name = pt.name[0].given.join(" ") +" "+ pt.name[0].family;
                 document.body.innerHTML += "<h3>Patient: " + name + "</h3>";
             });
         });

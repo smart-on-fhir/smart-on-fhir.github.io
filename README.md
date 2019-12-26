@@ -11,40 +11,10 @@ This is the SMART technical documentation, hosted at
   request!
 
 
-## Installation
-### Jekyll and friends. (mandatory)
-
-The SMART technical documentation is built using
-[Ruby](https://www.ruby-lang.org/) tools. Using [Bundler](http://bundler.io/),
-you can install all of the required dependencies to generate and run the
-documentation locally by running the following command from the
-`smart-on-fhir.github.io/` directory:
-
-    $ bundle install
-
-This will install [Jekyll](https://github.com/mojombo/jekyll), a static site
-generator and [redcarpet](https://github.com/vmg/redcarpet), a Ruby Markdown
-processor.
-
-Once the required software is installed, generating the static site (in
-the `_site` directory) is simply running
-
-    $ jekyll serve --watch -b /
-
-on the commandline.
-
-
-### Node and npm (optional)
-
-If you prefer, you can serve the project with Node.js and grunt, which enables
-"live reload" behavior. This allows editing side-by-side with the web page; and
-every time you save, your changes appear automatically in the browser.
-
-Just install nodejs and grunt, and then run:
+## Build With Docker
 
 ```
-npm install
-npm run-script watch
+docker run -it --rm -v "$PWD":/usr/src/app -p "4000:4000" starefossen/github-pages
 ```
 
 And then open a browser to http://localhost:4000

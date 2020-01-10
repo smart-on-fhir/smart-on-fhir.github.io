@@ -80,7 +80,6 @@ This is very simple blank page with one purpose - to launch the app:
               // will not automatically map to the "index.html" file in that directory.
               redirectUri: "index.html"
             });
-          }
         </script>
     </body>
 </html>

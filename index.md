@@ -21,8 +21,7 @@ title: SMART on FHIR
 * [Getting started for EHRs](./tutorials/server-quick-start/): Tutorial to SMART-enable a clinical data system
 
 ## Software Libraries
-* [JS Browser](http://docs.smarthealthit.org/client-js/client.html): Client-side JavaScript library with support for SMART App Launch
-* [Node.js](http://docs.smarthealthit.org/client-js/node.html): Server-side JavaScript library with support for SMART App Launch
+* [JavaScript or TypeScript](http://docs.smarthealthit.org/client-js): Client-side and server-side library with support for SMART App Launch
 * [Node.js from Vermonster](https://github.com/Vermonster/fhir-kit-client): An alternative Node.js implementation
 * [Python](http://docs.smarthealthit.org/client-py/): Server-side Python library with support for SMART App Launch
 * [R](https://github.com/FirelyTeam/RonFHIR)

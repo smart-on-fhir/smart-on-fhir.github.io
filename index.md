@@ -65,5 +65,6 @@ title: SMART on FHIR
 
 ## In Progress / Bleeding Edge Projects
 * [CDS for PAMA](https://github.com/argonautproject/cds-hooks-for-pama)
+* [SMART Health Card Framework](https://healthwallet.cards/)
 * [SMART Web Messaging](https://github.com/smart-on-fhir/smart-web-messaging)
 * [FHIR Bulk Data Import](https://github.com/smart-on-fhir/bulk-import)

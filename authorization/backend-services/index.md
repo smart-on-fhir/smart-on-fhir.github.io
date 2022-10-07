@@ -4,4 +4,4 @@ title: "SMART on FHIR Authorization: Backend Services"
 ---
 
 # SMART Backend Services: Authorization Guide
-Please see work in progress at: [https://github.com/smart-on-fhir/fhir-bulk-data-docs](https://github.com/smart-on-fhir/fhir-bulk-data-docs)
+Please see formal specification at: [https://hl7.org/fhir/smart-app-launch/backend-services.html](https://hl7.org/fhir/smart-app-launch/backend-services.html)

@@ -46,6 +46,7 @@ title: SMART on FHIR
 * [Epic Patient Facing Apps](https://open.epic.com/)
 * [Intersystems](https://www.intersystems.com/fhir/)
 * [Meditech](https://ehr.meditech.com/meditech-greenfield)
+* [NextGen Healthcare](https://developer.nextgen.com/login)
 
 ## Data
 * [Synthea](https://synthetichealth.github.io/synthea/): Open source synthetic FHIR data generator

@@ -41,7 +41,7 @@ title: SMART on FHIR
 ## Vendor Sandboxes
 * [Allscripts](https://developer.allscripts.com/)
 * [athenahealth - athenaOne](https://docs.athenahealth.com/api/)
-* [Cerner - Provider and Patient Facing Apps](https://fhir.cerner.com/millennium/dstu2/)
+* [Oracle Cerner - Provider and Patient Facing Apps](https://fhir.cerner.com/millennium/overview/)
 * [Epic Provider Facing Apps](https://uscdi.epic.com/)
 * [Epic Patient Facing Apps](https://open.epic.com/)
 * [Intersystems](https://www.intersystems.com/fhir/)

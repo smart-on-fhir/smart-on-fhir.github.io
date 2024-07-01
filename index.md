@@ -29,6 +29,7 @@ title: SMART on FHIR
 * [Swift (iOS)](https://github.com/smart-on-fhir/Swift-SMART)
 * [Java](https://mvnrepository.com/artifact/org.hspconsortium.client/hspc-java-client)
 * [.NET](https://fire.ly/fhir-api/): FHIR client library from Firely
+* [Dart/Flutter](https://pub.dev/packages/fhir): Pub package for working with FHIR resources 
 
 ## Test Environments
 * [SMART App Launcher (no registration required)](https://launch.smarthealthit.org): Developer tool for SMART apps

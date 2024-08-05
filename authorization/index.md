@@ -9,4 +9,4 @@ title: SMART App Authorization Guide
 - [Scopes and Launch Context](http://hl7.org/fhir/smart-app-launch/scopes-and-launch-context/)
 - [Conformance](http://hl7.org/fhir/smart-app-launch/conformance.html)
 - [Bulk Data](https://hl7.org/fhir/uv/bulkdata/)
-- [SMART Backend Services Authorization](https://hl7.org/fhir/uv/bulkdata/authorization/)
+- [SMART Backend Services Authorization](https://hl7.org/fhir/smart-app-launch/backend-services.html)

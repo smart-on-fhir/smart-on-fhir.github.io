@@ -11,8 +11,8 @@ title: SMART on FHIR
     * [US Core Data Profiles](https://www.hl7.org/fhir/us/core/): FHIR data profiles for health data in the US ("core data for interoperability")
     * [FHIR Bulk Data API Implementation Guide](https://hl7.org/fhir/uv/bulkdata/index.html): FHIR export API for large-scale data access
 * UI and Security Integration
-    * [SMART App Launch](http://hl7.org/fhir/smart-app-launch/index.html): User-facing apps that connect to EHRs and health portals
-    * [SMART Backend Services](https://hl7.org/fhir/uv/bulkdata/authorization/index.html): Server-to-server FHIR connections
+    * [SMART App Launch](http://hl7.org/fhir/smart-app-launch/app-launch.html): User-facing apps that connect to EHRs and health portals
+    * [SMART Backend Services](http://www.hl7.org/fhir/smart-app-launch/backend-services.html): Server-to-server FHIR connections
 
 ## Tutorials
 * [Getting started with Browser-based Apps](./tutorials/javascript/): Tutorial to create a simple app that launches via the SMART browser library
